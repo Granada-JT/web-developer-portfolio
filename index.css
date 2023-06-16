@@ -19,7 +19,7 @@ body {
 }
 
 #aboutMe {
-	height: 100vh !important;
+	height: 100% !important;
 	padding: 10%;
 	margin: ;
 	color: #000000;
