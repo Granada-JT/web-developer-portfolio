@@ -14,8 +14,63 @@ body {
 	display: block;
 }
 
+#home {
+	background-color: #93B8DC;
+}
+
 #aboutMe {
 	height: 100vh !important;
 	padding: 10%;
+	margin: ;
+	color: #000000;
 }
 
+#carouselCaption {
+	color: #000000;
+}
+
+#navBar {
+	background-color: #DCB793;
+}
+
+/*#projectCards {
+	padding-top: 1.5rem;
+	padding-bottom: 7rem;
+}*/
+
+#projectCards > div {
+	background-color: #DC93DC;
+	color: #000000;
+}
+
+#projects {
+	height: 100vh !important;
+	background-color: #93DC93;
+}
+
+#projectsHeader {
+	padding-bottom: 1rem;
+}
+
+#projectCards > div > h3 {
+	padding-top: 1rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+#tools {
+	height: 100vh !important;
+	background-color: #93B8DC;
+}
+
+#contact {
+	height: 100vh !important;
+	background-color: #93DC93;
+	color: black !important;
+}

@@ -21,33 +21,33 @@
 <body>
 
 <!-- Start of Landing Section -->
-<div id="landing">
+<div id="landing" class="text-light">
 
     <!-- Start of Nav Bar -->
-    <section id="navBar">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <section id="navBar" class="fixed-top text-center">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">Developer Portfolio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav smooth-scroll">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#landing">About Me</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#resume">Resume</a>
+                        <a class="nav-link" href="#tools">Tools</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li> -->
                 </ul>
             </div>
         </nav>
@@ -55,9 +55,9 @@
     <!-- End of Nav Bar -->
 
     <!-- Start of Home Section -->
-    <section id="home" class="bg-warning">
+    <section id="home">
         <!-- Start of About me Section -->
-        <section id="aboutMe" class="py-5">
+        <section id="aboutMe">
             <div class="container">
                 <div class="row">
                     <!-- Carousel Section -->
@@ -75,17 +75,17 @@
                                                 <img src="./images/img1.jpg" class="d-block w-100" alt="...">
                                                 <div class="carousel-caption d-none d-md-block"></div>
                                             </div>
-                                            <div>
-                                                <h1>Jomar Granada</h1>
-                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="carousel-caption-header mt-3" id="carouselCaption">
+                                        <h3>Jomar Granada</h3>
+                                        <p>Full Stack Web Developer</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End of Carousel Section -->
-                    <!-- Start of About me Section -->
                         <div class="col-md-6 mt-3 text-justify">
                             <h1>About Me</h1>
                             <p>Hello! My name is <strong>Jomar T. Granada</strong>, and I am a passionate <strong><em>Full-Stack Web Developer</em></strong>. Welcome to my portfolio, where I showcase my projects, tools, and expertise gained throughout my ongoing journey in programming. I am dedicated to crafting innovative and user-friendly web solutions that leave a lasting impact. Explore my portfolio, and I hope you enjoy your time here. Cheers!</p>
@@ -100,26 +100,142 @@
     </section>
     <!-- End of Home Section -->                    
 </div>
-
 <!-- End of Landing Section -->
 
 
 <!-- Start of Projects Section -->
-
+<div id="projects" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="text-center" id="projectsHeader">
+        <h1>My Projects</h1>
+    </div>
+    <!-- Projects -->
+    <div class="text-center" id="projectCards">                        
+        <div style="width: 30%;" class="d-inline-block p-3 mx-3 rounded">
+            <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/album.png" class="img-fluid">
+            <h3>My First Project</h3>
+            <p>A simple project made from HTML</p>
+        </div>
+        <div style="width: 30%;" class="d-inline-block p-3 mx-3 rounded">
+            <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/jumbotron.png" class="img-fluid">
+            <h3>My Second Project</h3>
+            <p>A simple project made from CSS</p>
+        </div>
+        <div style="width: 30%;" class="d-inline-block p-3 mx-3 rounded">
+            <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/carousel.png" class="img-fluid">
+            <h3>My Third Project</h3>
+            <p>A simple Bootstrap project.</p>
+        </div>
+    </div>
+</div>
 <!-- End of Projects Section -->
 
+<!-- Start of Tools Section -->
+<div id="tools" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="text-center">
+        <!-- Core Tools Section Start -->
+        <h3>Core Tools</h3>
+
+        <div id="core-tools" class="pb-4 d-flex flex-column">
+            <div id="html" class="d-flex justify-content-center flex-row">
+                <img width="150" src="images/logo-html5.png"/>
+                <img width="150" src="images/logo-css3.png"/>
+                <img width="150" src="images/logo-javascript.png"/>
+            </div>
+        </div>
+        <!-- Core Tools Section End -->
+        
+        <!-- Other Tools Section Start -->
+        <h3 class="text-center mt-3">Other Tools</h3>
+
+        <div id="other-tools" class="p-3 d-flex justify-content-center align-items-top flex-md-row ">
+            <div id="tools-1" class="d-md-flex justify-content-center">
+                <img width="150" src="images/logo-mongodb.png"/>
+                <img width="150" src="images/logo-nodejs.png"/>
+                <img width="150" src="images/logo-expressjs.png"/>
+                <img width="150" src="images/logo-react.png"/>
+                <img width="150" src="images/logo-heroku.png"/>
+            </div>
+            <div id="tools-2" class="d-md-flex justify-content-center">
+                <img width="150" src="images/logo-git.png"/>
+                <img width="150" src="images/logo-sublime-text-3.png"/>
+                <img width="150" src="images/logo-postman.png"/>
+                <img width="150" src="images/logo-gitlab-ci-cd.png"/>
+            </div>
+        </div>
+        <!-- Other Tools Section End -->
+        
+    </div>
+</div>
+<!-- Start of Tools Section -->
+
+<!-- Start of Contact Section -->
+<div id="contact" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container-fluid p-3">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-xl-4 align-items-center pr-5">
+                <form id="form-col">
+                    <h2>Contact Me</h2>
+                    <div class="form-group text-left justify-content-center">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" id="email" required>
+                        <label for="phone">Contact Number</label>
+                        <input type="phone" class="form-control" id="phone" required>
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="3" required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-dark text-light mb-3" data-toggle="modal" data-target="#modalDiv">Send Email</button>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex align-items-top text-justify pl-5">
+                <div>
+                    <!-- Content beside the form -->
+                    <h3>Client Reviews and Feedbacks</h3>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide text-center pt-3" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <p>"The best web developer ever!!!"</p>
+                        </div>
+                        <div class="carousel-item">
+                          <p>Very punctual and knowledgeable about coding</p>
+                        </div>
+                        <div class="carousel-item">
+                          <p>5 stars!!! the best one out there </p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalDiv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLabel">Thank you for contacting me!</h5>
+                        <button type="send_inquiry" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center text-dark">
+                        Message Successfully Sent
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Start of Contact Section -->
 
-<!-- Start of Contact Section -->
 
-<!-- Start of Tools Section -->
+<!-- Start of Footer -->
 
-<!-- Start of Tools Section -->
-
-
-
-
+<!-- End of Footer -->
 
 <!-- JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
