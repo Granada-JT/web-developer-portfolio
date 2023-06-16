@@ -19,7 +19,7 @@ body {
 }
 
 #aboutMe {
-	height: 100% !important;
+	height: 100vh !important;
 	padding: 10%;
 	margin: ;
 	color: #000000;
@@ -45,7 +45,7 @@ body {
 
 #projects {
 	height: 100vh !important;
-	background-color: #93DC93;
+	background-color: #DCB793;
 }
 
 #projectsHeader {
@@ -71,6 +71,10 @@ html {
 
 #contact {
 	height: 100vh !important;
-	background-color: #93DC93;
+	background-color: #DCB793;
 	color: black !important;
 }
+
+/*#contact > h3 {
+	text-align: left;
+}*/
