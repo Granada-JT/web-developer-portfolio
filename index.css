@@ -12,6 +12,7 @@ body {
 #landing {
 	font-family: 'Poppins', sans-serif;	
 	display: block;
+	height: 100%;
 }
 
 #home {
@@ -19,7 +20,7 @@ body {
 }
 
 #aboutMe {
-	height: 100vh !important;
+	min-height: 100vh;
 	padding: 10%;
 	margin: ;
 	color: #000000;
@@ -44,7 +45,7 @@ body {
 }
 
 #projects {
-	height: 100vh !important;
+	min-height: 100vh;
 	background-color: #DCB793;
 }
 
@@ -65,12 +66,12 @@ html {
 }
 
 #tools {
-	height: 100vh !important;
+	min-height: 100vh;
 	background-color: #93B8DC;
 }
 
 #contact {
-	height: 100vh !important;
+	min-height: 100vh;
 	background-color: #DCB793;
 	color: black !important;
 }
