@@ -24,7 +24,7 @@
 <div id="landing">
 
     <!-- Start of Nav Bar -->
-    <section id="navBar" class="fixed-top text-center">
+    <section id="navBar" class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">My Developer Portfolio</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,7 +32,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav smooth-scroll">
+                <ul class="navbar-nav smooth-scroll ml-auto mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#landing">About Me</a>
                     </li>
@@ -50,6 +50,12 @@
                     </li> -->
                 </ul>
             </div>
+            <a class="navbar-brand" href="#contact">Jomar Granada</a>
+            <a class="navbar-brand" href="#contact"><img src="./images/img2.png" class="rounded-circle img-fluid" id="small-img"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </nav>
     </section>
     <!-- End of Nav Bar -->
@@ -87,10 +93,12 @@
                     </div>
                     <!-- End of Carousel Section -->
                         <div class="col-md-6 col-sm-12 order-2 mt-3 text-justify">
-                            <h1>About Me</h1>
-                            <p>Hello! My name is <strong>Jomar T. Granada</strong>, and I am a passionate <strong><em>Full-Stack Web Developer</em></strong>. Welcome to my portfolio, where I showcase my projects, tools, and expertise gained throughout my ongoing journey in programming. I am dedicated to crafting innovative and user-friendly web solutions that leave a lasting impact. Explore my portfolio, and I hope you enjoy your time here. Cheers!</p>
-                            <p><em>“Don't wish it was easier wish you were better. Don't wish for less problems wish for more skills. Don't wish for less challenge wish for more wisdom”</em></p>
-                            <p class="text-right"><em>- Jim Rohn</em></p>
+                            <h1 class="m-3 text-center">About Me</h1>
+                            <div id="about-me-caption">
+                                <p>Hello! My name is <strong>Jomar T. Granada</strong>, and I am a passionate <strong><em>Full-Stack Web Developer</em></strong>. Welcome to my portfolio, where I showcase my projects, tools, and expertise gained throughout my ongoing journey in programming. I am dedicated to crafting innovative and user-friendly web solutions that leave a lasting impact. Explore my portfolio, and I hope you enjoy your time here. Cheers!</p>
+                                <p><em>“Don't wish it was easier wish you were better. Don't wish for less problems wish for more skills. Don't wish for less challenge wish for more wisdom”</em></p>
+                                <p class="text-right"><em>- Jim Rohn</em></p>
+                            </div>
                             <!-- <a href="resume.pdf" class="btn btn-primary">Download Resume</a> -->
                         </div>
                     </div>
@@ -105,27 +113,54 @@
 
 <!-- Start of Projects Section -->
 <div id="projects" class="container-fluid">
-  <div class="row justify-content-center" id="projectsHeader">
-    <h1 class="text-center pt-5 m-5">My Projects</h1>
-  </div>
-  <!-- Projects -->
-  <div class="text-center justify-content-center row" id="projectCards">
-    <div class="pt-1 pb-3 mt-5 mb-5 col-12 col-md-3 mx-3">
-      <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/album.png" class="img-fluid">
-      <h3 class="mt-4 mb-4">My First Project</h3>
-      <p class="mb-5">A simple project made from HTML</p>
+      <div class="row" id="projectsHeader">
+        <h1 class="text-center col-12 pt-5 mt-4">My Projects</h1>
+      </div>
+      <!-- Projects -->
+      <div class="p-5 d-lg-flex justify-content-center">
+
+        <!-- My First Project Start -->
+        <div class="card col-xl-4 mb-5 mb-xl-0" id="projectCards">
+          <div class="card-body">
+            <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/album.png" class="img-fluid">
+                <h5 class="card-title mt-3 text-center">My First Project</h5>
+                <h6 class="card-subtitle mb-2 text-muted text-left">HTML</h6>
+                <div id="projectcardsCaption">
+                    <p class="card-text text-justify">For my first project, I created a dynamic and responsive website using HTML. This project showcases my proficiency in structuring web pages with HTML elements, creating engaging content, and implementing interactive features. The website focuses on delivering a seamless user experience and incorporates modern design principles.</p>
+                </div>
+            <a href="#" class="card-link">Link to project</a>
+          </div>
+        </div>
+        <!-- My First Project End -->
+
+        <!-- My Second Project Start -->
+        <div class="card col-xl-4 mb-5 mb-xl-0 mx-xl-5" id="projectCards">
+          <div class="card-body">
+            <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/jumbotron.png" class="img-fluid">
+                <h5 class="card-title mt-3 text-center">My Second Project</h5>
+                <h6 class="card-subtitle mb-2 text-muted text-left">CSS</h6>
+                <div id="projectcardsCaption">
+                    <p class="card-text text-justify">In my second project, I explored the power of CSS to enhance the visual appeal and styling of web pages. I utilized various CSS properties and techniques to create stunning layouts, beautiful typography, and captivating animations. The project demonstrates my ability to transform a basic HTML structure into a visually impressive and aesthetically pleasing website.</p>
+                </div>
+            <a href="#" class="card-link">Link to project</a>
+          </div>
+        </div>
+        <!-- My Second Project End -->
+
+        <!-- My Third Project Start -->
+        <div class="card col-xl-4 mb-5 mb-xl-0" id="projectCards">
+          <div class="card-body">
+            <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/carousel.png" class="img-fluid">
+                <h5 class="card-title mt-3 text-center">My Third Project</h5>
+                <h6 class="card-subtitle mb-2 text-muted text-left">Bootstrap</h6>
+                <div id="projectcardsCaption">
+                    <p class="card-text text-justify">For my third project, I utilized Bootstrap, a popular front-end framework, to develop a responsive and mobile-friendly website. Leveraging the pre-built components, grids, and utilities offered by Bootstrap, I created a visually appealing and functional interface. This project highlights my proficiency in utilizing Bootstrap's powerful features to streamline the development process and deliver a polished final product.</p>
+                </div>
+            <a href="#" class="card-link">Link to project</a>
+          </div>
+        </div>
+        <!-- My Third Project End -->
     </div>
-    <div class="pt-1 pb-3 mt-5 mb-5 col-12 col-md-3 mx-3">
-      <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/jumbotron.png" class="img-fluid">
-      <h3 class="mt-4 mb-4">My Second Project</h3>
-      <p class="mb-5">A simple project made from CSS</p>
-    </div>
-    <div class="pt-1 pb-3 mt-5 mb-5 col-12 col-md-3 mx-3">
-      <img src="https://getbootstrap.com/docs/4.0/examples/screenshots/carousel.png" class="img-fluid">
-      <h3 class="mt-4 mb-4">My Third Project</h3>
-      <p class="mb-5">A simple Bootstrap project.</p>
-    </div>
-  </div>
 </div>
 <!-- End of Projects Section -->
 
@@ -133,7 +168,7 @@
 <div id="tools" class="d-flex flex-column justify-content-center align-items-center">
     <div class="text-center">
         <!-- Core Tools Section Start -->
-        <h3>Core Tools</h3>
+        <h1 class="pt-5 mt-4">Core Tools</h1>
 
         <div id="core-tools" class="pb-4 d-flex flex-column">
             <div id="html" class="d-flex justify-content-center flex-row">
@@ -145,7 +180,7 @@
         <!-- Core Tools Section End -->
         
         <!-- Other Tools Section Start -->
-        <h3 class="text-center mt-3">Other Tools</h3>
+        <h1 class="text-center mt-3">Other Tools</h1>
 
         <div id="other-tools" class="p-3 d-flex justify-content-center align-items-top flex-md-column ">
             <div id="tools-1" class="d-md-flex justify-content-center">
@@ -169,10 +204,10 @@
 <!-- Start of Tools Section -->
 
 <!-- Start of Contact Section -->
-<div id="contact" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="container-fluid p-3">
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-8 col-xl-4 align-items-center pr-5">
+<div id="contact" class="d-flex flex-column justify-content-center">
+    <div class="container-fluid">
+        <div class="row mx-3">
+            <div class="col-sm-12 col-md-6 align-items-center">
                 <form id="form-col">
                     <h2>Contact Me</h2>
                     <div class="form-group text-left justify-content-center">
@@ -188,8 +223,8 @@
                     <button type="button" class="btn btn-dark text-light mb-3" data-toggle="modal" data-target="#modalDiv">Send Email</button>
                 </form>
             </div>
-            <div class="col-sm-12 col-md-4 d-flex align-items-top">
-                <div class="align-items-center">
+            <div class="col-sm-12 col-md-6 d-flex align-items-top justify-content-center">
+                <div class="align-items-center text-center">
                     <!-- Content beside the form -->
                     <h3>Client Reviews and Feedbacks</h3>
                     <div id="carouselExampleSlidesOnly" class="carousel slide text-center pt-3" data-ride="carousel">
@@ -234,7 +269,18 @@
 
 
 <!-- Start of Footer -->
-
+<div id="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <p class="mt-1">Web Developer Portfolio crafted by Jomar Granada © 2023. All rights reserved.</p>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="#" class="btn btn-sm btn-dark active mt-1" role="button" aria-pressed="true">Back to Top</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End of Footer -->
 
 <!-- JS Bundle -->

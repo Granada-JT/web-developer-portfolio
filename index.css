@@ -5,10 +5,27 @@
 	box-sizing: border-box;
 }
 
-body {
-/*	background-color: yellow;*/
+
+#navBar {
+	background-color: #DCB793;
 }
 
+
+html {
+    scroll-behavior: smooth;
+}
+
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+
+#footer {
+	background-color: #93B8DC;
+}
+
+
+/*Landing Section Start*/
 #landing {
 	font-family: 'Poppins', sans-serif;	
 	display: block;
@@ -26,21 +43,22 @@ body {
 	color: #000000;
 }
 
+#small-img {
+	width: 3rem;
+	height: 3rem;
+}
+
+#about-me-caption {
+	line-height: 2;
+	text-indent: 2rem;
+}
+
 #carouselCaption {
 	color: #000000;
 }
 
-#navBar {
-	background-color: #DCB793;
-}
-
-/*#projectCards {
-	padding-top: 1.5rem;
-	padding-bottom: 7rem;
-}*/
-
-#projectCards > div {
-	background-color: #DC93DC;
+#projectCards {
+	background: skyblue;
 	color: #000000;
 }
 
@@ -57,25 +75,30 @@ body {
 	padding-top: 1rem;
 }
 
-html {
-    scroll-behavior: smooth;
+#projectcardsCaption {
+	line-height: 2;
+	text-indent: 2rem;
 }
+/*Landing Section End*/
 
-.smooth-scroll {
-    scroll-behavior: smooth;
-}
 
+/*Projects Section Start*/
+
+/*Projects Section End*/
+
+
+/*Tools Section Start*/
 #tools {
 	min-height: 100vh;
 	background-color: #93B8DC;
 }
+/*Tools Section End*/
 
+
+/*Contacts Section Start*/
 #contact {
 	min-height: 100vh;
 	background-color: #DCB793;
 	color: black !important;
 }
-
-/*#contact > h3 {
-	text-align: left;
-}*/
+/*Contacts Section End*/
