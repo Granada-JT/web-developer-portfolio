@@ -49,13 +49,13 @@ html {
 }
 
 #about-me-caption {
-	line-height: 2;
+	line-height: 3;
 	text-indent: 2rem;
 	font-size: 1rem;
 }
 
 #carousel-aboutMe {
-	padding-top: 8.6%;
+	padding-top: 7%;
 	padding-bottom: 0;
 }
 
@@ -69,7 +69,9 @@ html {
 }
 
 #carouselSocials {
-	padding-top: 18%;
+	padding-top: 10%;
+	padding-left: 10%;
+	padding-right: 10%;
 }
 
 #carouselPicture {
