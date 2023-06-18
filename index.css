@@ -139,6 +139,5 @@ html {
 #footer {
 	position: relative;
 	width: 100%;
-	padding-top: 10%;
-	display: inline;
+	display: block;
 }
