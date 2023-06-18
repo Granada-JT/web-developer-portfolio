@@ -38,7 +38,7 @@ html {
 
 #aboutMe {
 	min-height: 100vh;
-	padding: 10%;
+	padding:5%;
 	margin: ;
 	color: #000000;
 }
@@ -51,10 +51,30 @@ html {
 #about-me-caption {
 	line-height: 2;
 	text-indent: 2rem;
+	font-size: 1rem;
+}
+
+#carousel-aboutMe {
+	padding-top: 8.6%;
+	padding-bottom: 0;
 }
 
 #carouselCaption {
 	color: #000000;
+	font-size: 1.5rem;
+}
+
+#carousel-caption-header {
+	font-size: 3rem;
+}
+
+#carouselSocials {
+	padding-top: 18%;
+}
+
+#carouselPicture {
+	width: 75%;
+	height: auto;
 }
 
 #projectCards {
