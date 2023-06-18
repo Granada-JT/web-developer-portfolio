@@ -7,7 +7,13 @@
 
 
 #navBar {
-	background-color: #DCB793;
+	background-color: #000000;
+	color: white !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white; /* Change the color value to your desired color */
 }
 
 
@@ -31,7 +37,7 @@ html {
 }
 
 #home {
-	background-color: #93B8DC;
+	background-color: #999999;
 }
 
 #aboutMe {
@@ -77,14 +83,20 @@ html {
 	height: auto;
 }
 
+
+/*Landing Section End*/
+
+
+/*Projects Section Start*/
 #projectCards {
-	background: skyblue;
+	background: #999999;
 	color: #000000;
 }
 
 #projects {
 	min-height: 100vh;
-	background-color: #DCB793;
+	background-color: #000000;
+	color: white;
 }
 
 #projectsHeader {
@@ -95,31 +107,50 @@ html {
 	padding-top: 1rem;
 }
 
+#projectCards {
+	border-top: 5px solid #FF3F4A;
+	border-bottom: 5px solid #FF3F4A;
+}
+
 #projectcardsCaption {
 	line-height: 2;
 	text-indent: 2rem;
 }
-/*Landing Section End*/
 
+.card-subtitle {
+	color: white;
+}
 
-/*Projects Section Start*/
+.card {
+  transition: transform 0.3s ease;
+}
 
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card-body .btn {
+	background-color: #FF3F4A;
+	color: white;
+
+}
 /*Projects Section End*/
 
 
 /*Tools Section Start*/
 #tools {
 	min-height: 100vh;
-	background-color: #93B8DC;
+	background-color: #999999;
 }
+
 /*Tools Section End*/
 
 
 /*Contacts Section Start*/
 #contact {
 	min-height: 100vh;
-	background-color: #DCB793;
-	color: black !important;
+	background-color: #000000;
+	color: white;
 }
 
 #form-carousel {
@@ -135,11 +166,21 @@ html {
 }
 /*Contacts Section End*/
 
+#sendEmail-button .btn {
+	background-color: #FF3F4A;
+	color: white;
+}
 
 #footer {
 	position: relative;
 	width: 100%;
 	display: block;
+	color: white;
+}
+
+#footer .btn {
+	background-color: #FF3F4A;
+	color: white;
 }
 
 @media (min-width: 576px) {
@@ -163,3 +204,30 @@ html {
 		
 	}
 }
+
+/*navbar hover and underline*/
+.nav-link-underline {
+    position: relative;
+}
+
+.nav-link-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FF3F4A; /* Change the color as desired */
+    transform: scaleX(0); /* Initially hidden */
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+.nav-link-underline:hover::after {
+    transform: scaleX(1); /* Show the underline on hover */
+}
+
+.navbar-brand:hover {
+  color: #FF3F4A; /* Change the color value to your desired hover color */
+}
+
+/*navbar hover and underline*/
