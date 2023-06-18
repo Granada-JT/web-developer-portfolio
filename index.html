@@ -39,7 +39,7 @@
                         <a class="nav-link" href="#tools">Tools</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#footer">Contact</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -239,11 +239,11 @@
 
 <!-- Start of Contact Section -->
 <div id="contact" class="d-flex flex-column justify-content-center">
-    <div class="container-fluid">
+    <div class="container" id="form-carousel">
         <div class="row mx-3">
-            <div class="col-sm-12 col-md-6 align-items-center">
+            <div class="col-sm-12 col-md-6">
                 <form id="form-col">
-                    <h2>Contact Me</h2>
+                    <h2 class="text-center">Contact Me</h2>
                     <div class="form-group text-left justify-content-center">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" required>
@@ -254,11 +254,13 @@
                         <label for="message">Message</label>
                         <textarea class="form-control" id="message" rows="3" required></textarea>
                     </div>
-                    <button type="button" class="btn btn-dark text-light mb-3" data-toggle="modal" data-target="#modalDiv">Send Email</button>
+                    <div id="sendEmail-button">
+                        <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#modalDiv">Send Email</button>
+                    </div>
                 </form>
             </div>
-            <div class="col-sm-12 col-md-6 d-flex align-items-top justify-content-center">
-                <div class="align-items-center text-center">
+            <div class="col-sm-12 col-md-6 d-flex align-items-top justify-content-center" id="clientReviews-carousel">
+                <div class="text-center">
                     <!-- Content beside the form -->
                     <h3>Client Reviews and Feedbacks</h3>
                     <div id="carouselExampleSlidesOnly" class="carousel slide text-center pt-3" data-ride="carousel">
@@ -297,13 +299,27 @@
             </div>
         </div>
     </div>
+    <!-- Start of Footer -->
+    <div class="container-fluid">
+        <div id="footer">
+            <div class="row">
+                <div class="col-sm-8 text-right">
+                    <p class="mt-1">Web Developer Portfolio crafted by Jomar Granada © 2023. All rights reserved.</p>
+                </div>
+                <div class="col-sm-4 text-left">
+                    <a href="#" class="btn btn-sm btn-dark active mt-1" role="button" aria-pressed="true">Back to Top</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Footer -->
 </div>
 
-<!-- Start of Contact Section -->
+<!-- End of Contact Section -->
 
 
 <!-- Start of Footer -->
-<div id="footer">
+<!-- <div id="footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 text-left">
@@ -314,7 +330,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End of Footer -->
 
 <!-- JS Bundle -->

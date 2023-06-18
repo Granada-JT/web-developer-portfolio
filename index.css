@@ -20,9 +20,7 @@ html {
 }
 
 
-#footer {
-	background-color: #93B8DC;
-}
+
 
 
 /*Landing Section Start*/
@@ -123,4 +121,27 @@ html {
 	background-color: #DCB793;
 	color: black !important;
 }
+
+#form-carousel {
+	margin-top: 10%;
+}
+
+#sendEmail-button {
+	padding-bottom: 25%;
+}
+
+#clientReviews-carousel {
+	padding-bottom: 25%;
+}
 /*Contacts Section End*/
+
+
+#footer {
+	margin-top: ;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	padding-top: 10%;
+	display: inline;
+	vertical-align: bottom;
+}
