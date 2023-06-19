@@ -143,6 +143,30 @@ html {
 	background-color: #999999;
 }
 
+#tools-1 > img {
+  transition: transform 0.3s ease;
+}
+
+#tools-1 > img:hover {
+  transform: scale(1.1);
+}
+
+#tools-2 > img {
+  transition: transform 0.3s ease;
+}
+
+#tools-2 > img:hover {
+  transform: scale(1.1);
+}
+
+#core-tools img {
+  transition: transform 0.3s ease;
+}
+
+#core-tools img:hover {
+  transform: scale(1.1);
+}
+
 /*Tools Section End*/
 
 
