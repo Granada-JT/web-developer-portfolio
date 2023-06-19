@@ -96,7 +96,7 @@ html {
 
 
 /*Projects Section Start*/
-#projectCards {
+.projectCards {
 	background: #999999;
 	color: #000000;
 }
@@ -111,14 +111,14 @@ html {
 	padding-bottom: 1rem;
 }
 
-#projectCards > div > h3 {
+.projectCards > div > h3 {
 	padding-top: 1rem;
 }
 
-#projectCards {
+/*#projectCards {
 	border-top: 5px solid #FF3F4A;
 	border-bottom: 5px solid #FF3F4A;
-}
+}*/
 
 #projectcardsCaption {
 	line-height: 2;
