@@ -34,10 +34,24 @@ html {
 	font-family: 'Poppins', sans-serif;	
 	display: block;
 	height: 100%;
+
 }
 
 #home {
 	background-color: #999999;
+/*background: 
+
+	linear-gradient(
+
+		rgba(255, 255, 255, 0.3),
+		rgba(255, 255, 255, 0.3)
+
+	),
+	url("./images/redTech2.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;*/
 }
 
 #aboutMe {
@@ -149,6 +163,19 @@ html {
 #tools {
 	min-height: 100vh;
 	background-color: #999999;
+/*background: 
+
+	linear-gradient(
+
+		rgba(255, 255, 255, 0.3),
+		rgba(255, 255, 255, 0.3)
+
+	),
+	url("./images/redTech2.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;*/
 }
 
 #tools-1 > img {
