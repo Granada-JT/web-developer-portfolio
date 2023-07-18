@@ -257,7 +257,7 @@
                         <textarea class="form-control" id="message" rows="3" required></textarea>
                     </div>
                     <div id="sendEmail-button">
-                        <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#modalDiv">Send Email</button>
+                        <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#modalDiv">Send Message</button>
                     </div>
                 </form>
             </div>
@@ -354,6 +354,56 @@
     </div>
     <!-- End of Footer -->
 </div>
+
+<script>
+  // Get the form element
+  const form = document.getElementById('form-col');
+
+    // Add an event listener to the form's submit event
+    form.addEventListener('click', function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Get the values of the input fields
+    const name = document.getElementById('name').value;
+    const emailAddress = document.getElementById('email').value;
+    const contactNo = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+
+    // Do something with the captured values
+    console.log('Name:', name);
+    console.log('Email:', email);
+    console.log('Phone:', phone);
+    console.log('Message:', message);
+
+    // You can save the values to a server using AJAX or fetch API
+    // For example:
+    
+    fetch('http://localhost:4000/visitors/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name,
+            emailAddress,
+            contactNo,
+            message
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response:', data);
+        // Handle the server response
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle any errors
+    });
+    
+});
+
+</script>
 
 <!-- End of Contact Section -->
 
