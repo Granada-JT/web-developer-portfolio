@@ -26,4 +26,9 @@ const visitorSchema = new mongoose.Schema({
 	},
 });
 
+visitorSchema.virtual('sentOnFormatted').get(function() {
+	return moment(this.sentOn).tz('Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
+  });
+  
+
 module.exports = mongoose.model('Visitor', visitorSchema);
