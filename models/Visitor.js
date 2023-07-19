@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const moment = require('moment-timezone');
-moment.tz.setDefault('Asia/Manila');
-
 
 const visitorSchema = new mongoose.Schema({
     name: {
@@ -22,13 +20,8 @@ const visitorSchema = new mongoose.Schema({
     },
     sentOn: {
         type: Date,
-        default: new Date()
+        default: () => moment().tz('Asia/Manila').toDate()
     },
-});
-
-visitorSchema.pre('save', function(next) {
-    this.sentOn = moment(this.sentOn).tz('Asia/Manila').toDate();
-    next();
 });
 
 module.exports = mongoose.model('Visitor', visitorSchema);
