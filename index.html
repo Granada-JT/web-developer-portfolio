@@ -332,7 +332,7 @@
                         Message Successfully Sent
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="modalCloseButton" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
                     </div>
                 </div>
             </div>
@@ -358,6 +358,7 @@
 <script>
   // Get the form element
   const form = document.getElementById('form-col');
+  const modalCloseButton = document.getElementById('modalCloseButton');
 
     // Add an event listener to the form's submit event
     form.addEventListener('click', function(event) {
@@ -370,14 +371,12 @@
     const contactNo = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
 
-    // Do something with the captured values
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Phone:', phone);
     console.log('Message:', message);
 
-    // You can save the values to a server using AJAX or fetch API
-    // For example:
+    // This code block save the input field values into the mongoDB server.
     
     fetch('https://capstone-1-granada.onrender.com/visitors/', {
         method: 'POST',
@@ -403,6 +402,14 @@
     
 });
 
+
+// This event listener handles the click event on the modal close button
+modalCloseButton.addEventListener('click', resetForm);
+
+// This function resets the form input fields when the modal close button is clicked.
+function resetForm() {
+  document.getElementById("form-col").reset();
+}
 </script>
 
 <!-- End of Contact Section -->
