@@ -20,9 +20,7 @@ const visitorSchema = new mongoose.Schema({
     },
     sentOn: {
         type: Date,
-        default: function() {
-            return moment().tz('Asia/Manila').toDate();
-        }
+        default: new Date()
     },
 });
 
