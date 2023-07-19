@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const moment = require('moment-timezone');
+
 
 const visitorSchema = new mongoose.Schema({
 	name: {
@@ -22,5 +24,10 @@ const visitorSchema = new mongoose.Schema({
 		default: new Date()
 	},
 });
+
+visitorSchema.virtual('sentOnFormatted').get(function() {
+	return moment(this.sentOn).tz('Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
+  });
+  
 
 module.exports = mongoose.model('Visitor', visitorSchema);
