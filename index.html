@@ -360,6 +360,7 @@
   const form = document.getElementById('form-col');
   const modalCloseButton = document.getElementById('modalCloseButton');
 
+
     // Add an event listener to the form's submit event
     form.addEventListener('click', function(event) {
     // Prevent the default form submission behavior
@@ -370,14 +371,13 @@
     const emailAddress = document.getElementById('email').value;
     const contactNo = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
-
+      
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Phone:', phone);
     console.log('Message:', message);
-
+      
     // This code block save the input field values into the mongoDB server.
-    
     fetch('https://capstone-1-granada.onrender.com/visitors/', {
         method: 'POST',
         headers: {
@@ -402,7 +402,6 @@
     
 });
 
-
 // This event listener handles the click event on the modal close button
 modalCloseButton.addEventListener('click', resetForm);
 
@@ -410,6 +409,7 @@ modalCloseButton.addEventListener('click', resetForm);
 function resetForm() {
   document.getElementById("form-col").reset();
 }
+
 </script>
 
 <!-- End of Contact Section -->

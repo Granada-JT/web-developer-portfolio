@@ -17,6 +17,10 @@ const visitorSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Message is required.']
 	},
+	sentOn: {
+		type: Date,
+		default: new Date()
+	},
 });
 
 module.exports = mongoose.model('Visitor', visitorSchema);
