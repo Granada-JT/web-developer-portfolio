@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment-timezone');
+moment.tz.setDefault('Asia/Manila');
 
 
 const visitorSchema = new mongoose.Schema({
