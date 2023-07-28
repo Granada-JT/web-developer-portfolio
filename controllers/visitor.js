@@ -1,4 +1,5 @@
 const Visitor = require("../models/Visitor");
+const moment = require('moment-timezone');
 
 module.exports.saveVisitorDetails = (req, res) => {
 
@@ -6,7 +7,8 @@ module.exports.saveVisitorDetails = (req, res) => {
         name: req.body.name,
         emailAddress: req.body.emailAddress,
         contactNo: req.body.contactNo,
-        message: req.body.message
+        message: req.body.message,
+        sentOn: moment().tz('Asia/Manila').toDate()
     }
 
     const form = new Visitor(details);
