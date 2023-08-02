@@ -37,3 +37,18 @@ if(require.main === module) {
 };
 
 module.exports = {app, mongoose};
+
+const video = document.getElementById('previewVideo');
+
+// Pause the video initially
+video.pause();
+
+// Play the video when the page is loaded
+window.addEventListener('load', () => {
+  video.play();
+});
+
+// Pause the video when it ends
+video.addEventListener('ended', () => {
+  video.pause();
+});
