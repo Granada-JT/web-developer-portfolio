@@ -49,9 +49,28 @@ html {
 	background-attachment: fixed;*/
 }
 
+#landing {
+	min-height: 100vh;
+	background-color: black;
+}
+
+#landingText {
+	min-height: 100%;
+	margin-top: 40vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 3rem;
+	font-weight: 1rem;
+}
+
 #aboutMe {
 	min-height: 100vh;
-	padding:5%;
+	padding-top:3%;
+	padding-bottom:5%;
+	padding-left:5%;
+	padding-right:5%;
 	color: white;
 }
 
@@ -82,7 +101,7 @@ html {
 }
 
 #carouselSocials {
-	padding-top: 10%;
+	padding-top: 3%;
 	padding-left: 10%;
 	padding-right: 10%;
 }
@@ -90,6 +109,7 @@ html {
 #carouselPicture {
 	width: 75%;
 	height: auto;
+	margin-top: 7.5rem;
 }
 
 #carouselSocials img {
@@ -157,7 +177,8 @@ html {
 /*Tools Section Start*/
 #tools {
 	min-height: 100vh;
-	background-color: #999999;
+	background-color: black;
+	color: white;
 /*background: 
 
 	linear-gradient(

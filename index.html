@@ -14,8 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
 	<!-- External CSS -->
-
 	<link rel="stylesheet" type="text/css" href="./index.css">
+
+    <!-- External JS -->
+    <script type="text/javascript" src="./animations.js"></script>
 
 </head>
 <body>
@@ -28,12 +30,12 @@
         <div class="row">
             <div id="navBar" class="fixed-top">
                 <nav class="navbar navbar-expand-lg px-md-5">
-                    <a class="navbar-brand col-6 d-flex justify-content-start" href="#">JOMAR GRANADA
+                    <a class="navbar-brand col-6 d-flex justify-content-start" href="#landing" id="brand">JOMAR GRANADA
                     </a>
-                    <div class="collapse col-6 navbar-collapse d-flex justify-content-end" id="navbarNav">
-                        <ul class="navbar-nav smooth-scroll">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav smooth-scroll ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link nav-link-underline pl-3" href="#landing">ABOUT</a>
+                                <a class="nav-link nav-link-underline pl-3" href="#home">ABOUT</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link pl-3 nav-link-underline" href="#projects">PROJECTS</a>
@@ -54,95 +56,108 @@
             </div>
         </div>
     </div>
+    
     <!-- End of Nav Bar -->
 
-    <!-- Start of Home div -->
-    <div id="home">
-        <!-- Start of About me div -->
-        <div id="aboutMe">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Carousel div -->
-                    <div class="col-lg-5 col-sm-12 order-1">
-                        <div class="text-center">
-                            <div class="d-flex justify-content-center mt-5">
-                                <div id="carouselPicture" class="carousel slide d-flex justify-content-center" data-ride="carousel">
-                                    <div class="carousel-inner rounded-circle">
-                                        <div class="carousel-item active">
-                                            <img src="./images/img2.png" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="./images/img1.jpg" class="d-block w-100" alt="...">
-                                        </div>
+    <div id="landingText">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col mx-md-5">
+                    <p>Jomar Granada</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mx-md-5">
+                    <p>Full-Stack Web Developer</p>
+                </div>
+            </div>
+        </div>    
+    </div>
+               
+</div>
+<!-- End of Landing Section -->
+
+<!-- Start of Home div -->
+<div id="home">
+    <!-- Start of About me div -->
+    <div id="aboutMe">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Carousel div -->
+                <div class="col-lg-5 col-sm-12 order-1">
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <div id="carouselPicture" class="carousel slide d-flex justify-content-center " data-ride="carousel">
+                                <div class="carousel-inner rounded-circle">
+                                    <div class="carousel-item active">
+                                        <img src="./images/img2.png" class="d-block w-100" alt="...">
                                     </div>
-                                </div>
-                            </div>
-                            <div class="carousel-caption-header mt-3" id="carouselCaption">
-                                <h3 id="carousel-caption-header">Jomar Granada</h3>
-                                <p>Full Stack Web Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Carousel div -->
-                        <div class="col-lg-7 col-sm-12 order-2 mt-3 text-justify" id="carousel-aboutMe">
-                            <h1 class="mb-3 text-left" id="about-me-header">About Me</h1>
-                            <div id="about-me-caption">
-                                <p>Hello! My name is <strong>Jomar T. Granada</strong>, and I am a passionate <strong><em>Full-Stack Web Developer</em></strong>. Welcome to my portfolio, where I showcase my projects, tools, and expertise gained throughout my ongoing journey in programming. I am dedicated to crafting innovative and user-friendly web solutions that leave a lasting impact. Explore my portfolio, and I hope you enjoy your time here. Cheers!</p>
-                            </div>
-                            <!-- <a href="resume.pdf" class="btn btn-primary">Download Resume</a> -->
-                            <div class="row" id="carouselSocials">
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://www.instagram.com/jomar_granada/" target="_blank" class="w-50">
-                                            <img src="./images/instagram2.svg" class="w-100">
-                                        </a>
-                                    </div>           
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://m.me/JomarGranadaa" target="_blank" class="w-50">
-                                            <img src="./images/messenger2.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://www.linkedin.com/in/jomar-granada-a33604191/" target="_blank" class="w-50">
-                                            <img src="./images/linkedin2.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://github.com/Fiiomio" target="_blank" class="w-50">
-                                            <img src="./images/github2.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://gitlab.com/jomart.granada" target="_blank" class="w-50">
-                                            <img src="./images/gitlab2.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center py-1">
-                                        <a href="mailto:jomart.granada@gmail.com" target="_blank" class="w-50">
-                                            <img src="./images/envelope-f2.svg" class="w-100">
-                                        </a>
-                                    </div>  
+                                    <div class="carousel-item">
+                                        <img src="./images/img1.jpg" class="d-block w-100" alt="...">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End of Carousel div -->
+                    <div class="col-lg-7 col-sm-12 order-2 mt-3 text-justify" id="carousel-aboutMe">
+                        <h1 class="mb-3 text-left " id="about-me-header">About Me</h1>
+                        <div id="about-me-caption" class="">
+                            <p>Hello! My name is <strong>Jomar T. Granada</strong>, and I am a passionate <strong><em>Full-Stack Web Developer</em></strong>. Welcome to my portfolio, where I showcase my projects, tools, and expertise gained throughout my ongoing journey in programming. I am dedicated to crafting innovative and user-friendly web solutions that leave a lasting impact. Explore my portfolio, and I hope you enjoy your time here. Cheers!</p>
+                        </div>
+                        <!-- <a href="resume.pdf" class="btn btn-primary">Download Resume</a> -->
+                        <div class="row " id="carouselSocials">
+                            <div class="col-lg-2 col-2">
+                                <div class=" d-flex justify-content-center">
+                                    <a href="https://www.instagram.com/jomar_granada/" target="_blank" class="w-50">
+                                        <img src="./images/instagram2.svg" class="w-100">
+                                    </a>
+                                </div>           
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <div class=" d-flex justify-content-center">
+                                    <a href="https://m.me/JomarGranadaa" target="_blank" class="w-50">
+                                        <img src="./images/messenger2.svg" class="w-100">
+                                    </a>
+                                </div>  
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <div class=" d-flex justify-content-center">
+                                    <a href="https://www.linkedin.com/in/jomar-granada-a33604191/" target="_blank" class="w-50">
+                                        <img src="./images/linkedin2.svg" class="w-100">
+                                    </a>
+                                </div>  
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <div class=" d-flex justify-content-center">
+                                    <a href="https://github.com/Fiiomio" target="_blank" class="w-50">
+                                        <img src="./images/github2.svg" class="w-100">
+                                    </a>
+                                </div>  
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <div class=" d-flex justify-content-center">
+                                    <a href="https://gitlab.com/jomart.granada" target="_blank" class="w-50">
+                                        <img src="./images/gitlab2.svg" class="w-100">
+                                    </a>
+                                </div>  
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <div class=" d-flex justify-content-center py-1">
+                                    <a href="mailto:jomart.granada@gmail.com" target="_blank" class="w-50">
+                                        <img src="./images/envelope-f2.svg" class="w-100">
+                                    </a>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- End of About me div -->
-    </div>
-    <!-- End of Home Section -->                    
+        </div>
+        <!-- End of About me div -->
 </div>
-<!-- End of Landing Section -->
+<!-- End of Home Section -->     
 
 <!-- Start of Projects Section -->
 <div id="projects" class="container-fluid">
