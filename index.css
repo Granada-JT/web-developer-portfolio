@@ -7,13 +7,14 @@
 
 
 #navBar {
-	background-color: #000000;
 	color: white !important;
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: white; /* Change the color value to your desired color */
+  color: white;
+  font-size: 1.3rem;
+  letter-spacing: 0.5rem;
 }
 
 
@@ -30,15 +31,9 @@ html {
 }
 
 /*Landing Section Start*/
-#landing {
-	font-family: 'Poppins', sans-serif;	
-	display: block;
-	height: 100%;
-
-}
 
 #home {
-	background-color: #999999;
+	background-color: black;
 /*background: 
 
 	linear-gradient(
@@ -57,7 +52,7 @@ html {
 #aboutMe {
 	min-height: 100vh;
 	padding:5%;
-	color: #000000;
+	color: white;
 }
 
 #small-img {
@@ -69,6 +64,7 @@ html {
 	line-height: 3;
 	text-indent: 2rem;
 	font-size: 1rem;
+	letter-spacing: 0.3rem;
 }
 
 #carousel-aboutMe {
@@ -77,7 +73,7 @@ html {
 }
 
 #carouselCaption {
-	color: #000000;
+	color: white;
 	font-size: 1.5rem;
 }
 
@@ -273,9 +269,9 @@ html {
     content: "";
     position: absolute;
     bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
     background-color: #FF3F4A; /* Change the color as desired */
     transform: scaleX(0); /* Initially hidden */
     transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
