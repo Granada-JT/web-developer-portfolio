@@ -241,6 +241,91 @@ html {
 }
 /*Contacts Section End*/
 
+/* Awards and Achievements Carousel Start */
+#carouselExampleCaptions {
+	transition: transform 0.3s ease;
+  }
+  
+#carouselExampleCaptions:hover {
+transform: scale(1.1);
+}
+.carousel.full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: rgba(48, 46, 46, 0.774);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carousel.full-screen .carousel-inner,
+.carousel.full-screen .carousel-item {
+    height: 80vh;
+	width: 55vw;
+}
+.carousel.full-screen .carousel-item img {
+    width: 100%;
+    height: 100%;
+}
+.carousel.full-screen .carousel-indicators,
+.carousel.full-screen .carousel-control-prev,
+.carousel.full-screen .carousel-control-next {
+    display: block;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #ffffff;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #cccccc;
+}
+
+.carousel.full-screen .carousel-control-prev-icon,
+.carousel.full-screen .carousel-control-next-icon {
+    background-color: #ffffff;
+}
+
+.carousel.full-screen .carousel-control-prev-icon:hover,
+.carousel.full-screen .carousel-control-next-icon:hover {
+    background-color: #cccccc;
+}
+
+.carousel.full-screen .carousel-control-prev,
+.carousel.full-screen .carousel-control-next {
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+	margin-right: 15%;
+	margin-left: 15%;
+}
+
+.carousel.full-screen .carousel-control-prev {
+    left: 1rem;
+}
+
+.carousel.full-screen .carousel-control-next {
+    right: 1rem;
+}
+
+
+/* Awards and Achievements Carousel End */
+
 #sendEmail-button .btn {
 	background-color: #FF3F4A;
 	color: white;

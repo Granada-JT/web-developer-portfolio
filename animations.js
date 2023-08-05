@@ -23,3 +23,26 @@ document.addEventListener("DOMContentLoaded", function() {
     // Observe the landing section
     observer.observe(landingSection);
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the carousel element
+    const carousel = document.getElementById("carouselExampleCaptions");
+
+    // Get the prev and next buttons
+    const prevButton = carousel.querySelector(".carousel-control-prev");
+    const nextButton = carousel.querySelector(".carousel-control-next");
+
+    // Add a mousedown event listener to the carousel
+    carousel.addEventListener("mousedown", function(event) {
+        // Check if the clicked element is the prev or next icon
+        if (
+            event.target.classList.contains("carousel-control-prev-icon") ||
+            event.target.classList.contains("carousel-control-next-icon")
+        ) {
+            return; // Do not toggle full-screen mode
+        }
+
+        // Toggle the full-screen class on the carousel
+        carousel.classList.toggle("full-screen");
+    });
+});
