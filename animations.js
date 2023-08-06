@@ -1,17 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() {
     const landingSection = document.getElementById("landing");
     const brandElement = document.getElementById("brand");
-    const navItems = document.querySelectorAll(".nav-item");
+    const navItems = Array.from(document.querySelectorAll(".nav-item"));
 
+    console.log(navItems)
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.target === landingSection) {
                 if (entry.isIntersecting) {
                     brandElement.classList.add("hidden"); // Apply the hidden class to trigger the fade animation
-                    navItems.forEach(navItem => navItem.classList.add("hidden")); // Apply the hidden class to each nav item
+                    navItems.forEach(navItem => {
+                        navItem.style.transitionDelay = ""; // Reset the transition delay
+                        navItem.classList.add("hidden"); // Remove the show class from each nav item
+                    });
                 } else {
                     brandElement.classList.remove("hidden"); // Remove the hidden class to show the brand element
-                    navItems.forEach(navItem => navItem.classList.remove("hidden")); // Remove the hidden class from each nav item
+                    navItems.forEach((navItem, index) => {
+                        navItem.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.5 seconds
+                        navItem.classList.remove("hidden"); // Add the show class to reveal the nav item with a delay
+                    });
                 }
             }
         });
@@ -19,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     observer.observe(landingSection);
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function() {

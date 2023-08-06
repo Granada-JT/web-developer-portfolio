@@ -27,12 +27,13 @@
 	transition: opacity 0.3s ease;
 }
 
-.show {
+.show, .nav-item.show {
     opacity: 1;
 }
 
 #brand.hidden, .nav-item.hidden {
 	opacity: 0;
+	pointer-events: none;
 }
 
 html {
