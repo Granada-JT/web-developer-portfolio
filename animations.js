@@ -1,28 +1,25 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Get the landing section element
     const landingSection = document.getElementById("landing");
-    // Get the brand element
     const brandElement = document.getElementById("brand");
+    const navItems = document.querySelectorAll(".nav-item");
 
-    console.log(landingSection);
-    console.log(brandElement);
-
-    // Create a new Intersection Observer with a 1-pixel root margin
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.target === landingSection) {
                 if (entry.isIntersecting) {
-                    brandElement.style.color = "transparent"; // Set the color to transparent on the landing section
+                    brandElement.classList.add("hidden"); // Apply the hidden class to trigger the fade animation
+                    navItems.forEach(navItem => navItem.classList.add("hidden")); // Apply the hidden class to each nav item
                 } else {
-                    brandElement.style.color = ""; // Reset the color on other sections
+                    brandElement.classList.remove("hidden"); // Remove the hidden class to show the brand element
+                    navItems.forEach(navItem => navItem.classList.remove("hidden")); // Remove the hidden class from each nav item
                 }
             }
         });
     }, { rootMargin: "-1px" });
 
-    // Observe the landing section
     observer.observe(landingSection);
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     // Get the carousel element
