@@ -22,12 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         });
-    }, { rootMargin: "-1px" });
+    }, { rootMargin: "-200px" });
 
     observer.observe(landingSection);
 });
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
     // Get the carousel element
