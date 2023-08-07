@@ -141,6 +141,11 @@ html {
   transform: scale(1.1);
 }
 
+#fullName i,
+#profession i {
+  font-style: normal;
+}
+
 /*Landing Section End*/
 
 
