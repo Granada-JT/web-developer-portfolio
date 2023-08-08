@@ -50,49 +50,81 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-(function() {
-    function count() {
-      var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var numbers = "0123456789";
-      var symbols = "!@#$%^&*()_+=-";
-      var string = numbers + letters + symbols;
-      var allCounters = document.querySelectorAll(" #fullName > i");
-  
-      allCounters.forEach(function(el) {
-        var duration = 100 + Array.from(allCounters).indexOf(el) * 60;
-        var interval = setInterval(function() {
-          el.innerText = string.charAt(Math.random() * string.length);
-          duration = duration - 50;
-          if (duration <= 0) {
-            clearInterval(interval);
-            el.innerText = el.getAttribute("data-final");
-          }
-        }, 50);
-      });
-    }
-  
-    document.addEventListener("DOMContentLoaded", count);
-  })();
-  
-  (function() {
-    function count() {
-      var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var numbers = "0123456789";
-      var string = numbers + letters;
-      var allCounters = document.querySelectorAll(" #profession > i");
-  
-      allCounters.forEach(function(el) {
-        var duration = 100 + Array.from(allCounters).indexOf(el) * 60;
-        var interval = setInterval(function() {
-          el.innerText = string.charAt(Math.random() * string.length);
-          duration = duration - 50;
-          if (duration <= 0) {
-            clearInterval(interval);
-            el.innerText = el.getAttribute("data-final");
-          }
-        }, 50);
-      });
-    }
-  
-    document.addEventListener("DOMContentLoaded", count);
-  })();
+
+document.addEventListener("DOMContentLoaded", function genChar() {
+  function count() {
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var numbers = "0123456789";
+    var symbols = "!@#$%^&*()_+=-";
+    var string = numbers + letters + symbols;
+    var allCounters = document.querySelectorAll("#fullName > i");
+
+    allCounters.forEach(function(el) {
+      var duration = 100 + Array.from(allCounters).indexOf(el) * 60;
+      var interval = setInterval(function() {
+        el.innerText = string.charAt(Math.random() * string.length);
+        duration = duration - 50;
+        if (duration <= 0) {
+          clearInterval(interval);
+          el.innerText = el.getAttribute("data-final");
+        }
+      }, 50);
+    });
+  }
+
+  // Create a new IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // Check if the landing section is visible
+      if (entry.isIntersecting) {
+        // Call the count function here
+        count();
+      }
+    });
+  });
+
+  // Select the landing section element
+  const landingSection = document.getElementById("landing");
+
+  // Start observing the landing section
+  observer.observe(landingSection);
+});
+
+document.addEventListener("DOMContentLoaded", function genChar() {
+  function count() {
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var numbers = "0123456789";
+    var symbols = "!@#$%^&*()_+=-";
+    var string = numbers + letters + symbols;
+    var allCounters = document.querySelectorAll("#profession > i");
+
+    allCounters.forEach(function(el) {
+      var duration = 100 + Array.from(allCounters).indexOf(el) * 60;
+      var interval = setInterval(function() {
+        el.innerText = string.charAt(Math.random() * string.length);
+        duration = duration - 50;
+        if (duration <= 0) {
+          clearInterval(interval);
+          el.innerText = el.getAttribute("data-final");
+        }
+      }, 50);
+    });
+  }
+
+  // Create a new IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // Check if the landing section is visible
+      if (entry.isIntersecting) {
+        // Call the count function here
+        count()
+      }
+    });
+  });
+
+  // Select the landing section element
+  const landingSection = document.getElementById("landing");
+
+  // Start observing the landing section
+  observer.observe(landingSection);
+});

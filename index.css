@@ -74,6 +74,29 @@ html {
 	background-color: black;
 }
 
+#fullName i,
+#profession i {
+	display: inline-flex;
+	font-style: normal;
+	letter-spacing: -1rem;
+}
+
+#profession i {
+	font-style: italic;
+	font-size: 3rem;
+}
+
+#fullName i {
+	font-weight: bold;
+	font-size: 5rem;
+}
+
+#profession {
+	margin-inline-start: 5rem;
+	color:#FF3F4A;
+	margin-top: -1rem;
+}
+
 #landingText {
 	min-height: 100%;
 	margin-top: 40vh;
@@ -99,11 +122,16 @@ html {
 	height: 3rem;
 }
 
+#about-me-header {
+	color: #FF3F4A;
+	font-size: 3rem;
+}
+
 #about-me-caption {
-	line-height: 3;
+	line-height: 2;
 	text-indent: 2rem;
-	font-size: 1rem;
-	letter-spacing: 0.3rem;
+	font-size: 1.5rem;
+	letter-spacing: 0rem;
 }
 
 #carousel-aboutMe {
@@ -133,19 +161,13 @@ html {
 }
 
 #carouselSocials img {
-  transition: transform 0.3s ease;
+  	transition: transform 0.3s ease;
 }
 
 /* Apply the scale effect on hover */
 #carouselSocials img:hover {
-  transform: scale(1.1);
+  	transform: scale(1.1);
 }
-
-#fullName i,
-#profession i {
-  font-style: normal;
-}
-
 /*Landing Section End*/
 
 
@@ -163,6 +185,8 @@ html {
 
 #projectsHeader {
 	padding-bottom: 1rem;
+	color:#FF3F4A;
+	font-size: 3rem;
 }
 
 .projectCards > div > h3 {
@@ -217,6 +241,11 @@ html {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;*/
+}
+
+#tools {
+	font-size: 3rem;
+	color: #FF3F4A;
 }
 
 #tools-1 > img {
@@ -348,6 +377,15 @@ transform: scale(1.1);
     right: 1rem;
 }
 
+#form-col > i {
+	color: #FF3F4A;
+	font-size: 3rem;
+}
+
+#formCarouHeader> i {
+	color: #FF3F4A;
+	font-size: 2.3rem;
+}
 
 /* Awards and Achievements Carousel End */
 
