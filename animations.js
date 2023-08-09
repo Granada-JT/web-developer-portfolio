@@ -1,9 +1,9 @@
+// This code block hides the navbar when in the landing section
 document.addEventListener("DOMContentLoaded", function() {
     const landingSection = document.getElementById("landing");
     const brandElement = document.getElementById("brand");
     const navItems = Array.from(document.querySelectorAll(".nav-item"));
 
-    console.log(navItems)
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.target === landingSection) {
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(landingSection);
 });
 
+// This code block zooms into the carousel at the contact form when it is clicked
 document.addEventListener("DOMContentLoaded", function() {
     // Get the carousel element
     const carousel = document.getElementById("carouselExampleCaptions");
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
+// This code block does the animation of generating random characters back into a desired set of characters
 document.addEventListener("DOMContentLoaded", function genChar() {
   function count() {
     var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function genChar() {
         count();
       }
     });
-  });
+  },{ rootMargin: "-1px" });
 
   // Select the landing section element
   const landingSection = document.getElementById("landing");
@@ -90,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function genChar() {
   observer.observe(landingSection);
 });
 
+// This code block does the animation of generating random characters back into a desired set of characters
 document.addEventListener("DOMContentLoaded", function genChar() {
   function count() {
     var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -120,11 +122,35 @@ document.addEventListener("DOMContentLoaded", function genChar() {
         count()
       }
     });
-  });
+  },{ rootMargin: "-1px" });
 
   // Select the landing section element
   const landingSection = document.getElementById("landing");
 
   // Start observing the landing section
+  observer.observe(landingSection);
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const landingSection = document.getElementById("landing");
+  const delay = 3000; // 3 seconds delay
+  const arrowDown = document.getElementById("arrowDown");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === landingSection) {
+        if (entry.isIntersecting) {
+          arrowDown.classList.add("hidden");
+          setTimeout(() => {
+            arrowDown.classList.remove("hidden");
+          }, delay);
+        } else {
+          arrowDown.classList.add("hidden");
+        }
+      }
+    });
+  }, { rootMargin: "-1px" });
+
   observer.observe(landingSection);
 });
