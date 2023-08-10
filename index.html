@@ -480,7 +480,7 @@ async function recordView() {
   try {
     const ipaddress = await getUserIP();
 
-    const response = await fetch('http://localhost:4000/views/', {
+    const response = await fetch('https://capstone-1-granada.onrender.com/views/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -491,12 +491,12 @@ async function recordView() {
     });
 
     if (response.ok) {
-      console.log('View recorded successfully');
+      return true;
     } else {
-      console.error('Failed to record view:', response.status);
+      return false;
     }
   } catch (error) {
-    console.error('Error recording view:', error);
+    return false;
   }
 }
 
