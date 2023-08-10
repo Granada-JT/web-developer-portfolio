@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
   observer.observe(landingSection);
 });
 
+// This code block animates the box icons and their descriptions
 document.addEventListener("DOMContentLoaded", function() {
   const landingSection = document.getElementById("landing");
   const boxIcons = Array.from(document.querySelectorAll(".boxIcons > i"));
