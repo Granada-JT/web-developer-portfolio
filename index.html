@@ -405,6 +405,43 @@ modalCloseButton.addEventListener('click', resetForm);
 function resetForm() {
   document.getElementById("form-col").reset();
 }
+
+// This code block gets the viewer's IP address and saves it into the database.
+// Function to get user's IP address
+async function getUserIP() {
+  const response = await fetch('https://api.ipify.org/?format=json');
+  const data = await response.json();
+  return data.ip;
+}
+
+// Function to record view on the backend
+async function recordView() {
+  try {
+    const ipaddress = await getUserIP();
+
+    const response = await fetch('http://localhost:4000/views/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ipaddress
+      })
+    });
+
+    if (response.ok) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return false;
+  }
+}
+
+// Call the recordView function on page load or refresh
+recordView();
+
 </script>
 
 <!-- End of Contact Section -->
