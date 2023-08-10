@@ -131,10 +131,10 @@ document.addEventListener("DOMContentLoaded", function genChar() {
   observer.observe(landingSection);
 });
 
-
+// This code block animates the arrow down pointer
 document.addEventListener("DOMContentLoaded", function() {
   const landingSection = document.getElementById("landing");
-  const delay = 3000; // 3 seconds delay
+  const delay = 6000;
   const arrowDown = document.getElementById("arrowDown");
 
   const observer = new IntersectionObserver(entries => {
@@ -154,3 +154,55 @@ document.addEventListener("DOMContentLoaded", function() {
 
   observer.observe(landingSection);
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const landingSection = document.getElementById("landing");
+  const boxIcons = Array.from(document.querySelectorAll(".boxIcons > i"));
+  const iconDes = Array.from(document.querySelectorAll("#iconDes > i"));
+
+  const applyAnimation = function() {
+    setTimeout(() => {
+      boxIcons.forEach((boxIcon, index) => {
+        boxIcon.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
+        boxIcon.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      iconDes.forEach((iconDes, index) => {
+        iconDes.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
+        iconDes.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+    }, 2000); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+  };
+  
+
+  const resetAnimation = function() {
+    boxIcons.forEach(boxIcon => {
+      boxIcon.style.transitionDelay = ""; // Reset the transition delay
+      boxIcon.classList.remove("show"); // Remove the show class from each nav item
+    });
+    iconDes.forEach(iconDes => {
+      iconDes.style.transitionDelay = ""; // Reset the transition delay
+      iconDes.classList.remove("show"); // Remove the show class from each nav item
+    });
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === landingSection) {
+        if (entry.isIntersecting) {
+          applyAnimation();
+        } else {
+          resetAnimation();
+        }
+      }
+    });
+  },{ rootMargin: "-1px" });
+
+  const refreshPage = function() {
+    resetAnimation();
+    setTimeout(applyAnimation,0);
+  };
+
+  observer.observe(landingSection);
+
+  window.addEventListener("beforeunload", refreshPage);
+},{ rootMargin: "-1px" });

@@ -115,6 +115,50 @@ html {
 	font-weight: 1rem;
 }
 
+.bx {
+	font-size: 5rem;
+	padding-top: 2.3rem;
+}
+
+#iconDes i {
+	font-size: 1.5rem;
+	color: white;
+	opacity: 0;
+}
+
+.boxIcons i {
+	opacity: 0;
+}
+
+#iconDes i.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+}
+
+.boxIcons i.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+}
+
+.bxl-javascript {
+	margin-left: 0.7rem;
+}
+
+.bxl-nodejs {
+	margin-left: 0.6rem;
+	margin-right: -0.3rem;
+	padding-left: 0.1rem
+}
+
+.bxl-mongodb {
+	margin-right: 0.75rem;
+}
+
+.bxl-react {
+	margin-right: 0.8rem;
+	margin-left: 0.3rem;
+}
+
 #arrowDown {
 	transition: opacity 0.3s ease;
 	position: absolute;
