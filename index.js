@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const visitorRoutes = require("./routes/visitor");
+const viewRoutes = require("./routes/view");
 const cors = require('cors');
 
 // Server Setup
@@ -29,6 +30,7 @@ db.once('open', () => console.log('Connected to MongoDB Atlas.'));
 
 // Backend Route
 app.use("/visitors", visitorRoutes);
+app.use("/views", viewRoutes);
 
 // Server Gateway Response
 
