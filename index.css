@@ -31,6 +31,13 @@
     opacity: 1;
 }
 
+#brand > img {
+	width: 60px;
+	height: 60px;
+	margin-top: -1.5rem;
+	margin-bottom: -1rem;
+}
+
 #brand.hidden, .nav-item.hidden {
 	opacity: 0;
 	pointer-events: none;
