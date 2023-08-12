@@ -208,9 +208,12 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
 
-// This code block animates the about me carousel
+// This code block animates the home section.
 document.addEventListener("DOMContentLoaded", function() {
   const homeSection = document.getElementById("home");
+  const aboutMe = Array.from(document.querySelectorAll("#about-me-header, #about-me-caption"));
+  const socialsPics = Array.from(document.querySelectorAll("#carouselSocials img"));
+  const socials = Array.from(document.querySelectorAll("#carouselSocials"));
   const carouselPics = Array.from(document.querySelectorAll("#carouselPicture"));
 
   const applyAnimation = function() {
@@ -219,48 +222,6 @@ document.addEventListener("DOMContentLoaded", function() {
         carouselPic.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
         carouselPic.classList.add("show", "slide-in-right"); // Add the show class to reveal the nav item with a delay
       });
-    },1000); // Add a delay of 1 second (1000 milliseconds) before starting the animation
-  };
-  
-
-  const resetAnimation = function() {
-    carouselPics.forEach(carouselPic => {
-      carouselPic.style.transitionDelay = ""; // Reset the transition delay
-      carouselPic.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
-    });
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.target === homeSection) {
-        if (entry.isIntersecting) {
-          applyAnimation();
-        } else {
-          resetAnimation();
-        }
-      }
-    });
-  },{ rootMargin: "-1px" });
-
-  const refreshPage = function() {
-    resetAnimation();
-    setTimeout(applyAnimation,0);
-  };
-
-  observer.observe(homeSection);
-
-  window.addEventListener("beforeunload", refreshPage);
-},{ rootMargin: "-1px" });
-
-// This code block animates the about me captions of the carousel 
-document.addEventListener("DOMContentLoaded", function() {
-  const homeSection = document.getElementById("home");
-  const aboutMe = Array.from(document.querySelectorAll("#about-me-header, #about-me-caption"));
-  const socialsPics = Array.from(document.querySelectorAll("#carouselSocials img"));
-  const socials = Array.from(document.querySelectorAll("#carouselSocials"));
-
-  const applyAnimation = function() {
-    setTimeout(() => {
       aboutMe.forEach((caption, index) => {
         caption.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
         caption.classList.add("show"); // Add the show class to reveal the nav item with a delay
@@ -273,11 +234,15 @@ document.addEventListener("DOMContentLoaded", function() {
         socials.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
         socials.classList.add("slide-in-left"); // Add the show class to reveal the nav item with a delay
       });
-    }, 1000); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+    }, 500); // Add a delay before starting the animation
   };
   
 
   const resetAnimation = function() {
+    carouselPics.forEach(carouselPic => {
+      carouselPic.style.transitionDelay = ""; // Reset the transition delay
+      carouselPic.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
+    });
     aboutMe.forEach(caption => {
       caption.style.transitionDelay = ""; // Reset the transition delay
       caption.classList.remove("show"); // Remove the show class from each nav item
