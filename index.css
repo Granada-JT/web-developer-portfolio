@@ -257,13 +257,23 @@ html {
 }
 
 #carouselPicture {
+	opacity: 0;
+	pointer-events: none;
+}
+
+#carouselPicture.show {
+	opacity: 1;
 	width: 75%;
 	height: auto;
 	margin-top: 7.5rem;
+	transition: opacity 1s ease-in-out;
+	user-select: none;
 }
 
 #carouselSocials img {
   	transition: transform 0.3s ease;
+	min-height: 50px;
+	min-width: 50px;
 }
 
 /* Apply the scale effect on hover */

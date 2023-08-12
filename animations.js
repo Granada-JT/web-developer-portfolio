@@ -207,3 +207,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
+
+// This code block animates the about me carousel
+document.addEventListener("DOMContentLoaded", function() {
+  const homeSection = document.getElementById("home");
+  const carouselPics = Array.from(document.querySelectorAll("#carouselPicture"));
+
+  const applyAnimation = function() {
+    setTimeout(() => {
+      carouselPics.forEach((carouselPic, index) => {
+        carouselPic.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        carouselPic.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+    }, 200); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+  };
+  
+
+  const resetAnimation = function() {
+    carouselPics.forEach(carouselPic => {
+      carouselPic.style.transitionDelay = ""; // Reset the transition delay
+      carouselPic.classList.remove("show"); // Remove the show class from each nav item
+    });
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === homeSection) {
+        if (entry.isIntersecting) {
+          applyAnimation();
+        } else {
+          resetAnimation();
+        }
+      }
+    });
+  },{ rootMargin: "-1px" });
+
+  const refreshPage = function() {
+    resetAnimation();
+    setTimeout(applyAnimation,0);
+  };
+
+  observer.observe(homeSection);
+
+  window.addEventListener("beforeunload", refreshPage);
+},{ rootMargin: "-1px" });
