@@ -217,16 +217,78 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       carouselPics.forEach((carouselPic, index) => {
         carouselPic.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        carouselPic.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        carouselPic.classList.add("show", "slide-in-right"); // Add the show class to reveal the nav item with a delay
       });
-    }, 200); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+    },1000); // Add a delay of 1 second (1000 milliseconds) before starting the animation
   };
   
 
   const resetAnimation = function() {
     carouselPics.forEach(carouselPic => {
       carouselPic.style.transitionDelay = ""; // Reset the transition delay
-      carouselPic.classList.remove("show"); // Remove the show class from each nav item
+      carouselPic.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
+    });
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === homeSection) {
+        if (entry.isIntersecting) {
+          applyAnimation();
+        } else {
+          resetAnimation();
+        }
+      }
+    });
+  },{ rootMargin: "-1px" });
+
+  const refreshPage = function() {
+    resetAnimation();
+    setTimeout(applyAnimation,0);
+  };
+
+  observer.observe(homeSection);
+
+  window.addEventListener("beforeunload", refreshPage);
+},{ rootMargin: "-1px" });
+
+// This code block animates the about me captions of the carousel 
+document.addEventListener("DOMContentLoaded", function() {
+  const homeSection = document.getElementById("home");
+  const aboutMe = Array.from(document.querySelectorAll("#about-me-header, #about-me-caption"));
+  const socialsPics = Array.from(document.querySelectorAll("#carouselSocials img"));
+  const socials = Array.from(document.querySelectorAll("#carouselSocials"));
+
+  const applyAnimation = function() {
+    setTimeout(() => {
+      aboutMe.forEach((caption, index) => {
+        caption.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        caption.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      socialsPics.forEach((socialsPic, index) => {
+        socialsPic.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        socialsPic.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      socials.forEach((socials, index) => {
+        socials.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        socials.classList.add("slide-in-left"); // Add the show class to reveal the nav item with a delay
+      });
+    }, 1000); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+  };
+  
+
+  const resetAnimation = function() {
+    aboutMe.forEach(caption => {
+      caption.style.transitionDelay = ""; // Reset the transition delay
+      caption.classList.remove("show"); // Remove the show class from each nav item
+    });
+    socialsPics.forEach(socialsPic => {
+      socialsPic.style.transitionDelay = ""; // Reset the transition delay
+      socialsPic.classList.remove("show"); // Remove the show class from each nav item
+    });
+    socials.forEach(socials => {
+      socials.style.transitionDelay = ""; // Reset the transition delay
+      socials.classList.remove("slide-in-left"); // Remove the show class from each nav item
     });
   };
 

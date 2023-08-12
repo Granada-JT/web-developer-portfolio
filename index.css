@@ -225,15 +225,34 @@ html {
 }
 
 #about-me-header {
+	opacity: 0;
+}
+
+#about-me-header.show {
+	display: inline-block;
 	color: #FF3F4A;
 	font-size: 3rem;
+	opacity: 1;
+	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+	margin-left: 10%;
+	transform: translateX(-38%);
 }
 
 #about-me-caption {
+	opacity: 0;
+}
+
+#about-me-caption.show {
+	display: block;
+	position: relative;
+	right: -5rem;
 	line-height: 2;
 	text-indent: 2rem;
 	font-size: 1.5rem;
 	letter-spacing: 0rem;
+	opacity: 1;
+	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+	transform: translateX(-11%);
 }
 
 #carousel-aboutMe {
@@ -266,19 +285,41 @@ html {
 	width: 75%;
 	height: auto;
 	margin-top: 7.5rem;
-	transition: opacity 1s ease-in-out;
+	margin-left: -10%;
+	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 	user-select: none;
 }
 
+.slide-in-right {
+	transform: translateX(10%);
+  }
+
+#carouselSocials {
+	position: relative;
+	right: -5rem;
+	transition: transform 1s ease-in-out;
+}
+
+#carouselSocials.slide-in-left {
+	transform: translateX(-9.5%);
+}
+
 #carouselSocials img {
-  	transition: transform 0.3s ease;
+	opacity: 0;
+}
+
+#carouselSocials img.show {
 	min-height: 50px;
 	min-width: 50px;
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+	margin-right: -10%;
+	display: block;
 }
 
 /* Apply the scale effect on hover */
 #carouselSocials img:hover {
-  	transform: scale(1.1);
+  	transform: scale(1.5);
 }
 /*Landing Section End*/
 
