@@ -392,8 +392,9 @@ function animateCoverUp(card) {
   openContentText.innerHTML = '<h1>'+card.children[2].textContent+'</h1>'+paragraphText;
   openContentImage.src = card.children[1].src;
   setTimeout(function() {
-    // update the scroll position to 0 (so it is at the top of the 'opened' page)
-    window.scroll(0, 0);
+  // update the scroll position to the bottom of the page
+  window.scroll(0, window.innerHeight + 1450);
+
     // set page to open
     pageIsOpen = true;
   }, 300);
@@ -420,11 +421,11 @@ function animateCoverBack(card) {
 }
 
 function setCoverPosition(cardPosition) {
-  // style the cover so it is in exactly the same position as the card
-  cover.style.left = cardPosition.left + 'px';
-  cover.style.top = cardPosition.top + 'px';
-  cover.style.width = cardPosition.width + 'px';
-  cover.style.height = cardPosition.height + 'px';
+  // style the cover with custom values
+  cover.style.left = (cardPosition.left) + 'px';
+  cover.style.top = (cardPosition.top) + 'px';
+  cover.style.width = (cardPosition.width) + 'px';
+  cover.style.height = (cardPosition.height) + 'px';
 }
 
 function setCoverColor(cardStyle) {
@@ -441,6 +442,7 @@ function scaleCoverToFillWindow(cardPosition) {
   // set the transform on the cover - it will animate because of the transition set on it in the CSS
   cover.style.transform = 'scaleX('+scaleX+') scaleY('+scaleY+') translate3d('+(offsetX)+'px, '+(offsetY)+'px, 0px)';
 }
+
 
 /* When the close is clicked */
 function onCloseClick() {
