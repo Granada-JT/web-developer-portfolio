@@ -218,14 +218,14 @@
 
 <!-- Start of Projects Section -->
 <div id="projects" class="container-fluid">
-    <div class="row" id="projectsHeader">
-      <i class="text-center col-12 pt-5 mt-4">My Projects</i>
+    <div class="row d-flex justify-content-center" id="projectsHeader">
+      <i class="text-center col-12">My Projects</i>
     </div>
     <!-- Projects -->
-    <div class="p-5 d-lg-flex justify-content-center mx-md-5">
+    <div class=" row p-5 d-lg-flex justify-content-center align-items-center mx-md-5 card-column">
 
       <!-- My First Project Start -->
-      <div class="card col-xl-4 mb-5 mb-xl-0 projectCards">
+      <!-- <div class="card col-xl-4 mb-5 mb-xl-0 projectCards">
           <div class="card-body">
               <video autoplay loop muted class="img-fluid">
                   <source src="./videos/project-1.mp4" type="video/mp4">
@@ -238,11 +238,19 @@
                   </div>
               <a href="#projects" class="btn btn-sm active my-2" role="button" aria-pressed="true">Link to project</a>
           </div>
+      </div> -->
+
+      <div class="card card-color-0 col-xl-4 mb-5 mb-xl-0">
+        <div class="cardBorder"></div>
+        <img class="border" src="./images/project-1.png" />
+        <h1>Portfolio</h1>
+        <i>HTML CSS JAVASCRIPT</i>
       </div>
+
       <!-- My First Project End -->
 
       <!-- My Second Project Start -->
-      <div class="card col-xl-4 mb-5 mb-xl-0 mx-xl-5 projectCards">
+      <!-- <div class="card col-xl-4 mb-5 mb-xl-0 mx-xl-5 projectCards">
           <div class="card-body">
               <video autoplay loop muted class="img-fluid">
                   <source src="./videos/project-2.mp4" type="video/mp4">
@@ -255,11 +263,17 @@
               </div>
               <a href="https://capstone-2-granada.onrender.com" class="btn btn-sm active my-2" role="button" aria-pressed="true">Deployed API link</a>
           </div>
+      </div> -->
+      <div class="card card-color-0 col-xl-4 mb-5 mb-xl-0">
+        <div class="cardBorder"></div>
+        <img src="./images/project-2.png" />
+        <h1>E-commerce API</h1>
+        <i>MongoDB Postman ExpressJS</i>
       </div>
       <!-- My Second Project End -->
 
       <!-- My Third Project Start -->
-      <div class="card col-xl-4 mb-5 mb-xl-0 projectCards">
+      <!-- <div class="card col-xl-4 mb-5 mb-xl-0 projectCards">
           <div class="card-body">
               <video autoplay loop muted class="img-fluid">
                   <source src="./videos/project-3.mp4" type="video/mp4">
@@ -272,8 +286,23 @@
               </div>
               <a href="https://granada-jomar-fullstack-s65-s71-capstone3.vercel.app/" class="btn btn-sm active my-2" role="button" aria-pressed="true" target="_blank">Link to project</a>
           </div>
+      </div> -->
+      <div class="card card-color-0 col-xl-4 mb-5 mb-xl-0">
+        <div class="cardBorder"></div>
+        <img src="./images/project-3.png" />
+        <h1>Ecommerce Shop Template</h1>
+        <i>React MERN</i>
       </div>
       <!-- My Third Project End -->
+  </div>
+</div>
+
+<div id="cover" class="cover"></div>
+
+<div id="open-content" class="open-content">
+  <a href="#" id="close-content" class="close-content"><span class="x-1"></span><span class="x-2"></span></a>
+  <img id="open-content-image" src="" />
+  <div class="text" id="open-content-text">
   </div>
 </div>
 <!-- End of Projects Section -->
