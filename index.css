@@ -5,6 +5,10 @@
 	box-sizing: border-box;
 }
 
+body {
+	overflow-x: hidden;
+  }
+
 /* NavBar start */
 #navBar {
 	color: white !important;
