@@ -381,6 +381,8 @@ html {
   color: #fff;
   cursor: pointer;
   margin-bottom: 60px;
+  min-height: 400px;
+  max-height: 400px;
 }
 
 
@@ -410,9 +412,14 @@ html {
   }
 
   .card h1 {
+	display: flex;
 	position: relative;
-	padding: 190px 0px 100px 10px;
+	padding: 190px 10px 0px 0px;
 	width: 90%;
+  }
+
+  .card i {
+	position: absolute;	
   }
 
   .card > img {

@@ -53,12 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // This code block does the animation of generating random characters back into a desired set of characters
 document.addEventListener("DOMContentLoaded", function genChar() {
+  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "0123456789";
+  var symbols = "!@#$%^&*()_+=-";
+  var string = numbers + letters + symbols;
+  var allCounters = document.querySelectorAll("#fullName > i");
+
   function count() {
-    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var numbers = "0123456789";
-    var symbols = "!@#$%^&*()_+=-";
-    var string = numbers + letters + symbols;
-    var allCounters = document.querySelectorAll("#fullName > i");
 
     allCounters.forEach((allCounter, index) => {
       allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
@@ -78,13 +79,23 @@ document.addEventListener("DOMContentLoaded", function genChar() {
     });
   }
 
+  function resetCount() {
+    allCounters.forEach((allCounter, index) => {
+      allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
+      allCounter.classList.remove("show");
+    });
+  }
+
   // Create a new IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       // Check if the landing section is visible
       if (entry.isIntersecting) {
         // Call the count function here
-        count();
+        count()
+      } else {
+        // Call the reset function here
+        resetCount()
       }
     });
   },{ rootMargin: "-1px" });
@@ -98,12 +109,13 @@ document.addEventListener("DOMContentLoaded", function genChar() {
 
 // This code block does the animation of generating random characters back into a desired set of characters
 document.addEventListener("DOMContentLoaded", function genChar() {
+  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "0123456789";
+  var symbols = "!@#$%^&*()_+=-";
+  var string = numbers + letters + symbols;
+  var allCounters = document.querySelectorAll("#profession > i");
+
   function count() {
-    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var numbers = "0123456789";
-    var symbols = "!@#$%^&*()_+=-";
-    var string = numbers + letters + symbols;
-    var allCounters = document.querySelectorAll("#profession > i");
 
     allCounters.forEach((allCounter, index) => {
       allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
@@ -123,6 +135,13 @@ document.addEventListener("DOMContentLoaded", function genChar() {
     });
   }
 
+  function resetCount() {
+    allCounters.forEach((allCounter, index) => {
+      allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
+      allCounter.classList.remove("show");
+    });
+  }
+
   // Create a new IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -130,6 +149,9 @@ document.addEventListener("DOMContentLoaded", function genChar() {
       if (entry.isIntersecting) {
         // Call the count function here
         count()
+      } else {
+        // Call the reset function here
+        resetCount()
       }
     });
   },{ rootMargin: "-1px" });
