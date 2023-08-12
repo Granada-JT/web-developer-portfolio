@@ -60,6 +60,11 @@ document.addEventListener("DOMContentLoaded", function genChar() {
     var string = numbers + letters + symbols;
     var allCounters = document.querySelectorAll("#fullName > i");
 
+    allCounters.forEach((allCounter, index) => {
+      allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
+      allCounter.classList.add("show");
+    });
+
     allCounters.forEach(function(el) {
       var duration = 100 + Array.from(allCounters).indexOf(el) * 60;
       var interval = setInterval(function() {
@@ -99,6 +104,11 @@ document.addEventListener("DOMContentLoaded", function genChar() {
     var symbols = "!@#$%^&*()_+=-";
     var string = numbers + letters + symbols;
     var allCounters = document.querySelectorAll("#profession > i");
+
+    allCounters.forEach((allCounter, index) => {
+      allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
+      allCounter.classList.add("show");
+    });
 
     allCounters.forEach(function(el) {
       var duration = 100 + Array.from(allCounters).indexOf(el) * 60;

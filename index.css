@@ -85,21 +85,24 @@ html {
 	background-color: black;
 }
 
-#fullName i,
-#profession i {
+#fullName > i,
+#profession > i {
 	display: inline-flex;
 	font-style: normal;
 	letter-spacing: -1rem;
+	opacity: 0;
 }
 
-#profession i {
+#profession i.show {
 	font-style: italic;
 	font-size: 3rem;
+	opacity: 1;
 }
 
-#fullName i {
+#fullName > i.show {
 	font-weight: bold;
 	font-size: 5rem;
+	opacity: 1;
 }
 
 #profession {
