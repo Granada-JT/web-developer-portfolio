@@ -407,6 +407,7 @@ function animateCoverBack(card) {
   scaleCoverToFillWindow(cardPosition);
   // animate scale back to the card size and position
   cover.style.transform = 'scaleX('+1+') scaleY('+1+') translate3d('+(0)+'px, '+(0)+'px, 0px)';
+
   setTimeout(function() {
     // set content back to empty
     openContentText.innerHTML = '';
@@ -417,8 +418,12 @@ function animateCoverBack(card) {
     pageIsOpen = false;
     // remove the clicked class so the card animates back in
     currentCard.className = currentCard.className.replace(' clicked', '');
+    
+   // Add the window.scroll function call here
+   window.scroll(0, window.innerHeight + 720);
   }, 301);
 }
+
 
 function setCoverPosition(cardPosition) {
   // style the cover with custom values
