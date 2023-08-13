@@ -877,4 +877,5 @@ transform: scale(1.1);
 #clientReviews-carousel {
 	width: auto;
 	min-height: auto;
+	cursor: pointer;
 }
