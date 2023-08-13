@@ -353,8 +353,10 @@ function attachListeners() {
 function attachListenerToCard(i) {
   cards[i].addEventListener('click', function(e) {
     var card = getCardElement(e.target);
+    // Get the unique paragraph text for this card
+    paragraphText = card.getAttribute('data-paragraph');
     onCardClick(card, i);
-  })
+  });
 }
 
 /* When a card is clicked */
@@ -369,6 +371,9 @@ function onCardClick(card, i) {
   animateOtherCards(currentCard, true);
   // add the open class to the page content
   openContent.className += ' open';
+
+  // Get the unique paragraph text for this card
+  paragraphText = card.querySelector('.card-content').getAttribute('data-paragraph');
 }
 
 /*
@@ -388,17 +393,25 @@ function animateCoverUp(card) {
   setCoverPosition(cardPosition);
   setCoverColor(cardStyle);
   scaleCoverToFillWindow(cardPosition);
+  
+  // Retrieve the link from the custom attribute
+  var link = card.getAttribute('data-link');
+  var linkText = card.getAttribute('data-link-text');
+  
   // update the content of the opened page
   openContentText.innerHTML = '<h1>'+card.children[2].textContent+'</h1>'+paragraphText;
+  openContentText.innerHTML += '<a href="'+link+'" class="btn btn-sm active my-2" role="button" aria-pressed="true" target="_blank">'+linkText+'</a>';
   openContentImage.src = card.children[1].src;
+  
   setTimeout(function() {
-  // update the scroll position to the bottom of the page
-  window.scroll(0, window.innerHeight + 1450);
-
+    // update the scroll position to the bottom of the page
+    window.scroll(0, window.innerHeight + 1450);
     // set page to open
     pageIsOpen = true;
   }, 300);
 }
+
+
 
 function animateCoverBack(card) {
   var cardPosition = card.getBoundingClientRect();

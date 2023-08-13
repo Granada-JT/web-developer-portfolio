@@ -416,6 +416,7 @@ html {
 	position: relative;
 	padding: 190px 10px 0px 0px;
 	width: 90%;
+	margin-left: -10px;
   }
 
   .card i {
@@ -430,13 +431,21 @@ html {
   }
 
   .card-color-0 {
-	background-color: #FF3F4A;
+	background-color: #888DA7;
+  }
+  
+.card-color-1 {
+	background-color: #8F3985;
+  }
+  
+  .card-color-2 {
+	background-color: #8DAA91;
   }
 
   /* The cover (expanding background) */
 .cover {
 	position: fixed;
-	background: #EB5160;
+	background: #FF3F4A;
 	z-index: 100;
 	transform-origin: 50% 50%;
   }
@@ -471,6 +480,12 @@ html {
 	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
+  }
+
+  .open-content .btn {
+		background-color: #FF3F4A;
+		color: white;
+		margin-left: 11.7vw;
   }
   
   .close-content {
