@@ -433,7 +433,7 @@ function animateCoverBack(card) {
     currentCard.className = currentCard.className.replace(' clicked', '');
     
    // Add the window.scroll function call here
-   window.scroll(0, window.innerHeight + 720);
+   window.scroll(0, window.innerHeight + 775);
   }, 301);
 }
 
@@ -513,6 +513,85 @@ function resize() {
   windowWidth = window.innerWidth;
   windowHeight = window.innerHeight;
 }
-
-var paragraphText = '<p>Somebody once told me the world is gonna roll me. I ain\'t the sharpest tool in the shed. She was looking kind of dumb with her finger and her thumb in the shape of an "L" on her forehead. Well the years start coming and they don\'t stop coming. Fed to the rules and I hit the ground running. Didn\'t make sense not to live for fun. Your brain gets smart but your head gets dumb. So much to do, so much to see. So what\'s wrong with taking the back streets? You\'ll never know if you don\'t go. You\'ll never shine if you don\'t glow.</p><p>Hey now, you\'re an all-star, get your game on, go play. Hey now, you\'re a rock star, get the show on, get paid. And all that glitters is gold. Only shooting stars break the mold.</p><p>It\'s a cool place and they say it gets colder. You\'re bundled up now, wait till you get older. But the meteor men beg to differ. Judging by the hole in the satellite picture. The ice we skate is getting pretty thin. The water\'s getting warm so you might as well swim. My world\'s on fire, how about yours? That\'s the way I like it and I never get bored.</p>';
 });
+
+// This code block animates the projects section.
+document.addEventListener("DOMContentLoaded", function() {
+  const projectSection = document.getElementById("projects");
+  const cardBorder = Array.from(document.querySelectorAll(".cardBorder"));
+  const cardHeader = Array.from(document.querySelectorAll(".card h1"));
+  const cardSubHeader = Array.from(document.querySelectorAll(".card i"));
+  const cardImage = Array.from(document.querySelectorAll(".card img"));
+  const card = Array.from(document.querySelectorAll(".card, #projectsHeader > i"));
+
+  const applyAnimation = function() {
+    setTimeout(() => {
+      setTimeout (() => {
+        cardBorder.forEach((cardBorder, index) => {
+          cardBorder.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+          cardBorder.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        });
+      }, 300)
+      cardHeader.forEach((cardHeader, index) => {
+        cardHeader.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        cardHeader.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      cardSubHeader.forEach((cardSubHeader, index) => {
+        cardSubHeader.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        cardSubHeader.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      cardImage.forEach((cardImage, index) => {
+        cardImage.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+        cardImage.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      card.forEach((card, index) => {
+        card.classList.add("show", "slide-down-up"); // Add the show class to reveal the nav item with a delay
+      });
+    }, 500); // Add a delay before starting the animation
+  };
+  
+
+  const resetAnimation = function() {
+    cardBorder.forEach(cardBorder => {
+      cardBorder.style.transitionDelay = ""; // Reset the transition delay
+      cardBorder.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
+    });
+    cardHeader.forEach(cardHeader => {
+      cardHeader.style.transitionDelay = ""; // Reset the transition delay
+      cardHeader.classList.remove("show"); // Remove the show class from each nav item
+    });
+    cardSubHeader.forEach(cardSubHeader => {
+      cardSubHeader.style.transitionDelay = ""; // Reset the transition delay
+      cardSubHeader.classList.remove("show"); // Remove the show class from each nav item
+    });
+    cardImage.forEach(cardImage => {
+      cardImage.style.transitionDelay = ""; // Reset the transition delay
+      cardImage.classList.remove("slide-in-left"); // Remove the show class from each nav item
+    });
+    card.forEach(card => {
+      card.style.transitionDelay = ""; // Reset the transition delay
+      card.classList.remove("show", "slide-down-up"); // Remove the show class from each nav item
+    });
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === projectSection) {
+        if (entry.isIntersecting) {
+          applyAnimation();
+        } else {
+          resetAnimation();
+        }
+      }
+    });
+  },{ rootMargin: "-1px" });
+
+  const refreshPage = function() {
+    resetAnimation();
+    setTimeout(applyAnimation,0);
+  };
+
+  observer.observe(projectSection);
+
+  window.addEventListener("beforeunload", refreshPage);
+},{ rootMargin: "-1px" });

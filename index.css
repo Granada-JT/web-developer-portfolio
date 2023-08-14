@@ -344,45 +344,40 @@ html {
 }
 
 #projectsHeader > i {
-	margin-top: 1.5rem;
+	opacity: 0;
+}
+
+#projectsHeader > i.show {
+	margin-top: 3rem;
 	padding-top: 4rem;
 	padding-bottom: 2rem;
 	color:#FF3F4A;
 	font-size: 3rem;
+	opacity: 1;
+	transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;
 }
-
-/* .projectCards > div > h3 {
-	padding-top: 1rem;
-} */
-
-/*#projectCards {
-	border-top: 5px solid #FF3F4A;
-	border-bottom: 5px solid #FF3F4A;
-}*/
-
-/* #projectcardsCaption {
-	line-height: 2;
-	text-indent: 2rem;
-}
-
-.card-subtitle {
-	color: white;
-} */
 
 .card {
-  transition: transform 0.3s ease-in-out;
+	opacity: 0;
+}
+
+.card.show {
+  transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;
+  opacity: 1;
   width: 92%;
   max-width: 340px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  display: inline-block;
-  background: #FF3F4A;
-  color: #fff;
   cursor: pointer;
+  margin-top: 4.5%;
   margin-bottom: 60px;
   min-height: 400px;
   max-height: 400px;
+}
+
+.slide-down-up {
+	transform: translateY(-10%)
 }
 
 
@@ -401,6 +396,10 @@ html {
   }
 
 .cardBorder {
+	opacity: 0;
+}
+
+.cardBorder.show {
 	position: absolute;
 	width: 103.7%;
 	height: 103%;
@@ -409,25 +408,48 @@ html {
 	opacity: 0.5;
 	left: -6px;
 	top: -6px;
+	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   }
 
   .card h1 {
+	opacity: 0;
+  }
+
+  .card h1.show {
 	display: flex;
 	position: relative;
-	padding: 190px 10px 0px 0px;
+	padding: 190px 10px 0px 15px;
 	width: 90%;
-	margin-left: -10px;
+	opacity: 1;
+	transition: opacity 1s ease-in-out, transform 2s ease-in-out;
+	transform: translateX(10%);
+
   }
 
   .card i {
-	position: absolute;	
+	opacity: 0;
   }
 
-  .card > img {
+  .card i.show {
+	position: absolute;	
+	padding-left: 10px;
+	opacity: 1;
+	transition: opacity 1s ease-in-out, transform 2s ease-in-out;
+	transform: translateX(-10%);
+  }
+
+  .card img {
+	opacity: 0;
+  }
+
+  .card img.show {
 	width: 90%;
 	position: absolute;
 	top: -6%;
-	left: -6%;
+	left: -15%;
+	opacity: 1;
+	transition: opacity 1s ease-in-out, transform 2s ease-in-out;
+	transform: translateX(10%);
   }
 
   .card-color-0 {
