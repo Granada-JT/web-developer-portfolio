@@ -152,19 +152,46 @@ html {
 	opacity: 1;
 	transition: opacity 1s ease-in-out;
 }
-.bxl-javascript {
+
+#skillDes i {
+	opacity: 0;
+	font-size: 1.5rem;
+	color: #FF3F4A;
+}
+
+#skillIcons i {
+	opacity: 0;
+}
+
+#skillDes, #skillIcons {
+	justify-content: space-evenly;
+}
+
+#skillDes i.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+}
+
+#skillIcons i.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+	font-size: 5rem;
+	
+}
+
+#icons > .bxl-javascript {
 	margin-left: 1.9rem;
 }
 
-.bxl-nodejs {
+#icons > .bxl-nodejs {
 	margin-left: 2rem;
 }
 
-.bxl-react {
+#icons > .bxl-react {
 	margin-left: 1.3rem;
 }
 
-.bxl-mongodb {
+#icons > .bxl-mongodb {
 	margin-left: 2.1rem;
 }
 
@@ -604,10 +631,10 @@ html {
 
 
 /*Tools Section Start*/
-#tools {
+#skills {
 	min-height: 100vh;
 	background-color: black;
-	color: white;
+
 /*background: 
 
 	linear-gradient(
@@ -623,7 +650,7 @@ html {
 	background-attachment: fixed;*/
 }
 
-#tools {
+.title {
 	font-size: 3rem;
 	color: #FF3F4A;
 }

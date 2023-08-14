@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     cardImage.forEach(cardImage => {
       cardImage.style.transitionDelay = ""; // Reset the transition delay
-      cardImage.classList.remove("slide-in-left"); // Remove the show class from each nav item
+      cardImage.classList.remove("show"); // Remove the show class from each nav item
     });
     card.forEach(card => {
       card.style.transitionDelay = ""; // Reset the transition delay
@@ -592,6 +592,59 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   observer.observe(projectSection);
+
+  window.addEventListener("beforeunload", refreshPage);
+},{ rootMargin: "-1px" });
+
+// This code block animates the box icons and their descriptions
+document.addEventListener("DOMContentLoaded", function() {
+  const skillSection = document.getElementById("skills");
+  const skillIcons = Array.from(document.querySelectorAll("#skillIcons > i"));
+  const skillDes = Array.from(document.querySelectorAll("#skillDes > i"));
+
+  const applyAnimation = function() {
+    setTimeout(() => {
+      skillIcons.forEach((skillIcon, index) => {
+        skillIcon.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
+        skillIcon.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      skillDes.forEach((skillDes, index) => {
+        skillDes.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
+        skillDes.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+    }, 500); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+  };
+  
+
+  const resetAnimation = function() {
+    skillIcons.forEach(skillIcon => {
+      skillIcon.style.transitionDelay = ""; // Reset the transition delay
+      skillIcon.classList.remove("show"); // Remove the show class from each nav item
+    });
+    skillDes.forEach(skillDes => {
+      skillDes.style.transitionDelay = ""; // Reset the transition delay
+      skillDes.classList.remove("show"); // Remove the show class from each nav item
+    });
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === skillSection) {
+        if (entry.isIntersecting) {
+          applyAnimation();
+        } else {
+          resetAnimation();
+        }
+      }
+    });
+  },{ rootMargin: "-1px" });
+
+  const refreshPage = function() {
+    resetAnimation();
+    setTimeout(applyAnimation,0);
+  };
+
+  observer.observe(skillSection);
 
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
