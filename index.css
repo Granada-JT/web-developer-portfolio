@@ -163,6 +163,12 @@ html {
 	opacity: 0;
 }
 
+.skillIconImg {
+	height: 5rem;
+	width: 5rem;
+	user-select: none;
+}
+
 #skillDes, #skillIcons {
 	justify-content: space-evenly;
 }
@@ -359,10 +365,6 @@ html {
 
 
 /*Projects Section Start*/
-/* .projectCards {
-	background: #999999;
-	color: #000000;
-} */
 
 #projects {
 	min-height: 100vh;
@@ -411,12 +413,6 @@ html {
 .card:hover {
   transform: scale(1.1);
 }
-
-/* .card-body .btn {
-	background-color: #FF3F4A;
-	color: white;
-
-} */
 
 .card-column {
 	padding: 4%;
