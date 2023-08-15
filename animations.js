@@ -596,20 +596,22 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
 
-// This code block animates the box icons and their descriptions
+// This code block animates the skills section
 document.addEventListener("DOMContentLoaded", function() {
   const skillSection = document.getElementById("skills");
   const skillIcons = Array.from(document.querySelectorAll("#skillIcons > i"));
+  const title = Array.from(document.querySelectorAll(".title"));
   const skillDes = Array.from(document.querySelectorAll("#skillDes > i"));
 
   const applyAnimation = function() {
     setTimeout(() => {
       skillIcons.forEach((skillIcon, index) => {
-        skillIcon.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
         skillIcon.classList.add("show"); // Add the show class to reveal the nav item with a delay
       });
+      title.forEach((title, index) => {
+        title.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
       skillDes.forEach((skillDes, index) => {
-        skillDes.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
         skillDes.classList.add("show"); // Add the show class to reveal the nav item with a delay
       });
     }, 500); // Add a delay of 1 second (1000 milliseconds) before starting the animation
@@ -618,11 +620,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const resetAnimation = function() {
     skillIcons.forEach(skillIcon => {
-      skillIcon.style.transitionDelay = ""; // Reset the transition delay
       skillIcon.classList.remove("show"); // Remove the show class from each nav item
     });
+    title.forEach(title => {
+      title.classList.remove("show"); // Remove the show class from each nav item
+    });
     skillDes.forEach(skillDes => {
-      skillDes.style.transitionDelay = ""; // Reset the transition delay
       skillDes.classList.remove("show"); // Remove the show class from each nav item
     });
   };
@@ -645,6 +648,71 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   observer.observe(skillSection);
+
+  window.addEventListener("beforeunload", refreshPage);
+},{ rootMargin: "-1px" });
+
+// This code block animates the contact section
+document.addEventListener("DOMContentLoaded", function() {
+  const contactSection = document.getElementById("contact");
+  const formCol = Array.from(document.querySelectorAll("#form-col"));
+  const formGroup = Array.from(document.querySelectorAll(".form-group"));
+  const clientReviewsCarousel = Array.from(document.querySelectorAll("#clientReviews-carousel"));
+  const footer = Array.from(document.querySelectorAll("#footer"));
+
+  const applyAnimation = function() {
+    setTimeout(() => {
+      formCol.forEach((formCol) => {
+        formCol.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      formGroup.forEach((formGroup) => {
+        formGroup.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      clientReviewsCarousel.forEach((clientReviewsCarousel) => {
+        clientReviewsCarousel.classList.add("show"); // Add the show class to reveal the nav item with a delay
+      });
+      setTimeout (() => {
+        footer.forEach((footer) => {
+          footer.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        });
+      },1000)
+    }, 500); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+  };
+  
+
+  const resetAnimation = function() {
+    formCol.forEach(formCol => {
+      formCol.classList.remove("show"); // Remove the show class from each nav item
+    });
+    formGroup.forEach(formGroup => {
+      formGroup.classList.remove("show"); // Remove the show class from each nav item
+    });
+    clientReviewsCarousel.forEach(clientReviewsCarousel => {
+      clientReviewsCarousel.classList.remove("show"); // Remove the show class from each nav item
+    });
+    footer.forEach(footer => {
+      footer.classList.remove("show"); // Remove the show class from each nav item
+    });
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === contactSection) {
+        if (entry.isIntersecting) {
+          applyAnimation();
+        } else {
+          resetAnimation();
+        }
+      }
+    });
+  },{ rootMargin: "-1px" });
+
+  const refreshPage = function() {
+    resetAnimation();
+    setTimeout(applyAnimation,0);
+  };
+
+  observer.observe(contactSection);
 
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });

@@ -169,20 +169,20 @@ html {
 	user-select: none;
 }
 
-#skillDes, #skillIcons {
+#skillIcons, #skillDes {
 	justify-content: space-evenly;
+	padding-right: 55px;
 }
 
 #skillDes i.show {
 	opacity: 1;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 2s ease-in-out;
 }
 
 #skillIcons i.show {
 	opacity: 1;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 1.5s ease-in-out;
 	font-size: 5rem;
-	
 }
 
 #icons > .bxl-javascript {
@@ -647,8 +647,14 @@ html {
 }
 
 .title {
+	opacity: 0;
+}
+
+.title.show {
 	font-size: 3rem;
 	color: #FF3F4A;
+	opacity: 1;
+	transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 #tools-1 > img {
@@ -695,6 +701,33 @@ html {
 
 #clientReviews-carousel {
 	padding-bottom: 25%;
+}
+
+#form-col {
+	opacity: 0;
+}
+
+#form-col.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+}
+
+.form-group {
+	opacity: 0;
+}
+
+.form-group.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+}
+
+#clientReviews-carousel {
+	opacity: 0;
+}
+
+#clientReviews-carousel.show {
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
 }
 /*Contacts Section End*/
 
@@ -798,10 +831,16 @@ transform: scale(1.1);
 }
 
 #footer {
+	opacity: 0;
+}
+
+#footer.show {
 	position: relative;
 	width: 100%;
 	display: block;
 	color: white;
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
 }
 
 #footer .btn {
