@@ -86,6 +86,10 @@ html {
 	background-attachment: fixed;*/
 }
 
+.landing-col {
+	max-width: 100vh;
+}
+
 #landing {
 	min-height: 100vh;
 	background-color: black;
