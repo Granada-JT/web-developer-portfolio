@@ -367,7 +367,7 @@ html {
 /*Projects Section Start*/
 
 #projects {
-	min-height: 100vh;
+	min-height: 200vh;
 	background-color: #000000;
 	color: white;
 }
@@ -486,7 +486,10 @@ html {
   .card-color-2 {
 	background-color: #8DAA91;
   }
-
+  
+  .card-color-3 {
+	background-color: #a28daa;
+  }
   /* The cover (expanding background) */
 .cover {
 	position: fixed;

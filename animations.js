@@ -405,7 +405,7 @@ function animateCoverUp(card) {
   
   setTimeout(function() {
     // update the scroll position to the bottom of the page
-    window.scroll(0, window.innerHeight + 1450);
+    window.scroll(0, window.innerHeight + 2180);
     // set page to open
     pageIsOpen = true;
   }, 300);
