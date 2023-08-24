@@ -48,6 +48,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Toggle the full-screen class on the carousel
         carousel.classList.toggle("full-screen");
+
+        // Lock scrolling when the carousel is in full-screen mode
+        const html = document.documentElement;
+        if (carousel.classList.contains("full-screen")) {
+            html.classList.add("no-scroll");
+        } else {
+            html.classList.remove("no-scroll");
+
+        }
     });
 });
 
