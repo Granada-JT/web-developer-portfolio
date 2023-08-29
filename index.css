@@ -9,7 +9,6 @@ body {
 	overflow-x: hidden;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	background-color: black;
   }
 
 body::-webkit-scrollbar {
