@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Toggle the full-screen class on the carousel
         carousel.classList.toggle("full-screen");
-
         // Lock scrolling when the carousel is in full-screen mode
         const html = document.documentElement;
         if (carousel.classList.contains("full-screen")) {
@@ -65,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
     });
+    console.log(carousel)
 });
 
 // This code block does the animation of generating random characters back into a desired set of characters
@@ -529,64 +529,41 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
 
-// Expanding cards test
-
-document.addEventListener("DOMContentLoaded", function() {
-  let preveiwContainer = document.querySelector('.products-preview');
-  let previewBox = preveiwContainer.querySelectorAll('.preview');
-  
-  document.querySelectorAll('.products-container .product').forEach(product =>{
-    product.onclick = () =>{
-      preveiwContainer.style.display = 'flex';
-      let name = product.getAttribute('data-name');
-      previewBox.forEach(preview =>{
-        let target = preview.getAttribute('data-target');
-        if(name == target){
-          preview.classList.add('active');
-        }
-      });
-    };
-  });
-  
-  previewBox.forEach(preview => {
-    let closeIcon = preview.querySelector('.closeIcon');
-    if (closeIcon) {
-      closeIcon.onclick = () => {
-        preview.classList.remove('active');
-        preveiwContainer.style.display = 'none';
-      };
-    }
-  });
-  
-  
-})
-
 // Expanding cards application
-
 document.addEventListener("DOMContentLoaded", function () {
-  let preveiwContainer = document.querySelector('.project-details');
-  let previewBox = preveiwContainer.querySelectorAll('.detail');
-  
-  document.querySelectorAll('.projects-container .project').forEach(product =>{
-    product.onclick = () =>{
-      preveiwContainer.style.display = 'flex';
+  const previewContainer = document.querySelector('.project-details');
+  const previewBox = previewContainer.querySelectorAll('.detail');
+  const detailCards = Array.from(document.querySelectorAll(".project-details .detail"));
+
+  console.log(detailCards)
+
+  document.querySelectorAll('.projects-container .project').forEach(product => {
+    product.onclick = () => {
+      previewContainer.style.display = 'flex';
       let name = product.getAttribute('data-name');
-      previewBox.forEach(preview =>{
+      previewBox.forEach(preview => {
+        console.log(preview)
         let target = preview.getAttribute('data-target');
-        if(name == target){
+        if (name == target) {
           preview.classList.add('active');
+          html.classList.add('no-scroll'); // Add no-scroll class when a card is clicked
+        } else {
+          preview.classList.remove('active');
         }
+        console.log(html)
       });
     };
   });
-  
+
   previewBox.forEach(preview => {
     let closeIcon = preview.querySelector('.closeIcon');
     if (closeIcon) {
       closeIcon.onclick = () => {
         preview.classList.remove('active');
-        preveiwContainer.style.display = 'none';
+        previewContainer.style.display = 'none';
+        html.classList.remove('no-scroll'); // Remove no-scroll class when the close icon is clicked
       };
     }
   });
-})
+  const html = document.documentElement;
+});
