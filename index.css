@@ -439,7 +439,7 @@ html.no-scroll {
 	flex: 1;
 	padding: 10px;
 	border-radius: 20px;
-	transition: all .3s ease;
+	transition: all .5s ease;
 }
 
 .content > * {
@@ -452,9 +452,9 @@ html.no-scroll {
 }
 
 .content:hover {
-	color: white;
+	color: black;
 	background-color: #FF3F4A;
-	border-color: none;
+	border: 10px solid rgba(255, 63, 74, 0);
 }
 
 .content h1 {
