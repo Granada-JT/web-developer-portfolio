@@ -603,8 +603,10 @@ transform: scale(1.1);
 }
 .carousel.full-screen .carousel-inner,
 .carousel.full-screen .carousel-item {
-    height: 80vh;
-	width: 55vw;
+    height: auto;
+	width: auto;
+	max-height: 80vh;
+	max-width: 55vw;
 }
 .carousel.full-screen .carousel-item img {
     width: 100%;
@@ -720,7 +722,7 @@ transform: scale(1.1);
 	}
 
 	.navbar-toggler-icon {
-		opacity: 0;
+		opacity: 1;
 		pointer-events: none;
 	}
 }
