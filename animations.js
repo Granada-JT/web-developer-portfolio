@@ -528,3 +528,65 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
+
+// Expanding cards test
+
+document.addEventListener("DOMContentLoaded", function() {
+  let preveiwContainer = document.querySelector('.products-preview');
+  let previewBox = preveiwContainer.querySelectorAll('.preview');
+  
+  document.querySelectorAll('.products-container .product').forEach(product =>{
+    product.onclick = () =>{
+      preveiwContainer.style.display = 'flex';
+      let name = product.getAttribute('data-name');
+      previewBox.forEach(preview =>{
+        let target = preview.getAttribute('data-target');
+        if(name == target){
+          preview.classList.add('active');
+        }
+      });
+    };
+  });
+  
+  previewBox.forEach(preview => {
+    let closeIcon = preview.querySelector('.closeIcon');
+    if (closeIcon) {
+      closeIcon.onclick = () => {
+        preview.classList.remove('active');
+        preveiwContainer.style.display = 'none';
+      };
+    }
+  });
+  
+  
+})
+
+// Expanding cards application
+
+document.addEventListener("DOMContentLoaded", function () {
+  let preveiwContainer = document.querySelector('.project-details');
+  let previewBox = preveiwContainer.querySelectorAll('.detail');
+  
+  document.querySelectorAll('.projects-container .project').forEach(product =>{
+    product.onclick = () =>{
+      preveiwContainer.style.display = 'flex';
+      let name = product.getAttribute('data-name');
+      previewBox.forEach(preview =>{
+        let target = preview.getAttribute('data-target');
+        if(name == target){
+          preview.classList.add('active');
+        }
+      });
+    };
+  });
+  
+  previewBox.forEach(preview => {
+    let closeIcon = preview.querySelector('.closeIcon');
+    if (closeIcon) {
+      closeIcon.onclick = () => {
+        preview.classList.remove('active');
+        preveiwContainer.style.display = 'none';
+      };
+    }
+  });
+})
