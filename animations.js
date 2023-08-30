@@ -2,18 +2,25 @@
 document.addEventListener("DOMContentLoaded", function() {
     const landingSection = document.getElementById("landing");
     const brandElement = document.getElementById("brand");
+    const navbarToggler = document.querySelectorAll(".navbar-toggler");
     const navItems = Array.from(document.querySelectorAll(".nav-item"));
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.target === landingSection) {
                 if (entry.isIntersecting) {
+                    navbarToggler.forEach(element => {
+                        element.classList.remove("show");
+                    })
                     brandElement.classList.add("hidden"); // Apply the hidden class to trigger the fade animation
                     navItems.forEach(navItem => {
                         navItem.style.transitionDelay = ""; // Reset the transition delay
                         navItem.classList.add("hidden"); // Remove the show class from each nav item
                     });
                 } else {
+                    navbarToggler.forEach(element => {
+                        element.classList.add("show");
+                    })
                     brandElement.classList.remove("hidden"); // Remove the hidden class to show the brand element
                     navItems.forEach((navItem, index) => {
                         navItem.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.5 seconds
