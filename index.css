@@ -751,7 +751,7 @@ transform: scale(1.1);
 	}
 
 	.navbar-toggler-icon {
-		opacity: 0;
+		opacity: 1;
 		pointer-events: none;
 	}
 
