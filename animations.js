@@ -529,11 +529,13 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
 
-// Expanding cards application
 document.addEventListener("DOMContentLoaded", function () {
   const previewContainer = document.querySelector('.project-details');
   const previewBox = previewContainer.querySelectorAll('.detail');
   const detailCards = Array.from(document.querySelectorAll(".project-details .detail"));
+  const brandElement = document.getElementById("brand");
+  const navbarToggler = document.querySelectorAll(".navbar-toggler");
+  const navItems = Array.from(document.querySelectorAll(".nav-item"));
 
   console.log(detailCards)
 
@@ -552,6 +554,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         console.log(html)
       });
+
+      navbarToggler.forEach(element => {
+        element.classList.remove("show");
+      });
+      brandElement.classList.add("hidden");
+      navItems.forEach(navItem => {
+        navItem.style.transitionDelay = ""; // Reset the transition delay
+        navItem.classList.add("hidden"); // Remove the show class from each nav item
+      });
     };
   });
 
@@ -562,8 +573,17 @@ document.addEventListener("DOMContentLoaded", function () {
         preview.classList.remove('active');
         previewContainer.style.display = 'none';
         html.classList.remove('no-scroll'); // Remove no-scroll class when the close icon is clicked
+        navbarToggler.forEach(element => {
+          element.classList.add("show");
+        });
+        brandElement.classList.remove("hidden"); // Remove the hidden class to show the brand element
+        navItems.forEach((navItem, index) => {
+          navItem.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.5 seconds
+          navItem.classList.remove("hidden"); // Add the show class to reveal the nav item with a delay
+        });
       };
     }
   });
+
   const html = document.documentElement;
 });

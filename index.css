@@ -910,9 +910,10 @@ transform: scale(1.1);
 	overflow: hidden;
  }
 
- .project-details .detail img{
+ .project-details .detail video{
 	max-width: 60vw;
 	max-height: 60vh;
+	border-radius: 20px;
  }
  
  .project-details .detail .closeIcon{
