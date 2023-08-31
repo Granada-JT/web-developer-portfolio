@@ -412,7 +412,6 @@ html.no-scroll {
 #projects {
 	min-height: 100vh;
 	background-color: #000000;
-	color: white;
 }
 
 #projectsHeader > i {
@@ -441,6 +440,7 @@ html.no-scroll {
 .project {
 	display: flex;
 	align-items: center;
+	color: white;
 }
 
 .content {
@@ -879,6 +879,7 @@ transform: scale(1.1);
 
 /* Card Test Application */
 
+
  .project-details{
 	position: fixed;
 	top:0; left:0;
@@ -890,18 +891,20 @@ transform: scale(1.1);
 	justify-content: center;
  }
  
- .project-details .detail{
+ .project-details .detail {
 	display: none;
-	padding:2rem;
+	top: 0;
+	left: 0;
+	padding: 1rem;
 	text-align: center;
 	background: #fff;
-	position: relative;
-	margin:1rem;
-	width: 100vw;
-	height: 92vh;
+	position: fixed;
+	width: calc(100% - 6rem); /* Adjust the margin as desired */
+	height: calc(100% - 6rem); /* Adjust the margin as desired */
 	border-radius: 20px;
- }
- 
+	margin: 3rem; /* Adjust the margin as desired */
+  }
+  
 .project-details .detail.active{
 	display: inline-block;
  }
@@ -918,7 +921,7 @@ transform: scale(1.1);
  
  .project-details .detail .closeIcon{
 	position: absolute;
-	top:1rem; right:1.5rem;
+	top: -20px; right:1rem;
 	cursor: pointer;
 	color:#444;
 	font-size: 4rem;
@@ -939,7 +942,7 @@ transform: scale(1.1);
 	line-height: 1.5;
 	padding:1rem 0;
 	font-size: 1.6rem;
-	color:#777;
+	color:#000000 !important;
  }
  
 /* Card Test Application */
