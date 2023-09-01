@@ -885,7 +885,7 @@ transform: scale(1.1);
 	top:0; left:0;
 	min-height: 100vh;
 	width: 100%;
-	background: #FF3F4A;
+	background: rgb(52, 47, 47);
 	display: none;
 	align-items: center;
 	justify-content: center;
@@ -898,12 +898,24 @@ transform: scale(1.1);
 	padding: 1rem;
 	text-align: center;
 	background: #fff;
-	position: fixed;
+	position: absolute;
 	width: calc(100% - 6rem); /* Adjust the margin as desired */
 	height: calc(100% - 6rem); /* Adjust the margin as desired */
 	border-radius: 20px;
 	margin: 3rem; /* Adjust the margin as desired */
+	overflow-y: auto;
+	text-align: justify;
   }
+
+.project-details .detail::-webkit-scrollbar {
+	display: none;	
+
+}
+
+.project-details .detail {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
   
 .project-details .detail.active{
 	display: inline-block;
@@ -914,9 +926,8 @@ transform: scale(1.1);
  }
 
  .project-details .detail video{
-	max-width: 60vw;
-	max-height: 60vh;
 	border-radius: 20px;
+	border: 5px solid #444;
  }
  
  .project-details .detail .closeIcon{
@@ -924,7 +935,8 @@ transform: scale(1.1);
 	top: -20px; right:1rem;
 	cursor: pointer;
 	color:#444;
-	font-size: 4rem;
+	font-size: 3rem;
+	z-index: 9999;
  }
  
  .project-details .detail .closeIcon:hover{
@@ -933,16 +945,46 @@ transform: scale(1.1);
  }
  
  .project-details .detail h3{
-	color:#444;
-	padding:.5rem 0;
-	font-size: 2.5rem;
+	font-size: 7rem;
+	text-align: left;
  }
  
  .project-details .detail p{
-	line-height: 1.5;
-	padding:1rem 0;
-	font-size: 1.6rem;
-	color:#000000 !important;
+	margin-top: 3rem;
+	font-size: 1.5rem;
+ }
+
+ .project-details .detail .col-12 i {
+	text-justify: left;
+	display: flex;
+	margin-left: 0.8rem;
+	margin-bottom: 3rem;
+	font-size: 1.5rem;
+ }
+
+ .project-details .detail li {
+	margin-left: 2rem;
+	font-size: 1.5rem;
+ }
+
+ .project-details .detail a {
+	display: flex;
+	background-color: #FF3F4A;
+	color: white;
+	border-radius: 20px;
+	font-size: 1.5rem;
+	justify-content: center;
+	width:  25%;
+	margin: 3rem auto 0 auto;
+	font-weight: bolder;
+ }
+
+ .project-details .detail a:hover {
+	transition: all 0.5s ease;
+	transform: scale(1.05);
+	background-color: black;
+	color: white;
+
  }
  
 /* Card Test Application */
