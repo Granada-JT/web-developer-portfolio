@@ -880,7 +880,7 @@ transform: scale(1.1);
 /* Card Test Application */
 
 
- .project-details{
+.project-details{
 	position: fixed;
 	top:0; left:0;
 	min-height: 100vh;
@@ -889,9 +889,9 @@ transform: scale(1.1);
 	display: none;
 	align-items: center;
 	justify-content: center;
- }
- 
- .project-details .detail {
+}
+
+.project-details .detail {
 	display: none;
 	top: 0;
 	left: 0;
@@ -905,7 +905,23 @@ transform: scale(1.1);
 	margin: 3rem; /* Adjust the margin as desired */
 	overflow-y: auto;
 	text-align: justify;
-  }
+	transition: all 0.5s ease;
+}
+
+@keyframes expandAnimation {
+from {
+	transform: scale(0.8);
+}
+to {
+	transform: scale(1);
+}
+}
+
+.project-details .detail.active {
+	/* ... */
+	animation: expandAnimation 0.3s ease;
+}
+
 
 .project-details .detail::-webkit-scrollbar {
 	display: none;	
@@ -938,7 +954,7 @@ transform: scale(1.1);
 	font-size: 3rem;
 	z-index: 9999;
  }
- 
+
  .project-details .detail .closeIcon:hover{
 	 transition: transform 0.3s ease;
 		transform: scale(1.3);
