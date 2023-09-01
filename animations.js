@@ -529,6 +529,7 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("beforeunload", refreshPage);
 },{ rootMargin: "-1px" });
 
+// This code block executes the project cards feature
 document.addEventListener("DOMContentLoaded", function () {
   const previewContainer = document.querySelector('.project-details');
   const previewBox = previewContainer.querySelectorAll('.detail');
@@ -536,23 +537,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const brandElement = document.getElementById("brand");
   const navbarToggler = document.querySelectorAll(".navbar-toggler");
   const navItems = Array.from(document.querySelectorAll(".nav-item"));
-
-  console.log(detailCards)
+  const aboutMeSection = document.getElementById("aboutMe");
+  const skillsSection = document.getElementById("skills");
 
   document.querySelectorAll('.projects-container .project').forEach(product => {
     product.onclick = () => {
       previewContainer.style.display = 'flex';
       let name = product.getAttribute('data-name');
       previewBox.forEach(preview => {
-        console.log(preview)
         let target = preview.getAttribute('data-target');
         if (name == target) {
           preview.classList.add('active');
-          html.classList.add('no-scroll'); // Add no-scroll class when a card is clicked
+          html.classList.add('no-scroll');
+          aboutMeSection.classList.add('hidden');
+          skillsSection.classList.add('hidden');
         } else {
           preview.classList.remove('active');
         }
-        console.log(html)
       });
 
       navbarToggler.forEach(element => {
@@ -572,7 +573,9 @@ document.addEventListener("DOMContentLoaded", function () {
       closeIcon.onclick = () => {
         preview.classList.remove('active');
         previewContainer.style.display = 'none';
-        html.classList.remove('no-scroll'); // Remove no-scroll class when the close icon is clicked
+        html.classList.remove('no-scroll');
+        aboutMeSection.classList.remove('hidden');
+        skillsSection.classList.remove('hidden');
         navbarToggler.forEach(element => {
           element.classList.add("show");
         });
@@ -587,3 +590,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const html = document.documentElement;
 });
+
