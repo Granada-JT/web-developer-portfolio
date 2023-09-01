@@ -415,6 +415,12 @@ html.no-scroll {
 	align-items: center;
 	color: white;
 	transition: translate 0.3s ease;
+	visibility: hidden;
+}
+
+.project.show {
+	visibility: visible;
+	animation: expandAnimation 0.6s ease;
 }
 
 .content {

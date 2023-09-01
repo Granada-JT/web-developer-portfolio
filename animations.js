@@ -330,59 +330,32 @@ document.addEventListener("DOMContentLoaded", function() {
 // This code block animates the projects section.
 document.addEventListener("DOMContentLoaded", function() {
   const projectSection = document.getElementById("projects");
-  const cardBorder = Array.from(document.querySelectorAll(".cardBorder"));
-  const cardHeader = Array.from(document.querySelectorAll(".card h1"));
-  const cardSubHeader = Array.from(document.querySelectorAll(".card i"));
-  const cardImage = Array.from(document.querySelectorAll(".card img"));
-  const card = Array.from(document.querySelectorAll(".card, #projectsHeader > i"));
+  const project = Array.from(document.querySelectorAll(".project"));
+  const projectsHeader = Array.from(document.querySelectorAll("#projectsHeader > i"));
 
   const applyAnimation = function() {
     setTimeout(() => {
       setTimeout (() => {
-        cardBorder.forEach((cardBorder, index) => {
-          cardBorder.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-          cardBorder.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        project.forEach((project, index) => {
+          project.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
+          project.classList.add("show"); // Add the show class to reveal the nav item with a delay
         });
-      }, 300)
-      cardHeader.forEach((cardHeader, index) => {
-        cardHeader.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        cardHeader.classList.add("show"); // Add the show class to reveal the nav item with a delay
-      });
-      cardSubHeader.forEach((cardSubHeader, index) => {
-        cardSubHeader.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        cardSubHeader.classList.add("show"); // Add the show class to reveal the nav item with a delay
-      });
-      cardImage.forEach((cardImage, index) => {
-        cardImage.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        cardImage.classList.add("show"); // Add the show class to reveal the nav item with a delay
-      });
-      card.forEach((card, index) => {
-        card.classList.add("show", "slide-down-up"); // Add the show class to reveal the nav item with a delay
+      }, 300);
+      projectsHeader.forEach((projectsHeader, index) => {
+        projectsHeader.classList.add("show", "slide-down-up"); // Add the show class to reveal the nav item with a delay
       });
     }, 500); // Add a delay before starting the animation
   };
   
 
   const resetAnimation = function() {
-    cardBorder.forEach(cardBorder => {
-      cardBorder.style.transitionDelay = ""; // Reset the transition delay
-      cardBorder.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
+    project.forEach(project => {
+      project.style.transitionDelay = ""; // Reset the transition delay
+      project.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
     });
-    cardHeader.forEach(cardHeader => {
-      cardHeader.style.transitionDelay = ""; // Reset the transition delay
-      cardHeader.classList.remove("show"); // Remove the show class from each nav item
-    });
-    cardSubHeader.forEach(cardSubHeader => {
-      cardSubHeader.style.transitionDelay = ""; // Reset the transition delay
-      cardSubHeader.classList.remove("show"); // Remove the show class from each nav item
-    });
-    cardImage.forEach(cardImage => {
-      cardImage.style.transitionDelay = ""; // Reset the transition delay
-      cardImage.classList.remove("show"); // Remove the show class from each nav item
-    });
-    card.forEach(card => {
-      card.style.transitionDelay = ""; // Reset the transition delay
-      card.classList.remove("show", "slide-down-up"); // Remove the show class from each nav item
+    projectsHeader.forEach(projectsHeader => {
+      projectsHeader.style.transitionDelay = ""; // Reset the transition delay
+      projectsHeader.classList.remove("show");
     });
   };
 
