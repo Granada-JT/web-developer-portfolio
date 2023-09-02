@@ -447,7 +447,7 @@ html.no-scroll {
 }
 
 
-.project-details{
+.project-details {
 	position: fixed;
 	top:0; left:0;
 	min-height: 100vh;
@@ -954,6 +954,10 @@ transform: scale(1.1);
 		margin-top: 2rem;
 	}
 
+	.navbar {
+		z-index: -9999;
+	}
+
 	.navbar-toggler-icon {
 		opacity: 1;
 		pointer-events: none;
@@ -1064,6 +1068,11 @@ transform: scale(1.1);
 		left: 0;
 	}
 
+	#arrowDown {
+		height: 7rem;
+		width: 7rem;
+	}
+
 	#projectsHeader > i {
 		font-size: 6rem;
 	}
@@ -1089,6 +1098,11 @@ transform: scale(1.1);
 		font-size: 3rem;
 	}
 
+	.project-details .detail {
+		margin-top: 7rem;
+		height: calc(100% - 12rem);
+	}
+
 	.project-details .detail h3{
 		margin-top: 2rem;
 		font-size: 3rem;
@@ -1103,7 +1117,6 @@ transform: scale(1.1);
 	.project-details .detail a {
 		width: 100%;
 	}
-
 }
 
 @media (max-width: 900px) {
