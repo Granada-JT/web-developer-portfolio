@@ -955,29 +955,28 @@ transform: scale(1.1);
     left: 10%;
     width: 80%;
     height: 3px;
-    background-color: #FF3F4A; /* Change the color as desired */
-    transform: scaleX(0); /* Initially hidden */
-    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+    background-color: #FF3F4A;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav-link-underline:hover::after {
-    transform: scaleX(1); /* Show the underline on hover */
+    transform: scaleX(1);
 }
 
 .navbar-brand:hover {
-  color: #FF3F4A; /* Change the color value to your desired hover color */
+  color: #FF3F4A;
 }
 
 /*navbar hover and underline*/
 
 .carousel-control-prev-icon {
-	background-image: url('./images/arrow-square-left-f.svg'); /* Replace 'path-to-your-black-arrow-icon.png' with the path to your black arrow icon image */
+	background-image: url('./images/arrow-square-left-f.svg');
 	background-size: 30px;
   }
   
 .carousel-control-next-icon {
-  background-image: url('./images/arrow-square-right-f.svg'); /* Replace 'path-to-your-black-arrow-icon.png' with the path to your black arrow icon image */
-  background-size: 30px;
+  background-image: url('./images/arrow-square-right-f.svg');
 }
 
 #clientReviews-carousel {

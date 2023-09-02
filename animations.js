@@ -384,9 +384,9 @@ document.addEventListener("DOMContentLoaded", function() {
 // This code block animates the skills section
 document.addEventListener("DOMContentLoaded", function() {
   const skillSection = document.getElementById("skills");
-  const skillIcons = Array.from(document.querySelectorAll("#skillIcons > i"));
+  const skillIcons = Array.from(document.querySelectorAll("#skillIcons i"));
   const title = Array.from(document.querySelectorAll(".title"));
-  const skillDes = Array.from(document.querySelectorAll("#skillDes > i"));
+  const skillDes = Array.from(document.querySelectorAll("#skillDes i"));
 
   const applyAnimation = function() {
     setTimeout(() => {
