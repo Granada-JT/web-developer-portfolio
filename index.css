@@ -853,7 +853,7 @@ transform: scale(1.1);
 
 	#profession {
 		margin: 0 0 0 -0.5rem;
-		width: 120%;
+		width: 140%;
 	}
 
 	#profession > i {
@@ -896,6 +896,31 @@ transform: scale(1.1);
 	#iconDes > i:last-child {
 		position: relative;
 		left: 0.7rem;
+	}
+
+	.content h1 {
+		position: relative;
+		left: -7rem;
+	}
+	
+	.content i {
+		position: absolute;
+		left: -8.5rem;
+	}
+
+	.project-details .detail h3{
+		margin-top: 2rem;
+		font-size: 3rem;
+		text-align: left;
+	}
+
+	.project-details .detail .col-12 i {
+		text-align: left;
+		font-size: 1.3rem;
+	}
+
+	.project-details .detail a {
+		width: 100%;
 	}
 
 }
