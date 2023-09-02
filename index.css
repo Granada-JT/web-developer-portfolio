@@ -361,12 +361,8 @@ html.no-scroll {
 }
 
 #carouselSocials img.show {
-	min-height: 50px;
-	min-width: 50px;
 	opacity: 1;
 	transition: opacity 1s ease-in-out;
-	margin-right: -10%;
-	display: block;
 }
 
 /* Apply the scale effect on hover */
@@ -964,17 +960,6 @@ transform: scale(1.1);
 		overflow-x: hidden;
 	}
 
-	#landingText {
-		min-height: 100%;
-		margin-top: 20vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: white;
-		font-size: 3rem;
-		font-weight: 1rem;
-	}
-
 	#icons {
 		margin-top: 2rem;
 	}
@@ -987,6 +972,119 @@ transform: scale(1.1);
 	.projects-container, .project-details {
 		font-size: 55%
 	}
+	
+	#about-me-caption {
+		left: 6rem;
+		font-size: 3rem;
+	}
+
+	#carouselSocials {
+		left: 3.8rem;
+	}
+
+	#carouselSocials img {
+		min-height: 6rem;
+		min-width: 6rem;
+	}
+
+	#emailImg {
+		padding: 0.3rem 0 0 0;
+	}
+
+	#about-me-header{
+		left: 50%;
+		font-size: 6rem;
+	}
+
+	#carouselPicture {
+		height: 45rem;
+		width: 45rem;
+		position: relative;
+		left: -1.5rem;
+	}
+
+	#fullName {
+		width: 120%;
+	}
+
+	#fullName > i {
+		position: relative;
+		left: -0.5rem;
+		font-size: 8rem;
+	}
+
+	#profession {
+		margin: 0 0 0 -0.5rem;
+		width: 120%;
+	}
+
+	#profession > i {
+		font-size: 4rem;
+	}
+
+	#fullName > i, #profession > i {
+		position: relative;
+		top: 50%;
+	}
+
+	#iconDes > i {
+		font-size: 3rem;
+	}
+
+	#icons > i {
+		font-size: 10rem;
+	}
+
+	#icons {
+		width: 100%;
+		margin: 0 0 0 1rem;
+	}
+
+	#iconDes {
+		width: 100%;
+		margin: 1rem 0 0 1rem;
+	}
+
+	#icons, #iconDes {
+		position: relative;
+		bottom: -180%;
+	}
+
+	#iconDes > .ml-4 {
+		position: relative;
+		left: 0.3rem;
+	}
+
+	#iconDes > i:last-child {
+		position: relative;
+		left: 0;
+	}
+
+	.content h1 {
+		position: relative;
+		left: -7rem;
+	}
+	
+	.content i {
+		position: absolute;
+		left: -8.5rem;
+	}
+
+	.project-details .detail h3{
+		margin-top: 2rem;
+		font-size: 3rem;
+		text-align: left;
+	}
+
+	.project-details .detail .col-12 i {
+		text-align: left;
+		font-size: 1.3rem;
+	}
+
+	.project-details .detail a {
+		width: 100%;
+	}
+
 }
 
 @media (max-width: 900px) {
