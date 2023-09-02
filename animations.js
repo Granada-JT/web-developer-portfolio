@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
     });
-    console.log(carousel)
 });
 
 // This code block does the animation of generating random characters back into a desired set of characters
