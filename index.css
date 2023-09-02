@@ -149,7 +149,7 @@ html.no-scroll {
 
 .bx {
 	font-size: 5rem;
-	padding-top: 2.3rem;
+	margin: 2.3rem 0 0 0;
 }
 
 #iconDes {
@@ -618,13 +618,13 @@ html.no-scroll {
 	transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
-#skillDes i {
+.skillDes {
 	opacity: 0;
 	font-size: 1.5rem;
 	color: #FF3F4A;
 }
 
-#skillIcons i {
+.skillIcons {
 	opacity: 0;
 }
 
@@ -632,19 +632,20 @@ html.no-scroll {
 	height: 5rem;
 	width: 5rem;
 	user-select: none;
-}
-
-#skillIcons, #skillDes {
 	justify-content: space-evenly;
-	padding-right: 55px;
+	margin: 2.3rem 0 0 0;
 }
 
-#skillDes i.show {
+.skillIcons, .skillDes {
+	justify-content: space-evenly;
+}
+
+.skillDes.show {
 	opacity: 1;
 	transition: opacity 2s ease-in-out;
 }
 
-#skillIcons i.show {
+.skillIcons.show {
 	opacity: 1;
 	transition: opacity 1.5s ease-in-out;
 	font-size: 5rem;
