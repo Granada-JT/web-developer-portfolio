@@ -874,12 +874,6 @@ transform: scale(1.1);
 		margin: -3rem 0 0 0.3rem;
 	}
 
-	#icons, #iconDes {
-		position: relative;
-		top: 140%;
-		visibility: hidden;
-	}
-
 	#iconDes > .ml-4 {
 		position: relative;
 		left: 0.3rem;
@@ -889,6 +883,10 @@ transform: scale(1.1);
 		position: relative;
 		left: 0.7rem;
 	} */
+
+	#icons, #iconDes {
+		visibility: hidden;
+	}
 
 	.content {
 		min-height: 23rem;
