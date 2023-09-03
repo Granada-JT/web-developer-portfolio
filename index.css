@@ -805,7 +805,7 @@ transform: scale(1.1);
 @media (max-width:450px){
 
 	#landing {
-		min-height: 100vh;
+		min-height: 100vh + 1px;
 	}
 
 	.projects-container, .project-details {

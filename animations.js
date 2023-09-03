@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         });
-    }, { rootMargin: "-200px" });
+    }, { rootMargin: "-20px" });
 
     observer.observe(landingSection);
 });
