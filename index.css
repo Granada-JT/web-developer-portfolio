@@ -872,6 +872,7 @@ transform: scale(1.1);
 	#icons, #iconDes {
 		position: relative;
 		top: 140%;
+		visibility: hidden;
 	}
 
 	#iconDes > .ml-4 {
@@ -1071,6 +1072,12 @@ transform: scale(1.1);
 	#arrowDown {
 		height: 7rem;
 		width: 7rem;
+	}
+
+	#arrowDown.lg-hidden {
+		opacity: 0;
+		pointer-events: none;
+		display: none;
 	}
 
 	#projectsHeader > i {

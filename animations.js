@@ -181,8 +181,14 @@ document.addEventListener("DOMContentLoaded", function genChar() {
 // This code block animates the arrow down pointer
 document.addEventListener("DOMContentLoaded", function() {
   const landingSection = document.getElementById("landing");
-  const delay = 6000;
   const arrowDown = document.getElementById("arrowDown");
+  let delay;
+
+  if (window.matchMedia("(min-width: 768px) and (max-width: 992px), (max-width: 450px)").matches) {
+    delay = 3000;
+  } else {
+    delay = 6000;
+  }
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
