@@ -322,6 +322,11 @@ html.no-scroll {
 	padding-right: 10%;
 }
 
+#viberImg {
+	position: relative;
+	bottom: 8%;
+}
+
 #carouselPicture {
 	opacity: 0;
 	pointer-events: none;
@@ -820,6 +825,11 @@ transform: scale(1.1);
 		right: -1.3rem;
 	}
 
+	#viberImg {
+		position: relative;
+		right: 50%;
+	}
+
 	#about-me-header{
 		left: 50%;
 	}
@@ -849,6 +859,10 @@ transform: scale(1.1);
 	#profession > i {
 		font-size: 2rem;
 		letter-spacing: -1rem;
+	}
+
+	#profession .letter-adjustment {
+		margin-right: -1%;
 	}
 
 	#fullName > i, #profession > i {
@@ -901,6 +915,10 @@ transform: scale(1.1);
 	.content i {
 		position: absolute;
 		left: -8.5rem;
+	}
+
+	.project-details .detail {
+		height: calc(100% - 15rem);
 	}
 
 	.project-details .detail h3{
