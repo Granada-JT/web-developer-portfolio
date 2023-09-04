@@ -656,10 +656,6 @@ html.no-scroll {
 	padding-bottom: 25%;
 }
 
-#clientReviews-carousel {
-	padding-bottom: 25%;
-}
-
 #form-col {
 	opacity: 0;
 }
@@ -678,10 +674,6 @@ html.no-scroll {
 	transition: opacity 1s ease-in-out;
 }
 
-#clientReviews-carousel {
-	opacity: 0;
-}
-
 #clientReviews-carousel.show {
 	opacity: 1;
 	transition: opacity 1s ease-in-out;
@@ -689,6 +681,18 @@ html.no-scroll {
 /*Contacts Section End*/
 
 /* Awards and Achievements Carousel Start */
+
+#clientReviews-carousel {
+	opacity: 0;
+	width: auto;
+	min-height: auto;
+	cursor: pointer;
+	height: 400px;
+	margin-top: 3rem;
+	border: white;
+	padding-bottom: 25%;
+}
+
 #carouselExampleCaptions {
 	transition: transform 0.3s ease;
   }
@@ -696,6 +700,7 @@ html.no-scroll {
 #carouselExampleCaptions:hover {
 transform: scale(1.1);
 }
+
 .carousel.full-screen {
     position: fixed;
     top: 0;
@@ -710,14 +715,15 @@ transform: scale(1.1);
 }
 .carousel.full-screen .carousel-inner,
 .carousel.full-screen .carousel-item {
-    height: auto;
-	width: auto;
 	max-height: 80vh;
 	max-width: 55vw;
 }
 .carousel.full-screen .carousel-item img {
-    width: 100%;
-    height: 100%;
+    max-width: 92%;
+	padding: 0.5rem;
+	border-radius: 20px;
+	position: relative;
+	left: 4%;
 }
 .carousel.full-screen .carousel-indicators,
 .carousel.full-screen .carousel-control-prev,
@@ -770,6 +776,15 @@ transform: scale(1.1);
 
 .carousel.full-screen .carousel-control-next {
     right: 1rem;
+}
+
+.carousel-control-prev-icon {
+	background-image: url('./images/arrow-square-left-f.svg');
+	background-size: 30px;
+  }
+  
+.carousel-control-next-icon {
+  background-image: url('./images/arrow-square-right-f.svg');
 }
 
 #form-col > i {
@@ -934,6 +949,17 @@ transform: scale(1.1);
 
 	.project-details .detail a {
 		width: 100%;
+	}
+
+	.carousel.full-screen .carousel-inner,
+	.carousel.full-screen .carousel-item {
+		max-height: 100vh;
+		max-width: 95vw;
+	}
+
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		visibility: hidden;
 	}
 
 }
@@ -1201,16 +1227,9 @@ transform: scale(1.1);
 	body {
 		overflow-x: hidden;
 	}
-
-	#clientReviews-carousel {
-		width: auto;
-		height: 400px;
-		margin-top: 4.5rem;
-		border: white;
-	}
 }
 
-/*navbar hover and underline*/
+/*navbar hover and underline start*/
 .nav-link-underline {
     position: relative;
 }
@@ -1231,19 +1250,5 @@ transform: scale(1.1);
     transform: scaleX(1);
 }
 
-/*navbar hover and underline*/
+/*navbar hover and underline end*/
 
-.carousel-control-prev-icon {
-	background-image: url('./images/arrow-square-left-f.svg');
-	background-size: 30px;
-  }
-  
-.carousel-control-next-icon {
-  background-image: url('./images/arrow-square-right-f.svg');
-}
-
-#clientReviews-carousel {
-	width: auto;
-	min-height: auto;
-	cursor: pointer;
-}
