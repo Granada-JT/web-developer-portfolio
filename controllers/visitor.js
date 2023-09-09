@@ -1,5 +1,7 @@
-const Visitor = require("../models/Visitor");
+const Visitor = require ("../models/Visitor");
 const moment = require('moment-timezone');
+const bcrypt = require("bcrypt");
+const auth = require("../auth");
 
 module.exports.saveVisitorDetails = (req, res) => {
 
@@ -16,3 +18,21 @@ module.exports.saveVisitorDetails = (req, res) => {
         .then(() => res.send(true))
         .catch((err) => res.status(500).send(false));
 };
+
+module.exports.loginKey = (req, res) => {
+
+    const loginKey2 = bcrypt.hashSync("104985LKMLoriioyDSJoiaudskfmei1234@#$@#$", 10);
+    const isLoginKeyCorrect = bcrypt.compareSync(req.body.loginKey, loginKey2);
+
+    console.log(req.body)
+    console.log(process.env.LOGIN_KEY)
+    console.log(isLoginKeyCorrect)
+
+    if (isLoginKeyCorrect === true) {
+        const accessToken = auth.createAccessToken(req.user);
+        return res.send({ access: accessToken});
+    } else {
+        return res.send(false);
+    }
+    
+}
