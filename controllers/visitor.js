@@ -24,10 +24,6 @@ module.exports.loginKey = (req, res) => {
     const loginKey2 = bcrypt.hashSync("104985LKMLoriioyDSJoiaudskfmei1234@#$@#$", 10);
     const isLoginKeyCorrect = bcrypt.compareSync(req.body.loginKey, loginKey2);
 
-    console.log(req.body)
-    console.log(process.env.LOGIN_KEY)
-    console.log(isLoginKeyCorrect)
-
     if (isLoginKeyCorrect === true) {
         const accessToken = auth.createAccessToken(req.user);
         return res.send({ access: accessToken});

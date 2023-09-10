@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
 
 
 // Used to sign and confirm if the token is recognized and authenticated by our server app.
@@ -7,12 +8,15 @@ const secret = "EROoduflkUOUK1904398509";
 
 // Token Creation
 module.exports.createAccessToken = () => {
+
+	let hashedLoginKey = bcrypt.hashSync("104985LKMLoriioyDSJoiaudskfmei1234@##$",10);
+
 	const data = {
-	  loginKey: "104985LKMLoriioyDSJoiaudskfmei1234@##$"
+	  loginKey: `${hashedLoginKey}`
 	};
-  
+
 	return jwt.sign(data, secret, {});
-  };
+};
 
 
 // Token Verification
