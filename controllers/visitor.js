@@ -21,8 +21,8 @@ module.exports.saveVisitorDetails = (req, res) => {
 
 module.exports.loginKey = (req, res) => {
 
-    const loginKey2 = bcrypt.hashSync("104985LKMLoriioyDSJoiaudskfmei1234@#$@#$", 10);
-    const isLoginKeyCorrect = bcrypt.compareSync(req.body.loginKey, loginKey2);
+    const hashedLoginKey = bcrypt.hashSync("104985LKMLoriioyDSJoiaudskfmei1234@#$@#$", 10);
+    const isLoginKeyCorrect = bcrypt.compareSync(req.body.loginKey, hashedLoginKey);
 
     if (isLoginKeyCorrect === true) {
         const accessToken = auth.createAccessToken(req.user);
