@@ -14,8 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
 	<!-- External CSS -->
-
 	<link rel="stylesheet" type="text/css" href="./index.css">
+
+    <!-- External JS -->
+    <script type="text/javascript" src="./animations.js"></script>
+
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 
 </head>
 <body>
@@ -24,236 +30,466 @@
 <div id="landing">
 
     <!-- Start of Nav Bar -->
-    <section id="navBar" class="fixed-top">
-        <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#">My Developer Portfolio</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav smooth-scroll ml-auto mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-underline" href="#landing">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-underline" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-underline" href="#tools">Tools</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-underline" href="#contact">Contact Me</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li> -->
-                </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="navBar" class="fixed-top">
+                <nav class="navbar navbar-expand-lg px-md-5">
+                    <a class="navbar-brand pl-3 hidden pr-1 justify-content-start" href="#landing" id="brand"><img src="./images/brand2-transparent-white-red.svg" alt="logo">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav nav-list smooth-scroll ml-auto">
+                            <li class="nav-item hidden">
+                                <a class="nav-link nav-link-underline pl-3" href="#home">ABOUT</a>
+                            </li>
+                            <li class="nav-item hidden">
+                                <a class="nav-link pl-3 nav-link-underline" href="#projects">PROJECTS</a>
+                            </li>
+                            <li class="nav-item hidden">
+                                <a class="nav-link pl-3 nav-link-underline" href="#skills">SKILLS</a>
+                            </li>
+                            <li class="nav-item hidden">
+                                <a class="nav-link pl-3 nav-link-underline" href="#footer">CONTACT</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
             </div>
-            <a class="navbar-brand d-none d-lg-block" href="#contact">Jomar Granada</a>
-            <a class="navbar-brand d-none d-lg-block" href="#contact"><img src="./images/img2.png" class="rounded-circle img-fluid" id="small-img"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </section>
+        </div>
+    </div>
+    
     <!-- End of Nav Bar -->
 
-    <!-- Start of Home Section -->
-    <section id="home">
-        <!-- Start of About me Section -->
-        <section id="aboutMe">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Carousel Section -->
-                    <div class="col-lg-5 col-sm-12 order-1">
-                        <div class="text-center">
-                            <div class="d-flex justify-content-center mt-5">
-                                <div id="carouselPicture" class="carousel slide d-flex justify-content-center" data-ride="carousel">
-                                    <div class="carousel-inner rounded-circle">
-                                        <div class="carousel-item active">
-                                            <img src="./images/img2.png" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="./images/img1.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-caption-header mt-3" id="carouselCaption">
-                                <h3 id="carousel-caption-header">Jomar Granada</h3>
-                                <p>Full Stack Web Developer</p>
-                            </div>
-                        </div>
+    <div id="landingText">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-12 col-xl-6 ml-md-5 landing-col">
+                    <div id="fullName">
+                        <i data-final="J">J</i>
+                        <i data-final="o">o</i>
+                        <i data-final="m">m</i>
+                        <i data-final="a">a</i>
+                        <i data-final="r">r</i>
+                        <i data-final="&nbsp;">&nbsp;</i>
+                        <i data-final="G">G</i>
+                        <i data-final="r">r</i>
+                        <i data-final="a">a</i>
+                        <i data-final="n">n</i>
+                        <i data-final="a">a</i>
+                        <i data-final="d">d</i>
+                        <i data-final="a">a</i>
                     </div>
-                    <!-- End of Carousel Section -->
-                        <div class="col-lg-7 col-sm-12 order-2 mt-3 text-justify" id="carousel-aboutMe">
-                            <h1 class="mb-3 text-left" id="about-me-header">About Me</h1>
-                            <div id="about-me-caption">
-                                <p>Hello! My name is <strong>Jomar T. Granada</strong>, and I am a passionate <strong><em>Full-Stack Web Developer</em></strong>. Welcome to my portfolio, where I showcase my projects, tools, and expertise gained throughout my ongoing journey in programming. I am dedicated to crafting innovative and user-friendly web solutions that leave a lasting impact. Explore my portfolio, and I hope you enjoy your time here. Cheers!</p>
-                            </div>
-                            <!-- <a href="resume.pdf" class="btn btn-primary">Download Resume</a> -->
-                            <div class="row" id="carouselSocials">
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://www.instagram.com/jomar_granada/" target="_blank" class="w-50">
-                                            <img src="./images/instagram.svg" class="w-100">
-                                        </a>
-                                    </div>           
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://m.me/JomarGranadaa" target="_blank" class="w-50">
-                                            <img src="./images/messenger.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://www.linkedin.com/in/jomar-granada-a33604191/" target="_blank" class="w-50">
-                                            <img src="./images/linkedin.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://github.com/Fiiomio" target="_blank" class="w-50">
-                                            <img src="./images/github.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="https://gitlab.com/jomart.granada" target="_blank" class="w-50">
-                                            <img src="./images/gitlab.svg" class="w-100">
-                                        </a>
-                                    </div>  
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <div class=" d-flex justify-content-center">
-                                        <a href="mailto:jomart.granada@gmail.com" target="_blank" class="w-50">
-                                            <img src="./images/envelope-f.svg" class="w-100">
-                                        </a>
-                                    </div>  
+                    <div class="w-100"></div>
+                    <div id="profession" class="ml-md-0">
+                        <i data-final="F">F</i>
+                        <i data-final="u">u</i>
+                        <i data-final="l" class="letter-adjustment">l</i>
+                        <i data-final="l" class="letter-adjustment">l</i>
+                        <i data-final="-">-</i>
+                        <i data-final="S">S</i>
+                        <i data-final="t" class="letter-adjustment">t</i>
+                        <i data-final="a">a</i>
+                        <i data-final="c">c</i>
+                        <i data-final="k">k</i>
+                        <i data-final="&nbsp;">&nbsp;</i>
+                        <i data-final="W">W</i>
+                        <i data-final="e">e</i>
+                        <i data-final="b">b</i>
+                        <i data-final="&nbsp;">&nbsp;</i>
+                        <i data-final="D">D</i>
+                        <i data-final="e">e</i>
+                        <i data-final="v">v</i>
+                        <i data-final="e">e</i>
+                        <i data-final="l" class="letter-adjustment">l</i>
+                        <i data-final="o">o</i>
+                        <i data-final="p">p</i>
+                        <i data-final="e">e</i>
+                        <i data-final="r">r</i>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-5 mt-1 ml-md-5 ml-xl-0 landing-col">
+                    <div id="icons">
+                        <i class='bx bxl-javascript' style='color:#FF3F4A' ></i>
+                        <i class='bx bxl-nodejs' style='color:#FF3F4A' ></i>
+                        <i class='bx bxl-react' style='color:#FF3F4A' ></i>
+                        <i class='bx bxl-mongodb' style='color:#FF3F4A' ></i>
+                    </div>
+                    <div class="w-100"></div>
+                    <div id="iconDes" class="align-items-top">
+                        <i class="ml-1">Javascript</i>
+                        <i class="ml-4">Node.js</i>
+                        <i class="ml-4">React.js</i>
+                        <i class="ml-4">MongoDB</i>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <img id="arrowDown" src="./images/arrow-down2.svg"/>
+            </div>
+        </div>    
+    </div>
+</div>
+<!-- End of Landing Section -->
+
+<!-- Start of Home div -->
+<div id="home">
+    <!-- Start of About me div -->
+    <div id="aboutMe">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Carousel div -->
+                <div class="col-lg-5 col-12 order-1">
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <div id="carouselPicture" class="carousel slide d-flex justify-content-center " data-ride="carousel">
+                                <div class="carousel-inner rounded-circle">
+                                    <div class="carousel-item active">
+                                        <img src="./images/img2.png" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="./images/img1.jpg" class="d-block w-100" alt="...">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- End of About me Section -->
-    </section>
-    <!-- End of Home Section -->                    
+             <!-- End of Carousel div -->
+                <div class="col-lg-7 col-12 order-2 mt-3 text-justify" id="carousel-aboutMe">
+                    <i class="mb-3 text-left" id="about-me-header">About Me</i>
+                    <div id="about-me-caption">
+                        <p>I am a certified Full-Stack Web Developer. I am dedicated to crafting innovative and user-friendly web solutions that leave a positive impact. Welcome to my portfolio, where I showcase my projects, tools, and expertise in my ongoing journey in programming.</p>
+                    </div>
+                    <!-- <a href="resume.pdf" class="btn btn-primary">Download Resume</a> -->
+                    <div class="row " id="carouselSocials">
+                        <div class="col-lg-2 col-2">
+                            <div class=" d-flex justify-content-center">
+                                <a href="viber://chat?number=+639762255286" target="_blank" class="w-50">
+                                    <img src="./images/viber2.svg" class="w-100 socialsPics" id="viberImg">
+                                </a>
+                            </div>           
+                        </div>
+                        <div class="col-lg-2 col-2">
+                            <div class=" d-flex justify-content-center">
+                                <a href="https://m.me/JomarGranadaa" target="_blank" class="w-50">
+                                    <img src="./images/messenger2.svg" class="w-100 socialsPics">
+                                </a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-2 col-2">
+                            <div class=" d-flex justify-content-center">
+                                <a href="https://www.linkedin.com/in/jomar-granada-a33604191/" target="_blank" class="w-50">
+                                    <img src="./images/linkedin2.svg" class="w-100 socialsPics">
+                                </a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-2 col-2">
+                            <div class=" d-flex justify-content-center">
+                                <a href="https://github.com/Fiiomio" target="_blank" class="w-50">
+                                    <img src="./images/github2.svg" class="w-100 socialsPics">
+                                </a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-2 col-2">
+                            <div class=" d-flex justify-content-center">
+                                <a href="https://gitlab.com/jomart.granada" target="_blank" class="w-50">
+                                    <img src="./images/gitlab2.svg" class="w-100 socialsPics">
+                                </a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-2 col-2">
+                            <div class=" d-flex justify-content-center pt-2 ">
+                                <a href="mailto:jomart.granada@gmail.com" target="_blank" class="w-50">
+                                    <img src="./images/envelope-f2.svg" class="w-100 socialsPics" id="emailImg">
+                                </a>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of About me div -->
 </div>
-<!-- End of Landing Section -->
+<!-- End of Home Section -->     
 
 <!-- Start of Projects Section -->
-<div id="projects" class="container-fluid">
-    <div class="row" id="projectsHeader">
-      <h1 class="text-center col-12 pt-5 mt-4">My Projects</h1>
+<div id="projects" class="container-fluid projects-container">
+    <div class="row d-flex justify-content-center" id="projectsHeader">
+      <i class="text-center col-12">My Projects</i>
     </div>
     <!-- Projects -->
-    <div class="p-5 d-lg-flex justify-content-center mx-md-5">
+    <div class=" row px-5 pt-5 d-lg-flex justify-content-center align-items-center mx-md-5 card-column">
 
       <!-- My First Project Start -->
-      <div class="card col-xl-4 mb-5 mb-xl-0 projectCards">
-          <div class="card-body">
-              <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-1.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-              </video>
-              <h5 class="card-title mt-3 text-center">My First Project</h5>
-              <h6 class="card-subtitle mb-2 text-left">HTML</h6>
-                  <div id="projectcardsCaption">
-                      <p class="card-text text-justify">For my first project, I created a dynamic and responsive webpage using HTML specifically my web developer portfolio. This project showcases my proficiency in layouting web pages using bootstrap, creating web elements using HTML, and implementing color schemes and different design styles using CSS. The webdeveloper portfolio focuses on delivering a minimalistic design and incorporates a sleek and elegant color palette.</p>
-                  </div>
-              <a href="#projects" class="btn btn-sm active my-2" role="button" aria-pressed="true">Link to project</a>
-          </div>
-      </div>
+
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0" data-link="#landing" data-link-text="Link to Project">
+
+
+            <div class="project" data-name="p-1">
+                <div class="content content-1">
+                    <div class="col-lg-6 col-12"><img src="./images/project-1.png" alt="project-1"></div>
+                    <div class="col-lg-6 col-12">
+                        <div class="row offset-4 mt-4"><h1>Portfolio</h1></div>
+                        <div class="row"><i class="offset-5">HTML CSS Javascript</i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
       <!-- My First Project End -->
 
       <!-- My Second Project Start -->
-      <div class="card col-xl-4 mb-5 mb-xl-0 mx-xl-5 projectCards">
-          <div class="card-body">
-              <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-2.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-              </video>
-              <h5 class="card-title mt-3 text-center">My Second Project</h5>
-              <h6 class="card-subtitle mb-2 text-left">MongoDB & Postman</h6>
-              <div id="projectcardsCaption">
-                  <p class="card-text text-justify">In my second project, I explored the power of databases with the use of MongoDB and Postman. In this project I created an e-commerce API that will enable users to shop, order, and add to cart. It also lets sellers/admins to monitor and control the stocks and sales of their products; this API also prioritizes the security and privacy of all its users. I have tested all these routes through Postman, and have stored the gathered data in a MongoDB database, creating a seamlessly working and efficient backend server application. </p>
-              </div>
-              <a href="https://capstone-2-granada.onrender.com" class="btn btn-sm active my-2" role="button" aria-pressed="true">Deployed API link</a>
-          </div>
+
+      <div class="col-xl-6 col-12 mb-5 mb-xl-0" data-link="https://capstone-2-granada.onrender.com" data-link-text="Deployed API Link">
+
+        <div class="project" data-name="p-2">
+            <div class="content content-1">
+                <div class="col-lg-6 col-12"><img src="./images/project-2.png" alt="project-1"></div>
+                <div class="col-lg-6 col-12"><div class="row offset-4"><h1>Ecommerce API</h1></div>
+                <div class="row"><i class="offset-5">MongoDB Postman ExpressJS Nodejs</i></div></div>
+            </div>
+        </div>
       </div>
+
       <!-- My Second Project End -->
 
-      <!-- My Third Project Start -->
-      <div class="card col-xl-4 mb-5 mb-xl-0 projectCards">
-          <div class="card-body">
-              <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-3.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-              </video>
-              <h5 class="card-title mt-3 text-center">My Third Project</h5>
-              <h6 class="card-subtitle mb-2 text-left">React</h6>
-              <div id="projectcardsCaption">
-                  <p class="card-text text-justify">For my third project, I built a dynamic web application using React and the MERN stack, hosted/deployed in Vercel. It's a fully functional e-commerce shop template where shoppers can browse and add products to their cart, while sellers and admins can showcase their products with images and descriptions. The application boasts a user-friendly and attractive interface, making the shopping experience smooth and enjoyable.  </p>
-              </div>
-              <a href="https://granada-jomar-fullstack-s65-s71-capstone3.vercel.app/" class="btn btn-sm active my-2" role="button" aria-pressed="true" target="_blank">Link to project</a>
-          </div>
-      </div>
-      <!-- My Third Project End -->
   </div>
-</div>
-<!-- End of Projects Section -->
 
-<!-- Start of Tools Section -->
-<div id="tools" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="text-center">
-        <!-- Core Tools Section Start -->
-        <h1 class="pt-5 mt-4">Core Tools</h1>
+    <!-- My Third Project Start -->
+    <div class=" row px-5 pb-5 pt-xl-5 d-lg-flex justify-content-center align-items-center mx-md-5 card-column">
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0" data-link="https://granada-jomar-fullstack-s65-s71-capstone3.vercel.app/" data-link-text="Link to Project">
 
-        <div id="core-tools" class="pb-4 d-flex flex-column">
-            <div id="html" class="d-flex justify-content-center flex-row">
-                <img width="150" src="images/logo-html5.png"/>
-                <img width="150" src="images/logo-css3.png"/>
-                <img width="150" src="images/logo-javascript.png"/>
+            <div class="project" data-name="p-3">
+                <div class="content content-1">
+                    <div class="col-lg-6 col-12"><img src="./images/project-3.png" alt="project-1"></div>
+                    <div class="col-lg-6 col-12"><div class="row offset-4 mt-1"><h1>Ecommerce Shop Template</h1></div>
+                    <div class="row"><i class="offset-5">React MERN</i></div></div>
+                </div>
             </div>
         </div>
-        <!-- Core Tools Section End -->
-        
-        <!-- Other Tools Section Start -->
-        <h1 class="text-center mt-3">Other Tools</h1>
+        <!-- My Third Project End -->
 
-        <div id="other-tools" class="p-3 d-flex justify-content-center align-items-top flex-md-column ">
-            <div id="tools-1" class="d-md-flex justify-content-center">
-                <img width="150" src="images/logo-mongodb.png"/>
-                <img width="150" src="images/logo-nodejs.png"/>
-                <img width="150" src="images/logo-expressjs.png"/>
-                <img width="150" src="images/logo-react.png"/>
-                <img width="150" src="images/logo-bootstrap.png"/>
+        <!-- My Fourth Project Start -->
+        <div class="col-xl-6 col-12 mb-5 mb-xl-0" data-link="https://calculator-app-granada-bz85pkxkz-jomartgranada.vercel.app/" data-link-text="Link to Project">
 
-            </div>
-            <div id="tools-2" class="d-md-flex justify-content-center">
-                <img width="150" src="images/logo-git.png"/>
-                <img width="150" src="images/logo-sublime-text-3.png"/>
-                <img width="150" src="images/logo-postman.png"/>
-                <img width="150" src="images/logo-gitlab-ci-cd.png"/>
-                <img width="150" src="images/logo-rest.png"/>
+            <div class="project" data-name="p-4">
+                <div class="content content-1">
+                    <div class="col-lg-6 col-12"><img src="./images/project-4.png" alt="project-1"></div>
+                    <div class="col-lg-6 col-12"><div class="row offset-4 mt-4"><h1>Calculator</h1></div>
+                    <div class="row"><i class="offset-5">Sveltekit Typescript</i></div></div>
+                </div>
             </div>
         </div>
-        <!-- Other Tools Section End -->
+    </div>
+    
+    <div class="project-details">
+        <div class="container">
+            <div class="row">
+                <div class="detail" data-target="p-1">
+                    <i class='bx bx-x closeIcon'></i>
+                    <div class="col-12">
+                        <h3>Portfolio</h3>
+                        <i>HTML CSS Javascript</i>
+                        <video autoplay loop muted class="img-fluid">
+                            <source src="./videos/project-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="col-12">
+                        <p>My first project is a dynamic and responsive webpage that showcases my proficiency in web development skills. I used Bootstrap to layout the web pages, HTML to create web elements, CSS to implement color schemes and different design styles, and JavaScript to create smooth animations, transitions, and effects. All of the styling and animations in my portfolio are proudly done using pure CSS and JavaScript, without relying on any existing frameworks or libraries. This project demonstrates my extensive knowledge on the fundamentals of both CSS and JavaScript, and my ability to extend their possibilities.</p>
         
+                            <p>The portfolio is divided into five sections:</p>
+                            
+                            <ul>
+                                <li>Landing: This section presents a subtle and pleasing animation of my name, title and main skills as a web developer.</li>
+                                <li>About Me: This section provides a short description of my personality as a professional, my picture, and my contact information</li>
+                                <li>Projects: This section proudly showcases all my finished projects, including my web developer portfolio.</li>
+                                <li>Tools: This section features all the tools that I can use proficiently hence all the skills that comes with utilizing all those tools</li>
+                                <li>Contact: This section provides a contact form and a showcase of all my achievements, certifications and awards</li>
+                            </ul>
+                            
+                        <p> I am proud of this project and I believe it is a strong representation of my skills and abilities as a web developer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="detail" data-target="p-2">
+                    <i class='bx bx-x closeIcon'></i>
+                    <div class="col-12">
+                        <h3>Ecommerce API</h3>
+                        <i>MongoDB Postman ExpressJS NodeJS</i>
+                        <video autoplay loop muted class="img-fluid">
+                            <source src="./videos/project-2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video> 
+                        <a href="https://capstone-2-granada.onrender.com/" target="_blank" class="btn" role="button" aria-pressed="true">Deployed API Link</a>
+                    </div>
+                    <div class="col-12">
+                        <p>In building this ecommerce API, I explored the power of databases with the use of MongoDB and Postman. This API will enable users to shop, order, and add to cart. It also lets sellers/admins to monitor and control the stocks and sales of their products; it also prioritizes the security and privacy of all its users. I have tested all these routes through Postman, and have stored the gathered data in a MongoDB database, creating a seamlessly working and efficient backend server application.</p>
+                            
+                        <p>This e-commerce API is mainly composed of three elements:</p>
+                        
+                        <ul>
+                            <li>Schemas: In this API I have created five schemas: cart, checkout, order, product and user. These schemas will act as the blueprint in saving the data in the database. It enables the different features and functionalities that will be applied in the frontend application. </li>
+                            <li>Controllers: The controllers are the ones that contains the necessary logic required to execute the different features and functionalities both for the backend and frontend server applications.</li>
+                            <li>Routes: The routes are where the controllers gets its command/request from. It is where the create, read, update, and delete operations are initialized, and is then passed to defined controller to execute exact logic that is requrired for the specific operation.</li>
+                        </ul>
+                        
+                        <p> This API showcases my proficiency in working with databases, and my ability to use MongoDB as a database management system, Postman as a testing and debgging tool, and node.js with express.js as framworks for creating a fully functional E-commerce API.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="detail" data-target="p-3">
+                    <i class='bx bx-x closeIcon'></i>
+                    <div class="col-12">
+                        <h3>Ecommerce Shop Template</h3>
+                        <i>React MERN</i>
+                        <video autoplay loop muted class="img-fluid">
+                            <source src="./videos/project-3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <a href="https://granada-jomar-fullstack-s65-s71-capstone3.vercel.app/" target="_blank" class="btn" role="button" aria-pressed="true">Link to Project</a>
+                    </div>
+                    <div class="col-12">
+                        <p>I built a dynamic web application using React.js and the MERN stack, hosted/deployed in Vercel. It's a fully functional e-commerce shop template where shoppers can browse and add products to their cart, while sellers and admins can showcase their products with images and descriptions. The application boasts a user-friendly and attractive interface, making the shopping experience smooth and enjoyable.</p>
+                
+                        <p>Here are some of the features and functionalities of the application:</p>
+                        
+                        <ul>
+                            <li>User Sign up and Log in: This feature executes user creation and authentication. With the use of props, event listeners, and the local storage. The front end seamlessly communicates with the backend by tracing the correct controller and logic from fetching the correct routes. After a user has been created, his/her credentials will then be saved in the database, and will have a new token generated used for authentication, everytime he/she logs in.</li>
+                            <li>Add to cart: The add to cart feature utilizes the cart schema from the backend. It detects the product that the user wants to add to cart, and creates a new instance of the cart schema. This will then be recorded into the database as a new cart and is also presented to the user in the front end via retrieving the cart details</li>
+                            <li>Admin Dashboard: The admin dashboard is where admins can monitor, edit, delete and update all the products in the e-commerce application. Specifically, they can edit the name, description, price and image of the products, they could also archive and activate all of the products.</li>
+                            <li>Add Products: This feature lets the admins add products, with its own unique name, description, price and image. For their convinience I have also placed beside it an overview of all the products where they can see the name, description, price and image of all the products that is already added.</li>
+                            <li>Browse all products: This feature/page allows the admin to beautifully showcase all of his/her products. It also allows the user to efficiently browse and select the potiential products/items that they will add to cart and eventually checkout.</li>
+                            <li>See product details: The see product details feature is added to help the users decide if they really want to add the product to cart. The user will be able to see the name, description, price, image of the product and other additional information in a bigger format. This help the user to know more about the product, and also the admin to present all the information and go all out in enticing a user/shopper to buy his/her product.</li>
+                        </ul>
+                        
+                        <p> This full-stack react application showcases my knowledge and proficiency in creating a user-friendly, and dynamic web application, that effciently utilizes the back-end and the front-end applications. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="detail" data-target="p-4">
+                    <i class='bx bx-x closeIcon'></i>
+                    <div class="col-12">
+                        <h3>Calculator</h3>
+                        <i>Sveltekit Typescript</i>
+                        <video autoplay loop muted class="img-fluid">
+                            <source src="./videos/project-4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <a href="https://calculator-app-granada-bz85pkxkz-jomartgranada.vercel.app/" target="_blank" class="btn" role="button" aria-pressed="true">Link to Project</a> 
+                    </div>
+                    <div class="col-12">
+                        <p>In this project I showcased my unending passion for knowledge and learning new things. Using a newer tool in Sveltekit and a different language in Typescript, I created a fully-functional and precise calculator that maximizes the server-side rendering enabled by Sveltekit.</p>
+                                
+                        <p>This online calculator is mainly composed of three objectives:</p>
+                        
+                        <ul>
+                            <li>Main Objective: Create a calculator app which accepts and computes for equations with multiple
+                            operators and numbers; and without using eval(), Function(), mathjs or any computation library. </li>
+                            <li>Front-end Code Objectives: Provide buttons for entering operators and numbers. Send a POST request to the backend server containing the created equation. Present the received answer from the backend API</li>
+                            <li>Back-End Code Objective: Calculate the received equation from the front end and send it back as a response.</li>
+                        </ul>
+                        
+                        <p> With this objectives I have created a calculator app that will fully utilize the functions of the Sveltekit framework and Typescript particularly with the its server-side rendering feature used in calculating the equation provided by the user from the front end.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-<!-- Start of Tools Section -->
+
+<!-- End of Projects Section -->
+
+<!-- Start of Skills Section -->
+<div id="skills" class="d-flex justify-content-center align-items-center">
+    <div class="text-center container my-5">
+        <i class="pt-5 mt-5 title">Skills</i>
+            <div class="row">
+
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-javascript' style='color:#ffffff' ></i>
+                    <i class="row skillDes">Javascript</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-nodejs' style='color:#ffffff' ></i>
+                    <i class="row skillDes">Node.js</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-react' style='color:#ffffff' ></i>
+                    <i class="row skillDes">React.js</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-mongodb' style='color:#ffffff' ></i>
+                    <i class="row skillDes">MongoDB</i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-html5' style='color:#ffffff' ></i>
+                    <i class="row skillDes">HTML 5</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-css3' style='color:#ffffff' ></i>
+                    <i class="row skillDes">CSS 3</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-bootstrap' style='color:#ffffff' ></i>
+                    <i class="row skillDes">Bootstrap</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bx bxs-devices' style='color:#ffffff' ></i>
+                    <i class="row skillDes">Responsive Design</i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-git' style='color:#ffffff' ></i>
+                    <i class="row skillDes">Git</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class='row bx skillIcons bxl-gitlab' style='color:#ffffff' ></i>
+                    <i class="row skillDes">Gitlab</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class="row skillIcons"><img src="./images/restful-api.svg" alt="restful-api" class="skillIconImg"></i>
+                    <i class="row skillDes">Restful APIs</i>
+                </div>
+                <div class="col-md-4 col-lg-3 col-6">
+                    <i class="row skillIcons"><img src="./images/postman.svg" alt="restful-api" class="skillIconImg"></i>
+                    <i class="row skillDes">Postman</i>
+                </div>
+            </div>
+
+    </div>
+</div>
+<!-- End of Skills Section -->
 
 <!-- Start of Contact Section -->
-<div id="contact" class="d-flex flex-column justify-content-center">
+<div id="contact" class="d-flex flex-column">
     <div class="container" id="form-carousel">
         <div class="row mx-3">
             <div class="col-sm-12 col-lg-6">
                 <form id="form-col">
-                    <h2 class="text-center">Contact Me</h2>
+                    <i class="text-center">Contact Me</i>
                     <div class="form-group text-left justify-content-center">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" required>
@@ -270,16 +506,9 @@
                 </form>
             </div>
             <div class="col-sm-12 col-lg-6 d-flex align-items-top justify-content-center" id="clientReviews-carousel">
-                <div class="text-center">
+                <div id="formCarouHeader">
                     <!-- Content beside the form -->
-                    <h3>My Awards and Achievements</h3>
                     <div id="carouselExampleCaptions" class="carousel slide text-center pt-3" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="0"></li>
-                        </ol>
                       <div class="carousel-inner rounded" id="contact-carousel">
                         <!-- Pictures will appear in the carousel -->
                         <div class="carousel-item active">
@@ -307,8 +536,8 @@
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </button>
-                      <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <button class="carousel-control-next border-dark" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+                        <span class="carousel-control-next-icon border-dark" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                       </button>
                     </div>
@@ -441,6 +670,7 @@ async function recordView() {
 
 // Call the recordView function on page load or refresh
 recordView();
+
 </script>
 
 <!-- End of Contact Section -->

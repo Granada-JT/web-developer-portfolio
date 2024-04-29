@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="640" height="480" viewBox="0 0 640 480" xml:space="preserve">
+<desc>Created with Fabric.js 3.6.6</desc>
+<defs>
+</defs>
+<g transform="matrix(1.93 0 0 1.93 339.21 258.48)"  >
+<g style=""   >
+		<g transform="matrix(0.13 0 0 -0.13 78.05 -11.48)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  transform=" translate(-2095, -1384.75)" d="M 2020 1823 c -198 -54 -310 -212 -310 -435 c 0 -190 68 -327 198 -396 c 137 -73 293 -80 469 -20 l 98 33 l 3 193 l 2 192 l -170 0 l -170 0 l 0 -50 l 0 -50 l 115 0 l 116 0 l -3 -112 l -3 -113 l -70 -18 c -146 -38 -286 -10 -372 75 c -70 68 -88 122 -88 264 c 0 119 1 122 35 190 c 61 119 161 172 310 161 c 90 -6 171 -33 242 -81 l 53 -35 l 3 67 c 4 80 2 82 -113 118 c -107 35 -253 42 -345 17 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(0.13 0 0 -0.13 -122.69 -10.95)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  transform=" translate(-585, -1381.12)" d="M 490 1775 l 0 -45 l 90 0 l 90 0 l 0 -300 c 0 -336 -2 -349 -65 -376 c -44 -18 -119 -18 -178 0 l -47 14 l 0 -53 c 0 -30 4 -56 9 -59 c 5 -3 46 -9 93 -12 c 107 -8 182 11 238 63 c 66 59 70 85 70 475 l 0 338 l -150 0 l -150 0 l 0 -45 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(0.13 0 0 -0.13 -31.9 -11.45)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  transform=" translate(-1270, -1385)" d="M 900 1770 l 0 -50 l 155 0 l 155 0 l 0 -385 l 0 -385 l 60 0 l 60 0 l 0 385 l 0 385 l 155 0 l 155 0 l 0 50 l 0 50 l -370 0 l -370 0 l 0 -50 z" stroke-linecap="round" />
+</g>
+</g>
+</g>
+</svg>
