@@ -1,69 +1,61 @@
 // This code block hides the navbar when in the landing section
 document.addEventListener("DOMContentLoaded", function() {
-    const landingSection = document.getElementById("landing");
-    const brandElement = document.getElementById("brand");
-    const navbarToggler = document.querySelectorAll(".navbar-toggler");
-    const navItems = Array.from(document.querySelectorAll(".nav-item"));
+  const landingSection = document.getElementById("landing");
+  const brandElement = document.getElementById("brand");
+  const navbarToggler = document.querySelectorAll(".navbar-toggler");
+  const navItems = Array.from(document.querySelectorAll(".nav-item"));
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.target === landingSection) {
-                if (entry.isIntersecting) {
-                    navbarToggler.forEach(element => {
-                        element.classList.remove("show");
-                    })
-                    brandElement.classList.add("hidden"); // Apply the hidden class to trigger the fade animation
-                    navItems.forEach(navItem => {
-                        navItem.style.transitionDelay = ""; // Reset the transition delay
-                        navItem.classList.add("hidden"); // Remove the show class from each nav item
-                    });
-                } else {
-                    navbarToggler.forEach(element => {
-                        element.classList.add("show");
-                    })
-                    brandElement.classList.remove("hidden"); // Remove the hidden class to show the brand element
-                    navItems.forEach((navItem, index) => {
-                        navItem.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.5 seconds
-                        navItem.classList.remove("hidden"); // Add the show class to reveal the nav item with a delay
-                    });
-                }
-            }
-        });
-    }, { rootMargin: "-20px" });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === landingSection) {
+        if (entry.isIntersecting) {
+          navbarToggler.forEach(element => {
+            element.classList.remove("show");
+          });
+          brandElement.classList.add("hidden");
+          navItems.forEach(navItem => {
+            navItem.style.transitionDelay = "";
+            navItem.classList.add("hidden");
+          });
+        } else {
+          navbarToggler.forEach(element => {
+            element.classList.add("show");
+          });
+          brandElement.classList.remove("hidden");
+          navItems.forEach((navItem, index) => {
+            navItem.style.transitionDelay = `${(index + 1) * 0.05}s`;
+            navItem.classList.remove("hidden");
+          });
+        }
+      }
+    });
+  }, { rootMargin: "-20px" });
 
-    observer.observe(landingSection);
+  observer.observe(landingSection);
 });
 
 // This code block zooms into the carousel at the contact form when it is clicked
 document.addEventListener("DOMContentLoaded", function() {
-    // Get the carousel element
     const carousel = document.getElementById("carouselExampleCaptions");
-
-    // Get the prev and next buttons
-    const prevButton = carousel.querySelector(".carousel-control-prev");
-    const nextButton = carousel.querySelector(".carousel-control-next");
-
-    // Add a mousedown event listener to the carousel
     carousel.addEventListener("mousedown", function(event) {
-        // Check if the clicked element is the prev or next icon
-        if (
-            event.target.classList.contains("carousel-control-prev-icon") ||
-            event.target.classList.contains("carousel-control-next-icon")
-        ) {
-            return; // Do not toggle full-screen mode
-        }
+    if (
+      event.target.classList.contains("carousel-control-prev-icon") ||
+      event.target.classList.contains("carousel-control-next-icon")
+    ) {
+      return;
+    }
 
-        // Toggle the full-screen class on the carousel
-        carousel.classList.toggle("full-screen");
-        // Lock scrolling when the carousel is in full-screen mode
-        const html = document.documentElement;
-        if (carousel.classList.contains("full-screen")) {
-            html.classList.add("no-scroll");
-        } else {
-            html.classList.remove("no-scroll");
+    carousel.classList.toggle("full-screen");
+    carousel.classList.toggle("full-screen");
+    carousel.classList.toggle("full-screen");
+    const html = document.documentElement;
 
-        }
-    });
+    if (carousel.classList.contains("full-screen")) {
+      html.classList.add("no-scroll");
+    } else {
+      html.classList.remove("no-scroll");
+    }
+  });
 });
 
 // This code block does the animation of generating random characters back into a desired set of characters
@@ -75,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function genChar() {
   var allCounters = document.querySelectorAll("#fullName > i");
 
   function count() {
-
     allCounters.forEach((allCounter, index) => {
       allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
       allCounter.classList.add("show");
@@ -101,24 +92,18 @@ document.addEventListener("DOMContentLoaded", function genChar() {
     });
   }
 
-  // Create a new IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      // Check if the landing section is visible
       if (entry.isIntersecting) {
-        // Call the count function here
-        count()
+        count();
       } else {
-        // Call the reset function here
-        resetCount()
+        resetCount();
       }
     });
   },{ rootMargin: "-1px" });
 
-  // Select the landing section element
   const landingSection = document.getElementById("landing");
 
-  // Start observing the landing section
   observer.observe(landingSection);
 });
 
@@ -131,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function genChar() {
   var allCounters = document.querySelectorAll("#profession > i");
 
   function count() {
-
     allCounters.forEach((allCounter, index) => {
       allCounter.style.transitionDelay = `${(index + 1) * 0.05}s`;
       allCounter.classList.add("show");
@@ -157,24 +141,18 @@ document.addEventListener("DOMContentLoaded", function genChar() {
     });
   }
 
-  // Create a new IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      // Check if the landing section is visible
       if (entry.isIntersecting) {
-        // Call the count function here
         count()
       } else {
-        // Call the reset function here
         resetCount()
       }
     });
   },{ rootMargin: "-1px" });
 
-  // Select the landing section element
   const landingSection = document.getElementById("landing");
 
-  // Start observing the landing section
   observer.observe(landingSection);
 });
 
@@ -217,25 +195,25 @@ document.addEventListener("DOMContentLoaded", function() {
   const applyAnimation = function() {
     setTimeout(() => {
       boxIcons.forEach((boxIcon, index) => {
-        boxIcon.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
-        boxIcon.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        boxIcon.style.transitionDelay = `${(index + 1) * 0.5}s`;
+        boxIcon.classList.add("show");
       });
       iconDes.forEach((iconDes, index) => {
-        iconDes.style.transitionDelay = `${(index + 1) * 0.5}s`; // Delay each nav item by 0.05 seconds
-        iconDes.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        iconDes.style.transitionDelay = `${(index + 1) * 0.5}s`;
+        iconDes.classList.add("show");
       });
-    }, 2000); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+    }, 2000);
   };
   
 
   const resetAnimation = function() {
     boxIcons.forEach(boxIcon => {
-      boxIcon.style.transitionDelay = ""; // Reset the transition delay
-      boxIcon.classList.remove("show"); // Remove the show class from each nav item
+      boxIcon.style.transitionDelay = "";
+      boxIcon.classList.remove("show");
     });
     iconDes.forEach(iconDes => {
-      iconDes.style.transitionDelay = ""; // Reset the transition delay
-      iconDes.classList.remove("show"); // Remove the show class from each nav item
+      iconDes.style.transitionDelay = "";
+      iconDes.classList.remove("show");
     });
   };
 
@@ -272,41 +250,41 @@ document.addEventListener("DOMContentLoaded", function() {
   const applyAnimation = function() {
     setTimeout(() => {
       carouselPics.forEach((carouselPic, index) => {
-        carouselPic.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        carouselPic.classList.add("show", "slide-in-right"); // Add the show class to reveal the nav item with a delay
+        carouselPic.style.transitionDelay = `${(index + 1) * 0.05}s`;
+        carouselPic.classList.add("show", "slide-in-right");
       });
       aboutMe.forEach((caption, index) => {
-        caption.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        caption.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        caption.style.transitionDelay = `${(index + 1) * 0.05}s`;
+        caption.classList.add("show");
       });
       socialsPics.forEach((socialsPic, index) => {
-        socialsPic.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        socialsPic.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        socialsPic.style.transitionDelay = `${(index + 1) * 0.05}s`;
+        socialsPic.classList.add("show");
       });
       socials.forEach((socials, index) => {
-        socials.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-        socials.classList.add("slide-in-left"); // Add the show class to reveal the nav item with a delay
+        socials.style.transitionDelay = `${(index + 1) * 0.05}s`;
+        socials.classList.add("slide-in-left");
       });
-    }, 500); // Add a delay before starting the animation
+    }, 500);
   };
   
 
   const resetAnimation = function() {
     carouselPics.forEach(carouselPic => {
-      carouselPic.style.transitionDelay = ""; // Reset the transition delay
-      carouselPic.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
+      carouselPic.style.transitionDelay = "";
+      carouselPic.classList.remove("show", "slide-in-right");
     });
     aboutMe.forEach(caption => {
-      caption.style.transitionDelay = ""; // Reset the transition delay
-      caption.classList.remove("show"); // Remove the show class from each nav item
+      caption.style.transitionDelay = "";
+      caption.classList.remove("show");
     });
     socialsPics.forEach(socialsPic => {
-      socialsPic.style.transitionDelay = ""; // Reset the transition delay
-      socialsPic.classList.remove("show"); // Remove the show class from each nav item
+      socialsPic.style.transitionDelay = "";
+      socialsPic.classList.remove("show");
     });
     socials.forEach(socials => {
-      socials.style.transitionDelay = ""; // Reset the transition delay
-      socials.classList.remove("slide-in-left"); // Remove the show class from each nav item
+      socials.style.transitionDelay = "";
+      socials.classList.remove("slide-in-left");
     });
   };
 
@@ -342,24 +320,24 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
       setTimeout (() => {
         project.forEach((project, index) => {
-          project.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.05 seconds
-          project.classList.add("show"); // Add the show class to reveal the nav item with a delay
+          project.style.transitionDelay = `${(index + 1) * 0.05}s`;
+          project.classList.add("show");
         });
       }, 300);
       projectsHeader.forEach((projectsHeader, index) => {
-        projectsHeader.classList.add("show", "slide-down-up"); // Add the show class to reveal the nav item with a delay
+        projectsHeader.classList.add("show", "slide-down-up");
       });
-    }, 500); // Add a delay before starting the animation
+    }, 500);
   };
   
 
   const resetAnimation = function() {
     project.forEach(project => {
-      project.style.transitionDelay = ""; // Reset the transition delay
-      project.classList.remove("show", "slide-in-right"); // Remove the show class from each nav item
+      project.style.transitionDelay = "";
+      project.classList.remove("show", "slide-in-right");
     });
     projectsHeader.forEach(projectsHeader => {
-      projectsHeader.style.transitionDelay = ""; // Reset the transition delay
+      projectsHeader.style.transitionDelay = "";
       projectsHeader.classList.remove("show");
     });
   };
@@ -396,27 +374,27 @@ document.addEventListener("DOMContentLoaded", function() {
   const applyAnimation = function() {
     setTimeout(() => {
       skillIcons.forEach((skillIcon, index) => {
-        skillIcon.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        skillIcon.classList.add("show");
       });
       title.forEach((title, index) => {
-        title.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        title.classList.add("show");
       });
       skillDes.forEach((skillDes, index) => {
-        skillDes.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        skillDes.classList.add("show");
       });
-    }, 500); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+    }, 500);
   };
   
 
   const resetAnimation = function() {
     skillIcons.forEach(skillIcon => {
-      skillIcon.classList.remove("show"); // Remove the show class from each nav item
+      skillIcon.classList.remove("show");
     });
     title.forEach(title => {
-      title.classList.remove("show"); // Remove the show class from each nav item
+      title.classList.remove("show");
     });
     skillDes.forEach(skillDes => {
-      skillDes.classList.remove("show"); // Remove the show class from each nav item
+      skillDes.classList.remove("show");
     });
   };
 
@@ -453,35 +431,35 @@ document.addEventListener("DOMContentLoaded", function() {
   const applyAnimation = function() {
     setTimeout(() => {
       formCol.forEach((formCol) => {
-        formCol.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        formCol.classList.add("show");
       });
       formGroup.forEach((formGroup) => {
-        formGroup.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        formGroup.classList.add("show");
       });
       clientReviewsCarousel.forEach((clientReviewsCarousel) => {
-        clientReviewsCarousel.classList.add("show"); // Add the show class to reveal the nav item with a delay
+        clientReviewsCarousel.classList.add("show");
       });
       setTimeout (() => {
         footer.forEach((footer) => {
-          footer.classList.add("show"); // Add the show class to reveal the nav item with a delay
+          footer.classList.add("show");
         });
       },1000)
-    }, 500); // Add a delay of 1 second (1000 milliseconds) before starting the animation
+    }, 500);
   };
   
 
   const resetAnimation = function() {
     formCol.forEach(formCol => {
-      formCol.classList.remove("show"); // Remove the show class from each nav item
+      formCol.classList.remove("show");
     });
     formGroup.forEach(formGroup => {
-      formGroup.classList.remove("show"); // Remove the show class from each nav item
+      formGroup.classList.remove("show");
     });
     clientReviewsCarousel.forEach(clientReviewsCarousel => {
-      clientReviewsCarousel.classList.remove("show"); // Remove the show class from each nav item
+      clientReviewsCarousel.classList.remove("show");
     });
     footer.forEach(footer => {
-      footer.classList.remove("show"); // Remove the show class from each nav item
+      footer.classList.remove("show");
     });
   };
 
@@ -539,8 +517,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       brandElement.classList.add("hidden");
       navItems.forEach(navItem => {
-        navItem.style.transitionDelay = ""; // Reset the transition delay
-        navItem.classList.add("hidden"); // Remove the show class from each nav item
+        navItem.style.transitionDelay = "";
+        navItem.classList.add("hidden");
       });
     };
   });
@@ -557,10 +535,10 @@ document.addEventListener("DOMContentLoaded", function () {
         navbarToggler.forEach(element => {
           element.classList.add("show");
         });
-        brandElement.classList.remove("hidden"); // Remove the hidden class to show the brand element
+        brandElement.classList.remove("hidden");
         navItems.forEach((navItem, index) => {
-          navItem.style.transitionDelay = `${(index + 1) * 0.05}s`; // Delay each nav item by 0.5 seconds
-          navItem.classList.remove("hidden"); // Add the show class to reveal the nav item with a delay
+          navItem.style.transitionDelay = `${(index + 1) * 0.05}s`;
+          navItem.classList.remove("hidden");
         });
       };
     }
