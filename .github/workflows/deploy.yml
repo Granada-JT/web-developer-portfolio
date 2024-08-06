@@ -30,8 +30,10 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.email "jomart.granada@gmail.com"
-          git config --global user.name "Granada-JT"
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your Full Name"
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PA_TOKEN_CLASSIC }}@github.com/${{ github.repository }}
+          npm run deploy
