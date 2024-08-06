@@ -28,6 +28,11 @@ jobs:
           BACKEND_API_URL: ${{ secrets.BACKEND_API_URL }}
           IP_API_URL: ${{ secrets.IP_API_URL }}
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "jomart.granada@gmail.com"
+          git config --global user.name "Granada-JT"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
