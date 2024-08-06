@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{{GA_MEASUREMENT_ID}}}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{{GA_MEASUREMENT_ID}}}');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>My Developer Portfolio</title>
@@ -581,7 +590,7 @@
         const contactNo = document.getElementById('phone').value;
         const message = document.getElementById('message').value;
 
-        fetch('https://capstone-1-granada.onrender.com/visitors/', {
+        fetch('{{{BACKEND_API_URL}}}/visitors', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -605,7 +614,7 @@
       };
 
       async function getUserIP() {
-        const response = await fetch('https://api.ipify.org/?format=json');
+        const response = await fetch('{{{IP_API_URL}}}');
         const data = await response.json();
         return data.ip;
       };
@@ -614,7 +623,7 @@
         try {
           const ipaddress = await getUserIP();
 
-          const response = await fetch('https://capstone-1-granada.onrender.com/views/', {
+          const response = await fetch('{{{BACKEND_API_URL}}}/views/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -635,15 +644,11 @@
       const currentYear = new Date().getFullYear();
       const portfolioText = document.querySelector('#footer p');
       portfolioText.textContent = portfolioText.textContent.replace('[current year]', currentYear);
-
     </script>
-
     <!-- End of Contact Section -->
 
     <!-- JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-
   </body>
 </html>
