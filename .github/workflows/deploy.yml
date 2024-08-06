@@ -34,6 +34,6 @@ jobs:
           git config --global user.name "Granada-JT"
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PA_TOKEN_CLASSIC }}@github.com/${{ github.repository }}
+          npm run deploy
