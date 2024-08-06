@@ -2,13 +2,13 @@
 <html>
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{{GA_MEASUREMENT_ID}}}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR44F2NEMR"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', '{{{GA_MEASUREMENT_ID}}}');
+      gtag('config', 'G-WR44F2NEMR');
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -590,7 +590,7 @@
         const contactNo = document.getElementById('phone').value;
         const message = document.getElementById('message').value;
 
-        fetch('{{{BACKEND_API_URL}}}/visitors', {
+        fetch('https://capstone-1-granada.onrender.com/visitors', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -614,7 +614,7 @@
       };
 
       async function getUserIP() {
-        const response = await fetch('{{{IP_API_URL}}}');
+        const response = await fetch('https://api.ipify.org/?format=json');
         const data = await response.json();
         return data.ip;
       };
@@ -623,7 +623,7 @@
         try {
           const ipaddress = await getUserIP();
 
-          const response = await fetch('{{{BACKEND_API_URL}}}/views/', {
+          const response = await fetch('https://capstone-1-granada.onrender.com/views/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
