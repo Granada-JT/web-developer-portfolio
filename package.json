@@ -25,5 +25,8 @@
     "jsonwebtoken": "^9.0.2",
     "moment-timezone": "^0.5.43",
     "mongoose": "^7.4.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
