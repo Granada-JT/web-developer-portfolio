@@ -12,7 +12,9 @@
     </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>My Developer Portfolio</title>
+    <title>Jomar Granada</title>
+    <meta name="description" content="Software Engineering Portfolio Created with Love by Jomar Tabios Granada.">
+    <link rel="icon" href="images/brand2-jg-nobg-1195x752-v4.png" sizes="196x196">
 
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -39,7 +41,7 @@
         <div class="row">
           <div id="navBar" class="fixed-top">
             <nav class="navbar navbar-expand-lg px-md-5">
-              <a class="navbar-brand pl-3 hidden pr-1 justify-content-start" href="#landing" id="brand"><img src="./images/brand2-transparent-white-red.svg" alt="logo"></a>
+              <a class="navbar-brand hidden pr-1 " href="#landing" id="brand"><img src="images/brand2-jg-nobg-1195x752-v4.png" alt="logo"></a>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav nav-list smooth-scroll ml-auto">
                   <li class="nav-item hidden">
@@ -67,8 +69,8 @@
       <div id="landingText">
         <div class="container-fluid">
           <div class="row no-gutters">
-            <div class="col-12 col-xl-6 ml-md-5 landing-col">
-              <div id="fullName">
+            <div class="col-12 col-xl-6 landing-col">
+              <div id="fullName" class="col-12">
                 <i data-final="J">J</i>
                 <i data-final="o">o</i>
                 <i data-final="m">m</i>
@@ -83,8 +85,7 @@
                 <i data-final="d">d</i>
                 <i data-final="a">a</i>
               </div>
-              <div class="w-100"></div>
-              <div id="profession" class="ml-md-0">
+              <div id="profession" class="col-12">
                 <i data-final="F">F</i>
                 <i data-final="u">u</i>
                 <i data-final="l" class="letter-adjustment">l</i>
@@ -111,19 +112,18 @@
                 <i data-final="r">r</i>
               </div>
             </div>
-            <div class="col-12 col-xl-5 mt-1 ml-md-5 ml-xl-0 landing-col">
-              <div id="icons">
-                <i class='bx bxl-javascript' style='color:#FF3F4A' ></i>
-                <i class='bx bxl-nodejs' style='color:#FF3F4A' ></i>
-                <i class='bx bxl-react' style='color:#FF3F4A' ></i>
-                <i class='bx bxl-mongodb' style='color:#FF3F4A' ></i>
+            <div class="col-12 col-xl-6 landing-col">
+              <div id="icons" class="col-12">
+                <i class='bx bxl-javascript col-3' style='color:#FF3F4A' ></i>
+                <i class='bx bxl-nodejs col-3' style='color:#FF3F4A' ></i>
+                <i class='bx bxl-react col-3' style='color:#FF3F4A' ></i>
+                <i class='bx bxl-mongodb col-3' style='color:#FF3F4A' ></i>
               </div>
-              <div class="w-100"></div>
-              <div id="iconDes" class="align-items-top">
-                <i class="ml-1">Javascript</i>
-                <i class="ml-4">Node.js</i>
-                <i class="ml-4">React.js</i>
-                <i class="ml-4">MongoDB</i>
+              <div id="iconDes" class="align-items-top col-12">
+                <i class="col-3">Javascript</i>
+                <i class="col-3">Node.js</i>
+                <i class="col-3">React.js</i>
+                <i class="col-3">MongoDB</i>
               </div>
             </div>
           </div>
@@ -143,28 +143,26 @@
             <!-- Carousel div -->
             <div class="col-lg-5 col-12 order-1">
               <div class="text-center">
-                <div class="d-flex justify-content-center">
-                  <div id="carouselPicture" class="carousel slide d-flex justify-content-center " data-ride="carousel">
-                    <div class="carousel-inner rounded-circle">
-                      <div class="carousel-item active">
-                        <img src="./images/formal.jpg" class="d-block w-100" alt="formal-attire-picture">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="./images/img2.png" class="d-block w-100" alt="avatar-picture">
-                      </div>
+                <div id="carouselPicture" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner rounded-circle">
+                    <div class="carousel-item active">
+                      <img src="./images/formal.jpg" class="d-block w-100" alt="formal-attire-picture">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="./images/img2.png" class="d-block w-100" alt="avatar-picture">
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <!-- End of Carousel div -->
-            <div class="col-lg-7 col-12 order-2 mt-3 text-justify" id="carousel-aboutMe">
-              <i class="mb-3 text-left" id="about-me-header">About Me</i>
+            <div class="col-lg-7 col-12 order-2 text-justify" id="carousel-aboutMe">
+              <i id="about-me-header">About Me</i>
               <div id="about-me-caption">
                 <p>I am a certified Full-Stack Web Developer. I am dedicated to crafting innovative and user-friendly web solutions that leave a positive impact. Welcome to my portfolio, where I showcase my projects, tools, and expertise in my ongoing journey in programming.</p>
               </div>
               <!-- <a href="resume.pdf" class="btn btn-primary">Download Resume</a> -->
-              <div class="row " id="carouselSocials">
+              <div class="row" id="carouselSocials">
                 <div class="col-lg-2 col-2">
                   <div class=" d-flex justify-content-center">
                     <a href="viber://chat?number=+639762255286" target="_blank" class="w-50">
