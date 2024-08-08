@@ -301,7 +301,6 @@ html.no-scroll {
 	color: #FF3F4A;
 	opacity: 1;
 	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-	transform: translateX(-48%);
 }
 
 #about-me-caption {
@@ -309,16 +308,13 @@ html.no-scroll {
 	line-height: 2;
 	text-indent: 2rem;
 	font-size: 1.5rem;
-	width: 100%;
+	width: 95%;
 }
 
 #about-me-caption.show {
 	display: flex;
-	justify-self: center;
-	align-self: center;
 	opacity: 1;
 	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-	transform: translateX(-11%);
 }
 
 #carousel-aboutMe {
@@ -333,23 +329,9 @@ html.no-scroll {
 	font-size: 1.5rem;
 }
 
-#carousel-caption-header {
-	font-size: 3rem;
-}
-
-#viberImg {
-	position: relative;
-	bottom: 8%;
-}
-
 #carouselPicture {
 	opacity: 0;
 	pointer-events: none;
-	width: 75%;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 #carouselPicture.show {
@@ -358,23 +340,8 @@ html.no-scroll {
 	user-select: none;
 }
 
-.slide-in-right {
-	transform: translateX(10%);
-  }
-
-#carouselSocials {
-	transition: transform 1s ease-in-out;
-}
-
-#carouselSocials.slide-in-left {
-	transform: translateX(-9.5%);
-}
-
 #carouselSocials img {
 	opacity: 0;
-	min-height: 50px;
-	min-width: 50px;
-	margin-right: -10%;
 	display: flex;
 }
 
@@ -387,11 +354,16 @@ html.no-scroll {
 #carouselSocials img:hover {
   	transform: scale(1.5);
 }
+
+#carouselSocials div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 /*Landing Section End*/
 
 
 /*Projects Section Start*/
-
 #projects {
 	min-height: 100vh;
 	background-color: #000000;
@@ -846,18 +818,17 @@ transform: scale(1.1);
 		font-size: 55%
 	}
 
-	#about-me-caption {
+	#about-me-header {
+		margin-top: 90px;
+	}
+
+	/* #about-me-caption {
 		margin-left: 5.5rem;
 	}
 
 	#carouselSocials {
 		margin-left: 2rem;
-	}
-
-	#viberImg {
-		position: relative;
-		right: 50%;
-	}
+	} */
 
 	#carouselPicture {
 		height: 20rem;
@@ -980,7 +951,6 @@ transform: scale(1.1);
 		overflow-x: hidden;
 	}
 
-
 	#icons {
 		margin-top: 2rem;
 	}
@@ -992,27 +962,6 @@ transform: scale(1.1);
 
 	.project-details .detail img{
 		height: 25rem;
-	}
-
-	#carouselPicture {
-		margin-left: 2.5rem;
-	}
-
-	#about-me-header {
-		margin-left: 10rem
-	}
-
-	#about-me-caption {
-		margin-left: 10rem;
-	}
-
-	#carouselSocials {
-		margin-left: 8rem;
-	}
-
-	#viberImg {
-		position: relative;
-		right: 50%;
 	}
 
 }
@@ -1054,40 +1003,14 @@ transform: scale(1.1);
 	.projects-container, .project-details {
 		font-size: 55%
 	}
-	
-	#about-me-caption {
-		margin-left: 12rem;
-		font-size: 3rem;
-	}
-
-	#carouselSocials {
-		margin-left: 6rem;
-	}
-
-	#carouselSocials img {
-		min-height: 6rem;
-		min-width: 6rem;
-	}
-
-	#emailImg {
-		padding: 0.3rem 0 0 0;
-	}
-
-	#about-me-header{
-		left: 50%;
-		font-size: 6rem;
-		margin: 8rem 0 4rem 0;
-	}
-
-	#carouselPicture {
-		height: 45rem;
-		width: 45rem;
-		margin-left: 3rem;
-	}
 
 	#arrowDown {
 		height: 7rem;
 		width: 7rem;
+	}
+
+	#about-me-header {
+		margin-top: 80px;
 	}
 
 	#arrowDown.lg-hidden {
@@ -1161,6 +1084,10 @@ transform: scale(1.1);
 
 	body {
 		overflow-x: hidden;
+	}
+
+	#about-me-header {
+		margin-top: 90px;
 	}
 
 	#clientReviews-carousel {

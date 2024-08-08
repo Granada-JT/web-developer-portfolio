@@ -1,7 +1,10 @@
-<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-
- <g>
-  <title>Layer 1</title>
-  <path fill="white" id="svg_1" d="m3.683,16.418c-2.247,-1.696 -3.683,-4.278 -3.683,-7.17c0,-5.108 4.477,-9.248 10,-9.248s10,4.14 10,9.248c0,5.107 -4.477,9.248 -10,9.248a10.77,10.77 0 0 1 -2.96,-0.412l-3.357,1.891l0,-3.557zm5.25,-9.703l-5.394,5.66l4.908,-2.67l2.565,2.67l5.362,-5.66l-4.853,2.622l-2.589,-2.622l0.001,0z"/>
- </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="18" height="18" viewBox="0 0 18 18" xml:space="preserve">
+<desc>Created with Fabric.js 3.6.6</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 9.08 9.17)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"  transform=" translate(-12, -12)" d="M 12 3 c -4.92 0 -8.91 3.729 -8.91 8.332 c 0 2.616 1.291 4.952 3.311 6.479 V 21 l 3.041 -1.687 c 0.811 0.228 1.668 0.35 2.559 0.35 c 4.92 0 8.91 -3.73 8.91 -8.331 C 20.91 6.729 16.92 3 12 3 z m 0.938 11.172 l -2.305 -2.394 l -4.438 2.454 l 4.865 -5.163 l 2.305 2.395 l 4.439 -2.455 l -4.866 5.163 z" stroke-linecap="round" />
+</g>
 </svg>
