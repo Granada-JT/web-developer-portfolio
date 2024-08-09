@@ -332,12 +332,19 @@ html.no-scroll {
 #carouselPicture {
 	opacity: 0;
 	pointer-events: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #carouselPicture.show {
 	opacity: 1;
 	transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 	user-select: none;
+}
+
+#carouselPicture > div {
+	max-width: 700px;
 }
 
 #carouselSocials img {
@@ -1080,7 +1087,7 @@ transform: scale(1.1);
 
 /* large devices */
 /* 992px - 1199px */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) {
 
 	body {
 		overflow-x: hidden;
