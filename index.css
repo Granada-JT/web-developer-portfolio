@@ -905,6 +905,11 @@ transform: scale(1.1);
 		visibility: hidden;
 	} */
 
+	#carouselSocials div {
+		display: inline-block !important;
+		margin: auto;
+	}
+
 	.content {
 		min-height: 23rem;
 		height: auto;
