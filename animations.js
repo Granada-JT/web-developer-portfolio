@@ -511,14 +511,14 @@ document.addEventListener("DOMContentLoaded", function () {
           preview.classList.remove('active');
         }
       });
-
+      
       navbarToggler.forEach(element => {
-        element.classList.remove("show");
+        element.classList.add("display-none");
       });
-      brandElement.classList.add("hidden");
+      brandElement.classList.add("display-none");
       navItems.forEach(navItem => {
         navItem.style.transitionDelay = "";
-        navItem.classList.add("hidden");
+        navItem.classList.add("display-none");
       });
     };
   });
@@ -533,12 +533,12 @@ document.addEventListener("DOMContentLoaded", function () {
         aboutMeSection.classList.remove('hidden');
         skillsSection.classList.remove('hidden');
         navbarToggler.forEach(element => {
-          element.classList.add("show");
+          element.classList.remove("display-none");
         });
-        brandElement.classList.remove("hidden");
+        brandElement.classList.remove("display-none");
         navItems.forEach((navItem, index) => {
           navItem.style.transitionDelay = `${(index + 1) * 0.05}s`;
-          navItem.classList.remove("hidden");
+          navItem.classList.remove("display-none");
         });
       };
     }

@@ -52,6 +52,11 @@ body::-webkit-scrollbar {
 	pointer-events: none;
 }
 
+.display-none {
+	display: none;
+	pointer-events: none;
+}
+
 html {
     scroll-behavior: smooth;
 	overflow-x: hidden;
@@ -450,9 +455,10 @@ html.no-scroll {
 
 .project-details {
 	position: fixed;
-	top:0; left:0;
-	min-height: 100vh;
-	width: 100%;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
 	background: rgb(52, 47, 47);
 	display: none;
 	align-items: center;
@@ -461,26 +467,24 @@ html.no-scroll {
 
 .project-details .detail {
 	display: none;
-	top: 0;
-	left: 0;
-	padding: 1rem;
+	top: 2rem;
+	bottom: 2rem;
+	left: 2rem;
+	right: 2rem;
 	text-align: center;
 	background: #fff;
 	position: absolute;
-	width: calc(100% - 6rem);
-	height: calc(100% - 6rem);
+	max-width: 100%;
+	max-height: 100%;
 	border-radius: 20px;
-	margin: 3rem;
 	overflow-y: auto;
 	text-align: justify;
-	z-index: 9999;
-	transition: all 0.5s ease;
 }
   
 .project-details .detail.active{
 	display: inline-block;
 	animation: expandAnimation 0.4s ease;
- }
+}
 
 @keyframes expandAnimation {
 	from {
@@ -505,34 +509,42 @@ html.no-scroll {
 	overflow: hidden;
  }
 
- .project-details .detail video{
+ .project-details .detail video {
 	border-radius: 20px;
 	border: 5px solid #444;
- }
+	align-self: center;
+}
  
- .project-details .detail .closeIcon{
+.project-details .detail .closeIcon {
 	position: absolute;
 	top: -20px; right:1rem;
 	cursor: pointer;
 	color:#444;
 	font-size: 3rem;
-	z-index: 9999;
- }
+	z-index: 999999;
+}
 
- .project-details .detail .closeIcon:hover{
+.project-details .detail .closeIcon:hover {
 	 transition: transform 0.3s ease;
 		transform: scale(1.3);
- }
- 
- .project-details .detail h3{
-	font-size: 7rem;
+}
+
+.project-details .detail h3 {
+	margin-top: 2rem;
+	font-size: 3rem;
 	text-align: left;
- }
+}
  
- .project-details .detail p{
+ .project-details .detail p {
 	margin-top: 3rem;
 	font-size: 1.5rem;
  }
+
+.project-details .detail .col-12 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
 
  .project-details .detail .col-12 i {
 	text-justify: left;
@@ -871,13 +883,17 @@ transform: scale(1.1);
 	}
 
 	.project-details .detail {
-		height: calc(100% - 15rem);
+		top: 1rem;
+		bottom: 1rem;
+		left: 1rem;
+		right: 1rem;
 	}
 
 	.project-details .detail h3{
 		margin-top: 2rem;
 		font-size: 3rem;
 		text-align: left;
+		width: 85%;
 	}
 
 	.project-details .detail .col-12 i {
@@ -990,22 +1006,6 @@ transform: scale(1.1);
 		padding: 6rem 0;
 	}
 
-	.project-details .detail {
-		margin-top: 7rem;
-		height: calc(100% - 20rem);
-	}
-
-	.project-details .detail h3{
-		margin-top: 2rem;
-		font-size: 3rem;
-		text-align: left;
-	}
-
-	.project-details .detail .col-12 i {
-		text-align: left;
-		font-size: 1.3rem;
-	}
-
 	.project-details .detail a {
 		width: 100%;
 	}
@@ -1035,6 +1035,16 @@ transform: scale(1.1);
 
 	#icons {
 		margin-top: 2rem;
+	}
+
+	.project-details .detail h3{
+		font-size: 7rem;
+		text-align: left;
+	}
+
+	.project-details .detail .col-12 i {
+		text-align: left;
+		font-size: 1.3rem;
 	}
 }
 
