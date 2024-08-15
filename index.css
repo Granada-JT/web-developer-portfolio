@@ -84,25 +84,10 @@ html.no-scroll {
 	pointer-events: all;
 }
 
-
-
 /*Landing Section Start*/
 
 #home {
 	background-color: black;
-/*background: 
-
-	linear-gradient(
-
-		rgba(255, 255, 255, 0.3),
-		rgba(255, 255, 255, 0.3)
-
-	),
-	url("./images/redTech2.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;*/
 }
 
 .landing-col {
@@ -176,11 +161,6 @@ html.no-scroll {
 	margin: 2.3rem 0 0 0;
 }
 
-/* #iconDes {
-	margin-top: -2rem;
-	margin-left: 1rem;
-} */
-
 #icons, #iconDes {
 	width: 80%;
 	display: flex;
@@ -213,22 +193,6 @@ html.no-scroll {
 	transition: opacity 1s ease-in-out;
 }
 
-/* #icons > .bxl-javascript {
-	margin-left: 1.9rem;
-}
-
-#icons > .bxl-nodejs {
-	margin-left: 2rem;
-}
-
-#icons > .bxl-react {
-	margin-left: 1.3rem;
-}
-
-#icons > .bxl-mongodb {
-	margin-left: 2.1rem;
-} */
-
 #arrowDown {
 	transition: opacity 0.3s ease;
 	position: absolute;
@@ -239,11 +203,11 @@ html.no-scroll {
 	height: 3rem;
 	z-index: 9;
 	-webkit-animation: fade_move_down 2s ease-in-out infinite;
-	-moz-animation:    fade_move_down 2s ease-in-out infinite;
-	animation:         fade_move_down 2s ease-in-out infinite;
-  }
+	-moz-animation: fade_move_down 2s ease-in-out infinite;
+	animation: fade_move_down 2s ease-in-out infinite;
+}
 
-  @keyframes arrowAnimation {
+@keyframes arrowAnimation {
 	0% {
 	  transform: translate(-50%, -50%) ;
 	}
@@ -253,24 +217,26 @@ html.no-scroll {
 	100% {
 	  transform: translate(-50%, -50%) ;
 	}
-  }
+}
 
 /*animated scroll arrow animation*/
 @-webkit-keyframes fade_move_down {
 	0%   { -webkit-transform:translate(0,-10px); opacity: 0;  }
 	50%  { opacity: 1;  }
 	100% { -webkit-transform:translate(0,10px); opacity: 0; }
-  }
-  @-moz-keyframes fade_move_down {
+}
+
+@-moz-keyframes fade_move_down {
 	0%   { -moz-transform:translate(0,-10px); opacity: 0;  }
 	50%  { opacity: 1;  }
 	100% { -moz-transform:translate(0,10px); opacity: 0; }
-  }
-  @keyframes fade_move_down {
+}
+
+@keyframes fade_move_down {
 	0%   { transform:translate(0,-10px); opacity: 0;  }
 	50%  { opacity: 1;  }
 	100% { transform:translate(0,10px); opacity: 0; }
-  }
+}
 
 #arrowDown.hidden {
 	opacity: 0;
@@ -452,7 +418,6 @@ html.no-scroll {
 	font-size: 17px;
 }
 
-
 .project-details {
 	position: fixed;
 	top: 0;
@@ -505,9 +470,9 @@ html.no-scroll {
 	scrollbar-width: none;
 }
 
- .project-details .detail.no-scroll {
+.project-details .detail.no-scroll {
 	overflow: hidden;
- }
+}
 
  .project-details .detail video {
 	border-radius: 20px;
@@ -535,10 +500,10 @@ html.no-scroll {
 	text-align: left;
 }
  
- .project-details .detail p {
+.project-details .detail p {
 	margin-top: 3rem;
 	font-size: 1.5rem;
- }
+}
 
 .project-details .detail .col-12 {
 	display: flex;
@@ -546,20 +511,20 @@ html.no-scroll {
 	justify-content: center;
 }
 
- .project-details .detail .col-12 i {
+.project-details .detail .col-12 i {
 	text-justify: left;
 	display: flex;
 	margin-left: 0.8rem;
 	margin-bottom: 3rem;
 	font-size: 1.5rem;
- }
+}
 
- .project-details .detail li {
+.project-details .detail li {
 	margin-left: 2rem;
 	font-size: 1.5rem;
- }
+}
 
- .project-details .detail a {
+.project-details .detail a {
 	display: flex;
 	background-color: #FF3F4A;
 	color: white;
@@ -569,15 +534,15 @@ html.no-scroll {
 	width:  25%;
 	margin: 3rem auto 0 auto;
 	font-weight: bolder;
- }
+}
 
- .project-details .detail a:hover {
+.project-details .detail a:hover {
 	transition: all 0.5s ease;
 	transform: scale(1.05);
 	background-color: black;
 	color: white;
 
- }
+}
  
 /*Projects Section End*/
 
@@ -586,20 +551,6 @@ html.no-scroll {
 #skills {
 	min-height: 100vh;
 	background-color: black;
-
-/*background: 
-
-	linear-gradient(
-
-		rgba(255, 255, 255, 0.3),
-		rgba(255, 255, 255, 0.3)
-
-	),
-	url("./images/redTech2.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;*/
 }
 
 .title {
@@ -703,7 +654,7 @@ html.no-scroll {
 
 #carouselExampleCaptions {
 	transition: transform 0.3s ease;
-  }
+}
   
 #carouselExampleCaptions:hover {
 transform: scale(1.1);
@@ -721,11 +672,13 @@ transform: scale(1.1);
     align-items: center;
     justify-content: center;
 }
+
 .carousel.full-screen .carousel-inner,
 .carousel.full-screen .carousel-item {
 	max-height: 80vh;
 	max-width: 55vw;
 }
+
 .carousel.full-screen .carousel-item img {
     max-width: 92%;
 	padding: 0.5rem;
@@ -733,11 +686,13 @@ transform: scale(1.1);
 	position: relative;
 	left: 4%;
 }
+
 .carousel.full-screen .carousel-indicators,
 .carousel.full-screen .carousel-control-prev,
 .carousel.full-screen .carousel-control-next {
     display: block;
 }
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: #ffffff;
@@ -789,7 +744,7 @@ transform: scale(1.1);
 .carousel-control-prev-icon {
 	background-image: url('./images/arrow-square-left-f.svg');
 	background-size: 30px;
-  }
+}
   
 .carousel-control-next-icon {
   background-image: url('./images/arrow-square-right-f.svg');
@@ -836,7 +791,7 @@ transform: scale(1.1);
 		min-height: 100vh + 1px;
 	}
 
-	.projects-container, .project-details {
+	.projects-container .project-details {
 		font-size: 55%
 	}
 
@@ -918,11 +873,39 @@ transform: scale(1.1);
 
 }
 
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 451px) and (max-width: 575px) {
 
-	body {
-		overflow-x: hidden;
+	#fullName > i {
+		font-size: 3.8rem;
 	}
+
+	#profession > i {
+		font-size: 2rem;
+	}
+
+	#icons {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin-top: 80px;
+	}
+
+	#iconDes {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	#icons > i {
+		font-size: 3.5rem;
+	}
+
+	#iconDes > i {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
 
 	#icons {
 		margin-top: 2rem;
@@ -956,10 +939,6 @@ transform: scale(1.1);
 /* medium devices */
 /* 768px - 991px */
 @media (min-width: 768px) and (max-width: 991px) {
-
-	body {
-		overflow-x: hidden;
-	}
 
 	#icons {
 		margin-top: 2rem;
@@ -1011,20 +990,9 @@ transform: scale(1.1);
 	}
 }
 
-@media (max-width: 900px) {
-	.project {
-		display: flex;
-		flex-direction: column;
-	}
-}
-
 /* large devices */
 /* 992px - 1199px */
 @media (min-width: 992px) {
-
-	body {
-		overflow-x: hidden;
-	}
 
 	#clientReviews-carousel {
 		width: auto;
@@ -1070,3 +1038,12 @@ transform: scale(1.1);
 }
 
 /*navbar hover and underline end*/
+
+/* 
+
+@media (max-width: 450px)
+@media (min-width: 576px) and (max-width: 767px)
+@media (min-width: 768px) and (max-width: 991px)
+@media (min-width: 992px)
+
+*/
