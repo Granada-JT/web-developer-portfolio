@@ -897,11 +897,15 @@ transform: scale(1.1);
 	}
 
 	#icons > i {
-		font-size: 3.5rem;
+		font-size: 4rem;
 	}
 
 	#iconDes > i {
-		font-size: 1rem;
+		font-size: 1.5rem;
+	}
+
+	#projectsHeader > i {
+		padding: 4rem 0;
 	}
 }
 
