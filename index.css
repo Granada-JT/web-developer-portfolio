@@ -894,11 +894,11 @@ transform: scale(1.1);
 }
 
 @media (min-width: 451px) and (max-width: 575px) {
-
+  
 	#fullName > i {
 		font-size: 3.8rem;
 	}
-
+  
 	#profession > i {
 		font-size: 2rem;
 	}
