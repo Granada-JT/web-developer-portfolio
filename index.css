@@ -643,10 +643,7 @@ html.no-scroll {
 
 #clientReviews-carousel {
 	opacity: 0;
-	width: auto;
-	min-height: auto;
 	cursor: pointer;
-	height: 400px;
 	margin-top: 3rem;
 	border: white;
 	padding-bottom: 25%;
@@ -785,6 +782,29 @@ transform: scale(1.1);
 	color: white;
 }
 
+/*navbar hover and underline start*/
+.nav-link-underline {
+    position: relative;
+}
+
+.nav-link-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background-color: #FF3F4A;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-link-underline:hover::after {
+    transform: scaleX(1);
+}
+
+/*navbar hover and underline end*/
+
 @media (max-width: 450px) {
 
 	#landing {
@@ -874,11 +894,11 @@ transform: scale(1.1);
 }
 
 @media (min-width: 451px) and (max-width: 575px) {
-
+  
 	#fullName > i {
 		font-size: 3.8rem;
 	}
-
+  
 	#profession > i {
 		font-size: 2rem;
 	}
@@ -955,8 +975,6 @@ transform: scale(1.1);
 	.navbar-toggler-icon {
 		opacity: 1;
 		pointer-events: none;
-		height: 5rem;
-		width: 5rem;
 	}
 
 	.navbar-brand > img {
@@ -964,19 +982,8 @@ transform: scale(1.1);
 		width: 10rem;
 	}
 
-	.navbar-nav .nav-link {
-		color: white;
-		font-size: 5rem;
-		letter-spacing: 0.5rem;
-	}
-
 	.projects-container, .project-details {
 		font-size: 55%
-	}
-
-	#arrowDown {
-		height: 7rem;
-		width: 7rem;
 	}
 
 	#arrowDown.lg-hidden {
@@ -1019,35 +1026,3 @@ transform: scale(1.1);
 		font-size: 1.3rem;
 	}
 }
-
-/*navbar hover and underline start*/
-.nav-link-underline {
-    position: relative;
-}
-
-.nav-link-underline::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 10%;
-    width: 80%;
-    height: 3px;
-    background-color: #FF3F4A;
-    transform: scaleX(0);
-    transition: transform 0.3s ease-in-out;
-}
-
-.nav-link-underline:hover::after {
-    transform: scaleX(1);
-}
-
-/*navbar hover and underline end*/
-
-/* 
-
-@media (max-width: 450px)
-@media (min-width: 576px) and (max-width: 767px)
-@media (min-width: 768px) and (max-width: 991px)
-@media (min-width: 992px)
-
-*/
