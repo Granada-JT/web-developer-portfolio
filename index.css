@@ -36,7 +36,7 @@ body::-webkit-scrollbar {
 }
 
 .show, .nav-item.show {
-    opacity: 1;
+  opacity: 1;
 }
 
 #brand > img {
@@ -202,8 +202,6 @@ html.no-scroll {
   height: 3rem;
   z-index: 9;
   animation: fade-move-down 2s ease-in-out infinite;
-  animation: fade-move-down 2s ease-in-out infinite;
-  animation: fade-move-down 2s ease-in-out infinite;
 }
 
 @keyframes arrow-animation {
@@ -221,21 +219,19 @@ html.no-scroll {
 }
 
 @keyframes fade-move-down {
-  0%   { transform:translate(0,-10px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { transform:translate(0,10px); opacity: 0; }
-}
+  0% {
+    transform: translate(0,-10px);
+    opacity: 0; 
+  }
 
-@keyframes fade-move-down {
-  0%   { transform:translate(0,-10px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { transform:translate(0,10px); opacity: 0; }
-}
+  50% {
+    opacity: 1;
+  }
 
-@keyframes fade-move-down {
-  0%   { transform:translate(0,-10px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { transform:translate(0,10px); opacity: 0; }
+  100% {
+    transform: translate(0,10px);
+    opacity: 0;
+  }
 }
 
 #arrow-down.hidden {
@@ -434,6 +430,8 @@ html.no-scroll {
   border-radius: 20px;
   overflow-y: auto;
   text-align: justify;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .project-details .detail.active{
@@ -453,11 +451,6 @@ html.no-scroll {
 
 .project-details .detail::-webkit-scrollbar {
   display: none;	
-}
-
-.project-details .detail {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .project-details .detail.no-scroll {
