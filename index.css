@@ -15,7 +15,7 @@ body::-webkit-scrollbar {
 }
 
 /* NavBar Start */
-#navBar {
+#nav-bar {
   color: white !important;
 }
 
@@ -102,17 +102,17 @@ html.no-scroll {
   background-color: black;
 }
 
-#fullName, #profession {
+#full-name, #profession {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-#fullName {
+#full-name {
   align-items: flex-end;
 }
 
-  #fullName > i,
+  #full-name > i,
 #profession > i {
   display: inline-flex;
   font-style: normal;
@@ -129,13 +129,13 @@ html.no-scroll {
   opacity: 0;
 }
 
-#fullName > i {
+#full-name > i {
   opacity: 0;
   font-size: 5rem;
   font-weight: bold;
 }
 
-#fullName > i.show {
+#full-name > i.show {
   opacity: 1;
 }
 
@@ -144,7 +144,7 @@ html.no-scroll {
   margin-top: -1rem;
 }
 
-#landingText {
+#landing-text {
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -160,7 +160,7 @@ html.no-scroll {
   margin: 2.3rem 0 0 0;
 }
 
-#icons, #iconDes {
+#icons, #icon-des {
   width: 80%;
   display: flex;
 }
@@ -172,7 +172,7 @@ html.no-scroll {
   align-items: flex-end;
 }
 
-#iconDes i {
+#icon-des i {
   display: inline-flex;
   justify-content: center;
   align-items: flex-start;
@@ -182,7 +182,7 @@ html.no-scroll {
   margin-bottom: 3rem;
 }
 
-#iconDes i.show {
+#icon-des i.show {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
@@ -192,7 +192,7 @@ html.no-scroll {
   transition: opacity 1s ease-in-out;
 }
 
-#arrowDown {
+#arrow-down {
   transition: opacity 0.3s ease;
   position: absolute;
   bottom: 20px;
@@ -201,12 +201,12 @@ html.no-scroll {
   width: 3rem;
   height: 3rem;
   z-index: 9;
-  -webkit-animation: fade_move_down 2s ease-in-out infinite;
-  -moz-animation: fade_move_down 2s ease-in-out infinite;
-  animation: fade_move_down 2s ease-in-out infinite;
+  -webkit-animation: fade-move-down 2s ease-in-out infinite;
+  -moz-animation: fade-move-down 2s ease-in-out infinite;
+  animation: fade-move-down 2s ease-in-out infinite;
 }
 
-@keyframes arrowAnimation {
+@keyframes arrow-animation {
 
   0% {
     transform: translate(-50%, -50%);
@@ -219,31 +219,31 @@ html.no-scroll {
   }
 }
 
-@-webkit-keyframes fade_move_down {
+@-webkit-keyframes fade-move-down {
   0%   { -webkit-transform:translate(0,-10px); opacity: 0;  }
   50%  { opacity: 1;  }
   100% { -webkit-transform:translate(0,10px); opacity: 0; }
 }
 
-@-moz-keyframes fade_move_down {
+@-moz-keyframes fade-move-down {
   0%   { -moz-transform:translate(0,-10px); opacity: 0;  }
   50%  { opacity: 1;  }
   100% { -moz-transform:translate(0,10px); opacity: 0; }
 }
 
-@keyframes fade_move_down {
+@keyframes fade-move-down {
   0%   { transform:translate(0,-10px); opacity: 0;  }
   50%  { opacity: 1;  }
   100% { transform:translate(0,10px); opacity: 0; }
 }
 
-#arrowDown.hidden {
+#arrow-down.hidden {
   opacity: 0;
   pointer-events: none;
   display: none;
 }
 
-#aboutMe {
+#about-me {
   min-height: 100vh;
   min-width: 100vw;
   color: white;
@@ -252,7 +252,7 @@ html.no-scroll {
   align-items: center;
 }
 
-#aboutMe.hidden, #skills.hidden {
+#about-me.hidden, #skills.hidden {
   visibility: hidden;
 }
 
@@ -289,19 +289,14 @@ html.no-scroll {
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-#carousel-aboutMe {
+#carousel-about-me {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#carouselCaption {
-  color: white;
-  font-size: 1.5rem;
-}
-
-#carouselPicture {
+#carousel-picture {
   opacity: 0;
   pointer-events: none;
   display: flex;
@@ -309,31 +304,31 @@ html.no-scroll {
   align-items: center;
 }
 
-#carouselPicture.show {
+#carousel-picture.show {
   opacity: 1;
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
   user-select: none;
 }
 
-#carouselPicture > div {
+#carousel-picture > div {
   max-width: 700px;
 }
 
-#carouselSocials img {
+#carousel-socials img {
   opacity: 0;
   display: flex;
 }
 
-#carouselSocials img.show {
+#carousel-socials img.show {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
 
-#carouselSocials img:hover {
+#carousel-socials img:hover {
     transform: scale(1.5);
 }
 
-#carouselSocials div {
+#carousel-socials div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -351,13 +346,13 @@ html.no-scroll {
   justify-content: center;
 }
 
-#projectsHeader > i {
+#projects-header > i {
   opacity: 0;
   padding-bottom: 2rem;
   font-size: 3rem;
 }
 
-#projectsHeader > i.show {
+#projects-header > i.show {
   color:#FF3F4A;
   opacity: 1;
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
@@ -373,7 +368,7 @@ html.no-scroll {
 
 .project.show {
   visibility: visible;
-  animation: expandAnimation 0.6s ease;
+  animation: expand-animation 0.6s ease;
 }
 
 .content {
@@ -445,10 +440,10 @@ html.no-scroll {
 
 .project-details .detail.active{
   display: inline-block;
-  animation: expandAnimation 0.4s ease;
+  animation: expand-animation 0.4s ease;
 }
 
-@keyframes expandAnimation {
+@keyframes expand-animation {
   from {
     transform: scale(0.1);
   }
@@ -476,7 +471,7 @@ html.no-scroll {
   align-self: center;
 }
 
-.project-details .detail .closeIcon {
+.project-details .detail close-icon {
   position: absolute;
   top: -20px; right:1rem;
   cursor: pointer;
@@ -485,7 +480,7 @@ html.no-scroll {
   z-index: 999999;
 }
 
-.project-details .detail .closeIcon:hover {
+.project-details .detail close-icon:hover {
   transition: transform 0.3s ease;
   transform: scale(1.3);
 }
@@ -558,17 +553,17 @@ html.no-scroll {
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
-.skillDes {
+.skill-des {
   opacity: 0;
   font-size: 1.5rem;
   color: #FF3F4A;
 }
 
-.skillIcons {
+.skill-icons {
   opacity: 0;
 }
 
-.skillIconImg {
+.skill-icon-img {
   height: 5rem;
   width: 5rem;
   user-select: none;
@@ -576,16 +571,16 @@ html.no-scroll {
   margin: 2.3rem 0 0 0;
 }
 
-.skillIcons, .skillDes {
+.skill-icons, .skill-des {
   justify-content: space-evenly;
 }
 
-.skillDes.show {
+.skill-des.show {
   opacity: 1;
   transition: opacity 2s ease-in-out;
 }
 
-.skillIcons.show {
+.skill-icons.show {
   opacity: 1;
   transition: opacity 1.5s ease-in-out;
   font-size: 5rem;
@@ -603,7 +598,7 @@ html.no-scroll {
   margin-top: 10%;
 }
 
-#sendEmail-button {
+#send-email-button {
   padding-bottom: 25%;
 }
 
@@ -625,14 +620,14 @@ html.no-scroll {
   transition: opacity 1s ease-in-out;
 }
 
-#clientReviews-carousel.show {
+#client-reviews-carousel.show {
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
 /*Contacts Section End*/
 
 /* Awards and Achievements Carousel Start */
-#clientReviews-carousel {
+#client-reviews-carousel {
   opacity: 0;
   cursor: pointer;
   margin-top: 3rem;
@@ -640,11 +635,11 @@ html.no-scroll {
   padding-bottom: 25%;
 }
 
-#carouselExampleCaptions {
+#carousel-example-captions {
   transition: transform 0.3s ease;
 }
 
-#carouselExampleCaptions:hover {
+#carousel-example-captions:hover {
   transform: scale(1.1);
 }
 
@@ -743,13 +738,13 @@ html.no-scroll {
   font-size: 3rem;
 }
 
-#formCarouHeader> i {
+#form-carousel-header> i {
   color: #FF3F4A;
   font-size: 2.3rem;
 }
 /* Awards and Achievements Carousel End */
 
-#sendEmail-button .btn {
+#send-email-button .btn {
   background-color: #FF3F4A;
   color: white;
 }
@@ -804,7 +799,7 @@ html.no-scroll {
     font-size: 55%;
   }
 
-  #fullName > i {
+  #full-name > i {
     font-size: 2.7rem;
   }
 
@@ -819,7 +814,7 @@ html.no-scroll {
     margin-top: 80px;
   }
 
-  #iconDes {
+  #icon-des {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -829,20 +824,20 @@ html.no-scroll {
     font-size: 3.5rem;
   }
 
-  #iconDes > i {
+  #icon-des > i {
     font-size: 1rem;
   }
 
-  #carouselSocials {
+  #carousel-socials {
     max-width: 95%;
   }
 
-  #carouselSocials div {
+  #carousel-socials div {
     display: inline-block !important;
     margin: auto;
   }
 
-  #projectsHeader > i {
+  #projects-header > i {
     padding: 4rem 0;
   }
 
@@ -882,7 +877,7 @@ html.no-scroll {
 
 @media (min-width: 451px) and (max-width: 575px) {
 
-  #fullName > i {
+  #full-name > i {
     font-size: 3.8rem;
   }
 
@@ -897,7 +892,7 @@ html.no-scroll {
     margin-top: 80px;
   }
 
-  #iconDes {
+  #icon-des {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -907,11 +902,11 @@ html.no-scroll {
     font-size: 4rem;
   }
 
-  #iconDes > i {
+  #icon-des > i {
     font-size: 1.5rem;
   }
 
-  #projectsHeader > i {
+  #projects-header > i {
     padding: 4rem 0;
   }
 }
@@ -927,17 +922,17 @@ html.no-scroll {
     pointer-events: none;
   }
 
-  #carouselSocials {
+  #carousel-socials {
     max-width: 95%;
   }
 
-  #carouselSocials div {
+  #carousel-socials div {
     display: inline-block;
     max-width: 10rem;
     margin: auto;
   }
 
-  #projectsHeader > i {
+  #projects-header > i {
     padding: 6rem 0;
   }
 
@@ -972,13 +967,13 @@ html.no-scroll {
     font-size: 55%;
   }
 
-  #arrowDown.lg-hidden {
+  #arrow-down.lg-hidden {
     opacity: 0;
     pointer-events: none;
     display: none;
   }
 
-  #projectsHeader > i {
+  #projects-header > i {
     padding: 6rem 0;
   }
 
@@ -991,7 +986,7 @@ html.no-scroll {
 /* 992px - 1199px */
 @media (min-width: 992px) {
 
-  #clientReviews-carousel {
+  #client-reviews-carousel {
     width: auto;
     height: 400px;
     margin-top: 4.5rem;
