@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // This code block zooms into the carousel at the contact form when it is clicked
 document.addEventListener("DOMContentLoaded", function() {
-    const carousel = document.getElementById("carouselExampleCaptions");
+    const carousel = document.getElementById("carousel-example-captions");
     carousel.addEventListener("mousedown", function(event) {
     if (
       event.target.classList.contains("carousel-control-prev-icon") ||
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function genChar() {
   var numbers = "0123456789";
   var symbols = "!@#$%^&*()_+=-";
   var string = numbers + letters + symbols;
-  var allCounters = document.querySelectorAll("#fullName > i");
+  var allCounters = document.querySelectorAll("#full-name > i");
 
   function count() {
     allCounters.forEach((allCounter, index) => {
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function genChar() {
 // This code block animates the arrow down pointer
 document.addEventListener("DOMContentLoaded", function() {
   const landingSection = document.getElementById("landing");
-  const arrowDown = document.getElementById("arrowDown");
+  const arrowDown = document.getElementById("arrow-down");
   let delay;
 
   if (window.matchMedia("(min-width: 768px) and (max-width: 992px), (max-width: 450px)").matches) {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
   const landingSection = document.getElementById("landing");
   const boxIcons = Array.from(document.querySelectorAll("#icons > i"));
-  const iconDes = Array.from(document.querySelectorAll("#iconDes > i"));
+  const iconDes = Array.from(document.querySelectorAll("#icon-des > i"));
 
   const applyAnimation = function() {
     setTimeout(() => {
@@ -243,9 +243,9 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
   const homeSection = document.getElementById("home");
   const aboutMe = Array.from(document.querySelectorAll("#about-me-header, #about-me-caption"));
-  const socialsPics = Array.from(document.querySelectorAll("#carouselSocials img"));
-  const socials = Array.from(document.querySelectorAll("#carouselSocials"));
-  const carouselPics = Array.from(document.querySelectorAll("#carouselPicture"));
+  const socialsPics = Array.from(document.querySelectorAll("#carousel-socials img"));
+  const socials = Array.from(document.querySelectorAll("#carousel-socials"));
+  const carouselPics = Array.from(document.querySelectorAll("#carousel-picture"));
 
   const applyAnimation = function() {
     setTimeout(() => {
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
   const projectSection = document.getElementById("projects");
   const project = Array.from(document.querySelectorAll(".project"));
-  const projectsHeader = Array.from(document.querySelectorAll("#projectsHeader > i"));
+  const projectsHeader = Array.from(document.querySelectorAll("#projects-header > i"));
 
   const applyAnimation = function() {
     setTimeout(() => {
@@ -367,9 +367,9 @@ document.addEventListener("DOMContentLoaded", function() {
 // This code block animates the skills section
 document.addEventListener("DOMContentLoaded", function() {
   const skillSection = document.getElementById("skills");
-  const skillIcons = Array.from(document.querySelectorAll(".skillIcons"));
+  const skillIcons = Array.from(document.querySelectorAll(".skill-icons"));
   const title = Array.from(document.querySelectorAll(".title"));
-  const skillDes = Array.from(document.querySelectorAll(".skillDes"));
+  const skillDes = Array.from(document.querySelectorAll(".skill-des"));
 
   const applyAnimation = function() {
     setTimeout(() => {
@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const contactSection = document.getElementById("contact");
   const formCol = Array.from(document.querySelectorAll("#form-col"));
   const formGroup = Array.from(document.querySelectorAll(".form-group"));
-  const clientReviewsCarousel = Array.from(document.querySelectorAll("#clientReviews-carousel"));
+  const clientReviewsCarousel = Array.from(document.querySelectorAll("#client-reviews-carousel"));
   const footer = Array.from(document.querySelectorAll("#footer"));
 
   const applyAnimation = function() {
@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const brandElement = document.getElementById("brand");
   const navbarToggler = document.querySelectorAll(".navbar-toggler");
   const navItems = Array.from(document.querySelectorAll(".nav-item"));
-  const aboutMeSection = document.getElementById("aboutMe");
+  const aboutMeSection = document.getElementById("about-me");
   const skillsSection = document.getElementById("skills");
 
   document.querySelectorAll('.projects-container .project').forEach(product => {
@@ -524,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   previewBox.forEach(preview => {
-    let closeIcon = preview.querySelector('.closeIcon');
+    let closeIcon = preview.querySelector('.close-icon');
     if (closeIcon) {
       closeIcon.onclick = () => {
         preview.classList.remove('active');
