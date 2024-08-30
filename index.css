@@ -747,9 +747,11 @@ html.no-scroll {
 }
 
 #footer.show {
-  position: relative;
   width: 100%;
-  display: block;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   opacity: 1;
   transition: opacity 1s ease-in-out;
@@ -758,6 +760,10 @@ html.no-scroll {
 #footer .btn {
   background-color: #FF3F4A;
   color: white;
+}
+
+#footer p {
+  margin-top: 15px;
 }
 
 /* navbar hover and underline start */
