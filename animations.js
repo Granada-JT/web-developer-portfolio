@@ -545,11 +545,9 @@ document.addEventListener(
 document.addEventListener("DOMContentLoaded", function () {
   const previewContainer = document.querySelector(".project-details");
   const previewBox = previewContainer.querySelectorAll(".detail");
-  const brandElement = document.getElementById("brand");
-  const navbarToggler = document.querySelectorAll(".navbar-toggler");
-  const navItems = Array.from(document.querySelectorAll(".nav-item"));
   const aboutMeSection = document.getElementById("about-me");
   const skillsSection = document.getElementById("skills");
+  const navbar = document.getElementById("nav-bar");
 
   document
     .querySelectorAll(".projects-container .project")
@@ -568,15 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
             preview.classList.remove("active");
           }
         });
-
-        navbarToggler.forEach((element) => {
-          element.classList.add("display-none");
-        });
-        brandElement.classList.add("display-none");
-        navItems.forEach((navItem) => {
-          navItem.style.transitionDelay = "";
-          navItem.classList.add("display-none");
-        });
+        navbar.classList.add("hide-navbar-nav");
       };
     });
 
@@ -589,17 +579,42 @@ document.addEventListener("DOMContentLoaded", function () {
         html.classList.remove("no-scroll");
         aboutMeSection.classList.remove("hidden");
         skillsSection.classList.remove("hidden");
-        navbarToggler.forEach((element) => {
-          element.classList.remove("display-none");
-        });
-        brandElement.classList.remove("display-none");
-        navItems.forEach((navItem, index) => {
-          navItem.style.transitionDelay = `${(index + 1) * 0.05}s`;
-          navItem.classList.remove("display-none");
-        });
+        navbar.classList.remove("hide-navbar-nav");
       };
     }
   });
 
   const html = document.documentElement;
 });
+
+// This code block dynamically changes the background of the nav bar when it is clicked
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+    const navBar = document.getElementById("nav-bar");
+    const toggler = document.querySelector(".navbar-toggler");
+    const togglerIcon = document.querySelector(".navbar-toggler-icon");
+    const brand = document.getElementById("brand");
+
+    toggler.addEventListener("click", () => {
+      if (navBar.classList.contains("bg-black")) {
+        setTimeout(() => {
+          navBar.classList.remove("bg-black");
+        }, 100)
+        toggler.classList.add("hide-toggler");
+        toggler.classList.remove("align-toggler");
+        setTimeout(() => {
+          toggler.classList.remove("hide-toggler");
+          brand.classList.remove("hide-brand");
+        }, 350);
+        togglerIcon.style.background = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3e%3cpath stroke='rgba(255, 63, 74, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")`;
+      } else {
+        navBar.classList.add("bg-black");
+        toggler.classList.add("align-toggler");
+        togglerIcon.style.background = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3e%3cpath stroke='rgba(255, 63, 74, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 4L26 26M4 26L26 4'/%3e%3c/svg%3e")`;
+        brand.classList.add("hide-brand")
+      }
+    });
+  },
+  { rootMargin: "-1px" },
+);
