@@ -83,6 +83,24 @@ html.no-scroll {
   pointer-events: all;
 }
 
+.bg-black {
+  background-color: #000;
+}
+
+#navbar-nav li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.align-toggler {
+  width: 100%;
+}
+
+.hide-toggler {
+  display: none;
+}
+
 /* NavBar End */
 
 /* Landing Section Start */

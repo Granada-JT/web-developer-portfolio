@@ -603,3 +603,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const html = document.documentElement;
 });
+
+// This code block dynamically changes the background of the nav bar when it is clicked
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+    const navBar = document.getElementById("nav-bar");
+    const toggler = document.querySelector(".navbar-toggler");
+
+    toggler.addEventListener("click", () => {
+      if (navBar.classList.contains("bg-black")) {
+        navBar.classList.remove("bg-black");
+        toggler.classList.add("hide-toggler");
+        toggler.classList.remove("align-toggler");
+        setTimeout(() => {
+          toggler.classList.remove("hide-toggler");
+        }, 350);
+      } else {
+        navBar.classList.add("bg-black");
+        toggler.classList.add("align-toggler");
+      }
+    });
+  },
+  { rootMargin: "-1px" },
+);
