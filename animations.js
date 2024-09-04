@@ -550,6 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const navItems = Array.from(document.querySelectorAll(".nav-item"));
   const aboutMeSection = document.getElementById("about-me");
   const skillsSection = document.getElementById("skills");
+  const navbar = document.getElementById("nav-bar");
 
   document
     .querySelectorAll(".projects-container .project")
@@ -573,6 +574,7 @@ document.addEventListener("DOMContentLoaded", function () {
           element.classList.add("display-none");
         });
         brandElement.classList.add("display-none");
+        navbar.classList.add("hide-navbar-nav");
         navItems.forEach((navItem) => {
           navItem.style.transitionDelay = "";
           navItem.classList.add("display-none");
@@ -589,6 +591,7 @@ document.addEventListener("DOMContentLoaded", function () {
         html.classList.remove("no-scroll");
         aboutMeSection.classList.remove("hidden");
         skillsSection.classList.remove("hidden");
+        navbar.classList.remove("hide-navbar-nav");
         navbarToggler.forEach((element) => {
           element.classList.remove("display-none");
         });
