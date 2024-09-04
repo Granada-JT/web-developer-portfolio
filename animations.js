@@ -545,9 +545,6 @@ document.addEventListener(
 document.addEventListener("DOMContentLoaded", function () {
   const previewContainer = document.querySelector(".project-details");
   const previewBox = previewContainer.querySelectorAll(".detail");
-  const brandElement = document.getElementById("brand");
-  const navbarToggler = document.querySelectorAll(".navbar-toggler");
-  const navItems = Array.from(document.querySelectorAll(".nav-item"));
   const aboutMeSection = document.getElementById("about-me");
   const skillsSection = document.getElementById("skills");
   const navbar = document.getElementById("nav-bar");
@@ -569,16 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
             preview.classList.remove("active");
           }
         });
-
-        navbarToggler.forEach((element) => {
-          element.classList.add("display-none");
-        });
-        brandElement.classList.add("display-none");
         navbar.classList.add("hide-navbar-nav");
-        navItems.forEach((navItem) => {
-          navItem.style.transitionDelay = "";
-          navItem.classList.add("display-none");
-        });
       };
     });
 
@@ -592,14 +580,6 @@ document.addEventListener("DOMContentLoaded", function () {
         aboutMeSection.classList.remove("hidden");
         skillsSection.classList.remove("hidden");
         navbar.classList.remove("hide-navbar-nav");
-        navbarToggler.forEach((element) => {
-          element.classList.remove("display-none");
-        });
-        brandElement.classList.remove("display-none");
-        navItems.forEach((navItem, index) => {
-          navItem.style.transitionDelay = `${(index + 1) * 0.05}s`;
-          navItem.classList.remove("display-none");
-        });
       };
     }
   });
