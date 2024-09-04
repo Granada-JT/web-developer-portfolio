@@ -613,7 +613,9 @@ document.addEventListener(
 
     toggler.addEventListener("click", () => {
       if (navBar.classList.contains("bg-black")) {
-        navBar.classList.remove("bg-black");
+        setTimeout(() => {
+          navBar.classList.remove("bg-black");
+        }, 300)
         toggler.classList.add("hide-toggler");
         toggler.classList.remove("align-toggler");
         setTimeout(() => {
