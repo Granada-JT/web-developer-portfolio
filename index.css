@@ -789,6 +789,7 @@ html.no-scroll {
 #footer .btn {
   background-color: #FF3F4A;
   color: white;
+  margin-left: 15px;
 }
 
 #footer p {
@@ -902,6 +903,21 @@ html.no-scroll {
 
   .carousel-control-prev-icon, .carousel-control-next-icon {
     visibility: hidden;
+  }
+
+  #footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+  }
+
+  #footer .btn {
+    width: 100%;
+    margin: 0;
   }
 }
 
