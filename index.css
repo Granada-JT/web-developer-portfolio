@@ -782,6 +782,8 @@ html.no-scroll {
   color: white;
   opacity: 1;
   transition: opacity 1s ease-in-out;
+  padding: 0 20px;
+  text-align: center;
 }
 
 #footer .btn {
