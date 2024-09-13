@@ -797,6 +797,10 @@ html.no-scroll {
   margin-top: 15px;
 }
 
+#footer p {
+  margin-top: 15px;
+}
+
 /* navbar hover and underline start */
 .nav-link-underline {
   position: relative;
