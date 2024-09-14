@@ -472,20 +472,24 @@
       <div class="container" id="form-carousel">
         <div class="row mx-3">
           <div class="col-sm-12 col-lg-6">
-            <form id="form-col">
+            <form id="form-col" novalidate>
               <i class="text-center">Contact Me</i>
               <div class="form-group text-left justify-content-center">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" required>
+                <input type="text" class="form-control" id="name">
+                <span  id="name-validation">Please Input a Name</span>
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" name="email" id="email" required>
+                <input type="email" class="form-control" name="email" id="email">
+                <span  id="email-validation">Please Input a Valid Email Address</span>
                 <label for="phone">Contact Number</label>
-                <input type="phone" class="form-control" id="phone" required>
+                <input type="phone" class="form-control" id="phone">
+                <span  id="phone-validation">Please Input a Valid Contact No.</span>
                 <label for="message">Message</label>
-                <textarea class="form-control" id="message" rows="3" required></textarea>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+                <span  id="message-validation">Please Input a Message</span>
               </div>
               <div id="send-email-button">
-                <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#modal-div">Send Message</button>
+                <button type="submit" class="btn btn-dark text-light" >Send Message</button>
               </div>
             </form>
           </div>
@@ -560,29 +564,71 @@
       const form = document.getElementById('form-col');
       const modalCloseButton = document.getElementById('modal-close-button');
 
-      form.addEventListener('click', function(event) {
-        event.preventDefault();
+      form.addEventListener('submit', function(event) {
+        let isValid = true;
+        event.preventDefault()
 
         const name = document.getElementById('name').value;
+        const nameError = document.getElementById('name-validation');
         const emailAddress = document.getElementById('email').value;
+        const emailError = document.getElementById('email-validation');
         const contactNo = document.getElementById('phone').value;
+        const contactError = document.getElementById('phone-validation');
         const message = document.getElementById('message').value;
+        const messageError = document.getElementById('message-validation');
 
-        fetch('https://capstone-1-granada.onrender.com/visitors', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name,
-            emailAddress,
-            contactNo,
-            message
+        if (name.trim() === '') {
+          nameError.style.display = 'block';
+          isValid = false;
+        } else {
+          nameError.style.display = 'none';
+        }
+
+        if (emailAddress.trim() === '') {
+          emailError.style.display = 'block';
+          isValid = false;
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailAddress)) {
+          emailError.style.display = 'block';
+          isValid = false;
+        } else {
+          emailError.style.display = 'none';
+        }
+
+        if (contactNo.trim() === '') {
+          contactError.style.display = 'block';
+          isValid = false;
+        } else if (!/^[0-9]+$/.test(contactNo)) {
+          contactError.style.display = 'block';
+          isValid = false;
+        } else {
+          contactError.style.display = 'none';
+        }
+
+        if (message.trim() === '') {
+          messageError.style.display = 'block';
+          isValid = false;
+        } else {
+          messageError.style.display = 'none';
+        }
+
+        if (isValid) {
+          $('#modal-div').modal('show');
+          fetch('https://capstone-1-granada.onrender.com/visitors', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name,
+              emailAddress,
+              contactNo,
+              message
+            })
           })
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        }); 
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        }
       });
 
       modalCloseButton.addEventListener('click', resetForm);
