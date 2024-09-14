@@ -485,7 +485,7 @@
                 <textarea class="form-control" id="message" rows="3" required></textarea>
               </div>
               <div id="send-email-button">
-                <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#modalDiv">Send Message</button>
+                <button type="button" class="btn btn-dark text-light" data-toggle="modal" data-target="#modal-div">Send Message</button>
               </div>
             </form>
           </div>
@@ -529,11 +529,11 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="modalDiv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal-div" tabindex="-1" aria-labelledby="example-modal-label" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">Thank you for contacting me!</h5>
+                <h5 class="modal-title text-dark" id="example-modal-label">Thank you for contacting me!</h5>
                 <button type="send_inquiry" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -542,7 +542,7 @@
                 Message Successfully Sent
               </div>
               <div class="modal-footer">
-                <button type="button" id="modalCloseButton" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
+                <button type="button" id="modal-close-button" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
               </div>
             </div>
           </div>
@@ -558,7 +558,7 @@
 
     <script>
       const form = document.getElementById('form-col');
-      const modalCloseButton = document.getElementById('modalCloseButton');
+      const modalCloseButton = document.getElementById('modal-close-button');
 
       form.addEventListener('click', function(event) {
         event.preventDefault();
