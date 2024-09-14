@@ -19,6 +19,10 @@ body::-webkit-scrollbar {
   color: white !important;
 }
 
+.navbar-expand-lg {
+  width: 100vw;
+}
+
 .navbar-nav .nav-link {
   color: white;
   font-size: 1.3rem;
@@ -359,6 +363,10 @@ html.no-scroll {
   align-items: center;
 }
 
+#landing-spacer {
+  height: 90%;
+  width: 100px;
+}
 /* Landing Section End */
 
 
@@ -632,6 +640,16 @@ html.no-scroll {
   transition: opacity 1s ease-in-out;
 }
 
+#form-col label {
+  margin-top: 5px;
+}
+
+#form-col span {
+  color: red;
+  display: none;
+  margin: 2px 4px;
+}
+
 .form-group {
   opacity: 0;
 }
@@ -762,6 +780,11 @@ html.no-scroll {
   font-size: 2.3rem;
 }
 
+.modal-open {
+  width: 100vw;
+  overflow: hidden;
+}
+
 /* Awards and Achievements Carousel End */
 
 #send-email-button .btn {
@@ -823,11 +846,6 @@ html.no-scroll {
 }
 
 /* navbar hover and underline end */
-
-#landing-spacer {
-  height: 90%;
-  width: 100px;
-}
 
 @media (width <= 450px) {
   #landing {
