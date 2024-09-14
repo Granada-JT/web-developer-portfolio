@@ -19,6 +19,10 @@ body::-webkit-scrollbar {
   color: white !important;
 }
 
+.navbar-expand-lg {
+  width: 100vw;
+}
+
 .navbar-nav .nav-link {
   color: white;
   font-size: 1.3rem;
@@ -827,6 +831,11 @@ html.no-scroll {
 #landing-spacer {
   height: 90%;
   width: 100px;
+}
+
+.modal-open {
+  width: 100vw;
+  overflow: hidden;
 }
 
 @media (width <= 450px) {
