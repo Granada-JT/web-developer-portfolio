@@ -362,7 +362,7 @@ document.addEventListener(
             project.classList.add("show");
           });
         }, 300);
-        projectsHeader.forEach((projectsHeader, index) => {
+        projectsHeader.forEach((projectsHeader) => {
           projectsHeader.classList.add("show", "slide-down-up");
         });
       }, 500);
@@ -417,13 +417,13 @@ document.addEventListener(
 
     const applyAnimation = function () {
       setTimeout(() => {
-        skillIcons.forEach((skillIcon, index) => {
+        skillIcons.forEach((skillIcon) => {
           skillIcon.classList.add("show");
         });
-        title.forEach((title, index) => {
+        title.forEach((title) => {
           title.classList.add("show");
         });
-        skillDes.forEach((skillDes, index) => {
+        skillDes.forEach((skillDes) => {
           skillDes.classList.add("show");
         });
       }, 500);
@@ -600,7 +600,7 @@ document.addEventListener(
       if (navBar.classList.contains("bg-black")) {
         setTimeout(() => {
           navBar.classList.remove("bg-black");
-        }, 100)
+        }, 100);
         toggler.classList.add("hide-toggler");
         toggler.classList.remove("align-toggler");
         setTimeout(() => {
@@ -612,7 +612,7 @@ document.addEventListener(
         navBar.classList.add("bg-black");
         toggler.classList.add("align-toggler");
         togglerIcon.style.background = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' width='30' height='30'%3e%3cpath stroke='rgba(255, 63, 74, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 4L26 26M4 26L26 4'/%3e%3c/svg%3e")`;
-        brand.classList.add("hide-brand")
+        brand.classList.add("hide-brand");
       }
     });
   },

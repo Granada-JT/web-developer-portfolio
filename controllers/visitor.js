@@ -16,7 +16,10 @@ module.exports.saveVisitorDetails = (req, res) => {
   form
     .save()
     .then(() => res.send(true))
-    .catch((err) => res.status(500).send(false));
+    .catch((error) => {
+      res.status(500).send(false);
+      console.error(error);
+    });
 };
 
 module.exports.loginKey = (req, res) => {
