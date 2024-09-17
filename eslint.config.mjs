@@ -11,7 +11,12 @@ export default [
   },
   {
     languageOptions: {
-      globals: globals.node,
+      globals: {
+        ...globals.node,
+        document: true,
+        IntersectionObserver: true,
+        window: true,
+      },
     },
   },
   pluginJs.configs.recommended,
