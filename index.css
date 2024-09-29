@@ -848,6 +848,19 @@ html.no-scroll {
 
 /* navbar hover and underline end */
 
+video {
+  max-width: 1910px;
+  max-height: 1000px;
+}
+
+.card-links {
+  height: 100%;
+}
+
+.repo-link {
+  background-color: #2b3849!important;
+}
+
 @media (width <= 450px) {
   #landing {
     min-height: 100vh + 1px;
@@ -943,6 +956,14 @@ html.no-scroll {
     width: 100%;
     margin: 0;
   }
+
+  .card-links .btn {
+    font-size: 18px!important;
+  }
+}
+
+.card-links a {
+  text-wrap: wrap!important;
 }
 
 @media (width >= 451px) and (width <= 575px) {
@@ -977,6 +998,10 @@ html.no-scroll {
 
   #projects-header > i {
     padding: 4rem 0;
+  }
+
+  .card-links .btn {
+    font-size: 18px!important;
   }
 }
 
