@@ -848,6 +848,11 @@ html.no-scroll {
 
 /* navbar hover and underline end */
 
+video {
+  max-width: 1910px;
+  max-height: 1000px;
+}
+
 @media (width <= 450px) {
   #landing {
     min-height: 100vh + 1px;
