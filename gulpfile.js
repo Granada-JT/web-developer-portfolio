@@ -10,7 +10,7 @@ gulp.task("inject-env", () => {
     .pipe(replace("G-WR44F2NEMR", process.env["GA_MEASUREMENT_ID"]))
     .pipe(
       replace(
-        "https://calculator-app-granada.vercel.app/",
+        "https://minimalistic-calculator-granada.vercel.app/",
         process.env["CALCULATOR_STAGING"],
       ),
     )
