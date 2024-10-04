@@ -14,5 +14,17 @@ gulp.task("inject-env", () => {
         process.env["CALCULATOR_STAGING"],
       ),
     )
+    .pipe(
+      replace(
+        "https://minimalistic-shop.vercel.app/",
+        process.env["SHOP_STAGING"],
+      ),
+    )
+    .pipe(
+      replace(
+        "https://minimalistic-shop-api.onrender.com",
+        process.env["SHOP_API_STAGING"],
+      ),
+    )
     .pipe(gulp.dest("."));
 });
