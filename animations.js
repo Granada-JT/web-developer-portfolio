@@ -622,6 +622,8 @@ document.addEventListener(
 window.addEventListener('load', function() {
   let currentSection = null;
   let particlesInitialized = false;
+  let pendingUpdate = null;
+  let isTransitioning = false;
   
   // Particles configurations for different sections
   const particlesConfigs = {
@@ -764,7 +766,14 @@ window.addEventListener('load', function() {
   };
 
   function updateParticlesForSection(sectionName) {
-    if (currentSection === sectionName) return;
+    // Clear any pending updates
+    if (pendingUpdate) {
+      clearTimeout(pendingUpdate);
+      pendingUpdate = null;
+    }
+    
+    // If we're already transitioning to this section, skip
+    if (currentSection === sectionName || isTransitioning) return;
     
     const config = particlesConfigs[sectionName];
     if (!config) return;
@@ -774,16 +783,21 @@ window.addEventListener('load', function() {
       particlesJS('particles-js', config);
       particlesInitialized = true;
       currentSection = sectionName;
-    } else if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
-      // Smooth transition with CSS classes
+      return;
+    }
+    
+    if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+      isTransitioning = true;
       const canvas = document.querySelector('#particles-js canvas');
+      
       if (canvas) {
         // Start fade out
         canvas.classList.add('fading-out');
         canvas.classList.remove('fading-in');
         
-        setTimeout(() => {
-          // Update existing particles configuration dynamically
+        // Set a timeout to actually update the config
+        pendingUpdate = setTimeout(() => {
+          // Double-check we still want to update to this section
           const pJS = window.pJSDom[0].pJS;
           
           // Update particle properties with smooth interpolation
@@ -830,10 +844,35 @@ window.addEventListener('load', function() {
           setTimeout(() => {
             canvas.classList.remove('fading-out');
             canvas.classList.add('fading-in');
+            isTransitioning = false;
+            pendingUpdate = null;
           }, 100);
         }, 400); // Wait for fade out to complete
       }
     }
+  }
+
+  // Debounced section update to prevent rapid section changes during fast scrolling
+  let sectionUpdateTimeout = null;
+  let lastTriggeredSection = null;
+  
+  function debouncedSectionUpdate(sectionId) {
+    // Clear any pending section update
+    if (sectionUpdateTimeout) {
+      clearTimeout(sectionUpdateTimeout);
+    }
+    
+    // Store the latest section that should be updated
+    lastTriggeredSection = sectionId;
+    
+    // Set a new timeout to update after scroll settling
+    sectionUpdateTimeout = setTimeout(() => {
+      // Only update if this is still the latest triggered section
+      if (lastTriggeredSection === sectionId && !isTransitioning) {
+        updateParticlesForSection(sectionId);
+      }
+      sectionUpdateTimeout = null;
+    }, 150); // Wait for scroll to settle
   }
 
   // Section observer for particles
@@ -842,14 +881,11 @@ window.addEventListener('load', function() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
-          // Add a small delay to ensure smooth transitions
-          setTimeout(() => {
-            updateParticlesForSection(sectionId);
-          }, 100);
+          debouncedSectionUpdate(sectionId);
         }
       });
     },
-    { rootMargin: "-1px", threshold: 0.4 }
+    { rootMargin: "-1px", threshold: 0.5 }
   );
 
   // Observe all sections
