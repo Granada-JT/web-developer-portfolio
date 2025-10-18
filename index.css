@@ -589,6 +589,10 @@ html.no-scroll {
   background-color: black;
 }
 
+#skills .text-center {
+  z-index: 9999;
+}
+
 .title {
   opacity: 0;
 }
