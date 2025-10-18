@@ -122,6 +122,7 @@ html.no-scroll {
 /* Landing Section Start */
 #home {
   background-color: black;
+  z-index: 999
 }
 
 .landing-col {
@@ -298,6 +299,7 @@ html.no-scroll {
   opacity: 0;
   font-size: 3rem;
   max-width: 95%;
+    z-index: 9999;
 }
 
 #about-me-header.show {
@@ -314,6 +316,7 @@ html.no-scroll {
   font-size: 1.5rem;
   width: 95%;
   margin: 12px 0 20px;
+  z-index: 9999;
 }
 
 #about-me-caption.show {
@@ -335,6 +338,7 @@ html.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9999;
 }
 
 #carousel-picture.show {
@@ -350,6 +354,7 @@ html.no-scroll {
 #carousel-socials img {
   opacity: 0;
   display: flex;
+  z-index: 9999;
 }
 
 #carousel-socials img.show {
@@ -365,6 +370,7 @@ html.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9999;
 }
 
 #landing-spacer {
@@ -416,6 +422,7 @@ html.no-scroll {
   transition: all .5s ease;
   cursor: pointer;
   margin: 20px 0;
+  z-index: 100;
 }
 
 .content > * {
@@ -458,6 +465,7 @@ html.no-scroll {
   display: none;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .project-details .detail {
@@ -636,6 +644,7 @@ html.no-scroll {
 
 #form-carousel {
   margin-top: 10%;
+  z-index: 9999;
 }
 
 #send-email-button {
@@ -805,6 +814,7 @@ html.no-scroll {
 
 #footer {
   opacity: 0;
+  z-index: 9999;
 }
 
 #footer.show {
