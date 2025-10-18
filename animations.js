@@ -618,3 +618,247 @@ document.addEventListener(
   },
   { rootMargin: "-1px" },
 );
+
+window.addEventListener('load', function() {
+  let currentSection = null;
+  let particlesInitialized = false;
+  let pendingUpdate = null;
+  let isTransitioning = false;
+  
+  // Dynamic particle configuration generator for truly unique sections
+  const themeColors = ['#E01E37', '#C41E3A', '#8B0000', '#DC143C', '#B22222', '#FF4500', '#FF6347'];
+  const accentColors = ['#9D4EDD', '#7209B7', '#560BAD', '#4CC9F0', '#00B4D8', '#0077B6', '#F72585', '#B5179E'];
+  const shapes = ['circle'];
+  const interactionModes = ['grab', 'bubble', 'push'];
+  
+  function getRandomConfig(sectionName) {
+    const isLanding = sectionName === 'landing';
+    const baseColor = isLanding ? '#FF3F4A' : accentColors[Math.floor(Math.random() * accentColors.length)];
+    const secondaryColor = themeColors[Math.floor(Math.random() * themeColors.length)];
+    
+    return {
+      "particles": {
+        "number": { "value": Math.floor(Math.random() * 60) + 30 }, // 30-90 particles
+        "color": { 
+          "value": [baseColor, secondaryColor] // Multi-color particles
+        },
+        "shape": { 
+          "type": shapes[Math.floor(Math.random() * shapes.length)],
+          "stroke": {
+            "width": Math.floor(Math.random() * 3),
+            "color": baseColor
+          }
+        },
+        "opacity": { 
+          "value": Math.random() * 0.5 + 0.4, // 0.4-0.9
+          "anim": { 
+            "enable": true, 
+            "speed": Math.random() * 3 + 1, // 1-4
+            "opacity_min": Math.random() * 0.3 + 0.1 // 0.1-0.4
+          } 
+        },
+        "size": { 
+          "value": Math.floor(Math.random() * 8) + 2, // 2-10
+          "random": true,
+          "anim": { 
+            "enable": Math.random() > 0.3, // 70% chance
+            "speed": Math.random() * 5 + 1, // 1-6
+            "size_min": Math.floor(Math.random() * 3) + 1 // 1-4
+          } 
+        },
+        "line_linked": {
+          "enable": true, // 80% chance
+          "distance": Math.floor(Math.random() * 80) + 100, // 100-180
+          "color": Math.random() > 0.5 ? baseColor : secondaryColor,
+          "opacity": Math.random() * 0.6 + 0.2, // 0.2-0.8
+          "width": Math.random() * 3 + 0.5 // 0.5-3.5
+        },
+        "move": { 
+          "enable": true, 
+          "speed": Math.random() * 6 + 1, // 1-7
+          "direction": Math.random() > 0.7 ? ["top", "bottom", "left", "right"][Math.floor(Math.random() * 4)] : "none",
+          "random": Math.random() > 0.3, // 70% random movement
+          "straight": Math.random() > 0.8, // 20% straight movement
+          "out_mode": Math.random() > 0.5 ? "out" : "bounce",
+          "bounce": Math.random() > 0.6 // 40% bounce
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { 
+            "enable": Math.random() > 0.1, // 90% chance
+            "mode": interactionModes[Math.floor(Math.random() * interactionModes.length)]
+          },
+          "onclick": { 
+            "enable": Math.random() > 0.3, // 70% chance
+            "mode": ["push", "remove"][Math.floor(Math.random() * 2)]
+          }
+        },
+        "modes": {
+          "repulse": { 
+            "distance": Math.floor(Math.random() * 100) + 80, // 80-180
+            "duration": Math.random() * 0.8 + 0.2 // 0.2-1.0
+          },
+          "grab": { 
+            "distance": Math.floor(Math.random() * 100) + 120, // 120-220
+            "line_linked": { "opacity": Math.random() * 0.8 + 0.4 } // 0.4-1.2
+          },
+          "bubble": { 
+            "distance": Math.floor(Math.random() * 100) + 150, // 150-250
+            "size": Math.floor(Math.random() * 6) + 6, // 6-12
+            "duration": Math.random() * 3 + 1, // 1-4
+            "opacity": Math.random() * 0.6 + 0.6 // 0.6-1.2
+          },
+          "push": { "particles_nb": Math.floor(Math.random() * 6) + 2 }, // 2-8
+          "remove": { "particles_nb": Math.floor(Math.random() * 4) + 1 } // 1-5
+        }
+      }
+    };
+  }
+
+  // Generate unique configs for each section
+  const particlesConfigs = {
+    landing: getRandomConfig('landing'),
+    home: getRandomConfig('home'),
+    projects: getRandomConfig('projects'),
+    skills: getRandomConfig('skills'),
+    contact: getRandomConfig('contact')
+  };
+
+  function updateParticlesForSection(sectionName) {
+    // Clear any pending updates
+    if (pendingUpdate) {
+      clearTimeout(pendingUpdate);
+      pendingUpdate = null;
+    }
+    
+    // If we're already transitioning to this section, skip
+    if (currentSection === sectionName || isTransitioning) return;
+    
+    // Generate fresh random config each time for maximum uniqueness
+    const config = getRandomConfig(sectionName);
+    if (!config) return;
+    
+    // Initialize particles if not done yet
+    if (!particlesInitialized && typeof particlesJS !== 'undefined') {
+      particlesJS('particles-js', config);
+      particlesInitialized = true;
+      currentSection = sectionName;
+      return;
+    }
+    
+    if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+      isTransitioning = true;
+      const canvas = document.querySelector('#particles-js canvas');
+      
+      if (canvas) {
+        // Start fade out
+        canvas.classList.add('fading-out');
+        canvas.classList.remove('fading-in');
+        
+        // Set a timeout to actually update the config
+        pendingUpdate = setTimeout(() => {
+          // Double-check we still want to update to this section
+          const pJS = window.pJSDom[0].pJS;
+          
+          // Update particle properties with smooth interpolation
+          pJS.particles.number.value = config.particles.number.value;
+          pJS.particles.color.value = config.particles.color.value;
+          pJS.particles.opacity.value = config.particles.opacity.value;
+          pJS.particles.opacity.anim = config.particles.opacity.anim || {};
+          pJS.particles.size.value = config.particles.size.value;
+          pJS.particles.size.random = config.particles.size.random || false;
+          pJS.particles.size.anim = config.particles.size.anim || {};
+          pJS.particles.line_linked.enable = config.particles.line_linked.enable;
+          pJS.particles.line_linked.distance = config.particles.line_linked.distance;
+          pJS.particles.line_linked.color = config.particles.line_linked.color;
+          pJS.particles.line_linked.opacity = config.particles.line_linked.opacity;
+          pJS.particles.line_linked.width = config.particles.line_linked.width;
+          pJS.particles.move.speed = config.particles.move.speed;
+          pJS.particles.move.direction = config.particles.move.direction || "none";
+          pJS.particles.move.random = config.particles.move.random || true;
+          pJS.particles.move.straight = config.particles.move.straight || false;
+          pJS.particles.move.out_mode = config.particles.move.out_mode || "out";
+          pJS.particles.move.bounce = config.particles.move.bounce || false;
+          
+          // Update interactivity with proper fallbacks
+          pJS.interactivity.detect_on = config.interactivity.detect_on || "canvas";
+          if (config.interactivity.events.onhover) {
+            pJS.interactivity.events.onhover.enable = config.interactivity.events.onhover.enable;
+            pJS.interactivity.events.onhover.mode = config.interactivity.events.onhover.mode;
+          }
+          if (config.interactivity.events.onclick) {
+            pJS.interactivity.events.onclick.enable = config.interactivity.events.onclick.enable;
+            pJS.interactivity.events.onclick.mode = config.interactivity.events.onclick.mode;
+          }
+          
+          // Update interaction modes
+          if (config.interactivity.modes) {
+            Object.assign(pJS.interactivity.modes, config.interactivity.modes);
+          }
+          
+          // Refresh particles with new config
+          pJS.fn.particlesRefresh();
+          currentSection = sectionName;
+          
+          // Start fade in after a brief moment
+          setTimeout(() => {
+            canvas.classList.remove('fading-out');
+            canvas.classList.add('fading-in');
+            isTransitioning = false;
+            pendingUpdate = null;
+          }, 100);
+        }, 400); // Wait for fade out to complete
+      }
+    }
+  }
+
+  // Debounced section update to prevent rapid section changes during fast scrolling
+  let sectionUpdateTimeout = null;
+  let lastTriggeredSection = null;
+  
+  function debouncedSectionUpdate(sectionId) {
+    // Clear any pending section update
+    if (sectionUpdateTimeout) {
+      clearTimeout(sectionUpdateTimeout);
+    }
+    
+    // Store the latest section that should be updated
+    lastTriggeredSection = sectionId;
+    
+    // Set a new timeout to update after scroll settling
+    sectionUpdateTimeout = setTimeout(() => {
+      // Only update if this is still the latest triggered section
+      if (lastTriggeredSection === sectionId && !isTransitioning) {
+        updateParticlesForSection(sectionId);
+      }
+      sectionUpdateTimeout = null;
+    }, 150); // Wait for scroll to settle
+  }
+
+  // Section observer for particles
+  const particlesObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          debouncedSectionUpdate(sectionId);
+        }
+      });
+    },
+    { rootMargin: "-1px", threshold: 0.5 }
+  );
+
+  // Observe all sections
+  const sections = ['landing', 'home', 'projects', 'skills', 'contact'];
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      particlesObserver.observe(section);
+    }
+  });
+
+  // Initialize with landing particles
+  updateParticlesForSection('landing');
+});
