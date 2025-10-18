@@ -627,114 +627,137 @@ window.addEventListener('load', function() {
   const particlesConfigs = {
     landing: {
       "particles": {
-        "number": { "value": 50 },
+        "number": { "value": 60 },
         "color": { "value": "#FF3F4A" },
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.8 },
-        "size": { "value": 5 },
+        "opacity": { "value": 0.9, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3 } },
+        "size": { "value": 6, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 2 } },
         "line_linked": {
           "enable": true,
-          "distance": 100,
+          "distance": 120,
           "color": "#FF3F4A",
-          "opacity": 0.6,
+          "opacity": 0.7,
           "width": 2
         },
-        "move": { "enable": true, "speed": 6 }
+        "move": { "enable": true, "speed": 4, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
+        "detect_on": "canvas",
         "events": {
           "onhover": { "enable": true, "mode": "repulse" },
           "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 },
+          "push": { "particles_nb": 4 }
         }
       }
     },
     home: {
       "particles": {
-        "number": { "value": 30 },
-        "color": { "value": "#ffffff" },
+        "number": { "value": 45 },
+        "color": { "value": "#9D4EDD" }, // Purple - complementary to red
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.4 },
-        "size": { "value": 3 },
+        "opacity": { "value": 0.6, "anim": { "enable": true, "speed": 1.5, "opacity_min": 0.2 } },
+        "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 3, "size_min": 1 } },
         "line_linked": {
           "enable": true,
-          "distance": 120,
-          "color": "#ffffff",
-          "opacity": 0.3,
-          "width": 1
+          "distance": 140,
+          "color": "#9D4EDD",
+          "opacity": 0.4,
+          "width": 1.5
         },
-        "move": { "enable": true, "speed": 3 }
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
+        "detect_on": "canvas",
         "events": {
-          "onhover": { "enable": true, "mode": "repulse" }
+          "onhover": { "enable": true, "mode": "grab" }
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } }
         }
       }
     },
     projects: {
       "particles": {
-        "number": { "value": 40 },
-        "color": { "value": "#ffffff" },
+        "number": { "value": 50 },
+        "color": { "value": "#F72585" }, // Hot pink - vibrant complement
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.6 },
-        "size": { "value": 4 },
+        "opacity": { "value": 0.8, "anim": { "enable": true, "speed": 2, "opacity_min": 0.3 } },
+        "size": { "value": 5, "random": true, "anim": { "enable": true, "speed": 2.5, "size_min": 2 } },
         "line_linked": {
           "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
+          "distance": 130,
+          "color": "#F72585",
+          "opacity": 0.6,
+          "width": 2
         },
-        "move": { "enable": true, "speed": 5 }
+        "move": { "enable": true, "speed": 3, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
+        "detect_on": "canvas",
         "events": {
-          "onhover": { "enable": true, "mode": "grab" },
+          "onhover": { "enable": true, "mode": "bubble" },
           "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "bubble": { "distance": 200, "size": 8, "duration": 2, "opacity": 1 },
+          "push": { "particles_nb": 3 }
         }
       }
     },
     skills: {
       "particles": {
-        "number": { "value": 60 },
-        "color": { "value": "#FF3F4A" },
+        "number": { "value": 70 },
+        "color": { "value": "#4CC9F0" }, // Cyan - cool complement
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.7 },
-        "size": { "value": 4 },
+        "opacity": { "value": 0.7, "anim": { "enable": true, "speed": 1.8, "opacity_min": 0.4 } },
+        "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 4, "size_min": 1 } },
         "line_linked": {
           "enable": true,
-          "distance": 100,
-          "color": "#FF3F4A",
+          "distance": 110,
+          "color": "#4CC9F0",
           "opacity": 0.5,
-          "width": 2
+          "width": 1.8
         },
-        "move": { "enable": true, "speed": 8 }
+        "move": { "enable": true, "speed": 5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
+        "detect_on": "canvas",
         "events": {
           "onhover": { "enable": true, "mode": "repulse" },
           "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 120, "duration": 0.3 },
+          "push": { "particles_nb": 5 }
         }
       }
     },
     contact: {
       "particles": {
-        "number": { "value": 25 },
-        "color": { "value": "#ffffff" },
+        "number": { "value": 35 },
+        "color": { "value": "#FFB3BA" }, // Soft pink - calming finish
         "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
+        "opacity": { "value": 0.5, "anim": { "enable": true, "speed": 1.2, "opacity_min": 0.2 } },
+        "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1 } },
         "line_linked": {
           "enable": true,
-          "distance": 140,
-          "color": "#ffffff",
+          "distance": 160,
+          "color": "#FFB3BA",
           "opacity": 0.3,
           "width": 1
         },
-        "move": { "enable": true, "speed": 2 }
+        "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
+        "detect_on": "canvas",
         "events": {
           "onhover": { "enable": true, "mode": "bubble" }
+        },
+        "modes": {
+          "bubble": { "distance": 150, "size": 6, "duration": 3, "opacity": 0.8 }
         }
       }
     }
@@ -752,34 +775,64 @@ window.addEventListener('load', function() {
       particlesInitialized = true;
       currentSection = sectionName;
     } else if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
-      // Update existing particles configuration dynamically
-      const pJS = window.pJSDom[0].pJS;
-      
-      // Update particle properties
-      pJS.particles.number.value = config.particles.number.value;
-      pJS.particles.color.value = config.particles.color.value;
-      pJS.particles.opacity.value = config.particles.opacity.value;
-      pJS.particles.size.value = config.particles.size.value;
-      pJS.particles.line_linked.enable = config.particles.line_linked.enable;
-      pJS.particles.line_linked.distance = config.particles.line_linked.distance;
-      pJS.particles.line_linked.color = config.particles.line_linked.color;
-      pJS.particles.line_linked.opacity = config.particles.line_linked.opacity;
-      pJS.particles.line_linked.width = config.particles.line_linked.width;
-      pJS.particles.move.speed = config.particles.move.speed;
-      
-      // Update interactivity
-      if (config.interactivity.events.onhover) {
-        pJS.interactivity.events.onhover.enable = config.interactivity.events.onhover.enable;
-        pJS.interactivity.events.onhover.mode = config.interactivity.events.onhover.mode;
+      // Smooth transition with CSS classes
+      const canvas = document.querySelector('#particles-js canvas');
+      if (canvas) {
+        // Start fade out
+        canvas.classList.add('fading-out');
+        canvas.classList.remove('fading-in');
+        
+        setTimeout(() => {
+          // Update existing particles configuration dynamically
+          const pJS = window.pJSDom[0].pJS;
+          
+          // Update particle properties with smooth interpolation
+          pJS.particles.number.value = config.particles.number.value;
+          pJS.particles.color.value = config.particles.color.value;
+          pJS.particles.opacity.value = config.particles.opacity.value;
+          pJS.particles.opacity.anim = config.particles.opacity.anim || {};
+          pJS.particles.size.value = config.particles.size.value;
+          pJS.particles.size.random = config.particles.size.random || false;
+          pJS.particles.size.anim = config.particles.size.anim || {};
+          pJS.particles.line_linked.enable = config.particles.line_linked.enable;
+          pJS.particles.line_linked.distance = config.particles.line_linked.distance;
+          pJS.particles.line_linked.color = config.particles.line_linked.color;
+          pJS.particles.line_linked.opacity = config.particles.line_linked.opacity;
+          pJS.particles.line_linked.width = config.particles.line_linked.width;
+          pJS.particles.move.speed = config.particles.move.speed;
+          pJS.particles.move.direction = config.particles.move.direction || "none";
+          pJS.particles.move.random = config.particles.move.random || true;
+          pJS.particles.move.straight = config.particles.move.straight || false;
+          pJS.particles.move.out_mode = config.particles.move.out_mode || "out";
+          pJS.particles.move.bounce = config.particles.move.bounce || false;
+          
+          // Update interactivity with proper fallbacks
+          pJS.interactivity.detect_on = config.interactivity.detect_on || "canvas";
+          if (config.interactivity.events.onhover) {
+            pJS.interactivity.events.onhover.enable = config.interactivity.events.onhover.enable;
+            pJS.interactivity.events.onhover.mode = config.interactivity.events.onhover.mode;
+          }
+          if (config.interactivity.events.onclick) {
+            pJS.interactivity.events.onclick.enable = config.interactivity.events.onclick.enable;
+            pJS.interactivity.events.onclick.mode = config.interactivity.events.onclick.mode;
+          }
+          
+          // Update interaction modes
+          if (config.interactivity.modes) {
+            Object.assign(pJS.interactivity.modes, config.interactivity.modes);
+          }
+          
+          // Refresh particles with new config
+          pJS.fn.particlesRefresh();
+          currentSection = sectionName;
+          
+          // Start fade in after a brief moment
+          setTimeout(() => {
+            canvas.classList.remove('fading-out');
+            canvas.classList.add('fading-in');
+          }, 100);
+        }, 400); // Wait for fade out to complete
       }
-      if (config.interactivity.events.onclick) {
-        pJS.interactivity.events.onclick.enable = config.interactivity.events.onclick.enable;
-        pJS.interactivity.events.onclick.mode = config.interactivity.events.onclick.mode;
-      }
-      
-      // Refresh particles with new config
-      pJS.fn.particlesRefresh();
-      currentSection = sectionName;
     }
   }
 
@@ -789,11 +842,14 @@ window.addEventListener('load', function() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
-          updateParticlesForSection(sectionId);
+          // Add a small delay to ensure smooth transitions
+          setTimeout(() => {
+            updateParticlesForSection(sectionId);
+          }, 100);
         }
       });
     },
-    { rootMargin: "-1px", threshold: 0.3 }
+    { rootMargin: "-1px", threshold: 0.4 }
   );
 
   // Observe all sections
