@@ -625,144 +625,105 @@ window.addEventListener('load', function() {
   let pendingUpdate = null;
   let isTransitioning = false;
   
-  // Particles configurations for different sections
+  // Dynamic particle configuration generator for truly unique sections
+  const themeColors = ['#E01E37', '#C41E3A', '#8B0000', '#DC143C', '#B22222', '#FF4500', '#FF6347'];
+  const accentColors = ['#9D4EDD', '#7209B7', '#560BAD', '#4CC9F0', '#00B4D8', '#0077B6', '#F72585', '#B5179E'];
+  const shapes = ['circle'];
+  const interactionModes = ['grab', 'bubble', 'push'];
+  
+  function getRandomConfig(sectionName) {
+    const isLanding = sectionName === 'landing';
+    const baseColor = isLanding ? '#FF3F4A' : accentColors[Math.floor(Math.random() * accentColors.length)];
+    const secondaryColor = themeColors[Math.floor(Math.random() * themeColors.length)];
+    
+    return {
+      "particles": {
+        "number": { "value": Math.floor(Math.random() * 60) + 30 }, // 30-90 particles
+        "color": { 
+          "value": [baseColor, secondaryColor] // Multi-color particles
+        },
+        "shape": { 
+          "type": shapes[Math.floor(Math.random() * shapes.length)],
+          "stroke": {
+            "width": Math.floor(Math.random() * 3),
+            "color": baseColor
+          }
+        },
+        "opacity": { 
+          "value": Math.random() * 0.5 + 0.4, // 0.4-0.9
+          "anim": { 
+            "enable": true, 
+            "speed": Math.random() * 3 + 1, // 1-4
+            "opacity_min": Math.random() * 0.3 + 0.1 // 0.1-0.4
+          } 
+        },
+        "size": { 
+          "value": Math.floor(Math.random() * 8) + 2, // 2-10
+          "random": true,
+          "anim": { 
+            "enable": Math.random() > 0.3, // 70% chance
+            "speed": Math.random() * 5 + 1, // 1-6
+            "size_min": Math.floor(Math.random() * 3) + 1 // 1-4
+          } 
+        },
+        "line_linked": {
+          "enable": true, // 80% chance
+          "distance": Math.floor(Math.random() * 80) + 100, // 100-180
+          "color": Math.random() > 0.5 ? baseColor : secondaryColor,
+          "opacity": Math.random() * 0.6 + 0.2, // 0.2-0.8
+          "width": Math.random() * 3 + 0.5 // 0.5-3.5
+        },
+        "move": { 
+          "enable": true, 
+          "speed": Math.random() * 6 + 1, // 1-7
+          "direction": Math.random() > 0.7 ? ["top", "bottom", "left", "right"][Math.floor(Math.random() * 4)] : "none",
+          "random": Math.random() > 0.3, // 70% random movement
+          "straight": Math.random() > 0.8, // 20% straight movement
+          "out_mode": Math.random() > 0.5 ? "out" : "bounce",
+          "bounce": Math.random() > 0.6 // 40% bounce
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { 
+            "enable": Math.random() > 0.1, // 90% chance
+            "mode": interactionModes[Math.floor(Math.random() * interactionModes.length)]
+          },
+          "onclick": { 
+            "enable": Math.random() > 0.3, // 70% chance
+            "mode": ["push", "remove"][Math.floor(Math.random() * 2)]
+          }
+        },
+        "modes": {
+          "repulse": { 
+            "distance": Math.floor(Math.random() * 100) + 80, // 80-180
+            "duration": Math.random() * 0.8 + 0.2 // 0.2-1.0
+          },
+          "grab": { 
+            "distance": Math.floor(Math.random() * 100) + 120, // 120-220
+            "line_linked": { "opacity": Math.random() * 0.8 + 0.4 } // 0.4-1.2
+          },
+          "bubble": { 
+            "distance": Math.floor(Math.random() * 100) + 150, // 150-250
+            "size": Math.floor(Math.random() * 6) + 6, // 6-12
+            "duration": Math.random() * 3 + 1, // 1-4
+            "opacity": Math.random() * 0.6 + 0.6 // 0.6-1.2
+          },
+          "push": { "particles_nb": Math.floor(Math.random() * 6) + 2 }, // 2-8
+          "remove": { "particles_nb": Math.floor(Math.random() * 4) + 1 } // 1-5
+        }
+      }
+    };
+  }
+
+  // Generate unique configs for each section
   const particlesConfigs = {
-    landing: {
-      "particles": {
-        "number": { "value": 60 },
-        "color": { "value": "#FF3F4A" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.9, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3 } },
-        "size": { "value": 6, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 2 } },
-        "line_linked": {
-          "enable": true,
-          "distance": 120,
-          "color": "#FF3F4A",
-          "opacity": 0.7,
-          "width": 2
-        },
-        "move": { "enable": true, "speed": 4, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100, "duration": 0.4 },
-          "push": { "particles_nb": 4 }
-        }
-      }
-    },
-    home: {
-      "particles": {
-        "number": { "value": 45 },
-        "color": { "value": "#9D4EDD" }, // Purple - complementary to red
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.6, "anim": { "enable": true, "speed": 1.5, "opacity_min": 0.2 } },
-        "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 3, "size_min": 1 } },
-        "line_linked": {
-          "enable": true,
-          "distance": 140,
-          "color": "#9D4EDD",
-          "opacity": 0.4,
-          "width": 1.5
-        },
-        "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" }
-        },
-        "modes": {
-          "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } }
-        }
-      }
-    },
-    projects: {
-      "particles": {
-        "number": { "value": 50 },
-        "color": { "value": "#F72585" }, // Hot pink - vibrant complement
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.8, "anim": { "enable": true, "speed": 2, "opacity_min": 0.3 } },
-        "size": { "value": 5, "random": true, "anim": { "enable": true, "speed": 2.5, "size_min": 2 } },
-        "line_linked": {
-          "enable": true,
-          "distance": 130,
-          "color": "#F72585",
-          "opacity": 0.6,
-          "width": 2
-        },
-        "move": { "enable": true, "speed": 3, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "bubble" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "bubble": { "distance": 200, "size": 8, "duration": 2, "opacity": 1 },
-          "push": { "particles_nb": 3 }
-        }
-      }
-    },
-    skills: {
-      "particles": {
-        "number": { "value": 70 },
-        "color": { "value": "#4CC9F0" }, // Cyan - cool complement
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.7, "anim": { "enable": true, "speed": 1.8, "opacity_min": 0.4 } },
-        "size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 4, "size_min": 1 } },
-        "line_linked": {
-          "enable": true,
-          "distance": 110,
-          "color": "#4CC9F0",
-          "opacity": 0.5,
-          "width": 1.8
-        },
-        "move": { "enable": true, "speed": 5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 120, "duration": 0.3 },
-          "push": { "particles_nb": 5 }
-        }
-      }
-    },
-    contact: {
-      "particles": {
-        "number": { "value": 35 },
-        "color": { "value": "#FFB3BA" }, // Soft pink - calming finish
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5, "anim": { "enable": true, "speed": 1.2, "opacity_min": 0.2 } },
-        "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 1 } },
-        "line_linked": {
-          "enable": true,
-          "distance": 160,
-          "color": "#FFB3BA",
-          "opacity": 0.3,
-          "width": 1
-        },
-        "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "bubble" }
-        },
-        "modes": {
-          "bubble": { "distance": 150, "size": 6, "duration": 3, "opacity": 0.8 }
-        }
-      }
-    }
+    landing: getRandomConfig('landing'),
+    home: getRandomConfig('home'),
+    projects: getRandomConfig('projects'),
+    skills: getRandomConfig('skills'),
+    contact: getRandomConfig('contact')
   };
 
   function updateParticlesForSection(sectionName) {
@@ -775,7 +736,8 @@ window.addEventListener('load', function() {
     // If we're already transitioning to this section, skip
     if (currentSection === sectionName || isTransitioning) return;
     
-    const config = particlesConfigs[sectionName];
+    // Generate fresh random config each time for maximum uniqueness
+    const config = getRandomConfig(sectionName);
     if (!config) return;
     
     // Initialize particles if not done yet
