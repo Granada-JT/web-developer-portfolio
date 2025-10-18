@@ -618,3 +618,51 @@ document.addEventListener(
   },
   { rootMargin: "-1px" },
 );
+
+window.addEventListener('load', function() {
+  // Check if landing element exists
+  const landingElement = document.getElementById('particles-js');
+  
+  if (landingElement) {
+    // Very simple configuration
+    const simpleConfig = {
+      "particles": {
+        "number": {
+          "value": 50
+        },
+        "color": {
+          "value": "#FF3F4A"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.8
+        },
+        "size": {
+          "value": 5
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 100,
+          "color": "#FF3F4A",
+          "opacity": 0.6,
+          "width": 2
+        },
+        "move": {
+          "enable": true,
+          "speed": 10
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          }
+        }
+      }
+    };
+    particlesJS('particles-js', simpleConfig);
+  } 
+});
