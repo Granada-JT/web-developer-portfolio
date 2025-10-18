@@ -1142,6 +1142,13 @@ video {
 /* Particles.js Styling */
 canvas {
   display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  transition: opacity 1s ease;
 }
 
 #particles-js {
@@ -1150,5 +1157,5 @@ canvas {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1;
 }

@@ -620,28 +620,18 @@ document.addEventListener(
 );
 
 window.addEventListener('load', function() {
-  // Check if landing element exists
-  const landingElement = document.getElementById('particles-js');
+  let currentSection = null;
+  let particlesInitialized = false;
   
-  if (landingElement) {
-    // Very simple configuration
-    const simpleConfig = {
+  // Particles configurations for different sections
+  const particlesConfigs = {
+    landing: {
       "particles": {
-        "number": {
-          "value": 50
-        },
-        "color": {
-          "value": "#FF3F4A"
-        },
-        "shape": {
-          "type": "circle"
-        },
-        "opacity": {
-          "value": 0.8
-        },
-        "size": {
-          "value": 5
-        },
+        "number": { "value": 50 },
+        "color": { "value": "#FF3F4A" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.8 },
+        "size": { "value": 5 },
         "line_linked": {
           "enable": true,
           "distance": 100,
@@ -649,20 +639,172 @@ window.addEventListener('load', function() {
           "opacity": 0.6,
           "width": 2
         },
-        "move": {
-          "enable": true,
-          "speed": 10
-        }
+        "move": { "enable": true, "speed": 6 }
       },
       "interactivity": {
         "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
-          }
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
         }
       }
-    };
-    particlesJS('particles-js', simpleConfig);
-  } 
+    },
+    home: {
+      "particles": {
+        "number": { "value": 30 },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.4 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 120,
+          "color": "#ffffff",
+          "opacity": 0.3,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 3 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" }
+        }
+      }
+    },
+    projects: {
+      "particles": {
+        "number": { "value": 40 },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.6 },
+        "size": { "value": 4 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 5 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        }
+      }
+    },
+    skills: {
+      "particles": {
+        "number": { "value": 60 },
+        "color": { "value": "#FF3F4A" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.7 },
+        "size": { "value": 4 },
+        "line_linked": {
+          "enable": true,
+          "distance": 100,
+          "color": "#FF3F4A",
+          "opacity": 0.5,
+          "width": 2
+        },
+        "move": { "enable": true, "speed": 8 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        }
+      }
+    },
+    contact: {
+      "particles": {
+        "number": { "value": 25 },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 140,
+          "color": "#ffffff",
+          "opacity": 0.3,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "bubble" }
+        }
+      }
+    }
+  };
+
+  function updateParticlesForSection(sectionName) {
+    if (currentSection === sectionName) return;
+    
+    const config = particlesConfigs[sectionName];
+    if (!config) return;
+    
+    // Initialize particles if not done yet
+    if (!particlesInitialized && typeof particlesJS !== 'undefined') {
+      particlesJS('particles-js', config);
+      particlesInitialized = true;
+      currentSection = sectionName;
+    } else if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+      // Update existing particles configuration dynamically
+      const pJS = window.pJSDom[0].pJS;
+      
+      // Update particle properties
+      pJS.particles.number.value = config.particles.number.value;
+      pJS.particles.color.value = config.particles.color.value;
+      pJS.particles.opacity.value = config.particles.opacity.value;
+      pJS.particles.size.value = config.particles.size.value;
+      pJS.particles.line_linked.enable = config.particles.line_linked.enable;
+      pJS.particles.line_linked.distance = config.particles.line_linked.distance;
+      pJS.particles.line_linked.color = config.particles.line_linked.color;
+      pJS.particles.line_linked.opacity = config.particles.line_linked.opacity;
+      pJS.particles.line_linked.width = config.particles.line_linked.width;
+      pJS.particles.move.speed = config.particles.move.speed;
+      
+      // Update interactivity
+      if (config.interactivity.events.onhover) {
+        pJS.interactivity.events.onhover.enable = config.interactivity.events.onhover.enable;
+        pJS.interactivity.events.onhover.mode = config.interactivity.events.onhover.mode;
+      }
+      if (config.interactivity.events.onclick) {
+        pJS.interactivity.events.onclick.enable = config.interactivity.events.onclick.enable;
+        pJS.interactivity.events.onclick.mode = config.interactivity.events.onclick.mode;
+      }
+      
+      // Refresh particles with new config
+      pJS.fn.particlesRefresh();
+      currentSection = sectionName;
+    }
+  }
+
+  // Section observer for particles
+  const particlesObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          updateParticlesForSection(sectionId);
+        }
+      });
+    },
+    { rootMargin: "-1px", threshold: 0.3 }
+  );
+
+  // Observe all sections
+  const sections = ['landing', 'home', 'projects', 'skills', 'contact'];
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      particlesObserver.observe(section);
+    }
+  });
+
+  // Initialize with landing particles
+  updateParticlesForSection('landing');
 });
