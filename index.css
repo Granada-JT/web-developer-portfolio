@@ -402,6 +402,14 @@ html.no-scroll {
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
+.projects-disclaimer {
+  font-size: 18px !important;
+  color: #ffffff !important;
+  z-index: 99;
+  max-width: 1500px;
+  text-align: justify !important;
+}
+
 .project {
   display: flex;
   align-items: center;
@@ -929,7 +937,7 @@ video {
   }
 
   #projects-header > i {
-    padding: 4rem 0;
+    padding: 2rem 1rem;
   }
 
   .project-details .detail {
@@ -1017,7 +1025,7 @@ video {
   }
 
   #projects-header > i {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
   }
 
   .card-links .btn {
@@ -1046,7 +1054,7 @@ video {
   }
 
   #projects-header > i {
-    padding: 6rem 0;
+    padding: 2rem 2rem;
   }
 
   .project-details .detail img{
@@ -1092,7 +1100,7 @@ video {
   }
 
   #projects-header > i {
-    padding: 6rem 0;
+    padding: 2rem 2rem;
   }
 
   .project-details .detail a {
