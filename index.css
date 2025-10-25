@@ -299,7 +299,7 @@ html.no-scroll {
   opacity: 0;
   font-size: 3rem;
   max-width: 95%;
-    z-index: 9999;
+  z-index: 99;
 }
 
 #about-me-header.show {
@@ -316,7 +316,7 @@ html.no-scroll {
   font-size: 1.5rem;
   width: 95%;
   margin: 12px 0 20px;
-  z-index: 9999;
+  z-index: 99;
 }
 
 #about-me-caption.show {
@@ -338,7 +338,7 @@ html.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 99;
 }
 
 #carousel-picture.show {
@@ -354,7 +354,7 @@ html.no-scroll {
 #carousel-socials img {
   opacity: 0;
   display: flex;
-  z-index: 9999;
+  z-index: 99;
 }
 
 #carousel-socials img.show {
@@ -370,7 +370,7 @@ html.no-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 99;
 }
 
 #landing-spacer {
@@ -598,7 +598,7 @@ html.no-scroll {
 }
 
 #skills .text-center {
-  z-index: 9999;
+  z-index: 99;
 }
 
 .title {
@@ -656,7 +656,7 @@ html.no-scroll {
 
 #form-carousel {
   margin-top: 10%;
-  z-index: 9999;
+  z-index: 99;
 }
 
 #send-email-button {
@@ -1041,6 +1041,7 @@ video {
   .navbar-toggler-icon {
     opacity: 1;
     pointer-events: none;
+    z-index: 9999;
   }
 
   #carousel-socials {
@@ -1073,10 +1074,6 @@ video {
 @media (width >= 768px) and (width <= 991px) {
   #icons {
     margin-top: 2rem;
-  }
-
-  .navbar {
-    z-index: -9999;
   }
 
   .navbar-toggler-icon {
