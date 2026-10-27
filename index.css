@@ -240,7 +240,12 @@ main { position: relative; z-index: 1; }
 
 /* ---------- contact ---------- */
 .contact-grid { display: grid; gap: clamp(2.5rem, 7vw, 4rem); align-items: start; }
-@media (min-width: 992px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 992px) {
+  .contact-grid { grid-template-columns: minmax(0, 4.5fr) minmax(0, 6.5fr); align-items: stretch; }   /* ~40% form / ~60% certificate */
+  #form-col .sec-title { font-size: clamp(2.4rem, 5vw, 4.4rem); }
+  .cert-wrap { grid-template-rows: 1fr; }
+  .cert-wrap .cert { aspect-ratio: auto; width: 100%; height: 100%; min-height: 24rem; }                                     /* certificate matches the form's height */
+}
 #form-col .sec-title { margin-bottom: 1.6rem; }
 .field { display: grid; gap: .4rem; margin-bottom: 1.1rem; }
 label { font-weight: 600; }
