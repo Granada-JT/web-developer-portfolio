@@ -14,6 +14,9 @@
      data-rot="0.04"    rotation in degrees per scrolled px
      data-zoom="0.001"  scale growth with scroll
      data-max="22"      clamp for the vertical offset, in px
+   Column groups (grids): data-col-speeds=".07,-.05" on the container. Every child in
+   the same column gets the SAME offset (measured from the container), so gaps inside
+   a column never change; only the columns drift against each other.
    ========================================================================== */
 (() => {
   'use strict';
@@ -61,12 +64,32 @@
     });
   }
 
+  function collectGroups() {
+    $$('[data-col-speeds]').forEach((g) => {
+      const speeds = g.dataset.colSpeeds.split(',').map(Number), max = +g.dataset.max || 0;
+      Array.from(g.children).forEach((el, i) => items.push({ el, g, i, speeds, max, top: 0, h: 0, y: 0, sp: 0, spw: null, dp: 0, dx: 0, rot: 0, zoom: 0 }));
+    });
+    const io = new IntersectionObserver(
+      (es) => es.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
+      { rootMargin: '0px 0px -8% 0px' });
+    $$('.rv').forEach((el) => io.observe(el));
+    $$('.menu li').forEach((li, i) => li.style.setProperty('--i', i));
+  }
+
   let dirty = true, lastSy = -1, lastMx = 9e9, lastMy = 9e9;
 
   function measure() {
     S.vw = innerWidth; S.vh = innerHeight;
     S.docH = Math.max(1, root.scrollHeight - S.vh);
-    for (const it of items) { it.top = docTop(it.el); it.h = it.el.offsetHeight; }
+    const cols = new Map();
+    for (const it of items) {
+      if (it.g) {                                       // grouped: position + column come from the grid container
+        let c = cols.get(it.g);
+        if (!c) cols.set(it.g, c = getComputedStyle(it.g).gridTemplateColumns.split(' ').length);
+        it.sp = it.speeds[(it.i % c) % it.speeds.length];
+        it.top = docTop(it.g); it.h = it.g.offsetHeight;
+      } else { it.top = docTop(it.el); it.h = it.el.offsetHeight; }
+    }
     measureLetters();
     dirty = true;
   }
@@ -585,7 +608,7 @@
    * Init
    * ------------------------------------------------------------------ */
   function init() {
-    collect(); initDecor(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
+    collect(); collectGroups(); initDecor(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
     sizeFx(); measure();
 
     let rt = 0;
