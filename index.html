@@ -1,874 +1,255 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR44F2NEMR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR44F2NEMR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WR44F2NEMR');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>Jomar Granada</title>
+  <meta name="description" content="Software Engineering Portfolio Created with Love by Jomar Tabios Granada.">
+  <link rel="icon" href="images/brand2-jg-nobg-1195x752-v4.png" sizes="196x196">
 
-      gtag('config', 'G-WR44F2NEMR');
-    </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Jomar Granada</title>
-    <meta name="description" content="Software Engineering Portfolio Created with Love by Jomar Tabios Granada.">
-    <link rel="icon" href="images/brand2-jg-nobg-1195x752-v4.png" sizes="196x196">
+  <!-- Fonts + icons (the only third-party assets left: no Bootstrap, jQuery or particles.js) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;1,500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"></noscript>
 
-    <!-- CSS Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="./index.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="./animations.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#home">Skip to content</a>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- Fixed visual layers -->
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div id="glow" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="progress" aria-hidden="true"></div>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" type="text/css" href="./index.css">
+  <!-- Start of Nav Bar -->
+  <header id="nav-bar" class="off">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#landing" id="brand"><img src="images/brand2-jg-nobg-1195x752-v4.png" alt="Jomar Granada logo" width="1195" height="752"></a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Toggle navigation"><span></span><span></span></button>
+      <ul id="menu" class="menu">
+        <li><a href="#home">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- End of Nav Bar -->
 
-    <!-- Particles.js Library -->
-    <script src="particles.js"></script>
-
-    <!-- External JS -->
-    <script type="text/javascript" src="./animations.js"></script>
-
-    <!-- Boxicons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  </head>
-  <body>
+  <main>
     <!-- Start of Landing Section -->
-    <div id="landing">
-      <!-- Particles Background -->
-      <!-- Start of Nav Bar -->
-      <div class="container-fluid">
-        <div class="row">
-          <div id="nav-bar" class="fixed-top">
-            <nav class="navbar navbar-expand-lg px-md-5">
-              <a class="navbar-brand hidden pr-1 " href="#landing" id="brand"><img src="images/brand2-jg-nobg-1195x752-v4.png" alt="logo"></a>
-              <div class="collapse navbar-collapse" id="navbar-nav">
-                <ul class="navbar-nav nav-list smooth-scroll ml-auto">
-                  <li class="nav-item hidden">
-                    <a class="nav-link nav-link-underline pl-lg-3" href="#home">ABOUT</a>
-                  </li>
-                  <li class="nav-item hidden">
-                    <a class="nav-link pl-lg-3 nav-link-underline" href="#projects">PROJECTS</a>
-                  </li>
-                  <li class="nav-item hidden">
-                    <a class="nav-link pl-lg-3 nav-link-underline" href="#skills">SKILLS</a>
-                  </li>
-                  <li class="nav-item hidden">
-                    <a class="nav-link pl-lg-3 nav-link-underline" href="#footer">CONTACT</a>
-                  </li>
-                </ul>
-              </div>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </nav>
-          </div>
+    <section id="landing" class="hero" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true">
+        <i class="orb o1" data-speed=".32" data-depth="40"></i>
+        <i class="orb o2" data-speed="-.18" data-depth="-34"></i>
+        <p class="ghost g1" data-x="-.35" data-speed=".22"><span>Full-Stack</span><span>Full-Stack</span><span>Full-Stack</span></p>
+        <p class="ghost g2" data-x=".3" data-speed=".05"><span>Software Engineer</span><span>Software Engineer</span><span>Software Engineer</span></p>
+        <i class="ring r1" data-depth="14" data-zoom=".0010" data-rot=".03"></i>
+        <i class="ring r2" data-depth="26" data-zoom=".0014" data-rot="-.025"></i>
+        <i class="ring r3" data-depth="38" data-zoom=".0018" data-rot=".02"></i>
+        <i class="ring r4" data-depth="50" data-zoom=".0022" data-rot="-.015"></i>
+      </div>
+      <div class="hero-content" data-speed="-.14">
+        <div class="hero-id">
+          <h1 id="full-name" class="name" data-scramble>Jomar Granada</h1>
+          <p id="profession" class="role-line" data-scramble>Full-Stack Software Engineer</p>
         </div>
+        <ul id="icons" class="hero-stack">
+          <li data-speed="-.05" data-depth="10" style="--i:0"><i class="bx bxl-javascript" aria-hidden="true"></i><span>Javascript</span></li>
+          <li data-speed=".09" data-depth="10" style="--i:1"><i class="bx bxl-react" aria-hidden="true"></i><span>React.js</span></li>
+          <li data-speed="-.1" data-depth="10" style="--i:2"><i class="bx bxl-php" aria-hidden="true"></i><span>PHP</span></li>
+          <li data-speed=".05" data-depth="10" style="--i:3"><i class="bx bxl-python" aria-hidden="true"></i><span>Python</span></li>
+        </ul>
       </div>
-      <!-- End of Nav Bar -->
-      <div id="landing-text">
-        <div id="landing-spacer"></div>
-        <div class="container-fluid">
-          <div class="row no-gutters">
-            <div class="col-12 col-xl-6 landing-col">
-              <div id="full-name" class="col-12">
-                <i data-final="J">J</i>
-                <i data-final="o">o</i>
-                <i data-final="m">m</i>
-                <i data-final="a">a</i>
-                <i data-final="r">r</i>
-                <i data-final="&nbsp;">&nbsp;</i>
-                <i data-final="G">G</i>
-                <i data-final="r">r</i>
-                <i data-final="a">a</i>
-                <i data-final="n">n</i>
-                <i data-final="a">a</i>
-                <i data-final="d">d</i>
-                <i data-final="a">a</i>
-              </div>
-              <div id="profession" class="col-12">
-                <i data-final="F">F</i>
-                <i data-final="u">u</i>
-                <i data-final="l">l</i>
-                <i data-final="l">l</i>
-                <i data-final="-">-</i>
-                <i data-final="S">S</i>
-                <i data-final="t">t</i>
-                <i data-final="a">a</i>
-                <i data-final="c">c</i>
-                <i data-final="k">k</i>
-                <i data-final="&nbsp;">&nbsp;</i>
-                <i data-final="S">S</i>
-                <i data-final="o">o</i>
-                <i data-final="f">f</i>
-                <i data-final="t">t</i>
-                <i data-final="w">w</i>
-                <i data-final="a">a</i>
-                <i data-final="r">r</i>
-                <i data-final="e">e</i>
-                <i data-final="&nbsp;">&nbsp;</i>
-                <i data-final="E">E</i>
-                <i data-final="n">n</i>
-                <i data-final="g">g</i>
-                <i data-final="i">i</i>
-                <i data-final="n">n</i>
-                <i data-final="e">e</i>
-                <i data-final="e">e</i>
-                <i data-final="r">r</i>
-              </div>
-            </div>
-            <div class="col-12 col-xl-6 landing-col">
-              <div id="icons" class="col-12">
-                <i class='bx bxl-javascript col-3' style='color:#FF3F4A' ></i>
-                <i class='bx bxl-react col-3' style='color:#FF3F4A' ></i>
-                <i class='bx bxl-php col-3' style='color:#FF3F4A' ></i>
-                <i class='bx bxl-python col-3' style='color:#FF3F4A' ></i>
-              </div>
-              <div id="icon-des" class="align-items-top col-12">
-                <i class="col-3">Javascript</i>
-                <i class="col-3">React.js</i>
-                <i class="col-3">PHP</i>
-                <i class="col-3">Python</i>
-              </div>
-            </div>
-          </div>
-          <a href="#home" class="row d-flex justify-content-center">
-            <img id="arrow-down" src="./images/arrow-down2.svg"/>
-          </a>
-        </div>    
-      </div>
-    </div>
+      <a href="#home" class="arrow" id="arrow-down" aria-label="Scroll to About"><img src="./images/arrow-down2.svg" alt="" width="48" height="48"></a>
+    </section>
     <!-- End of Landing Section -->
-    <!-- Start of Home div -->
-    <div id="home" class="container-fluid">
-      <div id="particles-js"></div>
-      <!-- Start of About me div -->
-      <div id="about-me" class="row">
-        <!-- Carousel div -->
-        <div id="carousel-picture" class="carousel slide col-lg-5 col-12 order-1" data-ride="carousel">
-          <div class="carousel-inner rounded-circle">
-            <div class="carousel-item active">
-              <img src="./images/formal.jpg" class="w-100" alt="formal-attire-picture">
-            </div>
-            <div class="carousel-item">
-              <img src="./images/avatar.jpg" class="w-100" alt="avatar-picture">
-            </div>
-          </div>
-        </div>
-        <!-- End of Carousel div -->
-        <div class="col-lg-7 col-12 order-2 text-justify" id="carousel-about-me">
-          <i id="about-me-header">About Me</i>
-          <div id="about-me-caption">
-            <p>I am a certified Full-Stack Web Developer with two years of experience. Dedicated on crafting innovative and user-friendly web solutions. Welcome to my portfolio where you'll find my projects, tools, and expertise as I continue my programming journey.</p>
-          </div>
-          <div class="row" id="carousel-socials">
-            <div class="col-lg-2 col-2">
-              <a href="viber://chat?number=+639762255286" target="_blank" class="w-50">
-                <img src="./images/viber2.svg" class="w-100 socialsPics" id="viberImg">
-              </a>         
-            </div>
-            <div class="col-lg-2 col-2">
-              <a href="https://m.me/JomarGranadaa" target="_blank" class="w-50">
-                <img src="./images/messenger2.svg" class="w-100 socialsPics">
-              </a>
-            </div>
-            <div class="col-lg-2 col-2">
-              <a href="https://www.linkedin.com/in/jomar-g-a33604191/" target="_blank" class="w-50">
-                <img src="./images/linkedin2.svg" class="w-100 socialsPics">
-              </a> 
-            </div>
-            <div class="col-lg-2 col-2">
-              <a href="https://github.com/Granada-JT" target="_blank" class="w-50">
-                <img src="./images/github2.svg" class="w-100 socialsPics">
-              </a>
-            </div>
-            <div class="col-lg-2 col-2">
-              <a href="https://gitlab.com/jomart.granada" target="_blank" class="w-50">
-                <img src="./images/gitlab2.svg" class="w-100 socialsPics">
-              </a>
-            </div>
-            <div class="col-lg-2 col-2">
-              <a href="mailto:jomart.granada@gmail.com" target="_blank" class="w-50">
-                <img src="./images/envelope-f2.svg" class="w-100 socialsPics" id="emailImg">
-              </a> 
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End of About me div -->
-    </div>
-    <!-- End of Home Section -->     
-    <!-- Start of Projects Section -->
-    <div id="projects" class="container-fluid projects-container pt-3">
-      <div id="particles-js"></div>
-      <div class="row d-flex justify-content-center mt-5" id="projects-header">
-        <i class="text-center col-12">Work Projects</i>
-        <i class="text-center projects-disclaimer col-12">Note: I worked on these projects as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</i>
-      </div>
-      <!-- Work Projects Cards -->
-      <div class="row justify-content-center align-items-center mx-md-5">
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-4">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-work-1.png" alt="project-4">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>AI-PRO</h1>
-                  <i>React · TypeScript · Node.js · PHP (CodeIgniter) · Redis</i>
-                  <br/>
-                  <strong>Role: Employee — Full-Stack Engineer</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-3">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-work-2.png" class="card-preview" alt="project-1">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Media Meter API</h1>
-                  <i>Python · PHP · MongoDB · ElasticSearch</i>
-                  <br/>
-                  <strong>Role: Employee — Backend Engineer</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row d-lg-flex justify-content-center align-items-center mx-md-5">
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-2">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-work-3.png" class="card-preview" alt="project-1">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Tern</h1>
-                  <i>TypeScript · Node.js</i>
-                  <br/>
-                  <strong>Role: Contractor — Full-Stack Engineer</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-1">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-work-4.png" class="card-preview" alt="project-1">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Realboss</h1>
-                  <i>TypeScript · Material UI · Node.js · AWS S3/CloudFront</i>
-                  <br/>
-                  <strong>Role: Contractor — Full-Stack Engineer</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row d-flex justify-content-center" id="projects-header">
-        <i class="text-center col-12">Personal Projects</i>
-      </div>
-      <!-- Personal Projects Cards -->
-      <div class="row justify-content-center align-items-center mx-md-5">
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-8">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-4.png" alt="project-4">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Minimalistic Calculator</h1>
-                  <i>Sveltekit Typescript</i>
-                </div>
-              </div>
-            </div>
+    <!-- Skills ticker (built from the skills list below) -->
+    <div class="band" aria-hidden="true"><div class="band-track"></div></div>
+
+    <!-- Start of About Section -->
+    <section id="home" class="sec about" aria-labelledby="about-me-header">
+      <p class="ghost sect" aria-hidden="true" data-x="-.18" data-speed=".16"><span>About Me</span><span>About Me</span><span>About Me</span></p>
+      <div class="wrap about-grid">
+        <div class="photo-wrap rv" id="carousel-picture">
+          <i class="disc" aria-hidden="true" data-depth="-22" data-speed="-.08"></i>
+          <div class="orbit" aria-hidden="true" data-rot=".05" data-orbit="Certified Full-Stack Web Developer • "></div>
+          <div class="photo carousel" id="about-carousel" aria-roledescription="carousel" aria-label="Photos of Jomar">
+            <div class="slide active"><img src="./images/formal.jpg" alt="Jomar Granada in formal attire" data-speed=".05" data-max="30" decoding="async"></div>
+            <div class="slide" aria-hidden="true"><img src="./images/avatar.jpg" alt="Jomar Granada avatar" data-speed=".05" data-max="30" loading="lazy" decoding="async"></div>
           </div>
         </div>
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-7">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-3.png" class="card-preview" alt="project-1">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Minimalistic Shop</h1>
-                  <i>React MERN</i>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="about-copy">
+          <h2 id="about-me-header" class="sec-title rv">About Me</h2>
+          <p id="about-me-caption" class="rv">I am a certified Full-Stack Web Developer with two years of experience. Dedicated on crafting innovative and user-friendly web solutions. Welcome to my portfolio where you'll find my projects, tools, and expertise as I continue my programming journey.</p>
+          <ul class="socials" data-stagger>
+            <li class="rv"><a class="mag" href="viber://chat?number=+639762255286" target="_blank" rel="noopener noreferrer" aria-label="Viber"><img src="./images/viber2.svg" alt="" width="56" height="56" loading="lazy"></a></li>
+            <li class="rv"><a class="mag" href="https://m.me/JomarGranadaa" target="_blank" rel="noopener noreferrer" aria-label="Messenger"><img src="./images/messenger2.svg" alt="" width="56" height="56" loading="lazy"></a></li>
+            <li class="rv"><a class="mag" href="https://www.linkedin.com/in/jomar-g-a33604191/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="./images/linkedin2.svg" alt="" width="56" height="56" loading="lazy"></a></li>
+            <li class="rv"><a class="mag" href="https://github.com/Granada-JT" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="./images/github2.svg" alt="" width="56" height="56" loading="lazy"></a></li>
+            <li class="rv"><a class="mag" href="https://gitlab.com/jomart.granada" target="_blank" rel="noopener noreferrer" aria-label="GitLab"><img src="./images/gitlab2.svg" alt="" width="56" height="56" loading="lazy"></a></li>
+            <li class="rv"><a class="mag" href="mailto:jomart.granada@gmail.com" aria-label="Email"><img src="./images/envelope-f2.svg" alt="" width="56" height="56" loading="lazy"></a></li>
+          </ul>
         </div>
       </div>
-      <div class="row d-lg-flex justify-content-center align-items-center mx-md-5">
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-6">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-2.png" class="card-preview" alt="project-1">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Minimalistic Shop API</h1>
-                  <i>MongoDB Postman ExpressJS Nodejs</i>
-                </div>
-              </div>
-            </div>
-          </div>
+    </section>
+    <!-- End of About Section -->
+
+    <!-- Start of Projects Section -->
+    <section id="projects" class="sec projects">
+      <p class="ghost sect" aria-hidden="true" data-x="-.14" data-speed=".14"><span>Projects</span><span>Projects</span><span>Projects</span></p>
+      <div class="wrap">
+        <header class="sec-head" id="projects-header">
+          <h2 class="sec-title rv">Work Projects</h2>
+          <p class="disclaimer rv">Note: I worked on these projects as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</p>
+        </header>
+        <div class="grid" data-stagger="2">
+          <article class="card tilt rv" data-tilt="6" data-wide-speed="-.06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-4"><div class="card-media"><img src="./images/project-work-1.png" alt="AI-PRO preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>AI-PRO</h3><p class="stack">React · TypeScript · Node.js · PHP (CodeIgniter) · Redis</p><p class="role">Role: Employee — Full-Stack Engineer</p></div></article>
+          <article class="card tilt rv" data-tilt="6" data-wide-speed=".06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-3"><div class="card-media"><img src="./images/project-work-2.png" alt="Media Meter API preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Media Meter API</h3><p class="stack">Python · PHP · MongoDB · ElasticSearch</p><p class="role">Role: Employee — Backend Engineer</p></div></article>
+          <article class="card tilt rv" data-tilt="6" data-wide-speed="-.06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-2"><div class="card-media"><img src="./images/project-work-3.png" alt="Tern preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Tern</h3><p class="stack">TypeScript · Node.js</p><p class="role">Role: Contractor — Full-Stack Engineer</p></div></article>
+          <article class="card tilt rv" data-tilt="6" data-wide-speed=".06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-1"><div class="card-media"><img src="./images/project-work-4.png" alt="Realboss preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Realboss</h3><p class="stack">TypeScript · Material UI · Node.js · AWS S3/CloudFront</p><p class="role">Role: Contractor — Full-Stack Engineer</p></div></article>
         </div>
-        <div class="col-xl-6 col-12 mb-5 mb-xl-0">
-          <div class="project" data-name="p-5">
-            <div class="content content-1">
-              <div class="d-flex justify-content-center align-items-center text-center row">
-                <div class="col-12 col-md-6">
-                  <img src="./images/project-1.png" class="card-preview" alt="project-1">
-                </div>
-                <div class="col-12 col-md-6">
-                  <h1>Portfolio</h1>
-                  <i>HTML CSS Javascript</i>
-                </div>
-              </div>
-            </div>
-          </div>
+        <header class="sec-head sub">
+          <h2 class="sec-title rv">Personal Projects</h2>
+        </header>
+        <div class="grid" data-stagger="2">
+          <article class="card tilt rv" data-tilt="6" data-wide-speed="-.06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-8"><div class="card-media"><img src="./images/project-4.png" alt="Minimalistic Calculator preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Minimalistic Calculator</h3><p class="stack">Sveltekit Typescript</p></div></article>
+          <article class="card tilt rv" data-tilt="6" data-wide-speed=".06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-7"><div class="card-media"><img src="./images/project-3.png" alt="Minimalistic Shop preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Minimalistic Shop</h3><p class="stack">React MERN</p></div></article>
+          <article class="card tilt rv" data-tilt="6" data-wide-speed="-.06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-6"><div class="card-media"><img src="./images/project-2.png" alt="Minimalistic Shop API preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Minimalistic Shop API</h3><p class="stack">MongoDB Postman ExpressJS Nodejs</p></div></article>
+          <article class="card tilt rv" data-tilt="6" data-wide-speed=".06" tabindex="0" role="button" aria-haspopup="dialog" data-name="p-5"><div class="card-media"><img src="./images/project-1.png" alt="Portfolio preview" loading="lazy" decoding="async" data-speed=".045" data-max="22"></div><div class="card-body"><h3>Portfolio</h3><p class="stack">HTML CSS Javascript</p></div></article>
         </div>
       </div>
-      <div class="project-details">
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-1">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Realboss</h3>
-                <i>TypeScript Material UI NodeJS S3 Cloudfront</i>
-                <img src="./images/project-work-4.png" class="img-fluid" alt="project-work-4">
-                <a href="https://realboss.ai/" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Link to Project</a>
-              </div>
-              <div class="col-12">
-                <p>Worked as a Full Stack Software Engineer developing new features and maintaining the Realboss console application. This application offers multiple features mainly targeted for business management, including an authentication system, content management system, invoicing and booking system, user management system, and static website creation. I was involved in creating our in house website builder automating static website creation and deployment to AWS S3 and CloudFront.</p>
-                <strong class="mb-3">Note: I worked on this project as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-2">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Tern</h3>
-                <i>Typescript NodeJS</i>
-                <img src="./images/project-work-3.png" class="img-fluid" alt="project-work-3">
-                <a href="https://tern.ac/" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Link to Project</a>
-              </div>
-              <div class="col-12">
-                <p>Worked as a Full Stack Software Engineer in collaboration with backend and frontend developers, scrum master, and CEO. Main tasks included improving the Tern.ac UI, specifically pages and modals integrating features for both client and server-side applications, and translating Figma specifications into functional web pages and components. Features include payment systems and user and profile management systems.</p>
-                <strong class="mb-3">Note: I worked on this project as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-3">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Media Meter API</h3>
-                <i>Python PHP MongoDB ElasticSearch</i>
-                <img src="./images/project-work-2.png" class="img-fluid" alt="project-work-2">
-                <a href="https://media-meter.com/" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Link to Project</a>
-              </div>
-              <div class="col-12">
-                <p>Worked with a team of backend, data, and frontend developers to spearhead the migration of the current Media Meter API from PHP to Python. This API mainly caters to admin dashboards, providing visibility for data visualizations retrieved from in-house scrapers and LLM insights. Technologies used include Python FastAPI, PHP Lumen, MongoDB, and ElasticSearch.</p>
-                <p>Shown below are services served by the Media Meter API:</p>
-                <ul>
-                  <li>MediaWatch: A service used for compiling media data from various sources like print, radio, and news, providing insights and analytics for content creators and marketers.</li>
-                  <li>SharedView: A service used for compiling media data specifically from social media platforms, offering insights and analytics.</li>
-                </ul>
-                <p>These data-intensive services require robust backend support and efficient data processing capabilities, requiring a well-structured API and optimized database operations for queries and data syncing. They also require intensive collaboration with data teams to ensure strict and proper data structures and properties.</p>
-                <strong class="mb-3">Note: I worked on this project as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-4">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>AI-PRO</h3>
-                <i>React PHP Codeigniter NodeJS Redis</i>
-                <img src="./images/project-work-1.png" class="img-fluid" alt="project-work-1">
-                <a href="https://start.ai-pro.org/" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Link to Project</a>
-              </div>
-              <div class="col-12">
-                <p>Worked with a team of developers for AI-PRO, a project that includes multiple interconnected domains, applications, and interfaces providing a seamless user experience from user authentication to AI chat functionality, offering multiple features and AI models. Mainly utilizing React TypeScript for the frontend and NodeJS and PHP CodeIgniter for the backend, I primarily worked on integrating AI models for chatbot-pro and implementing updates to the user interfaces for start.ai-pro.org, token counts for manage.ai-pro.org and start.ai-pro.org, and user management across different plans.</p>
-                <p>AI-PRO is divided into the following domains:</p>
-                <ul>
-                  <li>Chatbot-pro.ai-pro.org: This full-stack sub-application provides an AI-powered chatbot that can assist users with various tasks and inquiries, including different models from major providers such as OpenAI GPT, Anthropic Claude, and Google Gemini.</li>
-                  <li>Start.ai-pro.org: This application provides a user management system for managing a customer's account, including profile information, token counts, subscription plans, and billing information.</li>
-                  <li>Manage.ai-pro.org: This sub-application is responsible for managing user accounts of all subscribed customers, including their subscription plans, billing information, active accounts, and token counts.</li>
-                </ul>
-                <p>Working in a team environment, I collaborated with multiple teams and people such as project managers, QA, and frontend and backend developers to design and implement new features, troubleshoot issues, and ensure the overall quality of the application.</p>
-                <strong class="mb-3">Note: I worked on this project as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-5">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Portfolio</h3>
-                <i>HTML CSS Javascript</i>
-                <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-1.mp4" type="video/mp4">
-                  <p>Your browser does not support the video tag.</p>
-                </video>
-                <a href="https://github.com/Granada-JT/web-developer-portfolio" target="_blank" class="btn repo-link w-100 col-5" role="button" aria-pressed="true">Link to Repository</a>
-              </div>
-              <div class="col-12">
-                <p>My first project is a dynamic and responsive webpage that showcases my proficiency in web development skills. I used Bootstrap to layout the web pages, HTML to create web elements, CSS to implement color schemes and different design styles, and JavaScript to create smooth animations, transitions, and effects. All of the styling and animations in my portfolio are proudly done using pure CSS and JavaScript, without relying on any existing frameworks or libraries. This project demonstrates my extensive knowledge on the fundamentals of both CSS and JavaScript, and my ability to extend their possibilities.</p>
-                <p>The portfolio is divided into five sections:</p>
-                <ul>
-                  <li>Landing: This section presents a subtle and pleasing animation of my name, title, and main skills as a web developer.</li>
-                  <li>About Me: This section provides a short description of my personality as a professional, my picture, and my contact information.</li>
-                  <li>Projects: This section proudly showcases all my finished projects, including my web developer portfolio.</li>
-                  <li>Tools: This section features all the tools that I can use proficiently, along with all the skills that come with utilizing those tools.</li>
-                  <li>Contact: This section provides a contact form and a showcase of all my achievements, certifications, and awards.</li>
-                </ul>
-                <p>I am proud of this project and I believe it is a strong representation of my skills and abilities as a web developer.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-6">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Minimalistic Shop API</h3>
-                <i>MongoDB Postman ExpressJS NodeJS</i>
-                <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-2.mp4" type="video/mp4">
-                  <p>Your browser does not support the video tag.</p>
-                </video> 
-                <div class="card-links d-flex justify-content-center align-items-center">
-                  <div class="col-11 col-lg-8 d-flex justify-content-center">
-                    <a href="https://minimalistic-shop-api.onrender.com" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Deployed API Link</a>
-                    <a href="https://github.com/Granada-JT/minimalistic-shop-api" target="_blank" class="btn repo-link w-100 col-5" role="button" aria-pressed="true">Link to Repository</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <p>In building this API, I explored the power of databases with the use of MongoDB and Postman. This API will enable users to shop, order, and add to cart. It also lets sellers/admins to monitor and control the stocks and sales of their products; it also prioritizes the security and privacy of all its users. I have tested all these routes through Postman, and have stored the gathered data in a MongoDB database, creating a seamlessly working and efficient backend server application.</p>
-                <p>This e-commerce API is mainly composed of three elements:</p> 
-                <ul>
-                  <li>Schemas: In this API, I have created five schemas: cart, checkout, order, product, and user. These schemas act as the blueprint for saving data in the database and enable the different features and functionalities that will be applied in the frontend application.</li>
-                  <li>Controllers: The controllers contain the necessary logic required to execute the different features and functionalities for both the backend and frontend server applications.</li>
-                  <li>Routes: The routes are where the controllers receive their commands/requests from. This is where the create, read, update, and delete operations are initialized and then passed to the defined controller to execute the exact logic required for the specific operation.</li>
-                </ul>
-                <p>This API showcases my proficiency in working with databases and my ability to use MongoDB as a database management system, Postman as a testing and debugging tool, and Node.js with Express.js as frameworks for creating a fully functional e-commerce API.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-7">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Minimalistic Shop</h3>
-                <i>React MERN</i>
-                <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-3.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <div class="card-links d-flex justify-content-center align-items-center">
-                  <div class="col-11 col-lg-8 d-flex justify-content-center">
-                    <a href="https://minimalistic-shop.vercel.app/" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Link to Project</a>
-                    <a href="https://github.com/Granada-JT/minimalistic-shop" target="_blank" class="btn repo-link w-100 col-5" role="button" aria-pressed="true">Link to Repository</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <p>I built a dynamic web application using React.js and the MERN stack, hosted/deployed in Vercel. It's a fully functional e-commerce shop where shoppers can browse and add products to their cart, while sellers and admins can showcase their products with images and descriptions. The application boasts a user-friendly and attractive interface, making the shopping experience smooth and enjoyable.</p>
-                <p>Here are some of the features and functionalities of the application:</p>
-                <ul>
-                  <li>User Sign up and Log in: This feature executes user creation and authentication using props, event listeners, and local storage. The frontend seamlessly communicates with the backend by tracing the correct controller and logic from fetching the correct routes. After a user has been created, their credentials are saved in the database, and a new token is generated for authentication every time they log in.</li>
-                  <li>Add to cart: The add to cart feature utilizes the cart schema from the backend. It detects the product that the user wants to add to their cart and creates a new instance of the cart schema. This is then recorded in the database as a new cart and is also presented to the user on the frontend via retrieving the cart details.</li>
-                  <li>Admin Dashboard: The admin dashboard is where admins can monitor, edit, delete, and update all the products in the e-commerce application. Specifically, they can edit the name, description, price, and image of products, and they can also archive and activate all products.</li>
-                  <li>Add Products: This feature lets admins add products with their own unique name, description, price, and image. For their convenience, I have also placed beside it an overview of all products where they can see the name, description, price, and image of all products that have already been added.</li>
-                  <li>Browse all products: This feature/page allows the admin to beautifully showcase all of their products. It also allows users to efficiently browse and select potential products/items that they will add to their cart and eventually checkout.</li>
-                  <li>See product details: The see product details feature is added to help users decide if they really want to add the product to their cart. Users will be able to see the name, description, price, image of the product, and other additional information in a bigger format. This helps users know more about the product and also helps admins present all the information and go all out in enticing users/shoppers to buy their products.</li>
-                </ul>
-                <p>This full-stack React application showcases my knowledge and proficiency in creating a user-friendly and dynamic web application that efficiently utilizes and integrates the backend and frontend applications.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="detail" data-target="p-8">
-              <i class='bx bx-x close-icon'></i>
-              <div class="col-12">
-                <h3>Minimalistic Calculator</h3>
-                <i>Sveltekit Typescript</i>
-                <video autoplay loop muted class="img-fluid">
-                  <source src="./videos/project-4.mp4" type="video/mp4">
-                  <p>Your browser does not support the video tag.</p>
-                </video>
-                <div class="card-links d-flex justify-content-center align-items-center">
-                  <div class="col-11 col-lg-8 d-flex justify-content-center">
-                    <a href="https://minimalistic-calculator-granada.vercel.app/" target="_blank" class="btn w-100 col-5 d-flex align-items-center project-link" role="button" aria-pressed="true">Link to Project</a>
-                    <a href="https://github.com/Granada-JT/minimalistic-calculator" target="_blank" class="btn repo-link w-100 col-5" role="button" aria-pressed="true">Link to Repository</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <p>In this project, I showcased my unending passion for knowledge and learning new things. Using a newer tool in SvelteKit and TypeScript, I created a fully functional and precise calculator that maximizes the server-side rendering enabled by SvelteKit.</p>               
-                <p>This online calculator is mainly composed of three objectives:</p>
-                <ul>
-                  <li>Main Objective: Create a calculator app which accepts and computes equations with multiple operators and numbers, without using eval(), Function(), mathjs, or any computation library.</li>
-                  <li>Frontend Code Objectives: Provide buttons for entering operators and numbers. Send a POST request to the backend server containing the created equation. Present the received answer from the backend API.</li>
-                  <li>Backend Code Objective: Calculate the received equation from the frontend and send it back as a response.</li>
-                </ul>
-                <p>With these objectives, I have created a calculator app that fully utilizes the functions of the SvelteKit framework and TypeScript, particularly its server-side rendering feature used in calculating the equation provided by the user from the frontend.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
     <!-- End of Projects Section -->
 
     <!-- Start of Skills Section -->
-    <div id="skills" class="d-flex justify-content-center align-items-center">
-      <div id="particles-js"></div>
-      <div class="text-center container my-5">
-        <i class="pt-5 mt-5 title">Skills</i>
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-javascript' style='color:#ffffff' ></i>
-            <i class="row skill-des">Javascript</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-react' style='color:#ffffff' ></i>
-            <i class="row skill-des">React.js</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-php' style='color:#ffffff' ></i>
-            <i class="row skill-des">PHP</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-python' style='color:#ffffff' ></i>
-            <i class="row skill-des">Python</i>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-nodejs' style='color:#ffffff' ></i>
-            <i class="row skill-des">Node.js</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-mongodb' style='color:#ffffff' ></i>
-            <i class="row skill-des">MongoDB</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row skill-icons"><img src="./images/logo-fastapi.svg" alt="restful-api" class="skill-icon-img"></i>
-            <i class="row skill-des">Fastapi</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row skill-icons"><img src="./images/logo-codeigniter.svg" alt="restful-api" class="skill-icon-img"></i>
-            <i class="row skill-des">Codeigniter</i>
-          </div>
-        </div>
-        
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-postgresql' style='color:#ffffff' ></i>
-            <i class="row skill-des">PostgreSQL</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row skill-icons' style='color:#ffffff' ><img src="./images/logo-mysql.svg" alt="material-ui" class="skill-icon-img"></i>
-            <i class="row skill-des">MySQL</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row bx skill-icons bxl-typescript" style='color: #ffffff'></i>
-            <i class="row skill-des">Typescript</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row skill-icons"><img src="./images/redis-white.png" alt="redis-cache" class="skill-icon-img"></i>
-            <i class="row skill-des">Redis</i>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-tailwind-css' style='color:#ffffff' ></i>
-            <i class="row skill-des">Tailwind CSS</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-git' style='color:#ffffff' ></i>
-            <i class="row skill-des">Git</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row skill-icons"><img src="./images/restful-api.svg" alt="restful-api" class="skill-icon-img"></i>
-            <i class="row skill-des">Restful APIs</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row skill-icons"><img src="./images/postman.svg" alt="restful-api" class="skill-icon-img"></i>
-            <i class="row skill-des">Postman</i>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <i class="row skill-icons"><img src="./images/mui-small-white.png" alt="material-ui" class="skill-icon-img"></i>
-            <i class="row skill-des">Material UI</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class="row bx skill-icons bxl-redux" style='color: #ffffff'></i>
-            <i class="row skill-des">Redux</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bxl-bootstrap' style='color:#ffffff' ></i>
-            <i class="row skill-des">Bootstrap</i>
-          </div>
-          <div class="col-lg-3 col-6">
-            <i class='row bx skill-icons bx bxs-devices' style='color:#ffffff' ></i>
-            <i class="row skill-des">Responsive Design</i>
-          </div>
-        </div>
-
+    <section id="skills" class="sec skills">
+      <p class="ghost sect" aria-hidden="true" data-x=".16" data-speed=".14"><span>Skills</span><span>Skills</span><span>Skills</span></p>
+      <div class="wrap">
+        <header class="sec-head"><h2 class="sec-title title rv">Skills</h2></header>
+        <ul class="skills-grid" data-stagger="4">
+          <li class="skill rv tilt" data-tilt="9" data-speed=".05" data-max="14"><i class="bx bxl-javascript" aria-hidden="true"></i><b>Javascript</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.04" data-max="14"><i class="bx bxl-react" aria-hidden="true"></i><b>React.js</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".09" data-max="14"><i class="bx bxl-php" aria-hidden="true"></i><b>PHP</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.07" data-max="14"><i class="bx bxl-python" aria-hidden="true"></i><b>Python</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".05" data-max="14"><i class="bx bxl-nodejs" aria-hidden="true"></i><b>Node.js</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.04" data-max="14"><i class="bx bxl-mongodb" aria-hidden="true"></i><b>MongoDB</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".09" data-max="14"><img src="./images/logo-fastapi.svg" alt="" width="80" height="80" loading="lazy" decoding="async"><b>Fastapi</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.07" data-max="14"><img src="./images/logo-codeigniter.svg" alt="" width="80" height="80" loading="lazy" decoding="async"><b>Codeigniter</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".05" data-max="14"><i class="bx bxl-postgresql" aria-hidden="true"></i><b>PostgreSQL</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.04" data-max="14"><img src="./images/logo-mysql.svg" alt="" width="80" height="80" loading="lazy" decoding="async"><b>MySQL</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".09" data-max="14"><i class="bx bxl-typescript" aria-hidden="true"></i><b>Typescript</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.07" data-max="14"><img src="./images/redis-white.png" alt="" width="80" height="80" loading="lazy" decoding="async"><b>Redis</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".05" data-max="14"><i class="bx bxl-tailwind-css" aria-hidden="true"></i><b>Tailwind CSS</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.04" data-max="14"><i class="bx bxl-git" aria-hidden="true"></i><b>Git</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".09" data-max="14"><img src="./images/restful-api.svg" alt="" width="80" height="80" loading="lazy" decoding="async"><b>Restful APIs</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.07" data-max="14"><img src="./images/postman.svg" alt="" width="80" height="80" loading="lazy" decoding="async"><b>Postman</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".05" data-max="14"><img src="./images/mui-small-white.png" alt="" width="80" height="80" loading="lazy" decoding="async"><b>Material UI</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.04" data-max="14"><i class="bx bxl-redux" aria-hidden="true"></i><b>Redux</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed=".09" data-max="14"><i class="bx bxl-bootstrap" aria-hidden="true"></i><b>Bootstrap</b></li>
+          <li class="skill rv tilt" data-tilt="9" data-speed="-.07" data-max="14"><i class="bx bxs-devices" aria-hidden="true"></i><b>Responsive Design</b></li>
+        </ul>
       </div>
-    </div>
+    </section>
     <!-- End of Skills Section -->
 
     <!-- Start of Contact Section -->
-    <div id="contact" class="d-flex flex-column">
-      <div id="particles-js"></div>
-      <div class="container" id="form-carousel">
-        <div class="row mx-3">
-          <div class="col-sm-12 col-lg-6">
-            <form id="form-col" novalidate>
-              <i class="text-center">Contact Me</i>
-              <div class="form-group text-left justify-content-center">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name">
-                <span  id="name-validation">Please Input a Name</span>
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" name="email" id="email">
-                <span  id="email-validation">Please Input a Valid Email Address</span>
-                <label for="phone">Contact Number</label>
-                <input type="phone" class="form-control" id="phone">
-                <span  id="phone-validation">Please Input a Valid Contact No.</span>
-                <label for="message">Message</label>
-                <textarea class="form-control" id="message" rows="3"></textarea>
-                <span  id="message-validation">Please Input a Message</span>
-              </div>
-              <div id="send-email-button">
-                <button type="submit" class="btn btn-dark text-light" >Send Message</button>
-              </div>
-            </form>
+    <section id="contact" class="sec contact">
+      <p class="ghost sect" aria-hidden="true" data-x="-.14" data-speed=".14"><span>Contact</span><span>Contact</span><span>Contact</span></p>
+      <div class="wrap contact-grid" id="form-carousel">
+        <form id="form-col" class="rv" novalidate>
+          <h2 class="sec-title">Contact Me</h2>
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-validation">
+            <span class="err" id="name-validation" role="alert">Please Input a Name</span>
           </div>
-          <div class="col-sm-12 col-lg-6 d-flex align-items-top justify-content-center" id="client-reviews-carousel">
-              <div id="form-carousel-header">
-                  <div id="carousel-example-captions" class="carousel slide text-center pt-3" data-ride="carousel">
-                    <div class="carousel-inner rounded" id="contact-carousel">
-                      <div class="carousel-item active">
-                          <img src="./images/bootcampCert.jpeg" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                      </div>
-                      </div>
-                      <div class="carousel-item">
-                          <img src="./images/award-1.jpg" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block text-dark">
-                          </div>
-                      </div>
-                      <div class="carousel-item">
-                          <img src="./images/award-2.jpg" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block text-dark">
-                      </div>
-                      </div>
-                      <div class="carousel-item">
-                          <img src="./images/award-3.jpg" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                      </div>
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-target="#carousel-example-captions" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </button>
-                    <button class="carousel-control-next border-dark" type="button" data-target="#carousel-example-captions" data-slide="next">
-                      <span class="carousel-control-next-icon border-dark" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </button>
-                  </div>
-              </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-validation">
+            <span class="err" id="email-validation" role="alert">Please Input a Valid Email Address</span>
           </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-div" tabindex="-1" aria-labelledby="example-modal-label" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-dark" id="example-modal-label">Thank you for contacting me!</h5>
-                <button type="send_inquiry" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body text-center text-dark">
-                Message Successfully Sent
-              </div>
-              <div class="modal-footer">
-                <button type="button" id="modal-close-button" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
-              </div>
-            </div>
+          <div class="field">
+            <label for="phone">Contact Number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" aria-describedby="phone-validation">
+            <span class="err" id="phone-validation" role="alert">Please Input a Valid Contact No.</span>
           </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" aria-describedby="message-validation"></textarea>
+            <span class="err" id="message-validation" role="alert">Please Input a Message</span>
+          </div>
+          <div id="send-email-button"><button type="submit" class="btn-send mag">Send Message</button></div>
+        </form>
+
+        <div class="cert-wrap rv" id="client-reviews-carousel">
+          <div class="cert carousel tilt" id="cert-carousel" data-tilt="5" aria-roledescription="carousel" aria-label="Certificates and awards">
+            <div class="slide active"><img src="./images/bootcampCert.jpeg" alt="Bootcamp certificate" decoding="async"></div>
+            <div class="slide" aria-hidden="true"><img src="./images/award-1.jpg" alt="Award 1" loading="lazy" decoding="async"></div>
+            <div class="slide" aria-hidden="true"><img src="./images/award-2.jpg" alt="Award 2" loading="lazy" decoding="async"></div>
+            <div class="slide" aria-hidden="true"><img src="./images/award-3.jpg" alt="Award 3" loading="lazy" decoding="async"></div>
+            <button class="c-btn c-prev" type="button" aria-label="Previous"></button>
+            <button class="c-btn c-next" type="button" aria-label="Next"></button>
+            <div class="dots" role="tablist" aria-label="Choose slide"></div>
+          </div>
+          <p class="hint">Tap a certificate to enlarge</p>
         </div>
       </div>
+
       <!-- Start of Footer -->
-      <div id="footer">
-        <p>Web Developer Portfolio crafted by Jomar Granada © 2023 - [current year]. All rights reserved.</p>
-        <a href="#" class="btn btn-sm active" role="button" aria-pressed="true">Back to Top</a>
-      </div>
-    </div>
+      <footer id="footer" class="wrap">
+        <p class="ghost foot-ghost" aria-hidden="true" data-speed="-.1"><span>Jomar Granada</span><span>Jomar Granada</span><span>Jomar Granada</span></p>
+        <p>Web Developer Portfolio crafted by Jomar Granada © 2023 - <span id="yr">2026</span>. All rights reserved.</p>
+        <a href="#landing" class="btn-top mag">Back to Top</a>
+      </footer>
+    </section>
     <!-- End of Contact Section -->
+  </main>
 
-    <script>
-      const form = document.getElementById('form-col');
-      const modalCloseButton = document.getElementById('modal-close-button');
+  <!-- Project details (native <dialog>: focus trap, Esc to close, inert page behind it) -->
+  <dialog id="project-details" aria-label="Project details">
+    <button class="d-close" type="button" aria-label="Close project details"><i class="bx bx-x" aria-hidden="true"></i></button>
+    <section class="detail" data-target="p-1" aria-labelledby="t-p-1" data-note><div class="d-media"><h3 id="t-p-1">Realboss</h3><p class="d-stack">TypeScript Material UI NodeJS S3 Cloudfront</p><img src="./images/project-work-4.png" alt="Realboss screenshot" loading="lazy" decoding="async"><div class="d-links"><a href="https://realboss.ai/" target="_blank" rel="noopener noreferrer" class="btn project-link">Link to Project</a></div></div><div class="d-text"><p>Worked as a Full Stack Software Engineer developing new features and maintaining the Realboss console application. This application offers multiple features mainly targeted for business management, including an authentication system, content management system, invoicing and booking system, user management system, and static website creation. I was involved in creating our in house website builder automating static website creation and deployment to AWS S3 and CloudFront.</p></div></section>
+    <section class="detail" data-target="p-2" aria-labelledby="t-p-2" data-note><div class="d-media"><h3 id="t-p-2">Tern</h3><p class="d-stack">Typescript NodeJS</p><img src="./images/project-work-3.png" alt="Tern screenshot" loading="lazy" decoding="async"><div class="d-links"><a href="https://tern.ac/" target="_blank" rel="noopener noreferrer" class="btn project-link">Link to Project</a></div></div><div class="d-text"><p>Worked as a Full Stack Software Engineer in collaboration with backend and frontend developers, scrum master, and CEO. Main tasks included improving the Tern.ac UI, specifically pages and modals integrating features for both client and server-side applications, and translating Figma specifications into functional web pages and components. Features include payment systems and user and profile management systems.</p></div></section>
+    <section class="detail" data-target="p-3" aria-labelledby="t-p-3" data-note><div class="d-media"><h3 id="t-p-3">Media Meter API</h3><p class="d-stack">Python PHP MongoDB ElasticSearch</p><img src="./images/project-work-2.png" alt="Media Meter API screenshot" loading="lazy" decoding="async"><div class="d-links"><a href="https://media-meter.com/" target="_blank" rel="noopener noreferrer" class="btn project-link">Link to Project</a></div></div><div class="d-text"><p>Worked with a team of backend, data, and frontend developers to spearhead the migration of the current Media Meter API from PHP to Python. This API mainly caters to admin dashboards, providing visibility for data visualizations retrieved from in-house scrapers and LLM insights. Technologies used include Python FastAPI, PHP Lumen, MongoDB, and ElasticSearch.</p><p>Shown below are services served by the Media Meter API:</p><ul> <li>MediaWatch: A service used for compiling media data from various sources like print, radio, and news, providing insights and analytics for content creators and marketers.</li> <li>SharedView: A service used for compiling media data specifically from social media platforms, offering insights and analytics.</li> </ul><p>These data-intensive services require robust backend support and efficient data processing capabilities, requiring a well-structured API and optimized database operations for queries and data syncing. They also require intensive collaboration with data teams to ensure strict and proper data structures and properties.</p></div></section>
+    <section class="detail" data-target="p-4" aria-labelledby="t-p-4" data-note><div class="d-media"><h3 id="t-p-4">AI-PRO</h3><p class="d-stack">React PHP Codeigniter NodeJS Redis</p><img src="./images/project-work-1.png" alt="AI-PRO screenshot" loading="lazy" decoding="async"><div class="d-links"><a href="https://start.ai-pro.org/" target="_blank" rel="noopener noreferrer" class="btn project-link">Link to Project</a></div></div><div class="d-text"><p>Worked with a team of developers for AI-PRO, a project that includes multiple interconnected domains, applications, and interfaces providing a seamless user experience from user authentication to AI chat functionality, offering multiple features and AI models. Mainly utilizing React TypeScript for the frontend and NodeJS and PHP CodeIgniter for the backend, I primarily worked on integrating AI models for chatbot-pro and implementing updates to the user interfaces for start.ai-pro.org, token counts for manage.ai-pro.org and start.ai-pro.org, and user management across different plans.</p><p>AI-PRO is divided into the following domains:</p><ul> <li>Chatbot-pro.ai-pro.org: This full-stack sub-application provides an AI-powered chatbot that can assist users with various tasks and inquiries, including different models from major providers such as OpenAI GPT, Anthropic Claude, and Google Gemini.</li> <li>Start.ai-pro.org: This application provides a user management system for managing a customer's account, including profile information, token counts, subscription plans, and billing information.</li> <li>Manage.ai-pro.org: This sub-application is responsible for managing user accounts of all subscribed customers, including their subscription plans, billing information, active accounts, and token counts.</li> </ul><p>Working in a team environment, I collaborated with multiple teams and people such as project managers, QA, and frontend and backend developers to design and implement new features, troubleshoot issues, and ensure the overall quality of the application.</p></div></section>
+    <section class="detail" data-target="p-5" aria-labelledby="t-p-5"><div class="d-media"><h3 id="t-p-5">Portfolio</h3><p class="d-stack">HTML CSS Javascript</p><video muted loop playsinline preload="none" data-src="./videos/project-1.mp4" aria-label="Portfolio demo"></video><div class="d-links"><a href="https://github.com/Granada-JT/web-developer-portfolio" target="_blank" rel="noopener noreferrer" class="btn repo-link">Link to Repository</a></div></div><div class="d-text"><p>My first project is a dynamic and responsive webpage that showcases my proficiency in web development skills. I used Bootstrap to layout the web pages, HTML to create web elements, CSS to implement color schemes and different design styles, and JavaScript to create smooth animations, transitions, and effects. All of the styling and animations in my portfolio are proudly done using pure CSS and JavaScript, without relying on any existing frameworks or libraries. This project demonstrates my extensive knowledge on the fundamentals of both CSS and JavaScript, and my ability to extend their possibilities.</p><p>The portfolio is divided into five sections:</p><ul> <li>Landing: This section presents a subtle and pleasing animation of my name, title, and main skills as a web developer.</li> <li>About Me: This section provides a short description of my personality as a professional, my picture, and my contact information.</li> <li>Projects: This section proudly showcases all my finished projects, including my web developer portfolio.</li> <li>Tools: This section features all the tools that I can use proficiently, along with all the skills that come with utilizing those tools.</li> <li>Contact: This section provides a contact form and a showcase of all my achievements, certifications, and awards.</li> </ul><p>I am proud of this project and I believe it is a strong representation of my skills and abilities as a web developer.</p></div></section>
+    <section class="detail" data-target="p-6" aria-labelledby="t-p-6"><div class="d-media"><h3 id="t-p-6">Minimalistic Shop API</h3><p class="d-stack">MongoDB Postman ExpressJS NodeJS</p><video muted loop playsinline preload="none" data-src="./videos/project-2.mp4" aria-label="Minimalistic Shop API demo"></video><div class="d-links"><a href="https://minimalistic-shop-api.onrender.com" target="_blank" rel="noopener noreferrer" class="btn project-link">Deployed API Link</a><a href="https://github.com/Granada-JT/minimalistic-shop-api" target="_blank" rel="noopener noreferrer" class="btn repo-link">Link to Repository</a></div></div><div class="d-text"><p>In building this API, I explored the power of databases with the use of MongoDB and Postman. This API will enable users to shop, order, and add to cart. It also lets sellers/admins to monitor and control the stocks and sales of their products; it also prioritizes the security and privacy of all its users. I have tested all these routes through Postman, and have stored the gathered data in a MongoDB database, creating a seamlessly working and efficient backend server application.</p><p>This e-commerce API is mainly composed of three elements:</p><ul> <li>Schemas: In this API, I have created five schemas: cart, checkout, order, product, and user. These schemas act as the blueprint for saving data in the database and enable the different features and functionalities that will be applied in the frontend application.</li> <li>Controllers: The controllers contain the necessary logic required to execute the different features and functionalities for both the backend and frontend server applications.</li> <li>Routes: The routes are where the controllers receive their commands/requests from. This is where the create, read, update, and delete operations are initialized and then passed to the defined controller to execute the exact logic required for the specific operation.</li> </ul><p>This API showcases my proficiency in working with databases and my ability to use MongoDB as a database management system, Postman as a testing and debugging tool, and Node.js with Express.js as frameworks for creating a fully functional e-commerce API.</p></div></section>
+    <section class="detail" data-target="p-7" aria-labelledby="t-p-7"><div class="d-media"><h3 id="t-p-7">Minimalistic Shop</h3><p class="d-stack">React MERN</p><video muted loop playsinline preload="none" data-src="./videos/project-3.mp4" aria-label="Minimalistic Shop demo"></video><div class="d-links"><a href="https://minimalistic-shop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn project-link">Link to Project</a><a href="https://github.com/Granada-JT/minimalistic-shop" target="_blank" rel="noopener noreferrer" class="btn repo-link">Link to Repository</a></div></div><div class="d-text"><p>I built a dynamic web application using React.js and the MERN stack, hosted/deployed in Vercel. It's a fully functional e-commerce shop where shoppers can browse and add products to their cart, while sellers and admins can showcase their products with images and descriptions. The application boasts a user-friendly and attractive interface, making the shopping experience smooth and enjoyable.</p><p>Here are some of the features and functionalities of the application:</p><ul> <li>User Sign up and Log in: This feature executes user creation and authentication using props, event listeners, and local storage. The frontend seamlessly communicates with the backend by tracing the correct controller and logic from fetching the correct routes. After a user has been created, their credentials are saved in the database, and a new token is generated for authentication every time they log in.</li> <li>Add to cart: The add to cart feature utilizes the cart schema from the backend. It detects the product that the user wants to add to their cart and creates a new instance of the cart schema. This is then recorded in the database as a new cart and is also presented to the user on the frontend via retrieving the cart details.</li> <li>Admin Dashboard: The admin dashboard is where admins can monitor, edit, delete, and update all the products in the e-commerce application. Specifically, they can edit the name, description, price, and image of products, and they can also archive and activate all products.</li> <li>Add Products: This feature lets admins add products with their own unique name, description, price, and image. For their convenience, I have also placed beside it an overview of all products where they can see the name, description, price, and image of all products that have already been added.</li> <li>Browse all products: This feature/page allows the admin to beautifully showcase all of their products. It also allows users to efficiently browse and select potential products/items that they will add to their cart and eventually checkout.</li> <li>See product details: The see product details feature is added to help users decide if they really want to add the product to their cart. Users will be able to see the name, description, price, image of the product, and other additional information in a bigger format. This helps users know more about the product and also helps admins present all the information and go all out in enticing users/shoppers to buy their products.</li> </ul><p>This full-stack React application showcases my knowledge and proficiency in creating a user-friendly and dynamic web application that efficiently utilizes and integrates the backend and frontend applications.</p></div></section>
+    <section class="detail" data-target="p-8" aria-labelledby="t-p-8"><div class="d-media"><h3 id="t-p-8">Minimalistic Calculator</h3><p class="d-stack">Sveltekit Typescript</p><video muted loop playsinline preload="none" data-src="./videos/project-4.mp4" aria-label="Minimalistic Calculator demo"></video><div class="d-links"><a href="https://minimalistic-calculator-granada.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn project-link">Link to Project</a><a href="https://github.com/Granada-JT/minimalistic-calculator" target="_blank" rel="noopener noreferrer" class="btn repo-link">Link to Repository</a></div></div><div class="d-text"><p>In this project, I showcased my unending passion for knowledge and learning new things. Using a newer tool in SvelteKit and TypeScript, I created a fully functional and precise calculator that maximizes the server-side rendering enabled by SvelteKit.</p><p>This online calculator is mainly composed of three objectives:</p><ul> <li>Main Objective: Create a calculator app which accepts and computes equations with multiple operators and numbers, without using eval(), Function(), mathjs, or any computation library.</li> <li>Frontend Code Objectives: Provide buttons for entering operators and numbers. Send a POST request to the backend server containing the created equation. Present the received answer from the backend API.</li> <li>Backend Code Objective: Calculate the received equation from the frontend and send it back as a response.</li> </ul><p>With these objectives, I have created a calculator app that fully utilizes the functions of the SvelteKit framework and TypeScript, particularly its server-side rendering feature used in calculating the equation provided by the user from the frontend.</p></div></section>
+  </dialog>
+  <template id="note"><strong class="note">Note: I worked on this project as a member of the product teams (employee / contractor). I am not the project owner and do not claim ownership of product IP or customer data. The screenshots/links shown are public-facing assets only. These examples are included to demonstrate my ability to adapt to real product environments, collaborate with cross-functional teams, and deliver measurable results.</strong></template>
 
-      form.addEventListener('submit', function(event) {
-        let isValid = true;
-        event.preventDefault()
+  <!-- Certificates lightbox -->
+  <dialog id="lightbox" aria-label="Certificates and awards">
+    <button class="lb-btn lb-close" type="button" aria-label="Close"><i class="bx bx-x" aria-hidden="true"></i></button>
+    <button class="lb-btn lb-prev c-btn" type="button" aria-label="Previous"></button>
+    <img alt="">
+    <button class="lb-btn lb-next c-btn" type="button" aria-label="Next"></button>
+  </dialog>
 
-        const name = document.getElementById('name').value;
-        const nameError = document.getElementById('name-validation');
-        const emailAddress = document.getElementById('email').value;
-        const emailError = document.getElementById('email-validation');
-        const contactNo = document.getElementById('phone').value;
-        const contactError = document.getElementById('phone-validation');
-        const message = document.getElementById('message').value;
-        const messageError = document.getElementById('message-validation');
-
-        if (name.trim() === '') {
-          nameError.style.display = 'block';
-          isValid = false;
-        } else {
-          nameError.style.display = 'none';
-        }
-        
-        if (emailAddress.trim() === '') {
-          emailError.style.display = 'block';
-          isValid = false;
-        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailAddress)) {
-          emailError.style.display = 'block';
-          isValid = false;
-        } else {
-          emailError.style.display = 'none';
-        }
-
-        if (contactNo.trim() === '') {
-          contactError.style.display = 'block';
-          isValid = false;
-        } else if (!/^[0-9]+$/.test(contactNo)) {
-          contactError.style.display = 'block';
-          isValid = false;
-        } else {
-          contactError.style.display = 'none';
-        }
-
-        if (message.trim() === '') {
-          messageError.style.display = 'block';
-          isValid = false;
-        } else {
-          messageError.style.display = 'none';
-        }
-
-        if (isValid) {
-          $('#modal-div').modal('show');
-          fetch('https://capstone-1-granada.onrender.com/visitors', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              name,
-              emailAddress,
-              contactNo,
-              message
-            })
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-        }
-      });
-
-      modalCloseButton.addEventListener('click', resetForm);
-
-      function resetForm() {
-        document.getElementById("form-col").reset();
-      };
-
-      async function getUserIP() {
-        const response = await fetch('https://api.ipify.org/?format=json');
-        const data = await response.json();
-        return data.ip;
-      };
-
-      async function recordView() {
-        try {
-          const ipaddress = await getUserIP();
-
-          const response = await fetch('https://capstone-1-granada.onrender.com/views/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              ipaddress
-            })
-          });
-
-          return;
-        } catch (error) {
-          return;
-        }
-      }
-
-      recordView();
-
-      const currentYear = new Date().getFullYear();
-      const portfolioText = document.querySelector('#footer p');
-      portfolioText.textContent = portfolioText.textContent.replace('[current year]', currentYear);
-    </script>
-
-    <!-- JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-  </body>
+  <!-- Form success -->
+  <dialog id="thanks" aria-labelledby="thanks-title">
+    <h3 id="thanks-title">Thank you for contacting me!</h3>
+    <p>Message Successfully Sent</p>
+    <button type="button" id="modal-close-button" class="btn-send">Close</button>
+  </dialog>
+</body>
 </html>
