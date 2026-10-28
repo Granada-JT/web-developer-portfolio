@@ -34,7 +34,7 @@
 
   /* shared state, read by every module */
   const S = { y: 0, sy: 0, vy: 0, vw: innerWidth, vh: innerHeight, docH: 1,
-              tx: 0, ty: 0, mx: 0, my: 0, cx: -999, cy: -999, hover: null, mag: null };
+              tx: 0, ty: 0, mx: 0, my: 0, cx: -999, cy: -999, hover: null, mag: null, light: false };
 
   /* ------------------------------------------------------------------ *
    * Scroll lock + loop control (dialogs and the mobile menu pause the loop)
@@ -69,11 +69,6 @@
       const speeds = g.dataset.colSpeeds.split(',').map(Number), max = +g.dataset.max || 0;
       Array.from(g.children).forEach((el, i) => items.push({ el, g, i, speeds, max, top: 0, h: 0, y: 0, sp: 0, spw: null, dp: 0, dx: 0, rot: 0, zoom: 0 }));
     });
-    const io = new IntersectionObserver(
-      (es) => es.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
-      { rootMargin: '0px 0px -8% 0px' });
-    $$('.rv').forEach((el) => io.observe(el));
-    $$('.menu li').forEach((li, i) => li.style.setProperty('--i', i));
   }
 
   let dirty = true, lastSy = -1, lastMx = 9e9, lastMy = 9e9;
@@ -91,6 +86,7 @@
       } else { it.top = docTop(it.el); it.h = it.el.offsetHeight; }
     }
     measureLetters();
+    measureTheme();
     dirty = true;
   }
 
@@ -130,10 +126,10 @@
    * ------------------------------------------------------------------ */
   const hero = $('#landing');
   const nav = $('#nav-bar');
-  const arrow = $('#arrow-down');
+  const rail = $('#rail');
   const CHARSET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-';
   let nameCh = [], roleCh = [], letters = [], heroItem = null;
-  let scrTimer = 0, arrowTimer = 0, heroOn = false, lastP = -1;
+  let scrTimer = 0, heroOn = false, lastP = -1;
 
   function split(el, scatter) {
     const txt = el.textContent.trim();
@@ -220,10 +216,9 @@
       const on = e.isIntersecting;
       if (on === heroOn) return;
       heroOn = on;
-      nav.classList.toggle('off', on);
-      if (on) { setMenu(false); hero.classList.add('in'); startScramble();
-        arrowTimer = setTimeout(() => arrow.classList.add('on'), mq('(max-width: 991px)').matches ? 3000 : 6000); }
-      else { hero.classList.remove('in'); resetScramble(); clearTimeout(arrowTimer); arrow.classList.remove('on'); }
+      nav.classList.toggle('off', on); rail.classList.toggle('off', on);       // nav + scroll rail appear once you leave the hero
+      if (on) { setMenu(false); hero.classList.add('in'); startScramble(); }
+      else { hero.classList.remove('in'); resetScramble(); }
     }, { rootMargin: '-20px' }).observe(hero);
   }
 
@@ -266,7 +261,8 @@
   function drawFx(dt) {
     const { w, h, list, pts } = P, n = list.length;
     for (let i = 0; i < 2; i++) for (let j = 0; j < 3; j++) P.cur[i][j] += (P.tgt[i][j] - P.cur[i][j]) * 0.05;
-    const c0 = `rgb(${P.cur[0].map((v) => v | 0)})`, c1 = `rgb(${P.cur[1].map((v) => v | 0)})`;
+    const dk = S.light ? 0.72 : 1, am = S.light ? 1.35 : 1;                  // light theme: deeper colours, stronger alpha
+    const c0 = `rgb(${P.cur[0].map((v) => (v * dk) | 0)})`, c1 = `rgb(${P.cur[1].map((v) => (v * dk) | 0)})`;
     const t = performance.now() / 1000, hasPtr = S.cx > -500;
     g.clearRect(0, 0, w, h);
 
@@ -291,7 +287,7 @@
       for (let j = i + 1; j < n; j++) {
         const dx = ax - pts[j * 2]; if (dx > L || dx < -L) continue;
         const dy = ay - pts[j * 2 + 1], d2 = dx * dx + dy * dy; if (d2 > L2) continue;
-        g.globalAlpha = (1 - Math.sqrt(d2) / L) * 0.5;
+        g.globalAlpha = Math.min(1, (1 - Math.sqrt(d2) / L) * 0.5 * am);
         g.beginPath(); g.moveTo(ax, ay); g.lineTo(pts[j * 2], pts[j * 2 + 1]); g.stroke();
       }
     }
@@ -300,13 +296,13 @@
       for (let i = 0; i < n; i++) {
         const dx = pts[i * 2] - S.cx, dy = pts[i * 2 + 1] - S.cy, d2 = dx * dx + dy * dy;
         if (d2 > 28900) continue;
-        g.globalAlpha = (1 - Math.sqrt(d2) / 170) * 0.8;
+        g.globalAlpha = Math.min(1, (1 - Math.sqrt(d2) / 170) * 0.8 * am);
         g.beginPath(); g.moveTo(S.cx, S.cy); g.lineTo(pts[i * 2], pts[i * 2 + 1]); g.stroke();
       }
     }
     for (let i = 0; i < n; i++) {
       const p = list[i];
-      g.globalAlpha = 0.3 + 0.5 * (0.5 + 0.5 * Math.sin(t * p.sp + p.ph));
+      g.globalAlpha = Math.min(1, (0.3 + 0.5 * (0.5 + 0.5 * Math.sin(t * p.sp + p.ph))) * am);
       g.fillStyle = p.k ? c1 : c0;
       g.beginPath(); g.arc(pts[i * 2], pts[i * 2 + 1], p.r, 0, 6.2832); g.fill();
     }
@@ -316,7 +312,12 @@
   /* ------------------------------------------------------------------ *
    * Sections: particle palette, nav highlight, nav show/hide, progress
    * ------------------------------------------------------------------ */
-  const burger = $('#burger'), progress = $('#progress');
+  const burger = $('#burger'), progress = $('#progress'), railSeg = $$('#rail i');
+  function paintProgress(y) {
+    const p = clamp(y / S.docH, 0, 1);
+    progress.style.scale = p.toFixed(4) + ' 1';
+    railSeg.forEach((seg, i) => seg.style.setProperty('--f', clamp(p * 3 - i, 0, 1).toFixed(3)));   // each segment fills through its third of the page
+  }
   const links = $$('.menu a');
 
   function setSection(id) {
@@ -572,6 +573,80 @@
   }
 
   /* ------------------------------------------------------------------ *
+   * Theme: dark (default) / light, saved, with a circular reveal from the button
+   * ------------------------------------------------------------------ */
+  const TS = { ready: false, hx: 0, hy: 0, nx: 0, ny: 0, heroH: 1, last: '' };
+  const themeBtn = $('#theme');
+
+  function measureTheme() {                           // slot centres: hero slot in page coords, nav slot in viewport coords (nav is fixed)
+    const hs = $('.hero-theme-slot'), ns = $('.theme-slot');
+    if (!hs || !ns) return;
+    TS.hx = docLeft(hs) + hs.offsetWidth / 2; TS.hy = docTop(hs) + hs.offsetHeight / 2;
+    const r = ns.getBoundingClientRect(); TS.nx = r.left + r.width / 2; TS.ny = r.top + r.height / 2;
+    TS.heroH = Math.max(1, hero.offsetHeight);
+    if (!TS.ready) { TS.ready = true; themeBtn.classList.add('ready'); }
+    TS.last = ''; placeTheme();
+  }
+
+  /* The button rides the hero slot up, docks at the nav line, then slides sideways and shrinks into the nav slot
+     right as the nav fades in. Pure function of scroll position, so it also works for reduced motion and reloads. */
+  function placeTheme() {
+    if (!TS.ready) return;
+    const e0 = clamp(scrollY / (TS.heroH * 0.92), 0, 1), e = e0 * e0 * (3 - 2 * e0);
+    const y = Math.max(TS.ny, TS.hy - scrollY + (heroItem ? heroItem.y : 0));
+    const key = `${(TS.hx + (TS.nx - TS.hx) * e).toFixed(1)}px ${y.toFixed(1)}px|${(1.35 - 0.35 * e).toFixed(3)}`;
+    if (key === TS.last) return;
+    TS.last = key;
+    const [pos, sc] = key.split('|');
+    themeBtn.style.translate = pos; themeBtn.style.scale = sc;
+  }
+
+  function initTheme() {
+    const meta = $('meta[name="theme-color"]'), sysLight = mq('(prefers-color-scheme: light)');
+    const saved = () => { try { const s = localStorage.getItem('theme'); return s === 'light' || s === 'dark' ? s : null; } catch (_) { return null; } };
+    const apply = (t) => {
+      root.dataset.theme = t; S.light = t === 'light';
+      meta.content = S.light ? '#f7f4f1' : '#000000';
+      themeBtn.setAttribute('aria-label', S.light ? 'Switch to dark mode' : 'Switch to light mode');
+      themeBtn.setAttribute('aria-pressed', S.light);
+      if (!motion) drawFx(0);
+    };
+    apply(saved() || (sysLight.matches ? 'light' : 'dark'));
+    // no saved choice -> keep following the system setting live (e.g. OS switches to dark at sunset)
+    const follow = (e) => { if (!saved()) apply(e.matches ? 'light' : 'dark'); };
+    sysLight.addEventListener ? sysLight.addEventListener('change', follow) : sysLight.addListener(follow);
+
+    themeBtn.addEventListener('click', () => {
+      const next = S.light ? 'dark' : 'light';
+      try { localStorage.setItem('theme', next); } catch (_) { /* private mode: still switches for this visit */ }
+      const r = themeBtn.getBoundingClientRect();
+      if (document.startViewTransition && motion) {
+        root.style.setProperty('--vx', (r.left + r.width / 2) + 'px'); root.style.setProperty('--vy', (r.top + r.height / 2) + 'px');
+        document.startViewTransition(() => apply(next));
+      } else apply(next);
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * "Pull up" hint: if you stop scrolling for a while (6s desktop / 3s phone, the same
+   * delay the hero arrow used) on ANY section, it appears; it hides the instant you move.
+   * ------------------------------------------------------------------ */
+  function initPull() {
+    const pull = $('#pull');
+    let lastMove = performance.now(), on = false;
+    const delay = () => (mq('(max-width: 991px)').matches ? 3000 : 6000);
+    addEventListener('scroll', () => { lastMove = performance.now(); if (on) { on = false; pull.classList.remove('on'); } }, { passive: true });
+    setInterval(() => {
+      const tag = document.activeElement && document.activeElement.tagName;
+      const show = performance.now() - lastMove >= delay()
+        && S.docH - scrollY > S.vh * 0.6                      // something left to scroll to
+        && !locks && !document.hidden && tag !== 'INPUT' && tag !== 'TEXTAREA';
+      if (show !== on) { on = show; pull.classList.toggle('on', on); }
+    }, 400);
+    pull.addEventListener('click', () => scrollBy({ top: S.vh * 0.85, behavior: 'smooth' }));
+  }
+
+  /* ------------------------------------------------------------------ *
    * Main loop
    * ------------------------------------------------------------------ */
   const band = $('.band');
@@ -589,13 +664,14 @@
 
     if (dirty || Math.abs(S.sy - lastSy) > 0.02 || Math.abs(S.mx - lastMx) > 0.0004 || Math.abs(S.my - lastMy) > 0.0004) {
       applyParallax(); lastSy = S.sy; lastMx = S.mx; lastMy = S.my; dirty = false;
-      progress.style.scale = clamp(S.y / S.docH, 0, 1).toFixed(4) + ' 1';
+      paintProgress(S.y);
     }
     if (S.sy < S.vh * 1.2) {                                           // hero scroll progress (letters scatter, content fades)
       const p = clamp(S.sy / (S.vh * 0.9), 0, 1);
       if (Math.abs(p - lastP) > 0.002) { hero.style.setProperty('--p', p.toFixed(3)); lastP = p; }
       stepLetters();
     }
+    placeTheme();
     band.style.setProperty('--sk', clamp(S.vy * -0.3, -8, 8).toFixed(2) + 'deg');
     stepHover();
 
@@ -608,7 +684,7 @@
    * Init
    * ------------------------------------------------------------------ */
   function init() {
-    collect(); collectGroups(); initDecor(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
+    collect(); collectGroups(); initDecor(); initTheme(); initPull(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
     sizeFx(); measure();
 
     let rt = 0;
@@ -620,7 +696,7 @@
     if (motion) start();
     else {                                                              // reduced motion: static particles, live progress bar only
       drawFx(0);
-      addEventListener('scroll', () => { progress.style.scale = clamp(scrollY / S.docH, 0, 1).toFixed(4) + ' 1'; }, { passive: true });
+      addEventListener('scroll', () => { paintProgress(scrollY); placeTheme(); }, { passive: true });
     }
 
     // start the hero once the font is ready (never wait more than 1.2s)
