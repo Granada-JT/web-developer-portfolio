@@ -69,6 +69,11 @@
       const speeds = g.dataset.colSpeeds.split(',').map(Number), max = +g.dataset.max || 0;
       Array.from(g.children).forEach((el, i) => items.push({ el, g, i, speeds, max, top: 0, h: 0, y: 0, sp: 0, spw: null, dp: 0, dx: 0, rot: 0, zoom: 0 }));
     });
+    const io = new IntersectionObserver(
+      (es) => es.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
+      { rootMargin: '0px 0px -8% 0px' });
+    $$('.rv').forEach((el) => io.observe(el));
+    $$('.menu li').forEach((li, i) => li.style.setProperty('--i', i));
   }
 
   let dirty = true, lastSy = -1, lastMx = 9e9, lastMy = 9e9;
