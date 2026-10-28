@@ -87,7 +87,6 @@
     }
     measureTheme();                                  // first: the toggle's glyph centre feeds the letter list
     measureLetters();
-    measureTheme();
     dirty = true;
   }
 
