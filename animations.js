@@ -85,6 +85,7 @@
         it.top = docTop(it.g); it.h = it.g.offsetHeight;
       } else { it.top = docTop(it.el); it.h = it.el.offsetHeight; }
     }
+    measureTheme();                                  // first: the toggle's glyph centre feeds the letter list
     measureLetters();
     measureTheme();
     dirty = true;
@@ -172,7 +173,7 @@
         if (now >= c._end) { c.textContent = c.dataset.c; c.style.width = ''; c.classList.remove('scr'); c._done = true; }
         else { c.textContent = CHARSET[(Math.random() * CHARSET.length) | 0]; alive++; }
       }
-      if (!alive) { clearInterval(scrTimer); measureLetters(); }
+      if (!alive) { clearInterval(scrTimer); measureTheme(); measureLetters(); }
     }, 50);
   }
 
@@ -182,7 +183,10 @@
   }
 
   function measureLetters() {
-    for (const L of letters) { L.cx = docLeft(L.el) + L.el.offsetWidth / 2; L.cy = docTop(L.el) + L.el.offsetHeight / 2; }
+    for (const L of letters) {
+      if (L.t) { L.cx = TS.hx; L.cy = TS.hy; }                                // the toggle: measure from the glyph's ink centre
+      else { L.cx = docLeft(L.el) + L.el.offsetWidth / 2; L.cy = docTop(L.el) + L.el.offsetHeight / 2; }
+    }
   }
 
   function stepLetters() {
@@ -192,9 +196,18 @@
       let f = 0, tx = 0, ty = 0;
       if (live) {
         const dx = S.cx - L.cx, dy = S.cy - (L.cy - S.y + hy), d = Math.hypot(dx, dy);
-        if (d < R) { f = 1 - d / R; f = f * f * (3 - 2 * f); tx = (-dx / (d || 1)) * f * 22; ty = (-dy / (d || 1)) * f * 22; }
+        if (d < R) {
+          f = 1 - d / R; f = f * f * (3 - 2 * f);
+          const push = L.t ? clamp(d / (TS.d * 0.5), 0, 1) : 1;          // toggle: ease the push to 0 right over its centre so it never dodges your click
+          tx = (-dx / (d || 1)) * f * 22 * push; ty = (-dy / (d || 1)) * f * 22 * push;
+        }
       }
       L.f += (f - L.f) * 0.16; L.x += (tx - L.x) * 0.16; L.y += (ty - L.y) * 0.16;
+      if (L.t) {                                                         // the toggle is a letter too: same push, scale and red tint, applied to the button
+        const rest = L.f < 0.002 && f === 0;
+        TS.rx = rest ? 0 : L.x; TS.ry = rest ? 0 : L.y; TS.rf = rest ? 0 : L.f;
+        continue;
+      }
       if (L.f < 0.002 && f === 0) {
         if (L.on) { L.on = false; const st = L.el.style; st.removeProperty('--f'); st.removeProperty('--tx'); st.removeProperty('--ty'); st.removeProperty('--sc'); }
         continue;
@@ -209,7 +222,9 @@
   function initHero() {
     nameCh = split($('#full-name'), 1);
     roleCh = split($('#profession'), 0.45);
-    letters = nameCh.map((el) => ({ el, cx: 0, cy: 0, f: 0, x: 0, y: 0, on: false }));
+    TS.o = nameCh.find((c) => c.dataset.c.toLowerCase() === 'o') || null;           // the toggle replaces this letter
+    if (TS.o) TS.o.classList.add('is-toggle');
+    letters = nameCh.map((el) => ({ el, t: el === TS.o, cx: 0, cy: 0, f: 0, x: 0, y: 0, on: false }));    // every letter, the toggle included
     heroItem = items.find((i) => i.el.classList.contains('hero-content')) || null;
     measure();
     new IntersectionObserver(([e]) => {
@@ -575,30 +590,50 @@
   /* ------------------------------------------------------------------ *
    * Theme: dark (default) / light, saved, with a circular reveal from the button
    * ------------------------------------------------------------------ */
-  const TS = { ready: false, hx: 0, hy: 0, nx: 0, ny: 0, heroH: 1, last: '' };
+  const TS = { ready: false, o: null, hx: 0, hy: 0, d: 40, base: 41.6, nx: 0, ny: 0, heroH: 1, last: '', atHero: null, rx: 0, ry: 0, rf: 0 };
   const themeBtn = $('#theme');
+  const mctx = document.createElement('canvas').getContext('2d');
 
-  function measureTheme() {                           // slot centres: hero slot in page coords, nav slot in viewport coords (nav is fixed)
-    const hs = $('.hero-theme-slot'), ns = $('.theme-slot');
-    if (!hs || !ns) return;
-    TS.hx = docLeft(hs) + hs.offsetWidth / 2; TS.hy = docTop(hs) + hs.offsetHeight / 2;
-    const r = ns.getBoundingClientRect(); TS.nx = r.left + r.width / 2; TS.ny = r.top + r.height / 2;
-    TS.heroH = Math.max(1, hero.offsetHeight);
+  /* Find the exact centre and ink diameter of the "o" glyph (not just its box), so the ring sits on it precisely. */
+  function measureTheme() {
+    const ns = $('.theme-slot');
+    if (!ns || !TS.o) return;
+    const r = ns.getBoundingClientRect(); TS.nx = r.left + r.width / 2; TS.ny = r.top + r.height / 2;      // nav slot (nav is fixed)
+    TS.heroH = Math.max(1, hero.offsetHeight); TS.base = themeBtn.offsetWidth || 41.6;
+
+    const cs = getComputedStyle(TS.o), fs = parseFloat(cs.fontSize);
+    mctx.font = `${cs.fontWeight} ${fs}px ${cs.fontFamily}`;
+    const m = mctx.measureText('o');
+    const asc = m.actualBoundingBoxAscent, desc = m.actualBoundingBoxDescent;
+    const A = m.fontBoundingBoxAscent != null ? m.fontBoundingBoxAscent : fs * 1.05;
+    const D = m.fontBoundingBoxDescent != null ? m.fontBoundingBoxDescent : fs * 0.35;
+    const lh = TS.o.offsetHeight;
+    const baseline = docTop(TS.o) + (lh - (A + D)) / 2 + A;                                              // inline-block baseline = half-leading + ascent
+    TS.hx = docLeft(TS.o) + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2;                    // ink centre
+    TS.hy = baseline - (asc - desc) / 2;
+    TS.d = (m.actualBoundingBoxLeft + m.actualBoundingBoxRight + asc + desc) / 2;                        // ink diameter
+
     if (!TS.ready) { TS.ready = true; themeBtn.classList.add('ready'); }
     TS.last = ''; placeTheme();
   }
 
-  /* The button rides the hero slot up, docks at the nav line, then slides sideways and shrinks into the nav slot
-     right as the nav fades in. Pure function of scroll position, so it also works for reduced motion and reloads. */
+  /* On the landing page the button sits on the "o" and is as big as the letter. Scrolling, it rides up with the hero,
+     docks at the nav line, then slides sideways and shrinks into the nav slot as the nav fades in. A pure function of
+     the scroll position, so it also works for reduced motion and for reloads mid-page. */
   function placeTheme() {
     if (!TS.ready) return;
     const e0 = clamp(scrollY / (TS.heroH * 0.92), 0, 1), e = e0 * e0 * (3 - 2 * e0);
-    const y = Math.max(TS.ny, TS.hy - scrollY + (heroItem ? heroItem.y : 0));
-    const key = `${(TS.hx + (TS.nx - TS.hx) * e).toFixed(1)}px ${y.toFixed(1)}px|${(1.35 - 0.35 * e).toFixed(3)}`;
-    if (key === TS.last) return;
-    TS.last = key;
-    const [pos, sc] = key.split('|');
-    themeBtn.style.translate = pos; themeBtn.style.scale = sc;
+    const w = 1 - e;                                                  // the letter reaction fades out as the button leaves for the nav
+    const y = Math.max(TS.ny, TS.hy - scrollY + (heroItem ? heroItem.y : 0)) + TS.ry * w;
+    const sHero = TS.d / TS.base, sc = (sHero + (1 - sHero) * e) * (1 + TS.rf * 0.3 * w);
+    const key = `${(TS.hx + (TS.nx - TS.hx) * e + TS.rx * w).toFixed(1)}px ${y.toFixed(1)}px|${sc.toFixed(3)}|${(1 - e).toFixed(3)}|${(TS.rf * w).toFixed(3)}`;
+    if (key !== TS.last) {
+      TS.last = key;
+      const [pos, scale, k, f] = key.split('|');
+      themeBtn.style.translate = pos; themeBtn.style.scale = scale; themeBtn.style.setProperty('--k', k); themeBtn.style.setProperty('--f', f);
+    }
+    const at = e0 < 0.05;
+    if (at !== TS.atHero) { TS.atHero = at; themeBtn.classList.toggle('at-hero', at); }
   }
 
   function initTheme() {
@@ -628,22 +663,45 @@
   }
 
   /* ------------------------------------------------------------------ *
-   * "Pull up" hint: if you stop scrolling for a while (6s desktop / 3s phone, the same
-   * delay the hero arrow used) on ANY section, it appears; it hides the instant you move.
+   * Elastic scroll hint: once per page load the page peeks down ~25% of the screen,
+   * holds a beat, then drops back to the top with a small bounce. Any touch, wheel,
+   * key or click cancels it on the spot, and it never runs if the page didn't load at
+   * the top, with reduced motion, or while a dialog/menu is open.
    * ------------------------------------------------------------------ */
-  function initPull() {
-    const pull = $('#pull');
-    let lastMove = performance.now(), on = false;
-    const delay = () => (mq('(max-width: 991px)').matches ? 3000 : 6000);
-    addEventListener('scroll', () => { lastMove = performance.now(); if (on) { on = false; pull.classList.remove('on'); } }, { passive: true });
-    setInterval(() => {
-      const tag = document.activeElement && document.activeElement.tagName;
-      const show = performance.now() - lastMove >= delay()
-        && S.docH - scrollY > S.vh * 0.6                      // something left to scroll to
-        && !locks && !document.hidden && tag !== 'INPUT' && tag !== 'TEXTAREA';
-      if (show !== on) { on = show; pull.classList.toggle('on', on); }
-    }, 400);
-    pull.addEventListener('click', () => scrollBy({ top: S.vh * 0.85, behavior: 'smooth' }));
+  function initPeek() {
+    if (!motion) return;
+    const DOWN = 650, HOLD = 180, UP = 1300, EVENTS = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
+    let timer = 0, raf = 0, running = false, t0 = 0, peak = 0, last = 0;
+    const bounce = (t) => {                                          // easeOutBounce: 0 -> 1 with three shrinking rebounds
+      const n = 7.5625, d = 2.75;
+      if (t < 1 / d) return n * t * t;
+      if (t < 2 / d) return n * (t -= 1.5 / d) * t + 0.75;
+      if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + 0.9375;
+      return n * (t -= 2.625 / d) * t + 0.984375;
+    };
+    const jump = (y) => scrollTo({ top: y, behavior: 'instant' });   // 'instant' beats the page's CSS smooth-scroll
+    function stop() {
+      running = false; clearTimeout(timer); cancelAnimationFrame(raf);
+      EVENTS.forEach((e) => removeEventListener(e, stop)); removeEventListener('scroll', onScroll);
+    }
+    function onScroll() { if (running && Math.abs(scrollY - last) > 3) stop(); }     // the user moved the page: hands off
+    function frame(now) {
+      if (!running) return;
+      const t = now - t0; let y;
+      if (t < DOWN) y = peak * (1 - Math.pow(1 - t / DOWN, 3));                      // ease-out down
+      else if (t < DOWN + HOLD) y = peak;
+      else if (t < DOWN + HOLD + UP) y = peak * (1 - bounce((t - DOWN - HOLD) / UP)); // drop + bounce back to 0
+      else { jump(0); stop(); return; }
+      last = Math.round(y); jump(last);
+      raf = requestAnimationFrame(frame);
+    }
+    EVENTS.forEach((e) => addEventListener(e, stop, { passive: true }));
+    timer = setTimeout(() => {                                       // wait for the hero intro (name decode, icons) to finish
+      if (scrollY > 2 || locks || document.hidden || S.docH < S.vh * 0.5) return stop();
+      peak = S.vh * 0.25; last = 0; running = true; t0 = performance.now();
+      addEventListener('scroll', onScroll, { passive: true });
+      raf = requestAnimationFrame(frame);
+    }, 10000);
   }
 
   /* ------------------------------------------------------------------ *
@@ -670,7 +728,7 @@
       const p = clamp(S.sy / (S.vh * 0.9), 0, 1);
       if (Math.abs(p - lastP) > 0.002) { hero.style.setProperty('--p', p.toFixed(3)); lastP = p; }
       stepLetters();
-    }
+    } else if (TS.rf) { TS.rx = TS.ry = TS.rf = 0; }
     placeTheme();
     band.style.setProperty('--sk', clamp(S.vy * -0.3, -8, 8).toFixed(2) + 'deg');
     stepHover();
@@ -684,7 +742,7 @@
    * Init
    * ------------------------------------------------------------------ */
   function init() {
-    collect(); collectGroups(); initDecor(); initTheme(); initPull(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
+    collect(); collectGroups(); initDecor(); initTheme(); initPeek(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
     sizeFx(); measure();
 
     let rt = 0;

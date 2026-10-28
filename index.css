@@ -93,13 +93,19 @@ main { position: relative; z-index: 1; }
 .brand { position: relative; z-index: 2; display: block; }
 .brand img { height: 2.6rem; width: auto; filter: var(--asset-filter); }
 .theme-slot { order: 1; width: 2.6rem; height: 2.6rem; margin: 0 clamp(.3rem, 1.6vw, 1.3rem) 0 auto; }   /* empty spot in the nav where the button docks */
-.hero-theme-slot { grid-column: 1 / -1; justify-self: center; width: 3.5rem; height: 3.5rem; }                       /* empty spot above the name where it starts */
 .theme { position: fixed; left: 0; top: 0; z-index: 70; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; opacity: 0;
-  border-radius: 50%; border: 1px solid rgb(var(--fg-rgb) / .28); color: var(--fg); background: rgb(var(--bg-rgb) / .35);
-  transition: opacity .4s, border-color .3s, color .3s, rotate .5s var(--ease); }
+  border-radius: 50%; background: transparent;
+  color: color-mix(in srgb, var(--red) calc(var(--f, 0) * 100%), var(--fg));                      /* same cursor tint as the letters */
+  /* --k is 1 on the landing page and fades to 0 in the nav: a bold ring that matches the letter's stroke, then a thin outline */
+  border: calc(1px + var(--k, 0) * 6px) solid color-mix(in srgb, color-mix(in srgb, var(--red) calc(var(--f, 0) * 100%), var(--fg)) calc(28% + var(--k, 0) * 72%), transparent);
+  transition: opacity .4s, color .3s, rotate .5s var(--ease); }
+.theme::before { content: ""; position: absolute; inset: calc(-9px - var(--k, 0) * 6px); border-radius: 50%; }             /* keeps the tap target >= 44px even when the "o" is small */
 .theme.ready { opacity: 1; }
+.theme.at-hero { animation: ringglow 7s ease-in-out infinite; animation-delay: 2.72s; }          /* same red wave as the letters (it is letter #2) */
+@keyframes ringglow { 0%, 14%, 100% { box-shadow: 0 0 0 rgb(255 63 74 / 0); } 7% { box-shadow: 0 0 .9rem rgb(255 63 74 / .95), inset 0 0 .6rem rgb(255 63 74 / .55); } }
 html:not(.js) .theme { display: none; }
-.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }   /* position + size are driven by animations.js */
+.ch.is-toggle { visibility: hidden; }                                                           /* the real "o" keeps its space; the button sits on top of it */
+.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }   /* position, size and --k are driven by animations.js */
 .theme svg { grid-area: 1 / 1; width: 1.25rem; height: 1.25rem; transition: opacity .35s, scale .5s var(--ease), rotate .6s var(--ease); }
 .theme .moon { opacity: 0; scale: .3; rotate: -90deg; }
 :root[data-theme="light"] .theme .sun { opacity: 0; scale: .3; rotate: 90deg; }
@@ -202,17 +208,6 @@ html:not(.js) .theme { display: none; }
   .hero-content { gap: 1rem; }
   .hero-stack .bx { font-size: 2.4rem; }
 }
-/* "pull up" hint: appears after a pause (6s desktop / 3s phones) on any section, hides the moment you scroll */
-.pull { position: fixed; z-index: 55; left: 50%; bottom: max(.9rem, env(safe-area-inset-bottom)); translate: -50% 0; display: grid; justify-items: center; gap: .1rem; padding: .5rem 1rem .3rem;
-  visibility: hidden; opacity: 0; transition: opacity .5s, visibility 0s .5s; }
-.pull.on { visibility: visible; opacity: 1; transition: opacity .5s; }
-.pull-chev { display: block; width: .75rem; height: .75rem; border-left: 2px solid var(--red); border-top: 2px solid var(--red); rotate: 45deg; opacity: 0; animation: chev 1.8s ease-in-out infinite; }
-.pull-chev:nth-child(2) { animation-delay: .22s; }
-@keyframes chev { 0% { opacity: 0; translate: 0 .55rem; } 40% { opacity: 1; } 100% { opacity: 0; translate: 0 -.6rem; } }
-.pull-track { position: relative; width: 2px; height: 2.8rem; margin-top: .25rem; border-radius: 2px; background: rgb(var(--fg-rgb) / .25); }
-.pull-track i { position: absolute; left: 50%; bottom: 0; width: .55rem; height: .55rem; margin-left: -.275rem; border-radius: 50%; background: var(--red); box-shadow: 0 0 .8rem var(--red);
-  animation: pdot 1.8s cubic-bezier(.5, 0, .2, 1) infinite; }
-@keyframes pdot { 0% { translate: 0 0; opacity: 0; } 15%, 85% { opacity: 1; } 100% { translate: 0 -2.6rem; opacity: 0; } }
 
 /* ---------- skills ticker band ---------- */
 .band { position: relative; z-index: 2; rotate: -2.2deg; scale: 1.08 1; margin-block: -1.4rem; padding: .55rem 0; overflow: clip; background: var(--red); color: #000;
