@@ -92,9 +92,14 @@ main { position: relative; z-index: 1; }
 .nav::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(var(--bg-rgb) / .62); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .brand { position: relative; z-index: 2; display: block; }
 .brand img { height: 2.6rem; width: auto; filter: var(--asset-filter); }
-.theme { order: 1; position: relative; z-index: 2; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; margin: 0 clamp(.3rem, 1.6vw, 1.3rem) 0 auto;
-  border-radius: 50%; border: 1px solid rgb(var(--fg-rgb) / .28); color: var(--fg); transition: border-color .3s, color .3s, background .3s, rotate .5s var(--ease); }
-.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }
+.theme-slot { order: 1; width: 2.6rem; height: 2.6rem; margin: 0 clamp(.3rem, 1.6vw, 1.3rem) 0 auto; }   /* empty spot in the nav where the button docks */
+.hero-theme-slot { grid-column: 1 / -1; justify-self: center; width: 3.5rem; height: 3.5rem; }                       /* empty spot above the name where it starts */
+.theme { position: fixed; left: 0; top: 0; z-index: 70; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; opacity: 0;
+  border-radius: 50%; border: 1px solid rgb(var(--fg-rgb) / .28); color: var(--fg); background: rgb(var(--bg-rgb) / .35);
+  transition: opacity .4s, border-color .3s, color .3s, rotate .5s var(--ease); }
+.theme.ready { opacity: 1; }
+html:not(.js) .theme { display: none; }
+.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }   /* position + size are driven by animations.js */
 .theme svg { grid-area: 1 / 1; width: 1.25rem; height: 1.25rem; transition: opacity .35s, scale .5s var(--ease), rotate .6s var(--ease); }
 .theme .moon { opacity: 0; scale: .3; rotate: -90deg; }
 :root[data-theme="light"] .theme .sun { opacity: 0; scale: .3; rotate: 90deg; }

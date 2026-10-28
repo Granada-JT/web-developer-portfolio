@@ -69,11 +69,6 @@
       const speeds = g.dataset.colSpeeds.split(',').map(Number), max = +g.dataset.max || 0;
       Array.from(g.children).forEach((el, i) => items.push({ el, g, i, speeds, max, top: 0, h: 0, y: 0, sp: 0, spw: null, dp: 0, dx: 0, rot: 0, zoom: 0 }));
     });
-    const io = new IntersectionObserver(
-      (es) => es.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
-      { rootMargin: '0px 0px -8% 0px' });
-    $$('.rv').forEach((el) => io.observe(el));
-    $$('.menu li').forEach((li, i) => li.style.setProperty('--i', i));
   }
 
   let dirty = true, lastSy = -1, lastMx = 9e9, lastMy = 9e9;
@@ -91,6 +86,7 @@
       } else { it.top = docTop(it.el); it.h = it.el.offsetHeight; }
     }
     measureLetters();
+    measureTheme();
     dirty = true;
   }
 
@@ -579,20 +575,51 @@
   /* ------------------------------------------------------------------ *
    * Theme: dark (default) / light, saved, with a circular reveal from the button
    * ------------------------------------------------------------------ */
+  const TS = { ready: false, hx: 0, hy: 0, nx: 0, ny: 0, heroH: 1, last: '' };
+  const themeBtn = $('#theme');
+
+  function measureTheme() {                           // slot centres: hero slot in page coords, nav slot in viewport coords (nav is fixed)
+    const hs = $('.hero-theme-slot'), ns = $('.theme-slot');
+    if (!hs || !ns) return;
+    TS.hx = docLeft(hs) + hs.offsetWidth / 2; TS.hy = docTop(hs) + hs.offsetHeight / 2;
+    const r = ns.getBoundingClientRect(); TS.nx = r.left + r.width / 2; TS.ny = r.top + r.height / 2;
+    TS.heroH = Math.max(1, hero.offsetHeight);
+    if (!TS.ready) { TS.ready = true; themeBtn.classList.add('ready'); }
+    TS.last = ''; placeTheme();
+  }
+
+  /* The button rides the hero slot up, docks at the nav line, then slides sideways and shrinks into the nav slot
+     right as the nav fades in. Pure function of scroll position, so it also works for reduced motion and reloads. */
+  function placeTheme() {
+    if (!TS.ready) return;
+    const e0 = clamp(scrollY / (TS.heroH * 0.92), 0, 1), e = e0 * e0 * (3 - 2 * e0);
+    const y = Math.max(TS.ny, TS.hy - scrollY + (heroItem ? heroItem.y : 0));
+    const key = `${(TS.hx + (TS.nx - TS.hx) * e).toFixed(1)}px ${y.toFixed(1)}px|${(1.35 - 0.35 * e).toFixed(3)}`;
+    if (key === TS.last) return;
+    TS.last = key;
+    const [pos, sc] = key.split('|');
+    themeBtn.style.translate = pos; themeBtn.style.scale = sc;
+  }
+
   function initTheme() {
-    const btn = $('#theme'), meta = $('meta[name="theme-color"]');
+    const meta = $('meta[name="theme-color"]'), sysLight = mq('(prefers-color-scheme: light)');
+    const saved = () => { try { const s = localStorage.getItem('theme'); return s === 'light' || s === 'dark' ? s : null; } catch (_) { return null; } };
     const apply = (t) => {
       root.dataset.theme = t; S.light = t === 'light';
       meta.content = S.light ? '#f7f4f1' : '#000000';
-      btn.setAttribute('aria-label', S.light ? 'Switch to dark mode' : 'Switch to light mode');
-      btn.setAttribute('aria-pressed', S.light);
+      themeBtn.setAttribute('aria-label', S.light ? 'Switch to dark mode' : 'Switch to light mode');
+      themeBtn.setAttribute('aria-pressed', S.light);
       if (!motion) drawFx(0);
     };
-    apply(root.dataset.theme === 'light' ? 'light' : 'dark');
-    btn.addEventListener('click', () => {
+    apply(saved() || (sysLight.matches ? 'light' : 'dark'));
+    // no saved choice -> keep following the system setting live (e.g. OS switches to dark at sunset)
+    const follow = (e) => { if (!saved()) apply(e.matches ? 'light' : 'dark'); };
+    sysLight.addEventListener ? sysLight.addEventListener('change', follow) : sysLight.addListener(follow);
+
+    themeBtn.addEventListener('click', () => {
       const next = S.light ? 'dark' : 'light';
       try { localStorage.setItem('theme', next); } catch (_) { /* private mode: still switches for this visit */ }
-      const r = btn.getBoundingClientRect();
+      const r = themeBtn.getBoundingClientRect();
       if (document.startViewTransition && motion) {
         root.style.setProperty('--vx', (r.left + r.width / 2) + 'px'); root.style.setProperty('--vy', (r.top + r.height / 2) + 'px');
         document.startViewTransition(() => apply(next));
@@ -644,6 +671,7 @@
       if (Math.abs(p - lastP) > 0.002) { hero.style.setProperty('--p', p.toFixed(3)); lastP = p; }
       stepLetters();
     }
+    placeTheme();
     band.style.setProperty('--sk', clamp(S.vy * -0.3, -8, 8).toFixed(2) + 'deg');
     stepHover();
 
@@ -668,7 +696,7 @@
     if (motion) start();
     else {                                                              // reduced motion: static particles, live progress bar only
       drawFx(0);
-      addEventListener('scroll', () => paintProgress(scrollY), { passive: true });
+      addEventListener('scroll', () => { paintProgress(scrollY); placeTheme(); }, { passive: true });
     }
 
     // start the hero once the font is ready (never wait more than 1.2s)
