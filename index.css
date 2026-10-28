@@ -93,13 +93,18 @@ main { position: relative; z-index: 1; }
 .brand { position: relative; z-index: 2; display: block; }
 .brand img { height: 2.6rem; width: auto; filter: var(--asset-filter); }
 .theme-slot { order: 1; width: 2.6rem; height: 2.6rem; margin: 0 clamp(.3rem, 1.6vw, 1.3rem) 0 auto; }   /* empty spot in the nav where the button docks */
-.hero-theme-slot { grid-column: 1 / -1; justify-self: center; width: 3.5rem; height: 3.5rem; }                       /* empty spot above the name where it starts */
 .theme { position: fixed; left: 0; top: 0; z-index: 70; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; opacity: 0;
-  border-radius: 50%; border: 1px solid rgb(var(--fg-rgb) / .28); color: var(--fg); background: rgb(var(--bg-rgb) / .35);
-  transition: opacity .4s, border-color .3s, color .3s, rotate .5s var(--ease); }
+  border-radius: 50%; color: var(--fg); background: transparent;
+  /* --k is 1 on the landing page and fades to 0 in the nav: a bold ring that matches the letter's stroke, then a thin outline */
+  border: calc(1px + var(--k, 0) * 6px) solid color-mix(in srgb, var(--fg) calc(28% + var(--k, 0) * 72%), transparent);
+  transition: opacity .4s, color .3s, rotate .5s var(--ease); }
+.theme::before { content: ""; position: absolute; inset: calc(-9px - var(--k, 0) * 6px); border-radius: 50%; }             /* keeps the tap target >= 44px even when the "o" is small */
 .theme.ready { opacity: 1; }
+.theme.at-hero { animation: ringglow 7s ease-in-out infinite; animation-delay: 2.72s; }          /* same red wave as the letters (it is letter #2) */
+@keyframes ringglow { 0%, 14%, 100% { box-shadow: 0 0 0 rgb(255 63 74 / 0); } 7% { box-shadow: 0 0 .9rem rgb(255 63 74 / .95), inset 0 0 .6rem rgb(255 63 74 / .55); } }
 html:not(.js) .theme { display: none; }
-.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }   /* position + size are driven by animations.js */
+.ch.is-toggle { visibility: hidden; }                                                           /* the real "o" keeps its space; the button sits on top of it */
+.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }   /* position, size and --k are driven by animations.js */
 .theme svg { grid-area: 1 / 1; width: 1.25rem; height: 1.25rem; transition: opacity .35s, scale .5s var(--ease), rotate .6s var(--ease); }
 .theme .moon { opacity: 0; scale: .3; rotate: -90deg; }
 :root[data-theme="light"] .theme .sun { opacity: 0; scale: .3; rotate: 90deg; }

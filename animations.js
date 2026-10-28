@@ -209,7 +209,9 @@
   function initHero() {
     nameCh = split($('#full-name'), 1);
     roleCh = split($('#profession'), 0.45);
-    letters = nameCh.map((el) => ({ el, cx: 0, cy: 0, f: 0, x: 0, y: 0, on: false }));
+    TS.o = nameCh.find((c) => c.dataset.c.toLowerCase() === 'o') || null;           // the toggle replaces this letter
+    if (TS.o) TS.o.classList.add('is-toggle');
+    letters = nameCh.filter((c) => c !== TS.o).map((el) => ({ el, cx: 0, cy: 0, f: 0, x: 0, y: 0, on: false }));
     heroItem = items.find((i) => i.el.classList.contains('hero-content')) || null;
     measure();
     new IntersectionObserver(([e]) => {
@@ -575,30 +577,49 @@
   /* ------------------------------------------------------------------ *
    * Theme: dark (default) / light, saved, with a circular reveal from the button
    * ------------------------------------------------------------------ */
-  const TS = { ready: false, hx: 0, hy: 0, nx: 0, ny: 0, heroH: 1, last: '' };
+  const TS = { ready: false, o: null, hx: 0, hy: 0, d: 40, base: 41.6, nx: 0, ny: 0, heroH: 1, last: '', atHero: null };
   const themeBtn = $('#theme');
+  const mctx = document.createElement('canvas').getContext('2d');
 
-  function measureTheme() {                           // slot centres: hero slot in page coords, nav slot in viewport coords (nav is fixed)
-    const hs = $('.hero-theme-slot'), ns = $('.theme-slot');
-    if (!hs || !ns) return;
-    TS.hx = docLeft(hs) + hs.offsetWidth / 2; TS.hy = docTop(hs) + hs.offsetHeight / 2;
-    const r = ns.getBoundingClientRect(); TS.nx = r.left + r.width / 2; TS.ny = r.top + r.height / 2;
-    TS.heroH = Math.max(1, hero.offsetHeight);
+  /* Find the exact centre and ink diameter of the "o" glyph (not just its box), so the ring sits on it precisely. */
+  function measureTheme() {
+    const ns = $('.theme-slot');
+    if (!ns || !TS.o) return;
+    const r = ns.getBoundingClientRect(); TS.nx = r.left + r.width / 2; TS.ny = r.top + r.height / 2;      // nav slot (nav is fixed)
+    TS.heroH = Math.max(1, hero.offsetHeight); TS.base = themeBtn.offsetWidth || 41.6;
+
+    const cs = getComputedStyle(TS.o), fs = parseFloat(cs.fontSize);
+    mctx.font = `${cs.fontWeight} ${fs}px ${cs.fontFamily}`;
+    const m = mctx.measureText('o');
+    const asc = m.actualBoundingBoxAscent, desc = m.actualBoundingBoxDescent;
+    const A = m.fontBoundingBoxAscent != null ? m.fontBoundingBoxAscent : fs * 1.05;
+    const D = m.fontBoundingBoxDescent != null ? m.fontBoundingBoxDescent : fs * 0.35;
+    const lh = TS.o.offsetHeight;
+    const baseline = docTop(TS.o) + (lh - (A + D)) / 2 + A;                                              // inline-block baseline = half-leading + ascent
+    TS.hx = docLeft(TS.o) + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2;                    // ink centre
+    TS.hy = baseline - (asc - desc) / 2;
+    TS.d = (m.actualBoundingBoxLeft + m.actualBoundingBoxRight + asc + desc) / 2;                        // ink diameter
+
     if (!TS.ready) { TS.ready = true; themeBtn.classList.add('ready'); }
     TS.last = ''; placeTheme();
   }
 
-  /* The button rides the hero slot up, docks at the nav line, then slides sideways and shrinks into the nav slot
-     right as the nav fades in. Pure function of scroll position, so it also works for reduced motion and reloads. */
+  /* On the landing page the button sits on the "o" and is as big as the letter. Scrolling, it rides up with the hero,
+     docks at the nav line, then slides sideways and shrinks into the nav slot as the nav fades in. A pure function of
+     the scroll position, so it also works for reduced motion and for reloads mid-page. */
   function placeTheme() {
     if (!TS.ready) return;
     const e0 = clamp(scrollY / (TS.heroH * 0.92), 0, 1), e = e0 * e0 * (3 - 2 * e0);
     const y = Math.max(TS.ny, TS.hy - scrollY + (heroItem ? heroItem.y : 0));
-    const key = `${(TS.hx + (TS.nx - TS.hx) * e).toFixed(1)}px ${y.toFixed(1)}px|${(1.35 - 0.35 * e).toFixed(3)}`;
-    if (key === TS.last) return;
-    TS.last = key;
-    const [pos, sc] = key.split('|');
-    themeBtn.style.translate = pos; themeBtn.style.scale = sc;
+    const sHero = TS.d / TS.base, sc = sHero + (1 - sHero) * e;
+    const key = `${(TS.hx + (TS.nx - TS.hx) * e).toFixed(1)}px ${y.toFixed(1)}px|${sc.toFixed(3)}|${(1 - e).toFixed(3)}`;
+    if (key !== TS.last) {
+      TS.last = key;
+      const [pos, scale, k] = key.split('|');
+      themeBtn.style.translate = pos; themeBtn.style.scale = scale; themeBtn.style.setProperty('--k', k);
+    }
+    const at = e0 < 0.05;
+    if (at !== TS.atHero) { TS.atHero = at; themeBtn.classList.toggle('at-hero', at); }
   }
 
   function initTheme() {
