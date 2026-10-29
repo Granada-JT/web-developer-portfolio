@@ -93,23 +93,26 @@ main { position: relative; z-index: 1; }
 .brand { position: relative; z-index: 2; display: block; }
 .brand img { height: 2.6rem; width: auto; filter: var(--asset-filter); }
 .theme-slot { order: 1; width: 2.6rem; height: 2.6rem; margin: 0 clamp(.3rem, 1.6vw, 1.3rem) 0 auto; }   /* empty spot in the nav where the button docks */
-.theme { position: fixed; left: 0; top: 0; z-index: 70; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; opacity: 0;
-  border-radius: 50%; background: transparent;
+/* The toggle IS the "o": a sun in dark mode (its ring is the letter, rays radiate out), a bold crescent in light mode.
+   --k is 1 on the landing page (letter-sized, heavy strokes) and fades to 0 in the nav (compact icon, light strokes);
+   position, size, --k and --f (cursor tint) are driven by animations.js. */
+.theme { position: fixed; left: 0; top: 0; z-index: 70; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; opacity: 0; border-radius: 50%; background: none;
   color: color-mix(in srgb, var(--red) calc(var(--f, 0) * 100%), var(--fg));                      /* same cursor tint as the letters */
-  /* --k is 1 on the landing page and fades to 0 in the nav: a bold ring that matches the letter's stroke, then a thin outline */
-  border: calc(1px + var(--k, 0) * 6px) solid color-mix(in srgb, color-mix(in srgb, var(--red) calc(var(--f, 0) * 100%), var(--fg)) calc(28% + var(--k, 0) * 72%), transparent);
-  transition: opacity .4s, color .3s, rotate .5s var(--ease); }
-.theme::before { content: ""; position: absolute; inset: calc(-9px - var(--k, 0) * 6px); border-radius: 50%; }             /* keeps the tap target >= 44px even when the "o" is small */
+  transition: opacity .4s, color .3s; }
+.theme::before { content: ""; position: absolute; inset: -.5rem; border-radius: 50%; }          /* invisible padding: tap target stays >= 44px */
 .theme.ready { opacity: 1; }
-.theme.at-hero { animation: ringglow 7s ease-in-out infinite; animation-delay: 2.72s; }          /* same red wave as the letters (it is letter #2) */
-@keyframes ringglow { 0%, 14%, 100% { box-shadow: 0 0 0 rgb(255 63 74 / 0); } 7% { box-shadow: 0 0 .9rem rgb(255 63 74 / .95), inset 0 0 .6rem rgb(255 63 74 / .55); } }
+.theme:hover { color: var(--red); }
+.glyph { position: absolute; inset: 0; scale: calc(.45 + var(--k, 0) * .55); }
+.theme.at-hero .glyph { animation: glowfx 7s ease-in-out infinite; animation-delay: 2.72s; }    /* same red wave as the letters (it is letter #2) */
+@keyframes glowfx { 0%, 14%, 100% { filter: drop-shadow(0 0 0 rgb(255 63 74 / 0)); } 7% { filter: drop-shadow(0 0 .3em rgb(255 63 74 / .95)) drop-shadow(0 0 .08em rgb(255 63 74 / .9)); } }
+.sun, .moon { position: absolute; inset: 0; transition: opacity .35s, scale .5s var(--ease), rotate .6s var(--ease); }
+.sun-body { position: absolute; inset: 0; border-radius: 50%; border: calc(4.4px + var(--k, 0) * 2.6px) solid currentColor; }   /* the sun's ring = the letter */
+.rays { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: spin 40s linear infinite; }
+.moon { width: 100%; height: 100%; overflow: visible; opacity: 0; scale: .3; rotate: -90deg; }
+:root[data-theme="light"] .sun { opacity: 0; scale: .3; rotate: 90deg; }
+:root[data-theme="light"] .moon { opacity: 1; scale: 1; rotate: 0deg; }
 html:not(.js) .theme { display: none; }
-.ch.is-toggle { visibility: hidden; }                                                           /* the real "o" keeps its space; the button sits on top of it */
-.theme:hover { border-color: var(--red); color: var(--red); rotate: 25deg; }   /* position, size and --k are driven by animations.js */
-.theme svg { grid-area: 1 / 1; width: 1.25rem; height: 1.25rem; transition: opacity .35s, scale .5s var(--ease), rotate .6s var(--ease); }
-.theme .moon { opacity: 0; scale: .3; rotate: -90deg; }
-:root[data-theme="light"] .theme .sun { opacity: 0; scale: .3; rotate: 90deg; }
-:root[data-theme="light"] .theme .moon { opacity: 1; scale: 1; rotate: 0deg; }
+.ch.is-toggle { visibility: hidden; padding-inline: .15em; }                                    /* the real "o" keeps its space, plus room for the sun's rays */
 .burger { order: 3; display: none; position: relative; z-index: 2; width: 2.75rem; height: 2.75rem; margin-right: -.5rem; }
 .burger span { position: absolute; left: .65rem; right: .65rem; height: 2px; border-radius: 2px; background: var(--red); transition: top .4s var(--ease), transform .4s var(--ease); }
 .burger span:nth-child(1) { top: 1.05rem; }

@@ -608,7 +608,7 @@
     const D = m.fontBoundingBoxDescent != null ? m.fontBoundingBoxDescent : fs * 0.35;
     const lh = TS.o.offsetHeight;
     const baseline = docTop(TS.o) + (lh - (A + D)) / 2 + A;                                              // inline-block baseline = half-leading + ascent
-    TS.hx = docLeft(TS.o) + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2;                    // ink centre
+    TS.hx = docLeft(TS.o) + (parseFloat(cs.paddingLeft) || 0) + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2;   // ink centre (after the side padding)
     TS.hy = baseline - (asc - desc) / 2;
     TS.d = (m.actualBoundingBoxLeft + m.actualBoundingBoxRight + asc + desc) / 2;                        // ink diameter
 
@@ -662,15 +662,19 @@
   }
 
   /* ------------------------------------------------------------------ *
-   * Elastic scroll hint: once per page load the page peeks down ~25% of the screen,
-   * holds a beat, then drops back to the top with a small bounce. Any touch, wheel,
-   * key or click cancels it on the spot, and it never runs if the page didn't load at
-   * the top, with reduced motion, or while a dialog/menu is open.
+   * Elastic idle hint. Whenever the visitor has done nothing scroll-related for IDLE ms, on ANY
+   * part of the page, the page peeks down ~25% of the screen, holds a beat, then bounces back to
+   * exactly where they were. If they stay idle it repeats every IDLE ms. Wheel, touch, keys,
+   * clicks or scrolling cancel it on the spot (the page stays wherever they put it) and restart
+   * the clock. Never runs while typing, with a dialog/menu open, near the bottom of the page
+   * (nothing more to hint at), in a hidden tab, or with reduced motion.
    * ------------------------------------------------------------------ */
   function initPeek() {
     if (!motion) return;
-    const DOWN = 650, HOLD = 180, UP = 1300, EVENTS = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
-    let timer = 0, raf = 0, running = false, t0 = 0, peak = 0, last = 0;
+    const IDLE = 10000;                                              // one number for every idle period (first one included)
+    const DOWN = 260, HOLD = 90, UP = 850;                           // quick flick down, tiny beat, springy return
+    const ACTIVITY = ['wheel', 'touchstart', 'touchmove', 'keydown', 'pointerdown'];
+    let timer = 0, raf = 0, running = false, t0 = 0, base = 0, amp = 0, last = 0;
     const bounce = (t) => {                                          // easeOutBounce: 0 -> 1 with three shrinking rebounds
       const n = 7.5625, d = 2.75;
       if (t < 1 / d) return n * t * t;
@@ -678,29 +682,32 @@
       if (t < 2.5 / d) return n * (t -= 2.25 / d) * t + 0.9375;
       return n * (t -= 2.625 / d) * t + 0.984375;
     };
-    const jump = (y) => scrollTo({ top: y, behavior: 'instant' });   // 'instant' beats the page's CSS smooth-scroll
-    function stop() {
-      running = false; clearTimeout(timer); cancelAnimationFrame(raf);
-      EVENTS.forEach((e) => removeEventListener(e, stop)); removeEventListener('scroll', onScroll);
+    const jump = (y) => scrollTo(0, y);                              // instant, because we switch off CSS smooth-scroll while hinting (below)
+    const arm = () => { clearTimeout(timer); timer = setTimeout(fire, IDLE); };
+    function cancel() { running = false; cancelAnimationFrame(raf); root.style.scrollBehavior = ''; }
+    function onActivity() { cancel(); arm(); }                       // any real input: stop hinting, restart the idle clock
+    function onScroll() { if (!running) onActivity(); }              // while hinting, scroll events are our own; real input is caught by ACTIVITY below
+    function fire() {
+      const el = document.activeElement, tag = el && el.tagName;
+      const typing = tag === 'INPUT' || tag === 'TEXTAREA' || (el && el.isContentEditable);
+      if (locks || document.hidden || typing || S.docH - scrollY < S.vh * 0.25) return arm();   // nothing to hint right now: look again in IDLE ms
+      base = scrollY; amp = S.vh * 0.25; last = base; running = true; t0 = performance.now();
+      root.style.scrollBehavior = 'auto';                            // older Safari ignores {behavior:'instant'}; this works everywhere
+      raf = requestAnimationFrame(frame);
     }
-    function onScroll() { if (running && Math.abs(scrollY - last) > 3) stop(); }     // the user moved the page: hands off
     function frame(now) {
       if (!running) return;
-      const t = now - t0; let y;
-      if (t < DOWN) y = peak * (1 - Math.pow(1 - t / DOWN, 3));                      // ease-out down
-      else if (t < DOWN + HOLD) y = peak;
-      else if (t < DOWN + HOLD + UP) y = peak * (1 - bounce((t - DOWN - HOLD) / UP)); // drop + bounce back to 0
-      else { jump(0); stop(); return; }
-      last = Math.round(y); jump(last);
+      const t = now - t0; let off;
+      if (t < DOWN) off = amp * (1 - Math.pow(1 - t / DOWN, 4));                      // fast ease-out down
+      else if (t < DOWN + HOLD) off = amp;
+      else if (t < DOWN + HOLD + UP) off = amp * (1 - bounce((t - DOWN - HOLD) / UP)); // drop + bounce, landing back on `base`
+      else { jump(base); cancel(); arm(); return; }
+      last = Math.round(base + off); jump(last);
       raf = requestAnimationFrame(frame);
     }
-    EVENTS.forEach((e) => addEventListener(e, stop, { passive: true }));
-    timer = setTimeout(() => {                                       // wait for the hero intro (name decode, icons) to finish
-      if (scrollY > 2 || locks || document.hidden || S.docH < S.vh * 0.5) return stop();
-      peak = S.vh * 0.25; last = 0; running = true; t0 = performance.now();
-      addEventListener('scroll', onScroll, { passive: true });
-      raf = requestAnimationFrame(frame);
-    }, 10000);
+    ACTIVITY.forEach((e) => addEventListener(e, onActivity, { passive: true }));
+    addEventListener('scroll', onScroll, { passive: true });
+    arm();
   }
 
   /* ------------------------------------------------------------------ *
