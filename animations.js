@@ -87,7 +87,7 @@
     }
     measureTheme();                                  // first: the toggle's glyph centre feeds the letter list
     measureLetters();
-    dirty = true;
+    dirty = true; wake();
   }
 
   function applyParallax() {
@@ -129,7 +129,7 @@
   const rail = $('#rail');
   const CHARSET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-';
   let nameCh = [], roleCh = [], letters = [], heroItem = null;
-  let scrTimer = 0, heroOn = false, lastP = -1;
+  let scrTimer = 0, heroOn = false, lastP = -1, scrollCSS = false;
 
   function split(el, scatter) {
     const txt = el.textContent.trim();
@@ -225,6 +225,8 @@
     if (TS.o) TS.o.classList.add('is-toggle');
     letters = nameCh.map((el) => ({ el, t: el === TS.o, cx: 0, cy: 0, f: 0, x: 0, y: 0, on: false }));    // every letter, the toggle included
     heroItem = items.find((i) => i.el.classList.contains('hero-content')) || null;
+    scrollCSS = motion && !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'));
+    hero.classList.toggle('sd', scrollCSS);                                       // scatter + fade run on the compositor
     measure();
     new IntersectionObserver(([e]) => {
       const on = e.isIntersecting;
@@ -272,11 +274,14 @@
     if (P.pts.length < P.list.length * 2) P.pts = new Float32Array(P.list.length * 2 + 48);
   }
 
+  const segs = [[], [], []];                                                   // line segments bucketed by alpha: 3 draw calls instead of one per line
   function drawFx(dt) {
     const { w, h, list, pts } = P, n = list.length;
-    for (let i = 0; i < 2; i++) for (let j = 0; j < 3; j++) P.cur[i][j] += (P.tgt[i][j] - P.cur[i][j]) * 0.05;
+    const cur0 = P.cur[0], cur1 = P.cur[1], tg0 = P.tgt[0], tg1 = P.tgt[1];
+    for (let j = 0; j < 3; j++) { cur0[j] += (tg0[j] - cur0[j]) * 0.05; cur1[j] += (tg1[j] - cur1[j]) * 0.05; }
     const dk = S.light ? 0.72 : 1, am = S.light ? 1.35 : 1;                  // light theme: deeper colours, stronger alpha
-    const c0 = `rgb(${P.cur[0].map((v) => (v * dk) | 0)})`, c1 = `rgb(${P.cur[1].map((v) => (v * dk) | 0)})`;
+    const c0 = 'rgb(' + ((cur0[0] * dk) | 0) + ',' + ((cur0[1] * dk) | 0) + ',' + ((cur0[2] * dk) | 0) + ')';
+    const c1 = 'rgb(' + ((cur1[0] * dk) | 0) + ',' + ((cur1[1] * dk) | 0) + ',' + ((cur1[2] * dk) | 0) + ')';
     const t = performance.now() / 1000, hasPtr = S.cx > -500;
     g.clearRect(0, 0, w, h);
 
@@ -295,15 +300,23 @@
     }
 
     const L = P.link, L2 = L * L;
-    g.lineWidth = 1; g.strokeStyle = c0;
+    segs[0].length = segs[1].length = segs[2].length = 0;
     for (let i = 0; i < n; i++) {
       const ax = pts[i * 2], ay = pts[i * 2 + 1];
       for (let j = i + 1; j < n; j++) {
         const dx = ax - pts[j * 2]; if (dx > L || dx < -L) continue;
         const dy = ay - pts[j * 2 + 1], d2 = dx * dx + dy * dy; if (d2 > L2) continue;
-        g.globalAlpha = Math.min(1, (1 - Math.sqrt(d2) / L) * 0.5 * am);
-        g.beginPath(); g.moveTo(ax, ay); g.lineTo(pts[j * 2], pts[j * 2 + 1]); g.stroke();
+        const k = 1 - Math.sqrt(d2) / L, s = segs[k < 0.34 ? 0 : k < 0.67 ? 1 : 2];
+        s.push(ax, ay, pts[j * 2], pts[j * 2 + 1]);
       }
+    }
+    g.lineWidth = 1; g.strokeStyle = c0;
+    for (let q = 0; q < 3; q++) {
+      const s = segs[q]; if (!s.length) continue;
+      g.globalAlpha = Math.min(1, (0.1 + q * 0.17) * am * 1.6);
+      g.beginPath();
+      for (let i = 0; i < s.length; i += 4) { g.moveTo(s[i], s[i + 1]); g.lineTo(s[i + 2], s[i + 3]); }
+      g.stroke();
     }
     if (hasPtr) {                                                         // "grab" lines to the pointer
       g.strokeStyle = c1;
@@ -314,11 +327,19 @@
         g.beginPath(); g.moveTo(S.cx, S.cy); g.lineTo(pts[i * 2], pts[i * 2 + 1]); g.stroke();
       }
     }
-    for (let i = 0; i < n; i++) {
-      const p = list[i];
-      g.globalAlpha = Math.min(1, (0.3 + 0.5 * (0.5 + 0.5 * Math.sin(t * p.sp + p.ph))) * am);
-      g.fillStyle = p.k ? c1 : c0;
-      g.beginPath(); g.arc(pts[i * 2], pts[i * 2 + 1], p.r, 0, 6.2832); g.fill();
+    if (lite) {                                                           // phones: two batched fills, steady alpha
+      for (let q = 0; q < 2; q++) {
+        g.fillStyle = q ? c1 : c0; g.globalAlpha = Math.min(1, 0.58 * am); g.beginPath();
+        for (let i = 0; i < n; i++) { if ((list[i].k ? 1 : 0) !== q) continue; const r = list[i].r, x = pts[i * 2], y = pts[i * 2 + 1]; g.moveTo(x + r, y); g.arc(x, y, r, 0, 6.2832); }
+        g.fill();
+      }
+    } else {
+      for (let i = 0; i < n; i++) {
+        const p = list[i];
+        g.globalAlpha = Math.min(1, (0.3 + 0.5 * (0.5 + 0.5 * Math.sin(t * p.sp + p.ph))) * am);
+        g.fillStyle = p.k ? c1 : c0;
+        g.beginPath(); g.arc(pts[i * 2], pts[i * 2 + 1], p.r, 0, 6.2832); g.fill();
+      }
     }
     g.globalAlpha = 1;
   }
@@ -364,7 +385,7 @@
 
   function initPointer() {
     addEventListener('pointermove', (e) => {
-      S.cx = e.clientX; S.cy = e.clientY;
+      S.cx = e.clientX; S.cy = e.clientY; wake();
       if (e.pointerType !== 'mouse') return;
       S.tx = (e.clientX / S.vw - 0.5) * 2; S.ty = (e.clientY / S.vh - 0.5) * 2;
       const t = e.target;
@@ -384,9 +405,13 @@
 
     // phones: tilt the layers with the gyroscope where no permission prompt is needed (Android)
     if (!fine && motion && 'DeviceOrientationEvent' in window && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      let gT = 0;
       addEventListener('deviceorientation', (e) => {
         if (e.gamma == null) return;
-        S.tx = clamp(e.gamma / 25, -1, 1); S.ty = clamp((e.beta - 50) / 25, -1, 1);
+        const now = performance.now(); if (now - gT < 50) return; gT = now;                 // 20 Hz is plenty
+        const tx = clamp(e.gamma / 25, -1, 1), ty = clamp((e.beta - 50) / 25, -1, 1);
+        if (Math.abs(tx - S.tx) < 0.06 && Math.abs(ty - S.ty) < 0.06) return;               // dead zone: a hand holding the phone must not re-run the parallax every frame
+        S.tx = tx; S.ty = ty; wake();
       }, { passive: true });
     }
   }
@@ -714,35 +739,55 @@
    * Main loop
    * ------------------------------------------------------------------ */
   const band = $('.band');
-  let raf = 0, last = 0, fxLast = 0, frame = 0;
+  let raf = 0, timer = 0, on = false, last = 0, fxLast = 0, lastWork = 0, lastSk = '';
+  const IDLE_GAP = 32, FX_GAP = lite ? 32 : 0;                 // phones: particles + idle loop ~30x/s even on a 120 Hz screen
+
+  /* Is anything moving that needs per-frame work? Desktop always draws the particles every frame, so it is always "busy". */
+  function isBusy() {
+    return !lite || dirty || scrollY !== S.y || Math.abs(scrollY - S.sy) > 0.05 || Math.abs(S.tx - S.mx) > 0.001 || Math.abs(S.ty - S.my) > 0.001 ||
+      Math.abs(S.vy) > 0.01 || TS.rf !== 0 || fxState.size > 0 || (fine && (Math.abs(S.cx - cxs) > 0.5 || Math.abs(S.cy - cys) > 0.5));
+  }
+  /* Input arrived while we were resting on the slow timer: jump to the very next frame. */
+  function wake() { if (on && !raf) { clearTimeout(timer); timer = 0; raf = requestAnimationFrame(tick); } }
 
   function tick(now) {
-    raf = requestAnimationFrame(tick);
-    const dt = Math.min(now - last, 64); last = now; frame++;
+    raf = 0;
+    const busy = isBusy();
+    const dt = Math.min(now - last, 64); last = now; lastWork = now;
+    const y = scrollY;
 
-    S.y = scrollY;
+    S.y = y;
     const k = 1 - Math.exp(-dt / 90), prev = S.sy;                    // frame-rate independent smoothing
     S.sy += (S.y - S.sy) * k; if (Math.abs(S.y - S.sy) < 0.05) S.sy = S.y;
     S.vy += (S.sy - prev - S.vy) * 0.2;
     S.mx += (S.tx - S.mx) * k; S.my += (S.ty - S.my) * k;
+    if (Math.abs(S.tx - S.mx) < 0.001) S.mx = S.tx;
+    if (Math.abs(S.ty - S.my) < 0.001) S.my = S.ty;
 
-    if (dirty || Math.abs(S.sy - lastSy) > 0.02 || Math.abs(S.mx - lastMx) > 0.0004 || Math.abs(S.my - lastMy) > 0.0004) {
+    if (dirty || Math.abs(S.sy - lastSy) > 0.02 || Math.abs(S.mx - lastMx) > 0.001 || Math.abs(S.my - lastMy) > 0.001) {
       applyParallax(); lastSy = S.sy; lastMx = S.mx; lastMy = S.my; dirty = false;
       paintProgress(S.y);
     }
-    if (S.sy < S.vh * 1.2) {                                           // hero scroll progress (letters scatter, content fades)
-      const p = clamp(S.sy / (S.vh * 0.9), 0, 1);
-      if (Math.abs(p - lastP) > 0.002) { hero.style.setProperty('--p', p.toFixed(3)); lastP = p; }
-      stepLetters();
+    if (S.sy < S.vh * 1.2) {                                           // hero: scroll progress + cursor-reactive letters
+      if (!scrollCSS) {                                                // (with scroll-driven CSS the browser does the scatter/fade itself)
+        const p = clamp(S.sy / (S.vh * 0.9), 0, 1);
+        if (Math.abs(p - lastP) > 0.002) { hero.style.setProperty('--p', p.toFixed(3)); lastP = p; }
+      }
+      if (fine) stepLetters();
     } else if (TS.rf) { TS.rx = TS.ry = TS.rf = 0; }
-    placeTheme();
-    band.style.setProperty('--sk', clamp(S.vy * -0.3, -8, 8).toFixed(2) + 'deg');
-    stepHover();
+    if (busy) placeTheme();
+    const sk = (Math.round(clamp(S.vy * -0.3, -8, 8) * 10) / 10 || 0) + 'deg';
+    if (sk !== lastSk) { band.style.setProperty('--sk', sk); lastSk = sk; }
+    if (busy) stepHover();
 
-    if (!lite || frame & 1) { drawFx(Math.min(now - fxLast, 64)); fxLast = now; }
+    if (now - fxLast >= FX_GAP) { drawFx(Math.min(now - fxLast, 64)); fxLast = now; }
+
+    // next wake-up: next frame while moving, otherwise a slow timer (then one frame), so an idle phone isn't woken 120x a second
+    if (isBusy()) raf = requestAnimationFrame(tick);
+    else timer = setTimeout(() => { timer = 0; raf = requestAnimationFrame(tick); }, IDLE_GAP);
   }
-  function start() { if (!raf && motion && !document.hidden && !locks) { last = fxLast = performance.now(); raf = requestAnimationFrame(tick); } }
-  function stop() { cancelAnimationFrame(raf); raf = 0; }
+  function start() { if (!on && motion && !document.hidden && !locks) { on = true; last = fxLast = performance.now(); raf = requestAnimationFrame(tick); } }
+  function stop() { on = false; cancelAnimationFrame(raf); clearTimeout(timer); raf = 0; timer = 0; }
 
   /* ------------------------------------------------------------------ *
    * Init
@@ -751,11 +796,18 @@
     collect(); collectGroups(); initDecor(); initTheme(); initPeek(); initReveal(); initNav(); initPointer(); initCarousels(); initProjects(); initForm();
     sizeFx(); measure();
 
-    let rt = 0;
-    addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { sizeFx(); measure(); if (!motion) drawFx(0); }, 120); });
-    new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(measure, 80); }).observe(document.body);   // lazy images change heights
+    let rt = 0, ro = 0, lastW = innerWidth, lastH = innerHeight;      // separate timers: a shared one let the observer cancel the resize rebuild
+    addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => {
+        if (!fine && Math.abs(innerWidth - lastW) < 2 && Math.abs(innerHeight - lastH) < 160) { S.vh = innerHeight; return; }   // URL bar sliding in/out: no canvas rebuild or re-measure mid-scroll
+        lastW = innerWidth; lastH = innerHeight; sizeFx(); measure(); if (!motion) drawFx(0);
+      }, 120);
+    });
+    new ResizeObserver(() => { clearTimeout(ro); ro = setTimeout(measure, 80); }).observe(document.body);   // lazy images change heights
     addEventListener('load', measure);
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    addEventListener('scroll', wake, { passive: true });                     // scrolling wakes a resting loop on the very next frame
 
     if (motion) start();
     else {                                                              // reduced motion: static particles, live progress bar only
