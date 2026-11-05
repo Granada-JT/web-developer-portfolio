@@ -599,7 +599,7 @@
    * ------------------------------------------------------------------ */
   function initDecor() {
     // ticker band is built from the skills list, so there is one source of truth
-    const names = $$('.skill b').map((b) => b.textContent);
+    const names = $$('.skill[data-band] b').map((b) => b.textContent);
     const track = $('.band-track');
     if (names.length) { track.innerHTML = names.map((n) => `<span>${n}</span>`).join(''); track.innerHTML += track.innerHTML; }
     // ring of text around the about photo
