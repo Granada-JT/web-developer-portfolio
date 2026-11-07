@@ -157,13 +157,18 @@
   function startScramble() {
     const all = nameCh.concat(roleCh);
     if (!motion) { all.forEach((c) => c.classList.add('on')); return; }
-    const ws = all.map((c) => { c.style.width = ''; return c.getBoundingClientRect().width; }); // read…
+    // Measure the letters' REAL layout widths. If the visitor scrolled back up fast the letters are still scattered/rotated,
+    // and a rotated letter's bounding box is wider than the letter, so measure in a transform-free state.
+    hero.classList.add('measuring');
+    const ws = all.map((c) => { c.style.width = ''; return c.getBoundingClientRect().width; });    // read…
+    hero.classList.remove('measuring');
     const t0 = performance.now();
     all.forEach((c, i) => {                                                                      // …then write
       c.style.width = ws[i] + 'px';
       c._end = t0 + 100 + c._n * 60; c._done = false;
       c.classList.add('on', 'scr');
     });
+    measureTheme(); measureLetters();                                  // layout is now frozen: re-aim the toggle and the cursor reaction at it
     clearInterval(scrTimer);
     scrTimer = setInterval(() => {
       const now = performance.now(); let alive = 0;
@@ -172,7 +177,8 @@
         if (now >= c._end) { c.textContent = c.dataset.c; c.style.width = ''; c.classList.remove('scr'); c._done = true; }
         else { c.textContent = CHARSET[(Math.random() * CHARSET.length) | 0]; alive++; }
       }
-      if (!alive) { clearInterval(scrTimer); measureTheme(); measureLetters(); }
+      measureTheme();                                                  // cheap (13 letters): keeps the toggle on its letter even if fonts or layout change mid-scramble
+      if (!alive) { clearInterval(scrTimer); measureLetters(); }
     }, 50);
   }
 
