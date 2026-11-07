@@ -191,6 +191,8 @@ html:not(.js) .theme { display: none; }
   transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) scale(var(--sc, 1)); } /* pointer reaction */
 .ch.on { opacity: 1; transition-delay: calc(var(--i) * 45ms); }
 .ch.scr { text-align: center; }
+/* While widths are measured, letters must be un-scattered and un-rotated, otherwise their bounding boxes are inflated and the layout stretches. */
+.hero.measuring .ch { animation: none !important; translate: none !important; rotate: none !important; transform: none !important; }
 .name .ch { color: color-mix(in srgb, var(--red) calc(var(--f, 0) * 100%), var(--fg)); }
 .name .ch.on { animation: glow 7s ease-in-out infinite; animation-delay: calc(2.6s + var(--i) * .11s); }
 @media (pointer: coarse) { .name .ch.on { animation-name: pulse; } }   /* phones: colour pulse instead of a blurred shadow */
@@ -381,6 +383,7 @@ dialog::backdrop { background: rgb(0 0 0 / .6); }
   .d-media { position: sticky; top: 0; align-self: start; }
 }
 .detail h3 { padding-right: 3.2rem; font-size: clamp(2.2rem, 6vw, 5.2rem); line-height: 1; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.detail h3.long { font-size: clamp(1.9rem, 4.4vw, 3.6rem); }
 .d-stack { margin: .9rem 0 1.6rem; font-style: italic; font-size: clamp(1rem, 1.8vw, 1.3rem); color: var(--dlg-mute); }
 .d-media img, .d-media video { width: 100%; height: auto; max-height: 70vh; object-fit: contain; border-radius: 20px; border: 5px solid var(--dlg-line); background: #111; }
 .d-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.4rem; }
